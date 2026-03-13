@@ -1,167 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Davlad Private Banking</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Private Banking</title>
+  <style>
+    :root{
+      --bg:#071227;
+      --bg2:#0b1d3a;
+      --card:#0f2344cc;
+      --card-solid:#11274d;
+      --border:rgba(255,255,255,0.12);
+      --text:#eef4ff;
+      --muted:#b7c5e3;
+      --gold:#f2c46d;
+      --gold-soft:#ffe5a8;
+      --blue:#4da3ff;
+      --green:#2dd4bf;
+      --red:#ff7b7b;
+      --shadow:0 18px 60px rgba(0,0,0,0.35);
+    }
 
-<style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77,163,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(242,196,109,0.14), transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      min-height:100vh;
+    }
 
-body{
-font-family: Arial;
-background:#0f172a;
-color:white;
-text-align:center;
-padding-top:80px;
-}
+    .container{
+      max-width:1180px;
+      margin:0 auto;
+      padding:36px 20px 60px;
+    }
 
-.card{
-background:#1e293b;
-width:600px;
-margin:auto;
-padding:40px;
-border-radius:12px;
-}
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+    }
 
-h1{
-font-size:42px;
-margin-bottom:10px;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
 
-.subtitle{
-color:#cbd5e1;
-margin-bottom:30px;
-}
+    .brand-logo{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      background:linear-gradient(135deg, var(--gold), #b88a33);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#17253d;
+      font-size:20px;
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
 
-button{
-background:#22c55e;
-border:none;
-padding:15px 25px;
-font-size:18px;
-border-radius:8px;
-cursor:pointer;
-margin-top:20px;
-}
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-weight:500;
+      margin-top:2px;
+    }
 
-.small{
-opacity:0.6;
-margin-top:20px;
-font-size:14px;
-}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(242,196,109,0.12);
+      color:var(--gold-soft);
+      border:1px solid rgba(242,196,109,0.24);
+      font-size:14px;
+    }
 
-table{
-margin:auto;
-margin-top:20px;
-border-collapse:collapse;
-}
+    .hero{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
 
-td{
-padding:8px 16px;
-border-bottom:1px solid #334155;
-}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
 
-.section{
-margin-top:60px;
-}
+    .hero-left{
+      padding:34px;
+    }
 
-</style>
+    h1{
+      font-size:54px;
+      line-height:1.02;
+      margin:18px 0 10px;
+      letter-spacing:-1.4px;
+    }
 
+    .slogan{
+      color:var(--gold-soft);
+      font-size:18px;
+      font-style:italic;
+      margin-bottom:20px;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.7;
+      max-width:760px;
+      margin-bottom:24px;
+    }
+
+    .signature{
+      background:rgba(255,255,255,0.035);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:20px 22px;
+      margin:22px 0 24px;
+    }
+
+    .signature .name{
+      font-size:22px;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+
+    .signature .role{
+      color:var(--gold-soft);
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .signature .about{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .mini-pill{
+      display:inline-block;
+      margin-top:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(77,163,255,0.12);
+      border:1px solid rgba(77,163,255,0.22);
+      color:#dbeaff;
+      font-size:13px;
+    }
+
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:6px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border:none;
+      border-radius:14px;
+      padding:15px 20px;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .15s ease, opacity .15s ease;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn-gold{
+      background:linear-gradient(180deg, var(--gold), #c8953d);
+      color:#14233c;
+    }
+    .btn-blue{
+      background:linear-gradient(180deg, #5ab0ff, #2c78df);
+      color:white;
+    }
+    .btn-outline{
+      background:transparent;
+      color:white;
+      border:1px solid var(--border);
+    }
+
+    .hero-right{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .stat-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .stat{
+      background:var(--card-solid);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .stat-label{
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:8px;
+    }
+
+    .stat-value{
+      font-size:28px;
+      font-weight:800;
+    }
+
+    .gold{color:var(--gold-soft)}
+    .green{color:#8ef1de}
+    .red{color:#ffb2b2}
+    .blue{color:#cfe6ff}
+
+    .note-box{
+      background:var(--card-solid);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
+    .panel{
+      padding:26px;
+    }
+
+    .panel h2{
+      margin:0 0 12px;
+      font-size:26px;
+      letter-spacing:-0.5px;
+    }
+
+    .muted{
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+    }
+
+    .table th,
+    .table td{
+      text-align:left;
+      padding:14px 12px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .table th{
+      width:42%;
+      color:var(--muted);
+      font-weight:600;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      margin-top:12px;
+    }
+
+    .testimonial{
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      margin-top:12px;
+      color:#deebff;
+    }
+
+    .faq-item{
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px 18px;
+      margin-top:12px;
+    }
+
+    .faq-item b{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      margin-top:20px;
+      font-size:14px;
+    }
+
+    @media (max-width: 960px){
+      .hero,
+      .section-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:40px;
+      }
+
+      .stat-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px){
+      .stat-grid{
+        grid-template-columns:1fr;
+      }
+      .buttons{
+        flex-direction:column;
+      }
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
 
-<div class="card">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-logo">DP</div>
+        <div>
+          Davlad Private Banking
+          <small>Strategic Borrowing • Crisis Finance • Legacy Preservation</small>
+        </div>
+      </div>
 
-<h1>Davlad Private Banking</h1>
+      <div class="pill">Temporary Capital Shortage Advisory</div>
+    </div>
 
-<p class="subtitle">vedi vidi valui</p>
+    <div class="hero">
+      <div class="card hero-left">
+        <div class="pill">Private Banking Division</div>
 
-<p>
-Boutique financial institution specializing in strategic borrowing,
-emergency funding solutions, friendship-based capital raising
-and occasional parental liquidity support.
-</p>
+        <h1>Davlad Private Banking</h1>
+        <div class="slogan">Veni, vidi, valui.</div>
 
-<br>
+        <div class="subtitle">
+          Boutique financial institution specializing in strategic borrowing,
+          emergency funding solutions, friendship-based capital raising,
+          and occasional parental liquidity support.
+        </div>
 
-<h3>Founder</h3>
+        <div class="signature">
+          <div class="name">Volodymyr Davlad</div>
+          <div class="role">Head of Strategic Lending</div>
+          <div class="about">
+            Currently overseeing a high-priority capital stabilization program.
+            The institution remains operational, reputable, and mildly underfunded.
+          </div>
+          <div class="mini-pill">Pronouns: Need / Money</div>
+        </div>
 
-<p><b>Volodymyr Davlad</b><br>
-Head of Strategic Lending</p>
+        <div class="buttons">
+          <a class="btn btn-gold" href="dashboard.html">Open Financial Dashboard</a>
+          <a class="btn btn-blue" href="#funding-terms">View Funding Terms</a>
+          <a class="btn btn-outline" href="#faq">Investor FAQ</a>
+        </div>
+      </div>
 
-<br>
+      <div class="card hero-right">
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat-label">Required Capital</div>
+            <div class="stat-value gold">Unlimited</div>
+          </div>
 
-<h3>Funding Terms</h3>
+          <div class="stat">
+            <div class="stat-label">Risk Profile</div>
+            <div class="stat-value blue">Trust-Based</div>
+          </div>
 
-<table>
-<tr>
-<td>Requested Amount</td>
-<td>whatever you feel comfortable with</td>
-</tr>
+          <div class="stat">
+            <div class="stat-label">Credit Rating</div>
+            <div class="stat-value red">BBB-</div>
+          </div>
 
-<tr>
-<td>Interest</td>
-<td>depends on oil prices</td>
-</tr>
+          <div class="stat">
+            <div class="stat-label">Liquidity Emergency</div>
+            <div class="stat-value green">Elevated</div>
+          </div>
+        </div>
 
-<tr>
-<td>Repayment Deadline</td>
-<td>as soon as possible*</td>
-</tr>
+        <div class="note-box">
+          This institution remains committed to preserving shareholder confidence,
+          personal dignity, and immediate solvency under rapidly evolving market conditions.
+        </div>
+      </div>
+    </div>
 
-<tr>
-<td>Collateral</td>
-<td>Trust, loyalty and vague promises</td>
-</tr>
-</table>
+    <div class="section-grid">
+      <div class="card panel">
+        <h2>About the Institution</h2>
+        <div class="muted">
+          Davlad Private Banking is a premium boutique banking structure focused on
+          private credit, emergency capital support, and relationship-driven financial recovery.
+          The bank is known for flexible strategy, strong vision, and limited current cash reserves.
+        </div>
 
-<p class="small">
-* as soon as bank capital is above 10,000€
-</p>
+        <div class="testimonial">
+          <b>Core Competencies</b><br>
+          Strategic borrowing, urgent liquidity management, interpersonal fundraising,
+          and short-term financial optimism.
+        </div>
 
-<br>
+        <div class="testimonial">
+          <b>Institutional Philosophy</b><br>
+          Strong values. Strong relationships. Weak balance sheet.
+        </div>
+      </div>
 
-<button onclick="location.href='dashboard.html'">
-Open Financial Dashboard
-</button>
+      <div class="card panel" id="funding-terms">
+        <h2>Funding Terms</h2>
 
-</div>
+        <table class="table">
+          <tr>
+            <th>Requested Amount</th>
+            <td>Whatever you feel comfortable with</td>
+          </tr>
+          <tr>
+            <th>Interest</th>
+            <td>Depends on oil prices</td>
+          </tr>
+          <tr>
+            <th>Repayment Deadline</th>
+            <td>As soon as possible*</td>
+          </tr>
+          <tr>
+            <th>Collateral</th>
+            <td>Trust, loyalty, and vague promises</td>
+          </tr>
+        </table>
 
+        <div class="small">
+          * as soon as bank capital is above 10,000€.
+        </div>
 
-<div class="section">
+        <div class="small" style="margin-top:16px;">
+          For strategic investors preferring traditional channels, banking details may be
+          provided upon successful completion of informal due diligence.
+        </div>
+      </div>
+    </div>
 
-<h2>Credit Rating</h2>
+    <div class="section-grid">
+      <div class="card panel">
+        <h2>Investor Testimonials</h2>
 
-<p>BBB- (Borrower But Broke)</p>
+        <div class="testimonial">
+          “An ambitious institution with a compelling liquidity story.” — Early Supporter
+        </div>
 
-<h2>Liquidity Emergency Level</h2>
+        <div class="testimonial">
+          “Governance could improve, but the founder is persuasive.” — Anonymous Investor
+        </div>
 
-<p>⚠️ Elevated</p>
+        <div class="testimonial">
+          “Still waiting for repayment, but morale remains high.” — Legacy Capital Partner
+        </div>
+      </div>
 
-<h2>Investor Testimonials</h2>
+      <div class="card panel" id="faq">
+        <h2>FAQ</h2>
 
-<p>
-“Still waiting for my money.” – Anonymous Investor
-</p>
+        <div class="faq-item">
+          <b>Why should I trust this institution?</b>
+          Because friendship remains the highest form of unsecured collateral.
+        </div>
 
-<p>
-“High risk, questionable governance, but good vibes.” – Early Backer
-</p>
+        <div class="faq-item">
+          <b>Is my investment safe?</b>
+          Operationally no. Emotionally perhaps.
+        </div>
 
-<h2>FAQ</h2>
+        <div class="faq-item">
+          <b>When will repayment occur?</b>
+          Promptly after a measurable recovery in institutional liquidity.
+        </div>
 
-<p><b>Why should I trust this institution?</b></p>
+        <div class="faq-item">
+          <b>What makes this bank different?</b>
+          Exclusive focus on high-conviction, founder-centered emergency funding.
+        </div>
+      </div>
+    </div>
 
-<p>Because friendship is stronger than financial regulation.</p>
+    <div class="footer">
+      Davlad Private Banking © 2026 · Global Office for Temporary Financial Instability
+    </div>
 
-<p><b>Is my investment safe?</b></p>
-
-<p>No.</p>
-
-<p><b>Will I get my money back?</b></p>
-
-<p>Eventually (market conditions permitting).</p>
-
-</div>
-
+  </div>
 </body>
 </html>

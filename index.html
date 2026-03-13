@@ -1,463 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Davlad Emergency Liquidity</title>
-  <style>
-    :root{
-      --bg:#0b1220;
-      --card:#121a2b;
-      --card2:#182338;
-      --text:#eef3ff;
-      --muted:#9fb0d1;
-      --green:#22c55e;
-      --green2:#16a34a;
-      --red:#ef4444;
-      --yellow:#f59e0b;
-      --blue:#3b82f6;
-      --border:rgba(255,255,255,0.08);
-      --shadow:0 20px 60px rgba(0,0,0,0.35);
-    }
+<meta charset="UTF-8">
+<title>Davlad Private Banking</title>
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(59,130,246,0.18), transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(34,197,94,0.12), transparent 20%),
-        linear-gradient(180deg, #0a1020 0%, #0b1220 100%);
-      color:var(--text);
-      min-height:100vh;
-    }
+<style>
 
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-      padding:40px 20px 60px;
-    }
+body{
+font-family: Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding-top:80px;
+}
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:24px;
-      align-items:stretch;
-    }
+.card{
+background:#1e293b;
+width:600px;
+margin:auto;
+padding:40px;
+border-radius:12px;
+}
 
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(6px);
-    }
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
 
-    .hero-left{
-      padding:34px;
-    }
+.subtitle{
+color:#cbd5e1;
+margin-bottom:30px;
+}
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(34,197,94,0.12);
-      color:#bcf7cf;
-      border:1px solid rgba(34,197,94,0.25);
-      font-size:14px;
-      margin-bottom:18px;
-    }
+button{
+background:#22c55e;
+border:none;
+padding:15px 25px;
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+margin-top:20px;
+}
 
-    h1{
-      font-size:48px;
-      line-height:1.05;
-      margin:0 0 14px;
-      letter-spacing:-1px;
-    }
+.small{
+opacity:0.6;
+margin-top:20px;
+font-size:14px;
+}
 
-    .subtitle{
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.6;
-      margin-bottom:22px;
-      max-width:720px;
-    }
+table{
+margin:auto;
+margin-top:20px;
+border-collapse:collapse;
+}
 
-    .signature{
-      background:rgba(255,255,255,0.03);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:18px 20px;
-      margin:24px 0;
-    }
+td{
+padding:8px 16px;
+border-bottom:1px solid #334155;
+}
 
-    .signature .name{
-      font-size:20px;
-      font-weight:700;
-      margin-bottom:4px;
-    }
+.section{
+margin-top:60px;
+}
 
-    .signature .role{
-      color:#c8d6f3;
-      font-weight:600;
-    }
+</style>
 
-    .signature .about{
-      margin-top:10px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      text-decoration:none;
-      border:none;
-      border-radius:14px;
-      padding:15px 20px;
-      font-size:16px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, opacity .15s ease, background .15s ease;
-    }
-
-    .btn:hover{transform:translateY(-1px)}
-    .btn-green{
-      background:linear-gradient(180deg, var(--green), var(--green2));
-      color:white;
-    }
-
-    .btn-blue{
-      background:linear-gradient(180deg, #4f8cff, #2f67d8);
-      color:white;
-    }
-
-    .btn-outline{
-      background:transparent;
-      color:var(--text);
-      border:1px solid var(--border);
-    }
-
-    .hero-right{
-      padding:24px;
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
-    .stat{
-      background:var(--card2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
-    }
-
-    .stat-label{
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:8px;
-    }
-
-    .stat-value{
-      font-size:28px;
-      font-weight:800;
-    }
-
-    .green{color:#6ee7a1}
-    .red{color:#fca5a5}
-    .yellow{color:#fcd34d}
-
-    .chart-card{
-      padding:18px;
-      background:var(--card2);
-      border:1px solid var(--border);
-      border-radius:18px;
-    }
-
-    .section{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-    }
-
-    .panel{
-      padding:24px;
-    }
-
-    .panel h2{
-      margin:0 0 12px;
-      font-size:24px;
-    }
-
-    .muted{
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .list{
-      margin:18px 0 0;
-      padding:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .list li{
-      background:rgba(255,255,255,0.03);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:14px 16px;
-      color:#dbe7ff;
-    }
-
-    .finance-table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:14px;
-      overflow:hidden;
-      border-radius:14px;
-      border:1px solid var(--border);
-    }
-
-    .finance-table th,
-    .finance-table td{
-      padding:14px 12px;
-      text-align:left;
-      border-bottom:1px solid var(--border);
-    }
-
-    .finance-table th{
-      color:var(--muted);
-      font-weight:600;
-      background:rgba(255,255,255,0.03);
-    }
-
-    .footer{
-      margin-top:28px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-      opacity:0.9;
-    }
-
-    .pill{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(245,158,11,0.12);
-      border:1px solid rgba(245,158,11,0.22);
-      color:#fcd34d;
-      font-size:13px;
-      margin-top:8px;
-    }
-
-    .tiny{
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-      margin-top:10px;
-    }
-
-    @media (max-width: 920px){
-      .hero,
-      .section{
-        grid-template-columns:1fr;
-      }
-      h1{font-size:38px}
-    }
-  </style>
 </head>
+
 <body>
-  <div class="container">
 
-    <div class="hero">
-      <div class="card hero-left">
-        <div class="badge">● Temporary Liquidity Event in Progress</div>
+<div class="card">
 
-        <h1>Davlad Emergency Liquidity</h1>
+<h1>Davlad Private Banking</h1>
 
-        <div class="subtitle">
-          Boutique financial institution specializing in strategic borrowing,
-          emergency funding solutions, and friendship-based capital raising.
-        </div>
+<p class="subtitle">Vedi Vici Valui</p>
 
-        <div class="signature">
-          <div class="name">Volodymyr Davlad</div>
-          <div class="role">Head of Strategic Lending</div>
-          <div class="about">
-            Currently leading a high-priority liquidity stabilization initiative.
-            Seeking a short-term capital injection of <b>200€</b> to ensure continued
-            operational excellence and emotional stability.
-          </div>
-          <div class="pill">Pronouns: Need / Money</div>
-        </div>
+<p>
+Boutique financial institution specializing in strategic borrowing,
+emergency funding solutions, friendship-based capital raising
+and occasional parental liquidity support.
+</p>
 
-        <div class="cta-row">
-          <!-- ЗАМЕНИ ссылку ниже на свою Monobank-ссылку -->
-          <a class="btn btn-green" href="https://send.monobank.ua/" target="_blank" rel="noopener noreferrer">
-            💸 Provide Funding via Monobank
-          </a>
+<br>
 
-          <!-- Сюда можно позже вставить свою реальную IBAN/платёжную ссылку -->
-          <a class="btn btn-outline" href="#funding-details">
-            🏦 View Banking Details
-          </a>
+<h3>Founder</h3>
 
-          <a class="btn btn-blue" href="#dashboard">
-            📈 Review Financial Dashboard
-          </a>
-        </div>
+<p><b>Volodymyr Davlad</b><br>
+Head of Strategic Lending</p>
 
-        <div class="tiny">
-          P.S. All investment opportunities are subject to market volatility, emotional pressure,
-          and sudden kebab-related expenses.
-        </div>
-      </div>
+<br>
 
-      <div class="card hero-right" id="dashboard">
-        <div class="mini-grid">
-          <div class="stat">
-            <div class="stat-label">Required Capital</div>
-            <div class="stat-value">200€</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Expected Return</div>
-            <div class="stat-value green">10%</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Liquidity Status</div>
-            <div class="stat-value red">Critical</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Risk Profile</div>
-            <div class="stat-value yellow">Friendship-Based</div>
-          </div>
-        </div>
+<h3>Funding Terms</h3>
 
-        <div class="chart-card">
-          <div class="stat-label" style="margin-bottom:14px;">Strategic Liquidity Performance</div>
-          <svg viewBox="0 0 420 200" width="100%" height="220" aria-label="Liquidity chart">
-            <defs>
-              <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#22c55e"/>
-                <stop offset="100%" stop-color="#ef4444"/>
-              </linearGradient>
-            </defs>
+<table>
+<tr>
+<td>Requested Amount</td>
+<td>whatever you feel comfortable with</td>
+</tr>
 
-            <!-- Grid -->
-            <line x1="30" y1="20" x2="30" y2="170" stroke="rgba(255,255,255,0.15)" />
-            <line x1="30" y1="170" x2="390" y2="170" stroke="rgba(255,255,255,0.15)" />
-            <line x1="30" y1="50" x2="390" y2="50" stroke="rgba(255,255,255,0.08)" />
-            <line x1="30" y1="90" x2="390" y2="90" stroke="rgba(255,255,255,0.08)" />
-            <line x1="30" y1="130" x2="390" y2="130" stroke="rgba(255,255,255,0.08)" />
+<tr>
+<td>Interest</td>
+<td>depends on oil prices</td>
+</tr>
 
-            <!-- Funny downward liquidity line -->
-            <polyline
-              fill="none"
-              stroke="url(#lineGradient)"
-              stroke-width="5"
-              points="40,45 95,55 150,78 205,96 260,122 315,142 370,162" />
+<tr>
+<td>Repayment Deadline</td>
+<td>as soon as possible*</td>
+</tr>
 
-            <!-- Dots -->
-            <circle cx="40" cy="45" r="5" fill="#22c55e"/>
-            <circle cx="95" cy="55" r="5" fill="#4ade80"/>
-            <circle cx="150" cy="78" r="5" fill="#84cc16"/>
-            <circle cx="205" cy="96" r="5" fill="#eab308"/>
-            <circle cx="260" cy="122" r="5" fill="#f59e0b"/>
-            <circle cx="315" cy="142" r="5" fill="#f97316"/>
-            <circle cx="370" cy="162" r="5" fill="#ef4444"/>
+<tr>
+<td>Collateral</td>
+<td>Trust, loyalty and vague promises</td>
+</tr>
+</table>
 
-            <!-- Labels -->
-            <text x="38" y="188" font-size="12" fill="#9fb0d1">Monday</text>
-            <text x="136" y="188" font-size="12" fill="#9fb0d1">Tuesday</text>
-            <text x="228" y="188" font-size="12" fill="#9fb0d1">Wednesday</text>
-            <text x="334" y="188" font-size="12" fill="#9fb0d1">Today</text>
+<p class="small">
+* as soon as bank capital is above 10,000€
+</p>
 
-            <text x="305" y="28" font-size="13" fill="#9fb0d1">Liquidity Outlook</text>
-            <text x="290" y="46" font-size="18" fill="#fca5a5" font-weight="700">Concerning</text>
-          </svg>
-        </div>
-      </div>
-    </div>
+<br>
 
-    <div class="section">
-      <div class="card panel">
-        <h2>About the Institution</h2>
-        <div class="muted">
-          Davlad Emergency Liquidity is a highly specialized financial entity focused on
-          short-term capital acquisition, urgent monetary stabilization, and preserving
-          founder morale under adverse market conditions.
-        </div>
+<button onclick="location.href='dashboard.html'">
+Open Financial Dashboard
+</button>
 
-        <ul class="list">
-          <li>✔ Emergency funding deployment</li>
-          <li>✔ Relationship-based private credit</li>
-          <li>✔ High-speed liquidity rescue operations</li>
-          <li>✔ Strategic borrowing with emotional transparency</li>
-        </ul>
-      </div>
+</div>
 
-      <div class="card panel" id="funding-details">
-        <h2>Funding Terms</h2>
-        <table class="finance-table">
-          <tr>
-            <th>Requested Amount</th>
-            <td>200€</td>
-          </tr>
-          <tr>
-            <th>Interest</th>
-            <td>10%</td>
-          </tr>
-          <tr>
-            <th>Repayment Deadline</th>
-            <td>26.03.2026</td>
-          </tr>
-          <tr>
-            <th>Penalty Clause</th>
-            <td>100% daily on principal (obviously extremely fair)</td>
-          </tr>
-          <tr>
-            <th>Collateral</th>
-            <td>Trust, loyalty, and vague promises</td>
-          </tr>
-        </table>
 
-        <div class="cta-row" style="margin-top:18px;">
-          <!-- ВСТАВЬ СЮДА СВОЮ MONOBANK-ССЫЛКУ -->
-          <a class="btn btn-green" href="https://send.monobank.ua/" target="_blank" rel="noopener noreferrer">
-            💳 Monobank Funding Link
-          </a>
-        </div>
+<div class="section">
 
-        <div class="tiny">
-          For strategic investors preferring traditional channels, banking details may be
-          provided upon successful completion of informal due diligence.
-        </div>
-      </div>
-    </div>
+<h2>Credit Rating</h2>
 
-    <div class="footer">
-      Davlad Emergency Liquidity © 2026 · Global Division of Temporary Financial Instability
-    </div>
-  </div>
+<p>BBB- (Borrower But Broke)</p>
+
+<h2>Liquidity Emergency Level</h2>
+
+<p>⚠️ Elevated</p>
+
+<h2>Investor Testimonials</h2>
+
+<p>
+“Still waiting for my money.” – Anonymous Investor
+</p>
+
+<p>
+“High risk, questionable governance, but good vibes.” – Early Backer
+</p>
+
+<h2>FAQ</h2>
+
+<p><b>Why should I trust this institution?</b></p>
+
+<p>Because friendship is stronger than financial regulation.</p>
+
+<p><b>Is my investment safe?</b></p>
+
+<p>No.</p>
+
+<p><b>Will I get my money back?</b></p>
+
+<p>Eventually (market conditions permitting).</p>
+
+</div>
+
 </body>
 </html>

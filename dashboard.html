@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+<title>Financial Dashboard</title>
+
+<style>
+
+body{
+background:#0b1e6b;
+font-family:Arial;
+color:white;
+text-align:center;
+padding:60px;
+}
+
+h1{
+margin-bottom:40px;
+}
+
+.chart{
+width:700px;
+height:300px;
+margin:auto;
+border-bottom:2px dashed white;
+position:relative;
+}
+
+.line{
+position:absolute;
+width:100%;
+height:100%;
+}
+
+svg{
+width:100%;
+height:100%;
+}
+
+.back{
+margin-top:40px;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+border:none;
+border-radius:8px;
+background:#22c55e;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Davlad Private Banking – Financial Dashboard</h1>
+
+<p>Liquidity over time</p>
+
+<div class="chart">
+
+<svg viewBox="0 0 700 300">
+
+<polyline
+fill="none"
+stroke="white"
+stroke-width="4"
+points="
+0,250
+60,200
+120,210
+180,120
+240,180
+300,240
+360,170
+420,220
+480,260
+540,210
+600,240
+660,260"
+/>
+
+</svg>
+
+</div>
+
+<p style="margin-top:20px">Current liquidity: 0€</p>
+
+<div class="back">
+<button onclick="location.href='index.html'">
+Back to Bank
+</button>
+</div>
+
+</body>
+</html>

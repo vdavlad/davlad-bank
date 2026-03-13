@@ -1,99 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Private Banking – Financial Dashboard</title>
+  <style>
+    :root{
+      --bg:#13277a;
+      --bg2:#1d318b;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.8);
+      --soft:rgba(255,255,255,0.18);
+      --line:#ffffff;
+      --green:#89ffb2;
+      --gold:#ffe28a;
+    }
 
-<title>Financial Dashboard</title>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 28%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
 
-<style>
+    .container{
+      max-width:1180px;
+      margin:0 auto;
+      padding:32px 22px 50px;
+    }
 
-body{
-background:#0b1e6b;
-font-family:Arial;
-color:white;
-text-align:center;
-padding:60px;
-}
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:24px;
+      gap:16px;
+      flex-wrap:wrap;
+    }
 
-h1{
-margin-bottom:40px;
-}
+    .brand{
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:-0.5px;
+    }
 
-.chart{
-width:700px;
-height:300px;
-margin:auto;
-border-bottom:2px dashed white;
-position:relative;
-}
+    .sub{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:15px;
+    }
 
-.line{
-position:absolute;
-width:100%;
-height:100%;
-}
+    .back{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      color:#182d76;
+      background:#ffffff;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:700;
+    }
 
-svg{
-width:100%;
-height:100%;
-}
+    .dashboard-card{
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.22);
+    }
 
-.back{
-margin-top:40px;
-}
+    .tabs{
+      display:flex;
+      gap:34px;
+      font-size:28px;
+      align-items:center;
+      margin-bottom:24px;
+      flex-wrap:wrap;
+    }
 
-button{
-padding:12px 20px;
-font-size:16px;
-border:none;
-border-radius:8px;
-background:#22c55e;
-cursor:pointer;
-}
+    .tabs .active{
+      position:relative;
+      font-weight:700;
+    }
 
-</style>
+    .tabs .active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-14px;
+      width:100%;
+      height:8px;
+      background:#ffffff;
+      border-radius:999px;
+    }
 
+    .chart-wrap{
+      margin-top:28px;
+      position:relative;
+    }
+
+    .chart-box{
+      position:relative;
+      height:440px;
+      border-radius:22px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    }
+
+    .axis-zero{
+      position:absolute;
+      left:55px;
+      right:150px;
+      bottom:78px;
+      border-bottom:4px dashed rgba(255,255,255,0.75);
+    }
+
+    .right-label{
+      position:absolute;
+      right:40px;
+      font-size:30px;
+      font-weight:700;
+    }
+
+    .right-label.top{
+      top:120px;
+    }
+
+    .right-label.middle{
+      top:236px;
+    }
+
+    .right-label.bottom{
+      bottom:54px;
+    }
+
+    .chart-note{
+      margin-top:18px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .stats{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .stat .label{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .stat .value{
+      font-size:28px;
+      font-weight:800;
+    }
+
+    .green{color:var(--green)}
+    .gold{color:var(--gold)}
+
+    @media (max-width: 900px){
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .tabs{
+        font-size:22px;
+      }
+
+      .right-label{
+        font-size:22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
 
-<h1>Davlad Private Banking – Financial Dashboard</h1>
+    <div class="top">
+      <div>
+        <div class="brand">Davlad Private Banking</div>
+        <div class="sub">Financial Dashboard · Internal Liquidity Monitoring Interface</div>
+      </div>
 
-<p>Liquidity over time</p>
+      <a class="back" href="index.html">← Back to Bank</a>
+    </div>
 
-<div class="chart">
+    <div class="dashboard-card">
+      <div class="tabs">
+        <div>30</div>
+        <div>90</div>
+        <div class="active">180 Tage</div>
+      </div>
 
-<svg viewBox="0 0 700 300">
+      <div class="chart-wrap">
+        <div class="chart-box">
 
-<polyline
-fill="none"
-stroke="white"
-stroke-width="4"
-points="
-0,250
-60,200
-120,210
-180,120
-240,180
-300,240
-360,170
-420,220
-480,260
-540,210
-600,240
-660,260"
-/>
+          <svg viewBox="0 0 1000 440" width="100%" height="100%" aria-label="Liquidity Dashboard">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
 
-</svg>
+            <!-- line -->
+            <polyline
+              fill="none"
+              stroke="white"
+              stroke-width="8"
+              filter="url(#glow)"
+              points="
+              40,340
+              70,345
+              90,210
+              120,215
+              140,240
+              170,242
+              205,255
+              220,330
+              270,330
+              280,110
+              295,180
+              320,205
+              345,210
+              360,300
+              400,305
+              430,330
+              445,210
+              470,235
+              490,250
+              505,300
+              560,305
+              570,190
+              605,190
+              625,230
+              655,245
+              675,300
+              710,320
+              735,340
+              760,340
+              770,220
+              795,225
+              815,250
+              830,330
+              870,335
+              885,338
+              900,338
+              910,250
+              935,315
+              955,330
+              985,338
+              " />
+          </svg>
 
-</div>
+          <div class="axis-zero"></div>
 
-<p style="margin-top:20px">Current liquidity: 0€</p>
+          <div class="right-label top">250 €</div>
+          <div class="right-label middle">100 €</div>
+          <div class="right-label bottom">0 €</div>
+        </div>
+      </div>
 
-<div class="back">
-<button onclick="location.href='index.html'">
-Back to Bank
-</button>
-</div>
+      <div class="stats">
+        <div class="stat">
+          <div class="label">Current Liquidity</div>
+          <div class="value">0€</div>
+        </div>
 
+        <div class="stat">
+          <div class="label">Institutional Outlook</div>
+          <div class="value gold">Fragile</div>
+        </div>
+
+        <div class="stat">
+          <div class="label">Recovery Probability</div>
+          <div class="value green">Spiritually Positive</div>
+        </div>
+      </div>
+
+      <div class="chart-note">
+        The above chart reflects recent institutional liquidity development across a 180-day period.
+        Despite recurring short-lived recoveries, capital reserves continue to trend toward operational minimalism.
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>

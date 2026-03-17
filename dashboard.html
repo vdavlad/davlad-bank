@@ -4,186 +4,187 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Davlad Private Banking – Financial Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root{
-      --bg:#13277a;
-      --bg2:#1d318b;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,0.8);
-      --soft:rgba(255,255,255,0.18);
-      --line:#ffffff;
-      --green:#89ffb2;
-      --gold:#ffe28a;
+      --bg:#050505;
+      --bg-soft:#101010;
+      --card:#121212;
+      --card-2:#1a1a1a;
+      --gold:#f3c54d;
+      --gold-soft:#ffe39a;
+      --text:#f7f7f7;
+      --muted:#b8b8b8;
+      --border:rgba(243,197,77,0.15);
+      --shadow:0 20px 60px rgba(0,0,0,0.45);
     }
 
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
+
     body{
       font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
+        radial-gradient(circle at top left, rgba(243,197,77,0.05), transparent 18%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
       color:var(--text);
       min-height:100vh;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 28%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
 
     .container{
-      max-width:1180px;
+      max-width:1200px;
       margin:0 auto;
-      padding:32px 22px 50px;
+      padding:28px 20px 60px;
     }
 
-    .top{
+    .nav{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      margin-bottom:24px;
-      gap:16px;
+      gap:20px;
+      padding:18px 22px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
       flex-wrap:wrap;
     }
 
     .brand{
-      font-size:28px;
+      font-size:22px;
       font-weight:800;
-      letter-spacing:-0.5px;
+      letter-spacing:0.3px;
+      color:var(--gold-soft);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      padding:10px 14px;
+      border-radius:10px;
+      transition:0.2s ease;
+    }
+
+    .nav-links a:hover{
+      background:rgba(243,197,77,0.10);
+      color:var(--gold-soft);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:6px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      margin-left:8px;
+    }
+
+    .lang-switch a{
+      padding:6px 10px;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .lang-switch .active{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .header-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      padding:34px;
+      margin-bottom:24px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:46px;
+      letter-spacing:-1px;
     }
 
     .sub{
       color:var(--muted);
-      margin-top:6px;
-      font-size:15px;
-    }
-
-    .back{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      color:#182d76;
-      background:#ffffff;
-      padding:12px 18px;
-      border-radius:12px;
-      font-weight:700;
-    }
-
-    .dashboard-card{
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.12);
-      border-radius:24px;
-      padding:26px;
-      box-shadow:0 20px 60px rgba(0,0,0,0.22);
-    }
-
-    .tabs{
-      display:flex;
-      gap:34px;
-      font-size:28px;
-      align-items:center;
-      margin-bottom:24px;
-      flex-wrap:wrap;
-    }
-
-    .tabs .active{
-      position:relative;
-      font-weight:700;
-    }
-
-    .tabs .active::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-14px;
-      width:100%;
-      height:8px;
-      background:#ffffff;
-      border-radius:999px;
-    }
-
-    .chart-wrap{
-      margin-top:28px;
-      position:relative;
-    }
-
-    .chart-box{
-      position:relative;
-      height:440px;
-      border-radius:22px;
-      overflow:hidden;
-      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-    }
-
-    .axis-zero{
-      position:absolute;
-      left:55px;
-      right:150px;
-      bottom:78px;
-      border-bottom:4px dashed rgba(255,255,255,0.75);
-    }
-
-    .right-label{
-      position:absolute;
-      right:40px;
-      font-size:30px;
-      font-weight:700;
-    }
-
-    .right-label.top{
-      top:120px;
-    }
-
-    .right-label.middle{
-      top:236px;
-    }
-
-    .right-label.bottom{
-      bottom:54px;
-    }
-
-    .chart-note{
-      margin-top:18px;
-      color:var(--muted);
+      font-size:18px;
       line-height:1.7;
     }
 
     .stats{
-      margin-top:24px;
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      gap:20px;
+      margin-bottom:24px;
     }
 
     .stat{
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.12);
-      border-radius:18px;
-      padding:18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:22px;
+      box-shadow:var(--shadow);
     }
 
-    .stat .label{
+    .stat-label{
       color:var(--muted);
-      font-size:14px;
+      font-size:13px;
       margin-bottom:8px;
     }
 
-    .stat .value{
-      font-size:28px;
+    .stat-value{
+      font-size:32px;
       font-weight:800;
+      color:var(--gold-soft);
     }
 
-    .green{color:var(--green)}
-    .gold{color:var(--gold)}
+    .chart-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+
+    .chart-title{
+      font-size:24px;
+      font-weight:800;
+      margin-bottom:8px;
+      color:var(--gold-soft);
+    }
+
+    .chart-subtitle{
+      color:var(--muted);
+      margin-bottom:22px;
+      line-height:1.7;
+    }
+
+    .note{
+      margin-top:18px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
 
     @media (max-width: 900px){
       .stats{
         grid-template-columns:1fr;
       }
 
-      .tabs{
-        font-size:22px;
-      }
-
-      .right-label{
-        font-size:22px;
+      h1{
+        font-size:36px;
       }
     }
   </style>
@@ -191,116 +192,138 @@
 <body>
   <div class="container">
 
-    <div class="top">
-      <div>
-        <div class="brand">Davlad Private Banking</div>
-        <div class="sub">Financial Dashboard · Internal Liquidity Monitoring Interface</div>
-      </div>
+    <div class="nav">
+      <div class="brand">Davlad Private Banking</div>
 
-      <a class="back" href="index.html">← Back to Bank</a>
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="funding.html">Funding</a>
+          <a href="investors.html">Investors</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <a href="dashboard.html" class="active">EN</a>
+          <a href="de/dashboard.html">DE</a>
+          <a href="ua/dashboard.html">UA</a>
+        </div>
+      </div>
     </div>
 
-    <div class="dashboard-card">
-      <div class="tabs">
-        <div>30</div>
-        <div>90</div>
-        <div class="active">180 Tage</div>
-      </div>
-
-      <div class="chart-wrap">
-        <div class="chart-box">
-
-          <svg viewBox="0 0 1000 440" width="100%" height="100%" aria-label="Liquidity Dashboard">
-            <defs>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-
-            <!-- line -->
-            <polyline
-              fill="none"
-              stroke="white"
-              stroke-width="8"
-              filter="url(#glow)"
-              points="
-              40,340
-              70,345
-              90,210
-              120,215
-              140,240
-              170,242
-              205,255
-              220,330
-              270,330
-              280,110
-              295,180
-              320,205
-              345,210
-              360,300
-              400,305
-              430,330
-              445,210
-              470,235
-              490,250
-              505,300
-              560,305
-              570,190
-              605,190
-              625,230
-              655,245
-              675,300
-              710,320
-              735,340
-              760,340
-              770,220
-              795,225
-              815,250
-              830,330
-              870,335
-              885,338
-              900,338
-              910,250
-              935,315
-              955,330
-              985,338
-              " />
-          </svg>
-
-          <div class="axis-zero"></div>
-
-          <div class="right-label top">250 €</div>
-          <div class="right-label middle">100 €</div>
-          <div class="right-label bottom">0 €</div>
-        </div>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="label">Current Liquidity</div>
-          <div class="value">0€</div>
-        </div>
-
-        <div class="stat">
-          <div class="label">Institutional Outlook</div>
-          <div class="value gold">Fragile</div>
-        </div>
-
-        <div class="stat">
-          <div class="label">Recovery Probability</div>
-          <div class="value green">Spiritually Positive</div>
-        </div>
-      </div>
-
-      <div class="chart-note">
-        The above chart reflects recent institutional liquidity development across a 180-day period.
-        Despite recurring short-lived recoveries, capital reserves continue to trend toward operational minimalism.
+    <div class="header-card">
+      <h1>Financial Dashboard</h1>
+      <div class="sub">
+        Internal liquidity monitoring interface for the current fiscal year.
+        Data currently reflects the first three months only.
       </div>
     </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Current Liquidity</div>
+        <div class="stat-value" id="currentLiquidity">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Peak Liquidity</div>
+        <div class="stat-value" id="peakLiquidity">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Institutional Outlook</div>
+        <div class="stat-value" id="outlook">—</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Liquidity Development</div>
+      <div class="chart-subtitle">
+        Quarterly emergency capital trajectory, measured in EUR.
+      </div>
+
+      <canvas id="liquidityChart" height="120"></canvas>
+
+      <div class="note">
+        This chart is dynamically loaded from <b>data.json</b>, which means
+        you can update the website simply by changing the underlying numbers.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    async function loadChartData() {
+      const response = await fetch("data.json");
+      const data = await response.json();
+
+      document.getElementById("currentLiquidity").textContent =
+        data.summary.currentLiquidity + " €";
+
+      document.getElementById("peakLiquidity").textContent =
+        data.summary.peakLiquidity + " €";
+
+      document.getElementById("outlook").textContent =
+        data.summary.outlook;
+
+      const ctx = document.getElementById("liquidityChart").getContext("2d");
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: data.labels,
+          datasets: [{
+            label: "Liquidity (" + data.currency + ")",
+            data: data.values,
+            borderColor: "#f3c54d",
+            backgroundColor: "rgba(243,197,77,0.15)",
+            borderWidth: 4,
+            tension: 0.35,
+            fill: true,
+            pointRadius: 6,
+            pointHoverRadius: 7,
+            pointBackgroundColor: "#ffe39a",
+            pointBorderColor: "#f3c54d",
+            pointBorderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              labels: {
+                color: "#f7f7f7"
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: "#b8b8b8"
+              },
+              grid: {
+                color: "rgba(255,255,255,0.06)"
+              }
+            },
+            y: {
+              ticks: {
+                color: "#b8b8b8"
+              },
+              grid: {
+                color: "rgba(255,255,255,0.06)"
+              }
+            }
+          }
+        }
+      });
+    }
+
+    loadChartData();
+  </script>
+</body>
+</html>
 
   </div>
 </body>

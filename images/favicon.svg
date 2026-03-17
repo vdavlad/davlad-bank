@@ -1,19 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0A0A0A"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#1F1F1F" stroke-width="1"/>
   
-  <!-- D shape -->
-  <path d="M20 14 H34 Q50 32 34 50 H20 Z"
+  <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
         fill="none"
-        stroke="#FFFFFF"
-        stroke-width="3.2"
+        stroke="#F2F2F2"
+        stroke-width="3"
+        stroke-linecap="round"
         stroke-linejoin="round"/>
 
-  <!-- currency lines -->
-  <line x1="14" y1="26" x2="42" y2="26"
-        stroke="#C6A85B"
-        stroke-width="2.2"/>
+  <line x1="16" y1="25.5" x2="41" y2="25.5"
+        stroke="#B89A4A"
+        stroke-width="2"
+        stroke-linecap="round"/>
 
-  <line x1="14" y1="38" x2="42" y2="38"
-        stroke="#C6A85B"
-        stroke-width="2.2"/>
+  <line x1="16" y1="38.5" x2="41" y2="38.5"
+        stroke="#B89A4A"
+        stroke-width="2"
+        stroke-linecap="round"/>
 </svg>

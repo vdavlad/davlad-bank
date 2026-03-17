@@ -1,0 +1,11 @@
+{
+  "year": 2026,
+  "currency": "EUR",
+  "labels": ["January", "February", "March"],
+  "values": [240, 110, 35],
+  "summary": {
+    "currentLiquidity": 35,
+    "peakLiquidity": 240,
+    "outlook": "Fragile but operational"
+  }
+}

@@ -1,1 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Bank — Direct Investment</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
 
+  <style>
+    :root{
+      --bg:#070707;
+      --card:#121212;
+      --card-2:#181818;
+      --text:#EAEAEA;
+      --muted:#8A8A8A;
+      --accent:#C6A85B;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      --topbar-bg:rgba(0,0,0,0.55);
+    }
+
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --nav-bg:rgba(255,255,255,0.75);
+      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
+      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+      --topbar-bg:rgba(255,255,255,0.85);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
+      color:var(--text);
+      min-height:100vh;
+      transition:background .3s ease,color .3s ease;
+    }
+
+    .fx-topbar{
+      width:100%;
+      font-size:12px;
+      letter-spacing:.15px;
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:5px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .fx-item{color:var(--muted);white-space:nowrap}
+    .fx-item span{color:var(--text);font-weight:600;margin-left:4px}
+    .fx-date{color:var(--muted);font-size:11px}
+
+    .container{
+      max-width:1280px;
+      margin:0 auto;
+      padding:20px 20px 70px;
+      position:relative;
+    }
+
+    .ambient{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .orb{
+      position:absolute;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:.06;
+      background:var(--accent);
+      animation:floatOrb 12s ease-in-out infinite;
+    }
+    .orb.one{top:80px;right:40px}
+    .orb.two{bottom:80px;left:20px;width:220px;height:220px;animation-duration:15s}
+
+    @keyframes floatOrb{
+      0%,100%{transform:translate(0,0) scale(1)}
+      50%{transform:translate(18px,-14px) scale(1.06)}
+    }
+
+    .nav,
+    .panel,
+    .status-card,
+    .note-card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      border-radius:18px;
+      margin-bottom:24px;
+      backdrop-filter:blur(10px);
+      flex-wrap:wrap;
+      background:var(--nav-bg);
+      z-index:1;
+    }
+
+    .nav::before,
+    .panel::before,
+    .status-card::before,
+    .note-card::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.6;
+    }
+
+    .brand-wrap{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:#0B0B0B;border:1px solid var(--border);color:#F2F2F2;flex-shrink:0;
+    }
+    body.light .logo{background:#FFFFFF;color:#111111}
+    .brand{font-size:22px;font-weight:800;color:var(--text);letter-spacing:.3px}
+    .brand-sub{color:var(--muted);font-size:13px;margin-top:2px}
+
+    .nav-right{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .nav-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .nav-links a{
+      text-decoration:none;color:var(--text);font-weight:700;padding:9px 12px;border-radius:10px;transition:.18s ease;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.04)}
+    body.light .nav-links a:hover{background:rgba(0,0,0,.04)}
+
+    .lang-switch{
+      display:flex;gap:4px;border:1px solid var(--border);border-radius:10px;overflow:hidden;
+    }
+    .lang-switch a{
+      padding:6px 9px;text-decoration:none;font-size:12px;font-weight:700;color:var(--muted);transition:.18s ease;
+    }
+    .lang-switch a:hover{background:rgba(255,255,255,.04);color:var(--text)}
+    .lang-switch .active{background:rgba(255,255,255,.06);color:var(--text)}
+
+    .theme-btn{
+      border:1px solid var(--border);background:transparent;color:var(--text);
+      padding:8px 10px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:700;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:24px;
+      margin-bottom:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .panel{
+      border-radius:22px;
+      padding:26px;
+    }
+
+    .kicker{
+      font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:700;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.05;
+    }
+    .lead{
+      margin:0;color:var(--muted);line-height:1.8;font-size:15px;max-width:720px;
+    }
+
+    .status-grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .status-card{
+      border-radius:16px;
+      padding:16px;
+      background:var(--card-2);
+    }
+
+    .status-label{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
+    }
+
+    .status-value{
+      font-size:24px;
+      font-weight:800;
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    .status-value.accent{color:var(--accent)}
+
+    .split-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .note-card{
+      border-radius:22px;
+      padding:24px;
+      background:var(--card-bg);
+    }
+
+    .note-title{
+      margin:0 0 10px;
+      font-size:28px;
+      font-weight:800;
+    }
+
+    .note-copy{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:30px;
+      color:#8e8e8e;
+      font-size:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    @media (max-width:950px){
+      .hero,.split-grid{grid-template-columns:1fr}
+      .nav{flex-direction:column;align-items:flex-start}
+      h1{font-size:34px}
+    }
+  </style>
+</head>
+<body>
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="ambient">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+    </div>
+
+    <div class="nav">
+      <div class="brand-wrap">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Davlad Bank</div>
+          <div class="brand-sub">Deposits • Investments • Loans</div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="deposits.html">Deposits</a>
+          <a href="investments.html">Investments</a>
+          <a href="loans.html">Loans</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <a href="investment-direct.html" class="active">EN</a>
+          <a href="de/investment-direct.html">DE</a>
+          <a href="ua/investment-direct.html">UA</a>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="panel">
+        <div class="kicker">Direct Investment</div>
+        <h1>Selective participation in Davlad Bank’s capital story</h1>
+        <p class="lead">
+          Direct Investment is positioned as a more selective and strategic participation format,
+          intended for investors seeking exposure to the bank’s long-term development and internal capital narrative.
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="status-grid">
+          <div class="status-card">
+            <div class="status-label">Access</div>
+            <div class="status-value accent">Selective</div>
+          </div>
+
+          <div class="status-card">
+            <div class="status-label">Return Logic</div>
+            <div class="status-value">Variable</div>
+          </div>
+
+          <div class="status-card">
+            <div class="status-label">Positioning</div>
+            <div class="status-value">Strategic participation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="split-grid">
+      <div class="note-card">
+        <h2 class="note-title">Investment profile</h2>
+        <p class="note-copy">
+          This format is intended for investors interested in a more direct relationship to Davlad Bank’s future structure,
+          long-term capital development, and broader institutional narrative.
+        </p>
+      </div>
+
+      <div class="note-card">
+        <h2 class="note-title">Access framework</h2>
+        <p class="note-copy">
+          Direct participation is not presented as a broadly standardized product. It is framed as a more limited and selective
+          opportunity, subject to internal review, fit, and timing.
+        </p>
+      </div>
+    </div>
+
+    <div class="split-grid">
+      <div class="note-card">
+        <h2 class="note-title">Why this format is different</h2>
+        <p class="note-copy">
+          Unlike Davlad Bonds, which follow a more defined return and maturity structure, Direct Investment is intended to reflect
+          a closer and more strategic relationship to the bank’s internal capital logic and development trajectory.
+        </p>
+      </div>
+
+      <div class="note-card">
+        <h2 class="note-title">Current presentation status</h2>
+        <p class="note-copy">
+          This page currently presents the concept and positioning of Direct Investment in a structured form. Access remains conceptual,
+          selective, and intentionally limited within the platform’s current investment architecture.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      Davlad Bank © 2026 · Direct Investment
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+
+    function applyTheme(theme){
+      document.body.classList.toggle("light", theme === "light");
+      btn.textContent = theme === "light" ? "☀️" : "🌙";
+    }
+
+    applyTheme(localStorage.getItem("theme") || "dark");
+
+    btn.addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
+        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+
+        document.getElementById("top-date").textContent =
+          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
+      } catch {
+        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+      }
+    }
+
+    loadFxRates();
+  </script>
+</body>
+</html>

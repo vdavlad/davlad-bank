@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Bank — Investments</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
+  <style>
+    :root{
+      --bg:#070707;
+      --card:#121212;
+      --card-2:#181818;
+      --text:#EAEAEA;
+      --muted:#8A8A8A;
+      --accent:#C6A85B;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      --topbar-bg:rgba(0,0,0,0.55);
+    }
+
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --nav-bg:rgba(255,255,255,0.75);
+      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
+      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+      --topbar-bg:rgba(255,255,255,0.85);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    .fx-topbar{width:100%;font-size:12px;letter-spacing:.15px;border-bottom:1px solid var(--border);background:var(--topbar-bg);backdrop-filter:blur(8px)}
+    .fx-inner{max-width:1280px;margin:0 auto;padding:5px 20px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+    .fx-left{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+    .fx-item{color:var(--muted);white-space:nowrap}
+    .fx-item span{color:var(--text);font-weight:600;margin-left:4px}
+    .fx-date{color:var(--muted);font-size:11px}
+
+    .container{max-width:1280px;margin:0 auto;padding:20px 20px 70px}
+
+    .nav,.panel{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;gap:20px;
+      padding:18px 22px;margin-bottom:24px;backdrop-filter:blur(10px);flex-wrap:wrap
+    }
+
+    .nav::before,.panel::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);opacity:.6
+    }
+
+    .brand-wrap{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:#0B0B0B;border:1px solid var(--border);color:#F2F2F2;flex-shrink:0
+    }
+    body.light .logo{background:#fff;color:#111}
+
+    .brand{font-size:22px;font-weight:800;color:var(--text)}
+    .brand-sub{color:var(--muted);font-size:13px;margin-top:2px}
+
+    .nav-right{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .nav-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .nav-links a{text-decoration:none;color:var(--text);font-weight:700;padding:9px 12px;border-radius:10px}
+    .lang-switch{display:flex;gap:4px;border:1px

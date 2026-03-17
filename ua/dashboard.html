@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Private Banking – Dashboard (UA)</title>
+  <style>
+    :root{
+      --bg:#050505;
+      --card:#121212;
+      --gold:#f3c54d;
+      --gold-soft:#ffe39a;
+      --text:#f7f7f7;
+      --muted:#b8b8b8;
+      --border:rgba(243,197,77,0.15);
+      --shadow:0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px 20px 60px;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      font-size:22px;
+      font-weight:800;
+      color:var(--gold-soft);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      padding:10px 14px;
+      border-radius:10px;
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:6px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      margin-left:8px;
+    }
+
+    .lang-switch a{
+      padding:6px 10px;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .lang-switch .active{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      padding:40px;
+      text-align:center;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:42px;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.8;
+      max-width:760px;
+      margin:0 auto 24px;
+    }
+
+    .fun-box{
+      background:rgba(255,255,255,0.025);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+      max-width:760px;
+      margin:0 auto 24px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 22px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:800;
+      background:linear-gradient(180deg, #f3c54d, #d8a92c);
+      color:#111;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="nav">
+      <div class="brand">Davlad Private Banking</div>
+
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="dashboard.html">Dashboard</a>
+        </div>
+
+        <div class="lang-switch">
+          <a href="../dashboard.html">EN</a>
+          <a href="../de/dashboard.html">DE</a>
+          <a href="dashboard.html" class="active">UA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1>Дашборд наразі локалізується</h1>
+
+      <div class="subtitle">
+        Українська версія фінансового дашборду ще перебуває
+        на етапі стратегічного перекладу та капіталомісткого доопрацювання.
+      </div>
+
+      <div class="fun-box">
+        Для повноцінної української аналітичної панелі потрібні
+        додаткові інвестиції, трохи часу та стабільніше фінансове майбутнє.
+        <br><br>
+        Якщо коротко: графік уже існує, але мова ще чекає на свій інвестиційний раунд.
+      </div>
+
+      <a class="btn" href="../dashboard.html">Перейти до англійської версії дашборду</a>
+    </div>
+
+  </div>
+</body>
+</html>

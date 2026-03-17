@@ -3,37 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Davlad Private Banking – Page in Development</title>
+  <title>Davlad Bank — Page in Development</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
   <style>
     :root{
-      --bg:#050505;
+      --bg:#070707;
       --card:#121212;
-      --card-2:#1a1a1a;
-      --gold:#f3c54d;
-      --gold-soft:#ffe39a;
-      --text:#f7f7f7;
-      --muted:#b8b8b8;
-      --border:rgba(243,197,77,0.15);
-      --shadow:0 20px 60px rgba(0,0,0,0.45);
+      --card-2:#181818;
+      --text:#EAEAEA;
+      --muted:#8A8A8A;
+      --accent:#C6A85B;
+      --border:rgba(255,255,255,0.08);
+      --border-accent:rgba(198,168,91,0.25);
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      --topbar-bg:rgba(0,0,0,0.55);
+    }
+
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --border-accent:rgba(194,162,74,0.22);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --nav-bg:rgba(255,255,255,0.75);
+      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
+      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+      --topbar-bg:rgba(255,255,255,0.85);
     }
 
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
 
     body{
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
-        radial-gradient(circle at top left, rgba(243,197,77,0.05), transparent 18%),
-        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
       color:var(--text);
       min-height:100vh;
+      transition:background .3s ease,color .3s ease;
+    }
+
+    .fx-topbar{
+      width:100%;
+      font-size:12px;
+      letter-spacing:.15px;
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:5px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .fx-item{
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .fx-item span{
+      color:var(--text);
+      font-weight:600;
+      margin-left:4px;
+    }
+
+    .fx-date{
+      color:var(--muted);
+      font-size:11px;
     }
 
     .container{
-      max-width:1100px;
+      max-width:1280px;
       margin:0 auto;
-      padding:28px 20px 60px;
+      padding:20px 20px 70px;
+      position:relative;
+    }
+
+    .ambient{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .orb{
+      position:absolute;
+      width:280px;
+      height:280px;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:.07;
+      background:var(--accent);
+      animation:floatOrb 12s ease-in-out infinite;
+    }
+
+    .orb.one{
+      top:60px;
+      right:40px;
+    }
+
+    .orb.two{
+      bottom:40px;
+      left:20px;
+      width:220px;
+      height:220px;
+      animation-duration:15s;
+    }
+
+    @keyframes floatOrb{
+      0%,100%{transform:translate(0,0) scale(1)}
+      50%{transform:translate(18px,-14px) scale(1.06)}
+    }
+
+    .nav,
+    .panel,
+    .status-card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
     .nav{
@@ -42,18 +156,68 @@
       align-items:center;
       gap:20px;
       padding:18px 22px;
-      background:rgba(255,255,255,0.02);
-      border:1px solid var(--border);
       border-radius:18px;
-      box-shadow:var(--shadow);
       margin-bottom:28px;
+      backdrop-filter:blur(10px);
       flex-wrap:wrap;
+      background:var(--nav-bg);
+    }
+
+    .nav::before,
+    .panel::before,
+    .status-card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.6;
+    }
+
+    .brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0B0B0B;
+      border:1px solid var(--border);
+      color:#F2F2F2;
+      flex-shrink:0;
+    }
+
+    body.light .logo{
+      background:#FFFFFF;
+      color:#111111;
     }
 
     .brand{
       font-size:22px;
       font-weight:800;
-      color:var(--gold-soft);
+      color:var(--text);
+      letter-spacing:.3px;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:2px;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
     .nav-links{
@@ -67,62 +231,103 @@
       text-decoration:none;
       color:var(--text);
       font-weight:700;
-      padding:10px 14px;
+      padding:9px 12px;
       border-radius:10px;
-      transition:0.2s ease;
+      transition:.18s ease;
     }
 
     .nav-links a:hover{
-      background:rgba(243,197,77,0.10);
-      color:var(--gold-soft);
+      background:rgba(255,255,255,.04);
+    }
+
+    body.light .nav-links a:hover{
+      background:rgba(0,0,0,.04);
     }
 
     .lang-switch{
       display:flex;
-      gap:6px;
+      gap:4px;
       border:1px solid var(--border);
       border-radius:10px;
       overflow:hidden;
-      margin-left:8px;
     }
 
     .lang-switch a{
-      padding:6px 10px;
+      padding:6px 9px;
       text-decoration:none;
-      font-size:13px;
+      font-size:12px;
       font-weight:700;
       color:var(--muted);
+      transition:.18s ease;
+    }
+
+    .lang-switch a:hover{
+      background:rgba(255,255,255,.04);
+      color:var(--text);
     }
 
     .lang-switch .active{
-      background:var(--gold);
-      color:#111;
+      background:rgba(255,255,255,.06);
+      color:var(--text);
     }
 
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    .theme-btn{
       border:1px solid var(--border);
-      border-radius:28px;
-      box-shadow:var(--shadow);
-      padding:44px;
+      background:transparent;
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:700;
+      transition:.18s ease;
+    }
+
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    .panel{
+      max-width:980px;
+      margin:0 auto;
+      border-radius:24px;
+      padding:40px 36px;
       text-align:center;
+      z-index:1;
     }
 
     .badge{
-      display:inline-block;
-      background:rgba(243,197,77,0.10);
-      color:var(--gold-soft);
-      border:1px solid rgba(243,197,77,0.20);
-      padding:8px 14px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
       border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
       font-size:14px;
       margin-bottom:22px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 10px rgba(198,168,91,.4);
+      animation:pulse 1.6s infinite ease-in-out;
+      flex-shrink:0;
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1);opacity:.7}
+      50%{transform:scale(1.25);opacity:1}
     }
 
     h1{
       margin:0 0 14px;
       font-size:46px;
       letter-spacing:-1px;
+      line-height:1.04;
     }
 
     .subtitle{
@@ -133,20 +338,20 @@
       margin:0 auto 26px;
     }
 
-    .fun-box{
-      background:rgba(255,255,255,0.025);
+    .info-box{
+      background:var(--card-2);
       border:1px solid var(--border);
       border-radius:18px;
       padding:22px;
       max-width:760px;
-      margin:0 auto 18px;
+      margin:0 auto 22px;
       color:var(--muted);
       line-height:1.8;
       text-align:left;
     }
 
-    .fun-box b{
-      color:var(--gold-soft);
+    .info-box strong{
+      color:var(--text);
     }
 
     .status-grid{
@@ -158,10 +363,9 @@
     }
 
     .status-card{
-      background:var(--card-2);
-      border:1px solid var(--border);
       border-radius:18px;
       padding:18px;
+      background:var(--card-2);
     }
 
     .status-label{
@@ -171,9 +375,9 @@
     }
 
     .status-value{
-      font-size:26px;
+      font-size:24px;
       font-weight:800;
-      color:var(--gold-soft);
+      color:var(--text);
     }
 
     .buttons{
@@ -181,21 +385,21 @@
       justify-content:center;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:10px;
+      margin-top:8px;
     }
 
     .btn{
       display:inline-block;
-      padding:15px 22px;
+      padding:14px 20px;
       border-radius:14px;
       text-decoration:none;
       font-weight:800;
-      transition:0.2s ease;
+      transition:.18s ease;
     }
 
-    .btn-gold{
-      background:linear-gradient(180deg, #f3c54d, #d8a92c);
-      color:#111;
+    .btn-primary{
+      background:var(--text);
+      color:var(--bg);
     }
 
     .btn-outline{
@@ -210,8 +414,8 @@
 
     .footer-note{
       margin-top:20px;
-      color:#8f8f8f;
-      font-size:14px;
+      color:var(--muted);
+      font-size:13px;
       line-height:1.7;
     }
 
@@ -224,84 +428,163 @@
         font-size:36px;
       }
 
-      .card{
-        padding:30px;
+      .panel{
+        padding:30px 22px;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
       }
     }
   </style>
 </head>
 <body>
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
+    </div>
+  </div>
+
   <div class="container">
+    <div class="ambient">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+    </div>
 
     <div class="nav">
-      <div class="brand">Davlad Private Banking</div>
+      <div class="brand-wrap">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Davlad Bank</div>
+          <div class="brand-sub">Page in development</div>
+        </div>
+      </div>
 
-      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+      <div class="nav-right">
         <div class="nav-links">
           <a href="index.html">Home</a>
-          <a href="dashboard.html">Dashboard</a>
-          <a href="funding.html">Funding</a>
-          <a href="coming-soon.html">Investors</a>
-          <a href="coming-soon.html">FAQ</a>
+          <a href="deposits.html">Deposits</a>
+          <a href="investments.html">Investments</a>
+          <a href="loans.html">Loans</a>
           <a href="coming-soon.html">Contact</a>
         </div>
 
         <div class="lang-switch">
           <a href="coming-soon.html" class="active">EN</a>
-          <a href="de/index.html">DE</a>
-          <a href="ua/index.html">UA</a>
+          <a href="de/coming-soon.html">DE</a>
+          <a href="ua/coming-soon.html">UA</a>
         </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
       </div>
     </div>
 
-    <div class="card">
-      <div class="badge">Page Under Strategic Development</div>
-
-      <h1>This page is not available yet</h1>
-
-      <div class="subtitle">
-        Our internal teams are currently working around the clock
-        to deliver this section with the highest standards of private banking excellence.
+    <div class="panel">
+      <div class="badge">
+        <span class="dot"></span>
+        Planned development
       </div>
 
-      <div class="fun-box">
-        <b>Status update:</b> development is actively progressing 24/7, subject to
-        staffing levels, founder motivation, and the general availability of fresh capital.
+      <h1>This page is currently not yet available</h1>
+
+      <div class="subtitle">
+        This section is currently undergoing technical and visual refinement
+        and will be published in a later stage of the platform rollout.
+      </div>
+
+      <div class="info-box">
+        <strong>Note:</strong> This section is currently being updated in order to match
+        the new structure and current visual identity of Davlad Bank.
         <br><br>
-        <b>Operational reality:</b> the page is not delayed — it is undergoing
-        an extended premium implementation phase.
-        <br><br>
-        <b>Investment note:</b> accelerated delivery may be possible upon receipt
-        of strategic financial support, sponsorship, or spontaneous acts of generosity.
+        <strong>Status:</strong> Content, navigation, and presentation logic are currently
+        being aligned for future English pages.
       </div>
 
       <div class="status-grid">
         <div class="status-card">
-          <div class="status-label">Development Progress</div>
-          <div class="status-value">Confidential</div>
+          <div class="status-label">Availability</div>
+          <div class="status-value">Temporarily pending</div>
         </div>
 
         <div class="status-card">
-          <div class="status-label">Work Schedule</div>
-          <div class="status-value">24/7*</div>
+          <div class="status-label">Development status</div>
+          <div class="status-value">In progress</div>
         </div>
 
         <div class="status-card">
-          <div class="status-label">Funding Status</div>
-          <div class="status-value">Open Round</div>
+          <div class="status-label">Language</div>
+          <div class="status-value">English</div>
         </div>
       </div>
 
       <div class="buttons">
-        <a class="btn btn-gold" href="index.html">Return to Home</a>
-        <a class="btn btn-outline" href="funding.html">Review Funding Terms</a>
+        <a class="btn btn-primary" href="index.html">Back to home</a>
+        <a class="btn btn-outline" href="de/coming-soon.html">German version</a>
       </div>
 
       <div class="footer-note">
-        * “24/7” refers to institutional ambition and should not be interpreted as a binding operational guarantee.
+        This placeholder page serves as a universal English interim solution for sections not yet released.
       </div>
     </div>
-
   </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+
+    function applyTheme(theme) {
+      if (theme === "light") {
+        document.body.classList.add("light");
+        btn.textContent = "☀️";
+      } else {
+        document.body.classList.remove("light");
+        btn.textContent = "🌙";
+      }
+    }
+
+    applyTheme(localStorage.getItem("theme") || "dark");
+
+    btn.addEventListener("click", () => {
+      const nextTheme = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+
+        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
+        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+
+        document.getElementById("top-date").textContent =
+          data?.date ? `Updated: ${data.date}` : "Updated: latest available data";
+      } catch {
+        document.getElementById("top-date").textContent = "Market data temporarily unavailable";
+      }
+    }
+
+    loadFxRates();
+  </script>
 </body>
 </html>

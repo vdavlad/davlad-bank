@@ -16,18 +16,56 @@
       --text:#f7f7f7;
       --muted:#bdbdbd;
       --shadow:0 20px 60px rgba(0,0,0,0.45);
-    }
-
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background:
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --badge-bg:rgba(243,197,77,0.10);
+      --signature-bg:rgba(255,255,255,0.025);
+      --hover-gold:rgba(243,197,77,0.10);
+      --hero-bg:
         radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
         radial-gradient(circle at top left, rgba(243,197,77,0.05), transparent 18%),
         linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+    }
+
+    body.light{
+      --bg:#f6f2e8;
+      --bg-soft:#ebe4d4;
+      --card:#fffdf8;
+      --card-2:#f8f3e8;
+      --border:rgba(166,124,0,0.14);
+      --gold:#c79b2b;
+      --gold-soft:#9f760a;
+      --text:#161616;
+      --muted:#6d6658;
+      --shadow:0 18px 50px rgba(86,67,21,0.10);
+      --nav-bg:rgba(255,255,255,0.70);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,250,242,0.78));
+      --badge-bg:rgba(199,155,43,0.10);
+      --signature-bg:rgba(255,255,255,0.65);
+      --hover-gold:rgba(199,155,43,0.10);
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(199,155,43,0.12), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 26%),
+        linear-gradient(180deg, #f8f5ee 0%, #f3edde 100%);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
       color:var(--text);
       min-height:100vh;
+      transition:
+        background 0.35s ease,
+        color 0.25s ease;
     }
 
     .container{
@@ -42,11 +80,16 @@
       align-items:center;
       gap:20px;
       padding:18px 22px;
-      background:rgba(255,255,255,0.02);
+      background:var(--nav-bg);
       border:1px solid var(--border);
       border-radius:18px;
       box-shadow:var(--shadow);
       margin-bottom:28px;
+      backdrop-filter: blur(10px);
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     .brand{
@@ -54,12 +97,14 @@
       font-weight:800;
       letter-spacing:0.3px;
       color:var(--gold-soft);
+      transition:color 0.25s ease;
     }
 
     .nav-links{
       display:flex;
       gap:14px;
       flex-wrap:wrap;
+      align-items:center;
     }
 
     .nav-links a{
@@ -72,36 +117,54 @@
     }
 
     .nav-links a:hover{
-      background:rgba(243,197,77,0.10);
+      background:var(--hover-gold);
       color:var(--gold-soft);
     }
 
     .lang-switch{
-display:flex;
-gap:6px;
-border:1px solid var(--border);
-border-radius:10px;
-overflow:hidden;
-}
+      display:flex;
+      gap:6px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      transition:border-color 0.25s ease;
+    }
 
-.lang-switch a{
-padding:6px 10px;
-text-decoration:none;
-font-size:13px;
-font-weight:700;
-color:var(--muted);
-transition:0.2s ease;
-}
+    .lang-switch a{
+      padding:6px 10px;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+      transition:0.2s ease;
+    }
 
-.lang-switch a:hover{
-background:rgba(243,197,77,0.15);
-color:var(--gold-soft);
-}
+    .lang-switch a:hover{
+      background:rgba(243,197,77,0.15);
+      color:var(--gold-soft);
+    }
 
-.lang-switch .active{
-background:var(--gold);
-color:#111;
-}
+    .lang-switch .active{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .theme-btn{
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:700;
+      transition:0.2s ease;
+    }
+
+    .theme-btn:hover{
+      background:var(--hover-gold);
+      color:var(--gold-soft);
+    }
 
     .hero{
       display:grid;
@@ -111,10 +174,14 @@ color:#111;
     }
 
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      background:var(--card-bg);
       border:1px solid var(--border);
       border-radius:26px;
       box-shadow:var(--shadow);
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     .hero-left{
@@ -123,13 +190,14 @@ color:#111;
 
     .badge{
       display:inline-block;
-      background:rgba(243,197,77,0.10);
+      background:var(--badge-bg);
       color:var(--gold-soft);
       border:1px solid rgba(243,197,77,0.20);
       padding:8px 14px;
       border-radius:999px;
       font-size:14px;
       margin-bottom:22px;
+      transition:all 0.25s ease;
     }
 
     h1{
@@ -144,6 +212,7 @@ color:#111;
       font-size:20px;
       font-style:italic;
       margin-bottom:22px;
+      transition:color 0.25s ease;
     }
 
     .subtitle{
@@ -152,14 +221,19 @@ color:#111;
       color:var(--muted);
       max-width:760px;
       margin-bottom:28px;
+      transition:color 0.25s ease;
     }
 
     .signature{
-      background:rgba(255,255,255,0.025);
+      background:var(--signature-bg);
       border:1px solid var(--border);
       border-radius:18px;
       padding:20px 22px;
       margin-bottom:24px;
+      backdrop-filter: blur(8px);
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
     }
 
     .signature .name{
@@ -172,11 +246,13 @@ color:#111;
       color:var(--gold-soft);
       font-weight:700;
       margin-bottom:10px;
+      transition:color 0.25s ease;
     }
 
     .signature .about{
       color:var(--muted);
       line-height:1.7;
+      transition:color 0.25s ease;
     }
 
     .buttons{
@@ -200,6 +276,13 @@ color:#111;
     .btn-gold{
       background:linear-gradient(180deg, #f3c54d, #d8a92c);
       color:#111;
+      box-shadow:0 10px 25px rgba(216,169,44,0.22);
+    }
+
+    body.light .btn-gold{
+      background:linear-gradient(180deg, #d2a53a, #b98913);
+      color:#fffdf8;
+      box-shadow:0 12px 26px rgba(185,137,19,0.18);
     }
 
     .btn-outline{
@@ -224,18 +307,23 @@ color:#111;
       border:1px solid var(--border);
       border-radius:18px;
       padding:18px;
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
     }
 
     .stat-label{
       color:var(--muted);
       font-size:13px;
       margin-bottom:8px;
+      transition:color 0.25s ease;
     }
 
     .stat-value{
       font-size:30px;
       font-weight:800;
       color:var(--gold-soft);
+      transition:color 0.25s ease;
     }
 
     .note{
@@ -245,6 +333,10 @@ color:#111;
       padding:18px;
       color:var(--muted);
       line-height:1.7;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
     }
 
     .bottom-grid{
@@ -262,12 +354,14 @@ color:#111;
       margin:0 0 12px;
       font-size:22px;
       color:var(--gold-soft);
+      transition:color 0.25s ease;
     }
 
     .mini-panel p{
       margin:0;
       color:var(--muted);
       line-height:1.7;
+      transition:color 0.25s ease;
     }
 
     .footer{
@@ -275,6 +369,11 @@ color:#111;
       margin-top:28px;
       color:#8e8e8e;
       font-size:14px;
+      transition:color 0.25s ease;
+    }
+
+    body.light .footer{
+      color:#82786a;
     }
 
     @media (max-width: 950px){
@@ -286,34 +385,41 @@ color:#111;
       h1{
         font-size:42px;
       }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-<div class="nav">
-  <div class="brand">Davlad Private Banking</div>
+    <div class="nav">
+      <div class="brand">Davlad Private Banking</div>
 
-  <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
 
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="coming-soon.html">Funding</a>
-      <a href="coming-soon.html">Investors</a>
-      <a href="coming-soon.html">FAQ</a>
-      <a href="coming-soon.html">Contact</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="coming-soon.html">Funding</a>
+          <a href="coming-soon.html">Investors</a>
+          <a href="coming-soon.html">FAQ</a>
+          <a href="coming-soon.html">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <a href="index.html" class="active">EN</a>
+          <a href="de/index.html">DE</a>
+          <a href="ua/index.html">UA</a>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+
+      </div>
     </div>
-
-    <div class="lang-switch">
-      <a href="index.html" class="active">EN</a>
-      <a href="de/index.html">DE</a>
-      <a href="ua/index.html">UA</a>
-    </div>
-
-  </div>
-</div>
 
     <div class="hero">
       <div class="card hero-left">
@@ -389,5 +495,29 @@ color:#111;
     </div>
 
   </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+
+    function applyTheme(theme) {
+      if (theme === "light") {
+        document.body.classList.add("light");
+        btn.textContent = "☀️";
+      } else {
+        document.body.classList.remove("light");
+        btn.textContent = "🌙";
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    applyTheme(savedTheme);
+
+    btn.addEventListener("click", () => {
+      const isLight = document.body.classList.contains("light");
+      const nextTheme = isLight ? "dark" : "light";
+      localStorage.setItem("theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  </script>
 </body>
 </html>

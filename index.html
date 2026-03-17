@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Davlad Bank</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg:#080808;
@@ -62,7 +58,7 @@
     }
 
     body{
-      font-family:"Inter", Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background:var(--hero-bg);
       color:var(--text);
       min-height:100vh;
@@ -90,6 +86,7 @@
       transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       position:relative;
       overflow:hidden;
+      flex-wrap:wrap;
     }
 
     .nav::before{
@@ -118,9 +115,8 @@
       justify-content:center;
       background:linear-gradient(135deg, var(--gold), #b98913);
       color:#111;
-      font-family:"Cormorant Garamond", serif;
-      font-size:24px;
-      font-weight:700;
+      font-size:20px;
+      font-weight:800;
       box-shadow:0 12px 30px rgba(185,137,19,0.25);
       flex-shrink:0;
     }
@@ -141,6 +137,13 @@
       color:var(--muted);
       font-size:13px;
       margin-top:2px;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
     .nav-links{
@@ -225,8 +228,8 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.52)),
-        url("images/banner_v1.jpg") center/cover no-repeat;
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.52)),
+        url("images/banner.jpg") center/cover no-repeat;
       transform:scale(1.01);
     }
 
@@ -251,12 +254,12 @@
     }
 
     .banner-title{
-      font-family:"Cormorant Garamond", serif;
-      font-size:54px;
-      line-height:0.98;
+      font-size:50px;
+      line-height:1.02;
       margin:0 0 10px;
       color:#fffaf0;
       max-width:760px;
+      font-weight:800;
     }
 
     .banner-text{
@@ -312,21 +315,20 @@
     }
 
     h1{
-      font-family:"Cormorant Garamond", serif;
-      font-size:70px;
-      line-height:0.94;
+      font-size:62px;
+      line-height:0.98;
       margin:0 0 12px;
-      letter-spacing:-1.5px;
-      font-weight:700;
+      letter-spacing:-1.2px;
+      font-weight:800;
     }
 
     .slogan{
       color:var(--gold-soft);
       font-size:22px;
-      font-style:italic;
       margin-bottom:24px;
       letter-spacing:0.2px;
       transition:color 0.25s ease;
+      font-style:italic;
     }
 
     .subtitle{
@@ -422,10 +424,10 @@
     }
 
     .welcome-title{
-      font-family:"Cormorant Garamond", serif;
-      font-size:36px;
+      font-size:34px;
       color:var(--gold-soft);
       margin:0 0 10px;
+      font-weight:800;
     }
 
     .welcome-copy{
@@ -469,10 +471,10 @@
     }
 
     .statement-title{
-      font-family:"Cormorant Garamond", serif;
-      font-size:42px;
+      font-size:40px;
       line-height:1.05;
       margin:0;
+      font-weight:800;
     }
 
     .statement-copy{
@@ -481,6 +483,7 @@
       font-size:16px;
     }
 
+    .snapshot-card,
     .fx-card{
       margin-top:24px;
       background:var(--card-bg);
@@ -492,6 +495,7 @@
       overflow:hidden;
     }
 
+    .snapshot-card::before,
     .fx-card::before{
       content:"";
       position:absolute;
@@ -503,6 +507,7 @@
       opacity:0.85;
     }
 
+    .snapshot-header,
     .fx-header{
       display:flex;
       justify-content:space-between;
@@ -512,24 +517,28 @@
       margin-bottom:18px;
     }
 
+    .snapshot-header h2,
     .fx-header h2{
       margin:0;
-      font-family:"Cormorant Garamond", serif;
-      font-size:38px;
+      font-size:36px;
       color:var(--gold-soft);
+      font-weight:800;
     }
 
+    .snapshot-updated,
     .fx-updated{
       color:var(--muted);
       font-size:14px;
     }
 
+    .snapshot-grid,
     .fx-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(4,1fr);
       gap:16px;
     }
 
+    .snapshot-item,
     .fx-item{
       background:var(--card-2);
       border:1px solid var(--border);
@@ -537,16 +546,26 @@
       padding:18px;
     }
 
+    .snapshot-label,
     .fx-label{
       color:var(--muted);
       font-size:13px;
       margin-bottom:8px;
     }
 
+    .snapshot-value,
     .fx-value{
       font-size:28px;
       font-weight:800;
       color:var(--gold-soft);
+    }
+
+    .snapshot-note,
+    .fx-note{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
     }
 
     .bottom-grid{
@@ -563,10 +582,10 @@
 
     .mini-panel h3{
       margin:0 0 12px;
-      font-family:"Cormorant Garamond", serif;
-      font-size:30px;
+      font-size:28px;
       color:var(--gold-soft);
       transition:color 0.25s ease;
+      font-weight:800;
     }
 
     .mini-panel p{
@@ -593,14 +612,15 @@
       .statement-grid{
         grid-template-columns:1fr;
       }
+
+      .snapshot-grid,
+      .fx-grid{
+        grid-template-columns:1fr 1fr;
+      }
     }
 
     @media (max-width: 950px){
       .bottom-grid{
-        grid-template-columns:1fr;
-      }
-
-      .fx-grid{
         grid-template-columns:1fr;
       }
 
@@ -623,6 +643,11 @@
     }
 
     @media (max-width: 700px){
+      .snapshot-grid,
+      .fx-grid{
+        grid-template-columns:1fr;
+      }
+
       h1{
         font-size:42px;
       }
@@ -631,8 +656,9 @@
         font-size:32px;
       }
 
+      .snapshot-header h2,
       .fx-header h2{
-        font-size:32px;
+        font-size:30px;
       }
     }
   </style>
@@ -649,7 +675,7 @@
         </div>
       </div>
 
-      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+      <div class="nav-right">
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="dashboard.html">Dashboard</a>
@@ -671,34 +697,33 @@
 
     <div class="full-banner">
       <div class="banner-overlay">
-        <div class="banner-kicker">Munich • Private Banking • Founder-led institution</div>
-        <h2 class="banner-title">Disciplined capital aesthetics under temporary liquidity constraints.</h2>
+        <div class="banner-kicker">Munich • Independent Banking • Capital Oversight</div>
+        <h2 class="banner-title">A disciplined approach to liquidity, capital, and continuity.</h2>
         <div class="banner-text">
-          Davlad Bank combines discretion, premium presentation, and high-conviction borrowing strategy
-          in support of founder confidence and operational continuity.
+          Davlad Bank combines clarity of presentation, selective advisory focus,
+          and a measured approach to capital planning in support of long-term institutional stability.
         </div>
       </div>
     </div>
 
     <div class="hero">
       <div class="card hero-left">
-        <div class="badge">Private Banking Division</div>
+        <div class="badge">Independent Financial Institution</div>
 
         <h1>Davlad Bank</h1>
         <div class="slogan">In liquidity we trust.</div>
 
         <div class="subtitle">
-          Boutique financial institution specializing in strategic borrowing,
-          emergency funding solutions, friendship-based capital raising,
-          and occasional parental liquidity support.
+          Independent financial institution focused on liquidity management,
+          capital planning, and private advisory services.
         </div>
 
         <div class="signature">
           <div class="name">W. M. Davlad</div>
           <div class="role">Head of Strategic Lending</div>
           <div class="about">
-            Currently overseeing a high-priority liquidity stabilization initiative.
-            The institution remains visionary, exclusive, and temporarily undercapitalized.
+            The institution maintains a focused approach to internal capital oversight,
+            financial positioning, and structured decision-making under changing market conditions.
           </div>
         </div>
 
@@ -713,26 +738,58 @@
         <div class="welcome-card">
           <h3 class="welcome-title">Welcome</h3>
           <p class="welcome-copy">
-            Welcome to Davlad Bank — a selective financial institution committed to elegant
-            presentation, strategic capital acquisition, and the preservation of institutional dignity
-            during short-term solvency fluctuations.
+            Welcome to Davlad Bank — a focused financial institution providing a disciplined
+            approach to liquidity oversight, capital structure, and strategic financial positioning.
           </p>
         </div>
 
         <div class="stat">
-          <div class="stat-label">Required Capital</div>
-          <div class="stat-value">Unlimited</div>
+          <div class="stat-label">Capital Mandate</div>
+          <div class="stat-value">Open</div>
         </div>
 
         <div class="stat">
-          <div class="stat-label">Risk Profile</div>
-          <div class="stat-value">Trust-Based</div>
+          <div class="stat-label">Operating Focus</div>
+          <div class="stat-value">Liquidity</div>
         </div>
 
         <div class="stat">
-          <div class="stat-label">Credit Rating</div>
-          <div class="stat-value">BBB-</div>
+          <div class="stat-label">Institutional Scope</div>
+          <div class="stat-value">Independent</div>
         </div>
+      </div>
+    </div>
+
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <h2>Market Snapshot</h2>
+        <div class="snapshot-updated" id="snapshotUpdated">Updated: manually maintained</div>
+      </div>
+
+      <div class="snapshot-grid">
+        <div class="snapshot-item">
+          <div class="snapshot-label">DAX</div>
+          <div class="snapshot-value" id="snapshot-dax">—</div>
+        </div>
+
+        <div class="snapshot-item">
+          <div class="snapshot-label">S&amp;P 500</div>
+          <div class="snapshot-value" id="snapshot-spx">—</div>
+        </div>
+
+        <div class="snapshot-item">
+          <div class="snapshot-label">EUR / USD</div>
+          <div class="snapshot-value" id="snapshot-eurusd">—</div>
+        </div>
+
+        <div class="snapshot-item">
+          <div class="snapshot-label">EUR / CHF</div>
+          <div class="snapshot-value" id="snapshot-eurchf">—</div>
+        </div>
+      </div>
+
+      <div class="snapshot-note">
+        Reference market levels are displayed for orientation purposes and may be updated independently of intraday trading activity.
       </div>
     </div>
 
@@ -740,10 +797,10 @@
       <div class="statement-grid">
         <h2 class="statement-title">Institutional statement</h2>
         <div class="statement-copy">
-          Davlad Bank is committed to preserving founder confidence,
-          strategic optionality, and short-term solvency under evolving market conditions.
-          Our institution maintains a disciplined focus on premium presentation,
-          relationship-based capital access, and emotionally intelligent liquidity management.
+          Davlad Bank maintains a disciplined focus on liquidity oversight,
+          selective capital planning, and a measured approach to financial continuity.
+          Figures and market references presented on this site are intended to support internal perspective,
+          strategic planning, and structured communication.
         </div>
       </div>
     </div>
@@ -761,31 +818,40 @@
         </div>
 
         <div class="fx-item">
-          <div class="fx-label">EUR / UAH</div>
-          <div class="fx-value" id="fx-uah">—</div>
-        </div>
-
-        <div class="fx-item">
           <div class="fx-label">EUR / GBP</div>
           <div class="fx-value" id="fx-gbp">—</div>
         </div>
+
+        <div class="fx-item">
+          <div class="fx-label">EUR / CHF</div>
+          <div class="fx-value" id="fx-chf">—</div>
+        </div>
+
+        <div class="fx-item">
+          <div class="fx-label">Base Currency</div>
+          <div class="fx-value">EUR</div>
+        </div>
+      </div>
+
+      <div class="fx-note">
+        Reference FX data is shown for general market orientation.
       </div>
     </section>
 
     <div class="bottom-grid">
       <div class="card mini-panel">
-        <h3>Strategic Funding</h3>
-        <p>Flexible capital injection structures for urgent liquidity requirements and emotionally important purchases.</p>
+        <h3>Liquidity Oversight</h3>
+        <p>Structured review of capital position, short-term funding requirements, and liquidity planning considerations.</p>
       </div>
 
       <div class="card mini-panel">
-        <h3>Investor Access</h3>
-        <p>Selective onboarding of trusted private lenders, strategic supporters, and family-office-style contributors.</p>
+        <h3>Capital Advisory</h3>
+        <p>Independent support in capital structure thinking, financial prioritization, and institution-level decision framing.</p>
       </div>
 
       <div class="card mini-panel">
-        <h3>Private Advisory</h3>
-        <p>Specialized expertise in short-term financial recovery, soft deadline negotiation, and optimism preservation.</p>
+        <h3>Market Reference</h3>
+        <p>Selected market indicators and exchange-rate references presented in a concise and decision-oriented format.</p>
       </div>
     </div>
 
@@ -818,19 +884,59 @@
       applyTheme(nextTheme);
     });
 
+    // Manual reference values for index snapshot
+    const MARKET_SNAPSHOT = {
+      updated: "Updated: reference levels",
+      dax: "18,965",
+      spx: "5,430"
+    };
+
+    document.getElementById("snapshotUpdated").textContent = MARKET_SNAPSHOT.updated;
+    document.getElementById("snapshot-dax").textContent = MARKET_SNAPSHOT.dax;
+    document.getElementById("snapshot-spx").textContent = MARKET_SNAPSHOT.spx;
+
     async function loadFxRates() {
+      const updatedEl = document.getElementById("fxUpdated");
+      const usdEl = document.getElementById("fx-usd");
+      const gbpEl = document.getElementById("fx-gbp");
+      const chfEl = document.getElementById("fx-chf");
+      const snapUsdEl = document.getElementById("snapshot-eurusd");
+      const snapChfEl = document.getElementById("snapshot-eurchf");
+
+      usdEl.textContent = "—";
+      gbpEl.textContent = "—";
+      chfEl.textContent = "—";
+      snapUsdEl.textContent = "—";
+      snapChfEl.textContent = "—";
+      updatedEl.textContent = "Loading…";
+
       try {
-        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,UAH,GBP");
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
 
-        document.getElementById("fx-usd").textContent = data.rates.USD.toFixed(4);
-        document.getElementById("fx-uah").textContent = data.rates.UAH.toFixed(4);
-        document.getElementById("fx-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.USD) {
+          const value = data.rates.USD.toFixed(4);
+          usdEl.textContent = value;
+          snapUsdEl.textContent = value;
+        }
 
-        const updated = data.date ? `Updated: ${data.date}` : "Updated: latest available";
-        document.getElementById("fxUpdated").textContent = updated;
+        if (data?.rates?.GBP) {
+          gbpEl.textContent = data.rates.GBP.toFixed(4);
+        }
+
+        if (data?.rates?.CHF) {
+          const value = data.rates.CHF.toFixed(4);
+          chfEl.textContent = value;
+          snapChfEl.textContent = value;
+        }
+
+        if (data?.date) {
+          updatedEl.textContent = `Updated: ${data.date}`;
+        } else {
+          updatedEl.textContent = "Updated: latest available";
+        }
       } catch (err) {
-        document.getElementById("fxUpdated").textContent = "Rates temporarily unavailable";
+        updatedEl.textContent = "Rates temporarily unavailable";
       }
     }
 

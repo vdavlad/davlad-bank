@@ -20,7 +20,6 @@
       --nav-bg:rgba(255,255,255,0.02);
       --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       --badge-bg:rgba(243,197,77,0.10);
-      --signature-bg:rgba(255,255,255,0.025);
       --hover-gold:rgba(243,197,77,0.10);
       --hero-bg:
         radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
@@ -42,7 +41,6 @@
       --nav-bg:rgba(255,255,255,0.70);
       --card-bg:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,250,242,0.78));
       --badge-bg:rgba(199,155,43,0.10);
-      --signature-bg:rgba(255,255,255,0.65);
       --hover-gold:rgba(199,155,43,0.10);
       --hero-bg:
         radial-gradient(circle at top right, rgba(199,155,43,0.12), transparent 24%),
@@ -51,11 +49,7 @@
     }
 
     *{ box-sizing:border-box; }
-
-    html,body{
-      margin:0;
-      padding:0;
-    }
+    html,body{ margin:0; padding:0; }
 
     body{
       font-family: Arial, Helvetica, sans-serif;
@@ -65,10 +59,56 @@
       transition:background 0.35s ease, color 0.25s ease;
     }
 
+    .fx-topbar{
+      width:100%;
+      font-size:13px;
+      letter-spacing:0.2px;
+      border-bottom:1px solid var(--border);
+      background:rgba(0,0,0,0.55);
+      backdrop-filter:blur(8px);
+    }
+
+    body.light .fx-topbar{
+      background:rgba(255,255,255,0.72);
+    }
+
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:7px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .fx-item{
+      color:var(--muted);
+    }
+
+    .fx-item span{
+      color:var(--gold-soft);
+      font-weight:700;
+      margin-left:4px;
+    }
+
+    .fx-date{
+      color:var(--muted);
+      font-size:12px;
+    }
+
     .container{
       max-width:1280px;
       margin:0 auto;
-      padding:28px 20px 70px;
+      padding:20px 20px 70px;
     }
 
     .nav{
@@ -214,7 +254,7 @@
 
     .full-banner{
       position:relative;
-      min-height:420px;
+      min-height:440px;
       border-radius:30px;
       overflow:hidden;
       border:1px solid var(--border);
@@ -228,7 +268,7 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.52)),
+        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.54)),
         url("images/banner_v1.jpg") center/cover no-repeat;
       transform:scale(1.01);
     }
@@ -236,11 +276,11 @@
     .banner-overlay{
       position:relative;
       z-index:2;
-      min-height:420px;
+      min-height:440px;
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
-      padding:34px;
+      padding:36px;
       background:linear-gradient(180deg, transparent 28%, rgba(0,0,0,0.62) 100%);
     }
 
@@ -254,7 +294,7 @@
     }
 
     .banner-title{
-      font-size:50px;
+      font-size:58px;
       line-height:1.02;
       margin:0 0 10px;
       color:#fffaf0;
@@ -262,11 +302,58 @@
       font-weight:800;
     }
 
+    .banner-subtitle{
+      font-size:20px;
+      color:#f4ddb0;
+      margin:0 0 14px;
+      font-style:italic;
+    }
+
     .banner-text{
       color:rgba(255,255,255,0.88);
       line-height:1.8;
-      max-width:660px;
+      max-width:680px;
       font-size:16px;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:16px;
+      margin-bottom:24px;
+    }
+
+    .service-card{
+      text-decoration:none;
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px 18px;
+      text-align:center;
+      transition:0.2s ease;
+      color:var(--text);
+      box-shadow:var(--shadow);
+    }
+
+    .service-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(243,197,77,0.35);
+      background:var(--card-bg);
+    }
+
+    .service-icon{
+      width:30px;
+      height:30px;
+      margin:0 auto 12px;
+      color:var(--gold-soft);
+      display:block;
+    }
+
+    .service-title{
+      font-weight:700;
+      font-size:15px;
+      color:var(--gold-soft);
+      line-height:1.4;
     }
 
     .hero{
@@ -336,77 +423,7 @@
       line-height:1.9;
       color:var(--muted);
       max-width:760px;
-      margin-bottom:28px;
       transition:color 0.25s ease;
-    }
-
-    .signature{
-      background:var(--signature-bg);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:20px 22px;
-      margin-bottom:26px;
-      backdrop-filter: blur(8px);
-      transition:background 0.25s ease, border-color 0.25s ease;
-    }
-
-    .signature .name{
-      font-size:22px;
-      font-weight:800;
-      margin-bottom:6px;
-    }
-
-    .signature .role{
-      color:var(--gold-soft);
-      font-weight:700;
-      margin-bottom:10px;
-      transition:color 0.25s ease;
-    }
-
-    .signature .about{
-      color:var(--muted);
-      line-height:1.8;
-      transition:color 0.25s ease;
-    }
-
-    .buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:10px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:15px 20px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:800;
-      transition:0.2s ease;
-    }
-
-    .btn-gold{
-      background:linear-gradient(180deg, #f3c54d, #d8a92c);
-      color:#111;
-      box-shadow:0 10px 25px rgba(216,169,44,0.22);
-    }
-
-    body.light .btn-gold{
-      background:linear-gradient(180deg, #d2a53a, #b98913);
-      color:#fffdf8;
-      box-shadow:0 12px 26px rgba(185,137,19,0.18);
-    }
-
-    .btn-outline{
-      border:1px solid var(--border);
-      color:var(--text);
-      background:transparent;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
     }
 
     .hero-right{
@@ -416,7 +433,8 @@
       gap:16px;
     }
 
-    .welcome-card{
+    .welcome-card,
+    .stat{
       background:var(--card-2);
       border:1px solid var(--border);
       border-radius:18px;
@@ -436,51 +454,16 @@
       margin:0;
     }
 
-    .stat{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
-      transition:background 0.25s ease, border-color 0.25s ease;
-    }
-
     .stat-label{
       color:var(--muted);
       font-size:13px;
       margin-bottom:8px;
-      transition:color 0.25s ease;
     }
 
     .stat-value{
       font-size:30px;
       font-weight:800;
       color:var(--gold-soft);
-      transition:color 0.25s ease;
-    }
-
-    .statement-card{
-      margin-top:24px;
-      padding:28px 32px;
-    }
-
-    .statement-grid{
-      display:grid;
-      grid-template-columns:0.9fr 1.1fr;
-      gap:28px;
-      align-items:start;
-    }
-
-    .statement-title{
-      font-size:40px;
-      line-height:1.05;
-      margin:0;
-      font-weight:800;
-    }
-
-    .statement-copy{
-      color:var(--muted);
-      line-height:1.9;
-      font-size:16px;
     }
 
     .snapshot-card,
@@ -531,15 +514,20 @@
       font-size:14px;
     }
 
-    .snapshot-grid,
-    .fx-grid{
+    .snapshot-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:16px;
     }
 
+    .fx-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
     .snapshot-item,
-    .fx-item{
+    .fx-item-card{
       background:var(--card-2);
       border:1px solid var(--border);
       border-radius:18px;
@@ -608,14 +596,16 @@
     }
 
     @media (max-width: 1100px){
-      .hero,
-      .statement-grid{
+      .hero{
         grid-template-columns:1fr;
       }
 
-      .snapshot-grid,
-      .fx-grid{
+      .snapshot-grid{
         grid-template-columns:1fr 1fr;
+      }
+
+      .service-grid{
+        grid-template-columns:repeat(3,1fr);
       }
     }
 
@@ -644,7 +634,8 @@
 
     @media (max-width: 700px){
       .snapshot-grid,
-      .fx-grid{
+      .fx-grid,
+      .service-grid{
         grid-template-columns:1fr;
       }
 
@@ -664,6 +655,17 @@
   </style>
 </head>
 <body>
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
+    </div>
+  </div>
+
   <div class="container">
 
     <div class="nav">
@@ -679,7 +681,7 @@
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="dashboard.html">Dashboard</a>
-          <a href="coming-soon.html">Funding</a>
+          <a href="funding.html">Funding</a>
           <a href="coming-soon.html">Investors</a>
           <a href="coming-soon.html">FAQ</a>
           <a href="coming-soon.html">Contact</a>
@@ -698,249 +700,17 @@
     <div class="full-banner">
       <div class="banner-overlay">
         <div class="banner-kicker">Munich • Independent Banking • Capital Oversight</div>
-        <h2 class="banner-title">A disciplined approach to liquidity, capital, and continuity.</h2>
+        <h2 class="banner-title">Welcome</h2>
+        <div class="banner-subtitle">In liquidity we trust.</div>
         <div class="banner-text">
-          Davlad Bank combines clarity of presentation, selective advisory focus,
-          and a measured approach to capital planning in support of long-term institutional stability.
+          Davlad Bank applies a disciplined approach to liquidity, capital planning,
+          and financial continuity under changing market conditions.
         </div>
       </div>
     </div>
 
-    <div class="hero">
-      <div class="card hero-left">
-        <div class="badge">Independent Financial Institution</div>
-
-        <h1>Davlad Bank</h1>
-        <div class="slogan">In liquidity we trust.</div>
-
-        <div class="subtitle">
-          Independent financial institution focused on liquidity management,
-          capital planning, and private advisory services.
-        </div>
-
-        <div class="signature">
-          <div class="name">W. M. Davlad</div>
-          <div class="role">Head of Strategic Lending</div>
-          <div class="about">
-            The institution maintains a focused approach to internal capital oversight,
-            financial positioning, and structured decision-making under changing market conditions.
-          </div>
-        </div>
-
-        <div class="buttons">
-          <a class="btn btn-gold" href="dashboard.html">Open Dashboard</a>
-          <a class="btn btn-outline" href="funding.html">Funding Terms</a>
-          <a class="btn btn-outline" href="coming-soon.html">Investor Relations</a>
-        </div>
-      </div>
-
-      <div class="card hero-right">
-        <div class="welcome-card">
-          <h3 class="welcome-title">Welcome</h3>
-          <p class="welcome-copy">
-            Welcome to Davlad Bank — a focused financial institution providing a disciplined
-            approach to liquidity oversight, capital structure, and strategic financial positioning.
-          </p>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Capital Mandate</div>
-          <div class="stat-value">Open</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Operating Focus</div>
-          <div class="stat-value">Liquidity</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Institutional Scope</div>
-          <div class="stat-value">Independent</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="snapshot-card">
-      <div class="snapshot-header">
-        <h2>Market Snapshot</h2>
-        <div class="snapshot-updated" id="snapshotUpdated">Updated: manually maintained</div>
-      </div>
-
-      <div class="snapshot-grid">
-        <div class="snapshot-item">
-          <div class="snapshot-label">DAX</div>
-          <div class="snapshot-value" id="snapshot-dax">—</div>
-        </div>
-
-        <div class="snapshot-item">
-          <div class="snapshot-label">S&amp;P 500</div>
-          <div class="snapshot-value" id="snapshot-spx">—</div>
-        </div>
-
-        <div class="snapshot-item">
-          <div class="snapshot-label">EUR / USD</div>
-          <div class="snapshot-value" id="snapshot-eurusd">—</div>
-        </div>
-
-        <div class="snapshot-item">
-          <div class="snapshot-label">EUR / CHF</div>
-          <div class="snapshot-value" id="snapshot-eurchf">—</div>
-        </div>
-      </div>
-
-      <div class="snapshot-note">
-        Reference market levels are displayed for orientation purposes and may be updated independently of intraday trading activity.
-      </div>
-    </div>
-
-    <div class="card statement-card">
-      <div class="statement-grid">
-        <h2 class="statement-title">Institutional statement</h2>
-        <div class="statement-copy">
-          Davlad Bank maintains a disciplined focus on liquidity oversight,
-          selective capital planning, and a measured approach to financial continuity.
-          Figures and market references presented on this site are intended to support internal perspective,
-          strategic planning, and structured communication.
-        </div>
-      </div>
-    </div>
-
-    <section class="fx-card">
-      <div class="fx-header">
-        <h2>Reference Exchange Rates</h2>
-        <div class="fx-updated" id="fxUpdated">Loading…</div>
-      </div>
-
-      <div class="fx-grid">
-        <div class="fx-item">
-          <div class="fx-label">EUR / USD</div>
-          <div class="fx-value" id="fx-usd">—</div>
-        </div>
-
-        <div class="fx-item">
-          <div class="fx-label">EUR / GBP</div>
-          <div class="fx-value" id="fx-gbp">—</div>
-        </div>
-
-        <div class="fx-item">
-          <div class="fx-label">EUR / CHF</div>
-          <div class="fx-value" id="fx-chf">—</div>
-        </div>
-
-        <div class="fx-item">
-          <div class="fx-label">Base Currency</div>
-          <div class="fx-value">EUR</div>
-        </div>
-      </div>
-
-      <div class="fx-note">
-        Reference FX data is shown for general market orientation.
-      </div>
-    </section>
-
-    <div class="bottom-grid">
-      <div class="card mini-panel">
-        <h3>Liquidity Oversight</h3>
-        <p>Structured review of capital position, short-term funding requirements, and liquidity planning considerations.</p>
-      </div>
-
-      <div class="card mini-panel">
-        <h3>Capital Advisory</h3>
-        <p>Independent support in capital structure thinking, financial prioritization, and institution-level decision framing.</p>
-      </div>
-
-      <div class="card mini-panel">
-        <h3>Market Reference</h3>
-        <p>Selected market indicators and exchange-rate references presented in a concise and decision-oriented format.</p>
-      </div>
-    </div>
-
-    <div class="footer">
-      Davlad Bank © 2026 · Private Capital, Public Confidence
-    </div>
-
-  </div>
-
-  <script>
-    const btn = document.getElementById("themeToggle");
-
-    function applyTheme(theme) {
-      if (theme === "light") {
-        document.body.classList.add("light");
-        btn.textContent = "☀️";
-      } else {
-        document.body.classList.remove("light");
-        btn.textContent = "🌙";
-      }
-    }
-
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    applyTheme(savedTheme);
-
-    btn.addEventListener("click", () => {
-      const isLight = document.body.classList.contains("light");
-      const nextTheme = isLight ? "dark" : "light";
-      localStorage.setItem("theme", nextTheme);
-      applyTheme(nextTheme);
-    });
-
-    // Manual reference values for index snapshot
-    const MARKET_SNAPSHOT = {
-      updated: "Updated: reference levels",
-      dax: "18,965",
-      spx: "5,430"
-    };
-
-    document.getElementById("snapshotUpdated").textContent = MARKET_SNAPSHOT.updated;
-    document.getElementById("snapshot-dax").textContent = MARKET_SNAPSHOT.dax;
-    document.getElementById("snapshot-spx").textContent = MARKET_SNAPSHOT.spx;
-
-    async function loadFxRates() {
-      const updatedEl = document.getElementById("fxUpdated");
-      const usdEl = document.getElementById("fx-usd");
-      const gbpEl = document.getElementById("fx-gbp");
-      const chfEl = document.getElementById("fx-chf");
-      const snapUsdEl = document.getElementById("snapshot-eurusd");
-      const snapChfEl = document.getElementById("snapshot-eurchf");
-
-      usdEl.textContent = "—";
-      gbpEl.textContent = "—";
-      chfEl.textContent = "—";
-      snapUsdEl.textContent = "—";
-      snapChfEl.textContent = "—";
-      updatedEl.textContent = "Loading…";
-
-      try {
-        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
-        const data = await res.json();
-
-        if (data?.rates?.USD) {
-          const value = data.rates.USD.toFixed(4);
-          usdEl.textContent = value;
-          snapUsdEl.textContent = value;
-        }
-
-        if (data?.rates?.GBP) {
-          gbpEl.textContent = data.rates.GBP.toFixed(4);
-        }
-
-        if (data?.rates?.CHF) {
-          const value = data.rates.CHF.toFixed(4);
-          chfEl.textContent = value;
-          snapChfEl.textContent = value;
-        }
-
-        if (data?.date) {
-          updatedEl.textContent = `Updated: ${data.date}`;
-        } else {
-          updatedEl.textContent = "Updated: latest available";
-        }
-      } catch (err) {
-        updatedEl.textContent = "Rates temporarily unavailable";
-      }
-    }
-
-    loadFxRates();
-  </script>
-</body>
-</html>
+    <div class="service-grid">
+      <a href="dashboard.html" class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19h16"></path>
+          <path d="M7 16V10

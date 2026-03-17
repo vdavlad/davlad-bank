@@ -2,94 +2,513 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Davlad Bank — Contact</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
 
   <style>
     :root{
       --bg:#070707;
       --card:#121212;
+      --card-2:#181818;
       --text:#EAEAEA;
       --muted:#8A8A8A;
       --accent:#C6A85B;
       --border:rgba(255,255,255,0.08);
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      --topbar-bg:rgba(0,0,0,0.55);
     }
 
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --nav-bg:rgba(255,255,255,0.75);
+      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
+      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+      --topbar-bg:rgba(255,255,255,0.85);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+
     body{
-      margin:0;
-      font-family:Arial;
-      background:var(--bg);
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
+      color:var(--text);
+      min-height:100vh;
+      transition:background .3s ease,color .3s ease;
+    }
+
+    .fx-topbar{
+      width:100%;
+      font-size:12px;
+      letter-spacing:.15px;
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:5px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .fx-item{color:var(--muted);white-space:nowrap}
+    .fx-item span{color:var(--text);font-weight:600;margin-left:4px}
+    .fx-date{color:var(--muted);font-size:11px}
+
+    .container{
+      max-width:1280px;
+      margin:0 auto;
+      padding:20px 20px 70px;
+    }
+
+    .nav,
+    .panel{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      margin-bottom:24px;
+      backdrop-filter:blur(10px);
+      flex-wrap:wrap;
+      background:var(--nav-bg);
+      border-radius:18px;
+    }
+
+    .nav::before,
+    .panel::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.6;
+    }
+
+    .brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0B0B0B;
+      border:1px solid var(--border);
+      color:#F2F2F2;
+      flex-shrink:0;
+    }
+
+    body.light .logo{
+      background:#FFFFFF;
+      color:#111111;
+    }
+
+    .brand{
+      font-size:22px;
+      font-weight:800;
+      color:var(--text);
+      letter-spacing:.3px;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:2px;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      padding:9px 12px;
+      border-radius:10px;
+      transition:.18s ease;
+    }
+
+    .nav-links a:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    body.light .nav-links a:hover{
+      background:rgba(0,0,0,.04);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:4px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    .lang-switch a{
+      padding:6px 9px;
+      text-decoration:none;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      transition:.18s ease;
+    }
+
+    .lang-switch a:hover{
+      background:rgba(255,255,255,.04);
       color:var(--text);
     }
 
-    .container{
-      max-width:800px;
-      margin:auto;
-      padding:60px 20px;
-      text-align:center;
+    .lang-switch .active{
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+    }
+
+    .theme-btn{
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
+    .panel{padding:26px}
+
+    .kicker{
+      font-size:12px;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-bottom:12px;
+      font-weight:700;
     }
 
     h1{
-      font-size:40px;
-      margin-bottom:10px;
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.05;
     }
 
-    .subtitle{
+    .lead{
+      margin:0;
       color:var(--muted);
-      margin-bottom:40px;
+      line-height:1.8;
+      font-size:15px;
+      max-width:720px;
     }
 
-    .card{
-      padding:30px;
-      border-radius:16px;
+    .contact-grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-card{
+      background:var(--card-2);
       border:1px solid var(--border);
-      background:var(--card);
+      border-radius:16px;
+      padding:16px;
     }
 
-    .item{
-      margin-bottom:18px;
+    .contact-label{
       color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
     }
 
-    .item strong{
+    .contact-value{
+      font-size:20px;
+      font-weight:800;
       color:var(--text);
+      line-height:1.5;
     }
 
-    .note{
+    .section-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
+    .section-title{
+      margin:0 0 10px;
+      font-size:28px;
+    }
+
+    .copy{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+      margin:0 0 18px;
+    }
+
+    .list{
+      display:grid;
+      gap:12px;
+    }
+
+    .list-item{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+    }
+
+    .list-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:15px;
+    }
+
+    .list-item span{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .footer{
+      text-align:center;
       margin-top:30px;
-      font-size:13px;
-      color:#777;
+      color:#8e8e8e;
+      font-size:14px;
+    }
+
+    @media (max-width:950px){
+      .hero,.section-grid{grid-template-columns:1fr}
+      .nav{flex-direction:column;align-items:flex-start}
+      h1{font-size:34px}
     }
   </style>
 </head>
 <body>
-
-<div class="container">
-
-  <h1>Contact</h1>
-  <div class="subtitle">Strategic communication channels</div>
-
-  <div class="card">
-
-    <div class="item">
-      <strong>Email:</strong> contact@davladbank.com
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
     </div>
-
-    <div class="item">
-      <strong>Response time:</strong> depends on liquidity conditions
-    </div>
-
-    <div class="item">
-      <strong>Priority:</strong> investors > everyone else
-    </div>
-
-    <div class="note">
-      For strategic investors, additional contact channels may be disclosed upon request.
-    </div>
-
   </div>
 
-</div>
+  <div class="container">
+    <div class="nav">
+      <div class="brand-wrap">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Davlad Bank</div>
+          <div class="brand-sub">Deposits • Investments • Loans</div>
+        </div>
+      </div>
 
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="deposits.html">Deposits</a>
+          <a href="investments.html">Investments</a>
+          <a href="loans.html">Loans</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <a href="contact.html" class="active">EN</a>
+          <a href="de/contact.html">DE</a>
+          <a href="ua/contact.html">UA</a>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="panel">
+        <div class="kicker">Contact</div>
+        <h1>Contact Davlad Bank</h1>
+        <p class="lead">
+          General communication channels and reference contact information for the platform.
+          Additional contact routes may be introduced as the project structure evolves.
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-label">Primary Contact</div>
+            <div class="contact-value">contact@davladbank.com</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-label">Response Format</div>
+            <div class="contact-value">Direct communication</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-label">Availability</div>
+            <div class="contact-value">Subject to operating conditions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-grid">
+      <div class="panel">
+        <h2 class="section-title">Communication</h2>
+        <p class="copy">
+          Contact channels are intended for general product inquiries, platform questions,
+          and future communication regarding deposits, investments, and lending products.
+        </p>
+
+        <div class="list">
+          <div class="list-item">
+            <strong>General Inquiries</strong>
+            <span>Questions related to the bank concept, structure, or available product areas.</span>
+          </div>
+          <div class="list-item">
+            <strong>Product Questions</strong>
+            <span>Requests related to deposits, investments, or loans as presented on the platform.</span>
+          </div>
+          <div class="list-item">
+            <strong>Future Channels</strong>
+            <span>Additional communication routes may be added in later development phases.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="section-title">Contact note</h2>
+        <p class="copy">
+          The current contact structure is presented as part of the platform’s overall concept and visual framework.
+          Communication logic may be expanded as more sections are completed.
+        </p>
+
+        <div class="list">
+          <div class="list-item">
+            <strong>Institutional Tone</strong>
+            <span>Communication is presented in a structured banking-style format.</span>
+          </div>
+          <div class="list-item">
+            <strong>Platform Status</strong>
+            <span>Some sections remain in active development and may currently redirect to interim pages.</span>
+          </div>
+          <div class="list-item">
+            <strong>Ongoing Expansion</strong>
+            <span>Contact presentation may evolve together with the multilingual site structure.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Davlad Bank © 2026 · Contact Information
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+
+    function applyTheme(theme){
+      document.body.classList.toggle("light", theme === "light");
+      btn.textContent = theme === "light" ? "☀️" : "🌙";
+    }
+
+    applyTheme(localStorage.getItem("theme") || "dark");
+
+    btn.addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+
+        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
+        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+
+        document.getElementById("top-date").textContent =
+          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
+      } catch {
+        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+      }
+    }
+
+    loadFxRates();
+  </script>
 </body>
 </html>

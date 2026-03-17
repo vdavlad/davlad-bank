@@ -10,11 +10,27 @@
     :root{
       --bg:#070707;
       --card:#121212;
+      --card-2:#181818;
       --text:#EAEAEA;
       --muted:#8A8A8A;
       --accent:#C6A85B;
       --border:rgba(255,255,255,0.08);
       --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --topbar-bg:rgba(0,0,0,0.45);
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#FAFAFA;
+        --card:#FFFFFF;
+        --card-2:#F4F4F4;
+        --text:#111111;
+        --muted:#6A6A6A;
+        --accent:#C2A24A;
+        --border:rgba(0,0,0,0.08);
+        --shadow:0 10px 30px rgba(0,0,0,0.06);
+        --topbar-bg:rgba(255,255,255,0.82);
+      }
     }
 
     *{ box-sizing:border-box; }
@@ -26,8 +42,71 @@
       background:
         radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
         radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
-        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+        var(--bg);
       color:var(--text);
+    }
+
+    .topbar{
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+
+    .topbar-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:10px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:0.2px;
+    }
+
+    .logo{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,0.2);
+      border:1px solid var(--border);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:4px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    .lang-switch button{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      padding:6px 10px;
+      font-size:12px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .lang-switch button.active{
+      background:rgba(255,255,255,0.06);
+      color:var(--text);
+    }
+
+    .wrap{
+      min-height:calc(100vh - 64px);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -58,40 +137,18 @@
       opacity:0.65;
     }
 
-    .logo{
-      width:64px;
-      height:64px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto 22px;
-      background:#0e0e0e;
-      border:1px solid var(--border);
-      box-shadow:0 10px 25px rgba(0,0,0,0.4);
-    }
-
     h1{
       margin:0 0 10px;
-      font-size:42px;
-      line-height:1.05;
+      font-size:40px;
       font-weight:800;
-      letter-spacing:-0.5px;
+      letter-spacing:-0.3px;
     }
 
     .subtitle{
       color:var(--accent);
-      font-size:18px;
+      font-size:17px;
       font-style:italic;
       margin-bottom:18px;
-    }
-
-    .text{
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.8;
-      max-width:560px;
-      margin:0 auto 24px;
     }
 
     .status{
@@ -102,7 +159,6 @@
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,0.03);
-      color:var(--text);
       font-size:14px;
       margin-bottom:22px;
     }
@@ -112,70 +168,263 @@
       height:10px;
       border-radius:50%;
       background:var(--accent);
-      box-shadow:0 0 12px rgba(198,168,91,0.45);
-      animation:pulse 1.8s infinite ease-in-out;
+      box-shadow:0 0 10px rgba(198,168,91,0.4);
+      animation:pulse 1.6s infinite ease-in-out;
     }
 
     @keyframes pulse{
-      0%,100%{ transform:scale(1); opacity:0.8; }
+      0%,100%{ transform:scale(1); opacity:0.7; }
       50%{ transform:scale(1.25); opacity:1; }
     }
 
-    .note{
-      color:#6f6f6f;
-      font-size:13px;
-      line-height:1.7;
-      margin-top:10px;
+    .text{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+      max-width:560px;
+      margin:0 auto 24px;
     }
 
-    @media (max-width:700px){
-      .box{
-        padding:32px 24px;
-      }
+    .progress-card{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      text-align:left;
+      margin:0 auto 18px;
+      max-width:560px;
+    }
 
-      h1{
-        font-size:34px;
-      }
+    .progress-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:10px;
+      font-size:14px;
+    }
 
-      .text{
-        font-size:15px;
-      }
+    .progress-row .label{
+      color:var(--muted);
+    }
+
+    .progress-row .value{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .progress-track{
+      width:100%;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+
+    .progress-bar{
+      width:68%;
+      height:100%;
+      background:linear-gradient(90deg, var(--accent), rgba(198,168,91,0.75));
+      border-radius:999px;
+    }
+
+    .meta-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      max-width:560px;
+      margin:0 auto 18px;
+    }
+
+    .meta{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      text-align:left;
+    }
+
+    .meta-label{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
+    }
+
+    .meta-value{
+      color:var(--text);
+      font-weight:700;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .notice{
+      max-width:560px;
+      margin:0 auto;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    @media (max-width:640px){
+      .box{ padding:30px 20px; }
+      h1{ font-size:30px; }
+      .meta-grid{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <div class="logo">
-      <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
-        <path d="M16 12 H32 Q52 32 32 52 H16 Z"
-              fill="none"
-              stroke="#EAEAEA"
-              stroke-width="3"/>
-        <line x1="10" y1="24" x2="42" y2="24"
-              stroke="#C6A85B" stroke-width="2"/>
-        <line x1="10" y1="38" x2="42" y2="38"
-              stroke="#C6A85B" stroke-width="2"/>
-      </svg>
-    </div>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true">
+            <path d="M16 12 H32 Q52 32 32 52 H16 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"/>
+            <line x1="10" y1="24" x2="42" y2="24"
+                  stroke="var(--accent)" stroke-width="2"/>
+            <line x1="10" y1="38" x2="42" y2="38"
+                  stroke="var(--accent)" stroke-width="2"/>
+          </svg>
+        </div>
+        <span id="brandText">Davlad Bank</span>
+      </div>
 
-    <div class="status">
-      <span class="dot"></span>
-      Scheduled maintenance in progress
-    </div>
-
-    <h1>System Maintenance</h1>
-    <div class="subtitle">In liquidity we trust.</div>
-
-    <div class="text">
-      Davlad Bank is currently undergoing scheduled infrastructure improvements,
-      interface refinement, and system optimization procedures.
-      <br><br>
-      Access will be restored shortly.
-    </div>
-
-    <div class="note">
-      We appreciate your patience while maintenance operations are being completed.
+      <div class="lang-switch">
+        <button class="active" data-lang="en">EN</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="ua">UA</button>
+      </div>
     </div>
   </div>
+
+  <div class="wrap">
+    <div class="box">
+      <div class="status">
+        <span class="dot"></span>
+        <span id="statusText">Scheduled maintenance</span>
+      </div>
+
+      <h1 id="titleText">System Maintenance</h1>
+      <div class="subtitle" id="subtitleText">In liquidity we trust.</div>
+
+      <div class="text" id="bodyText">
+        Davlad Bank is currently undergoing infrastructure improvements,
+        interface refinement, and system optimization.
+        <br><br>
+        Please check back shortly.
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-row">
+          <span class="label" id="progressLabel">Progress</span>
+          <span class="value">68%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta">
+          <div class="meta-label" id="etaLabel">Estimated availability</div>
+          <div class="meta-value" id="etaValue">Approximately 2 hours</div>
+        </div>
+
+        <div class="meta">
+          <div class="meta-label" id="noticeLabel">Environment status</div>
+          <div class="meta-value" id="noticeValue">Secure maintenance window active</div>
+        </div>
+      </div>
+
+      <div class="notice" id="footerText">
+        Thank you for your patience while maintenance operations are being completed.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        brand: "Davlad Bank",
+        status: "Scheduled maintenance",
+        title: "System Maintenance",
+        subtitle: "In liquidity we trust.",
+        body: "Davlad Bank is currently undergoing infrastructure improvements, interface refinement, and system optimization.<br><br>Please check back shortly.",
+        progress: "Progress",
+        etaLabel: "Estimated availability",
+        etaValue: "Approximately 2 hours",
+        noticeLabel: "Environment status",
+        noticeValue: "Secure maintenance window active",
+        footer: "Thank you for your patience while maintenance operations are being completed."
+      },
+      de: {
+        brand: "Davlad Bank",
+        status: "Geplante Wartung",
+        title: "Systemwartung",
+        subtitle: "In liquidity we trust.",
+        body: "Davlad Bank führt derzeit Infrastrukturverbesserungen, Interface-Optimierungen und Systemanpassungen durch.<br><br>Bitte schauen Sie in Kürze wieder vorbei.",
+        progress: "Fortschritt",
+        etaLabel: "Voraussichtliche Verfügbarkeit",
+        etaValue: "Ungefähr 2 Stunden",
+        noticeLabel: "Umgebungsstatus",
+        noticeValue: "Sicheres Wartungsfenster aktiv",
+        footer: "Vielen Dank für Ihre Geduld während der laufenden Wartungsarbeiten."
+      },
+      ua: {
+        brand: "Davlad Bank",
+        status: "Планове технічне обслуговування",
+        title: "Системне обслуговування",
+        subtitle: "In liquidity we trust.",
+        body: "Davlad Bank наразі проводить оновлення інфраструктури, вдосконалення інтерфейсу та оптимізацію систем.<br><br>Будь ласка, завітайте трохи пізніше.",
+        progress: "Прогрес",
+        etaLabel: "Орієнтовний час доступності",
+        etaValue: "Приблизно 2 години",
+        noticeLabel: "Статус середовища",
+        noticeValue: "Активне захищене вікно обслуговування",
+        footer: "Дякуємо за терпіння під час завершення технічних робіт."
+      }
+    };
+
+    const els = {
+      brand: document.getElementById("brandText"),
+      status: document.getElementById("statusText"),
+      title: document.getElementById("titleText"),
+      subtitle: document.getElementById("subtitleText"),
+      body: document.getElementById("bodyText"),
+      progress: document.getElementById("progressLabel"),
+      etaLabel: document.getElementById("etaLabel"),
+      etaValue: document.getElementById("etaValue"),
+      noticeLabel: document.getElementById("noticeLabel"),
+      noticeValue: document.getElementById("noticeValue"),
+      footer: document.getElementById("footerText")
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      els.brand.textContent = t.brand;
+      els.status.textContent = t.status;
+      els.title.textContent = t.title;
+      els.subtitle.textContent = t.subtitle;
+      els.body.innerHTML = t.body;
+      els.progress.textContent = t.progress;
+      els.etaLabel.textContent = t.etaLabel;
+      els.etaValue.textContent = t.etaValue;
+      els.noticeLabel.textContent = t.noticeLabel;
+      els.noticeValue.textContent = t.noticeValue;
+      els.footer.textContent = t.footer;
+
+      document.querySelectorAll(".lang-switch button").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+  </script>
 </body>
 </html>
+

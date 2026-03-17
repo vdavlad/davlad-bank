@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<script>
+const isAdmin = true; // поменяешь на false перед публикацией
+
+if (!isAdmin) {
+  window.location.href = "maintenance.html";
+}
+</script>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />

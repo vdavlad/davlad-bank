@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Davlad Bank — Loans</title>
+  <title>Davlad Bank — Investments</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="apple-touch-icon" href="images/favicon.svg">
 
@@ -101,50 +101,12 @@
       max-width:1280px;
       margin:0 auto;
       padding:20px 20px 70px;
-      position:relative;
-    }
-
-    .ambient{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      overflow:hidden;
-    }
-
-    .orb{
-      position:absolute;
-      width:260px;
-      height:260px;
-      border-radius:50%;
-      filter:blur(80px);
-      opacity:.06;
-      background:var(--accent);
-      animation:floatOrb 12s ease-in-out infinite;
-    }
-
-    .orb.one{
-      top:80px;
-      right:40px;
-    }
-
-    .orb.two{
-      bottom:80px;
-      left:20px;
-      width:220px;
-      height:220px;
-      animation-duration:15s;
-    }
-
-    @keyframes floatOrb{
-      0%,100%{transform:translate(0,0) scale(1)}
-      50%{transform:translate(18px,-14px) scale(1.06)}
     }
 
     .nav,
     .panel,
-    .status-card,
-    .product-card,
-    .notice-card{
+    .investment-card,
+    .feature-card{
       background:var(--card-bg);
       border:1px solid var(--border);
       box-shadow:var(--shadow);
@@ -163,14 +125,12 @@
       backdrop-filter:blur(10px);
       flex-wrap:wrap;
       background:var(--nav-bg);
-      z-index:1;
     }
 
     .nav::before,
     .panel::before,
-    .status-card::before,
-    .product-card::before,
-    .notice-card::before{
+    .investment-card::before,
+    .feature-card::before{
       content:"";
       position:absolute;
       top:0;
@@ -289,11 +249,9 @@
 
     .hero{
       display:grid;
-      grid-template-columns:1.08fr .92fr;
+      grid-template-columns:1.05fr .95fr;
       gap:24px;
       margin-bottom:24px;
-      position:relative;
-      z-index:1;
     }
 
     .panel{
@@ -324,91 +282,174 @@
       max-width:720px;
     }
 
-    .status-grid{
+    .metric-grid{
       display:grid;
       gap:14px;
     }
 
-    .status-card{
+    .metric{
+      background:var(--card-2);
+      border:1px solid var(--border);
       border-radius:16px;
       padding:16px;
-      background:var(--card-2);
     }
 
-    .status-label{
+    .metric-label{
       color:var(--muted);
       font-size:12px;
       margin-bottom:6px;
     }
 
-    .status-value{
+    .metric-value{
       font-size:24px;
       font-weight:800;
       color:var(--text);
-      line-height:1.35;
     }
 
-    .status-value.accent{
-      color:var(--accent);
-    }
-
-    .product-grid{
+    .investment-grid{
       display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:18px;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
       margin-bottom:24px;
-      position:relative;
-      z-index:1;
     }
 
-    .product-card{
-      border-radius:20px;
-      padding:22px;
-      background:var(--card-bg);
+    .investment-card{
+      border-radius:22px;
+      padding:24px;
     }
 
-    .product-title{
-      margin:0 0 10px;
-      font-size:22px;
+    .investment-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+      margin-bottom:18px;
+    }
+
+    .investment-title{
+      font-size:28px;
       font-weight:800;
+      line-height:1.15;
+      margin:0 0 8px;
     }
 
-    .product-copy{
+    .investment-copy{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
       margin:0;
+      max-width:420px;
+    }
+
+    .investment-tag{
+      text-align:right;
+      min-width:120px;
+    }
+
+    .tag-value{
+      font-size:18px;
+      font-weight:800;
+      color:var(--accent);
+      line-height:1.2;
+      margin-bottom:6px;
+    }
+
+    .tag-label{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .detail-box{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .detail-label{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
+    }
+
+    .detail-value{
+      color:var(--text);
+      font-size:16px;
+      font-weight:700;
+      line-height:1.5;
+    }
+
+    .investment-note{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
       color:var(--muted);
       font-size:14px;
       line-height:1.75;
     }
 
-    .notice-card{
-      border-radius:22px;
-      padding:24px;
-      background:var(--card-bg);
+    .investment-actions{
+      margin-top:18px;
+      display:flex;
+      justify-content:flex-start;
+    }
+
+    .investment-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      color:var(--text);
+      border:1px solid var(--border);
+      background:var(--card-2);
+      transition:.18s ease;
+    }
+
+    .investment-btn:hover{
+      border-color:var(--border-accent);
+      background:rgba(255,255,255,.04);
+      transform:translateY(-1px);
+    }
+
+    body.light .investment-btn:hover{
+      background:rgba(0,0,0,.03);
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:18px;
       margin-bottom:24px;
-      position:relative;
-      z-index:1;
     }
 
-    .notice-title{
+    .feature-card{
+      border-radius:20px;
+      padding:22px;
+    }
+
+    .feature-title{
       margin:0 0 10px;
-      font-size:28px;
+      font-size:22px;
       font-weight:800;
+      color:var(--text);
     }
 
-    .notice-copy{
+    .feature-copy{
       margin:0;
       color:var(--muted);
-      font-size:15px;
-      line-height:1.8;
-      max-width:920px;
-    }
-
-    .split-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      position:relative;
-      z-index:1;
+      font-size:14px;
+      line-height:1.75;
     }
 
     .footer{
@@ -416,14 +457,12 @@
       margin-top:30px;
       color:#8e8e8e;
       font-size:14px;
-      position:relative;
-      z-index:1;
     }
 
     @media (max-width:950px){
       .hero,
-      .product-grid,
-      .split-grid{
+      .investment-grid,
+      .feature-grid{
         grid-template-columns:1fr;
       }
 
@@ -432,8 +471,23 @@
         align-items:flex-start;
       }
 
+      .investment-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .investment-tag{
+        text-align:left;
+      }
+
       h1{
         font-size:34px;
+      }
+    }
+
+    @media (max-width:700px){
+      .detail-grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
@@ -451,11 +505,6 @@
   </div>
 
   <div class="container">
-    <div class="ambient">
-      <div class="orb one"></div>
-      <div class="orb two"></div>
-    </div>
-
     <div class="nav">
       <div class="brand-wrap">
         <div class="logo">
@@ -489,9 +538,9 @@
         </div>
 
         <div class="lang-switch">
-          <a href="loans.html" class="active">EN</a>
-          <a href="de/loans.html">DE</a>
-          <a href="ua/loans.html">UA</a>
+          <a href="investments.html" class="active">EN</a>
+          <a href="de/investments.html">DE</a>
+          <a href="ua/investments.html">UA</a>
         </div>
 
         <button id="themeToggle" class="theme-btn">🌙</button>
@@ -500,86 +549,153 @@
 
     <div class="hero">
       <div class="panel">
-        <div class="kicker">Loans</div>
-        <h1>Loans will become available from 1 June 2026</h1>
+        <div class="kicker">Investments</div>
+        <h1>Structured investment opportunities within Davlad Bank</h1>
         <p class="lead">
-          The lending division is currently in pre-launch preparation. Credit issuance is temporarily
-          deferred pending internal liquidity alignment and balance-sheet prioritization.
+          Davlad Bank presents a focused investment structure combining fixed-income style instruments
+          with selective direct participation in the bank’s long-term capital story.
         </p>
       </div>
 
       <div class="panel">
-        <div class="status-grid">
-          <div class="status-card">
-            <div class="status-label">Availability Date</div>
-            <div class="status-value accent">1 June 2026</div>
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-label">Available Products</div>
+            <div class="metric-value">2 Investments</div>
           </div>
-
-          <div class="status-card">
-            <div class="status-label">Division Status</div>
-            <div class="status-value">Pre-launch</div>
+          <div class="metric">
+            <div class="metric-label">Structure</div>
+            <div class="metric-value">Bonds / Direct</div>
           </div>
-
-          <div class="status-card">
-            <div class="status-label">Issuance Status</div>
-            <div class="status-value">Temporarily inactive</div>
+          <div class="metric">
+            <div class="metric-label">Access</div>
+            <div class="metric-value">Open / Selective</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="product-grid">
-      <div class="product-card">
-        <h2 class="product-title">Short-Term Credit</h2>
-        <p class="product-copy">
-          Planned as a compact lending product for shorter-duration financing needs and temporary liquidity support.
-        </p>
+    <div class="investment-grid">
+      <div class="investment-card">
+        <div class="investment-head">
+          <div>
+            <h2 class="investment-title">Davlad Bonds</h2>
+            <p class="investment-copy">
+              A fixed-income style investment format designed for structured capital placement,
+              defined maturity horizons, and a more predictable return profile.
+            </p>
+          </div>
+
+          <div class="investment-tag">
+            <div class="tag-value">Fixed Income</div>
+            <div class="tag-label">Structured return logic</div>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-box">
+            <div class="detail-label">Indicative Return</div>
+            <div class="detail-value">6–9%</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label">Term</div>
+            <div class="detail-value">6–24 months</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label">Risk Profile</div>
+            <div class="detail-value">Moderate</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label">Positioning</div>
+            <div class="detail-value">Structured allocation</div>
+          </div>
+        </div>
+
+        <div class="investment-note">
+          Designed for investors seeking a more defined horizon, clearer return expectations, and a product structure that resembles fixed-income instruments.
+        </div>
+
+        <div class="investment-actions">
+          <a href="investment-bonds.html" class="investment-btn">View investment</a>
+        </div>
       </div>
 
-      <div class="product-card">
-        <h2 class="product-title">Consumer Loan</h2>
-        <p class="product-copy">
-          Intended as a more standard financing format for personal use cases and structured repayment planning.
-        </p>
-      </div>
+      <div class="investment-card">
+        <div class="investment-head">
+          <div>
+            <h2 class="investment-title">Direct Investment</h2>
+            <p class="investment-copy">
+              A more selective investment format intended to provide direct exposure to Davlad Bank’s
+              capital structure and long-term strategic development.
+            </p>
+          </div>
 
-      <div class="product-card">
-        <h2 class="product-title">Structured Lending</h2>
-        <p class="product-copy">
-          Planned as a more tailored product category depending on purpose, duration, and repayment logic.
-        </p>
+          <div class="investment-tag">
+            <div class="tag-value">Selective Access</div>
+            <div class="tag-label">Participation-based</div>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-box">
+            <div class="detail-label">Return Logic</div>
+            <div class="detail-value">Variable</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label">Term</div>
+            <div class="detail-value">Flexible</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label">Access</div>
+            <div class="detail-value">Selected investors</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label">Positioning</div>
+            <div class="detail-value">Strategic participation</div>
+          </div>
+        </div>
+
+        <div class="investment-note">
+          Intended for investors interested in a more direct relationship to the bank’s internal capital narrative and future development profile.
+        </div>
+
+        <div class="investment-actions">
+          <a href="investment-direct.html" class="investment-btn">View investment</a>
+        </div>
       </div>
     </div>
 
-    <div class="notice-card">
-      <h2 class="notice-title">Current launch notice</h2>
-      <p class="notice-copy">
-        Davlad Bank is currently prioritizing deposit development, capital structure alignment, and internal liquidity stabilization
-        ahead of the launch of its lending products. Current lending activity remains paused while capital allocation continues to favor
-        existing balance-sheet priorities. The lending framework is planned, but not yet active for issuance.
-      </p>
-    </div>
-
-    <div class="split-grid">
-      <div class="notice-card">
-        <h2 class="notice-title">Why lending is not yet active</h2>
-        <p class="notice-copy">
-          The lending line is being introduced in stages. While product structure and presentation logic are already defined,
-          actual issuance remains deferred until internal liquidity conditions allow for a more stable launch environment.
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 class="feature-title">Structure</h3>
+        <p class="feature-copy">
+          The investment line is intentionally limited to two clearly differentiated formats with distinct positioning.
         </p>
       </div>
 
-      <div class="notice-card">
-        <h2 class="notice-title">Planned transition</h2>
-        <p class="notice-copy">
-          From 1 June 2026, the platform is expected to begin presenting active lending products as part of its broader banking structure.
-          Until then, this page serves as a pre-launch notice and future product outline.
+      <div class="feature-card">
+        <h3 class="feature-title">Clarity</h3>
+        <p class="feature-copy">
+          One product emphasizes defined return logic, while the other reflects direct strategic participation.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3 class="feature-title">Selectivity</h3>
+        <p class="feature-copy">
+          The broader investment concept combines open product presentation with more selective access where appropriate.
         </p>
       </div>
     </div>
 
     <div class="footer">
-      Davlad Bank © 2026 · Lending Division Pre-Launch Notice
+      Davlad Bank © 2026 · Investment Products
     </div>
   </div>
 

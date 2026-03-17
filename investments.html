@@ -50,14 +50,42 @@
       min-height:100vh;
     }
 
-    .fx-topbar{width:100%;font-size:12px;letter-spacing:.15px;border-bottom:1px solid var(--border);background:var(--topbar-bg);backdrop-filter:blur(8px)}
-    .fx-inner{max-width:1280px;margin:0 auto;padding:5px 20px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
-    .fx-left{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+    .fx-topbar{
+      width:100%;
+      font-size:12px;
+      letter-spacing:.15px;
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:5px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
     .fx-item{color:var(--muted);white-space:nowrap}
     .fx-item span{color:var(--text);font-weight:600;margin-left:4px}
     .fx-date{color:var(--muted);font-size:11px}
 
-    .container{max-width:1280px;margin:0 auto;padding:20px 20px 70px}
+    .container{
+      max-width:1280px;
+      margin:0 auto;
+      padding:20px 20px 70px;
+    }
 
     .nav,.panel{
       background:var(--card-bg);
@@ -69,13 +97,23 @@
     }
 
     .nav{
-      display:flex;justify-content:space-between;align-items:center;gap:20px;
-      padding:18px 22px;margin-bottom:24px;backdrop-filter:blur(10px);flex-wrap:wrap
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      margin-bottom:24px;
+      backdrop-filter:blur(10px);
+      flex-wrap:wrap;
     }
 
     .nav::before,.panel::before{
-      content:"";position:absolute;top:0;left:0;right:0;height:1px;
-      background:linear-gradient(90deg, transparent, var(--accent), transparent);opacity:.6
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.6;
     }
 
     .brand-wrap{display:flex;align-items:center;gap:14px}
@@ -91,4 +129,221 @@
     .nav-right{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
     .nav-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
     .nav-links a{text-decoration:none;color:var(--text);font-weight:700;padding:9px 12px;border-radius:10px}
-    .lang-switch{display:flex;gap:4px;border:1px
+    .lang-switch{display:flex;gap:4px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    .lang-switch a{padding:6px 9px;text-decoration:none;font-size:12px;font-weight:700;color:var(--muted)}
+    .lang-switch .active{background:rgba(255,255,255,.06);color:var(--text)}
+    .theme-btn{border:1px solid var(--border);background:transparent;color:var(--text);padding:8px 10px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:700}
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
+    .panel{padding:26px}
+    .kicker{
+      font-size:12px;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-bottom:12px;
+      font-weight:700;
+    }
+
+    h1{margin:0 0 10px;font-size:44px;line-height:1.05}
+    .lead{margin:0;color:var(--muted);line-height:1.8;font-size:15px}
+
+    .metric-grid{display:grid;gap:14px}
+    .metric{background:var(--card-2);border:1px solid var(--border);border-radius:16px;padding:16px}
+    .metric-label{color:var(--muted);font-size:12px;margin-bottom:6px}
+    .metric-value{font-size:24px;font-weight:800}
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
+    .section-title{margin:0 0 10px;font-size:28px}
+    .copy{color:var(--muted);font-size:15px;line-height:1.8;margin:0 0 18px}
+
+    .list{display:grid;gap:12px}
+    .list-item{background:var(--card-2);border:1px solid var(--border);border-radius:16px;padding:16px}
+    .list-item strong{display:block;margin-bottom:6px;font-size:15px}
+    .list-item span{color:var(--muted);font-size:14px;line-height:1.7}
+
+    .table{width:100%;border-collapse:collapse}
+    .table tr{border-bottom:1px solid var(--border)}
+    .table td{padding:14px 0;vertical-align:top;font-size:14px}
+    .table td:first-child{color:var(--muted);width:42%}
+    .table td:last-child{font-weight:600}
+
+    .footer{text-align:center;margin-top:30px;color:#8e8e8e;font-size:14px}
+
+    @media (max-width:950px){
+      .hero,.section-grid{grid-template-columns:1fr}
+      .nav{flex-direction:column;align-items:flex-start}
+      h1{font-size:34px}
+    }
+  </style>
+</head>
+<body>
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="nav">
+      <div class="brand-wrap">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Davlad Bank</div>
+          <div class="brand-sub">Deposits • Investments • Loans</div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="deposits.html">Deposits</a>
+          <a href="investments.html">Investments</a>
+          <a href="loans.html">Loans</a>
+          <a href="coming-soon.html">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <a href="investments.html" class="active">EN</a>
+          <a href="de/investments.html">DE</a>
+          <a href="ua/investments.html">UA</a>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="panel">
+        <div class="kicker">Investments</div>
+        <h1>Investment products for long-term positioning</h1>
+        <p class="lead">
+          Davlad Bank presents investment-oriented offerings aimed at structured growth,
+          disciplined portfolio development, and long-term capital planning.
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-label">Product Category</div>
+            <div class="metric-value">Investments</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Primary Objective</div>
+            <div class="metric-value">Portfolio Growth</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Risk Orientation</div>
+            <div class="metric-value">Measured / Structured</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-grid">
+      <div class="panel">
+        <h2 class="section-title">Investment categories</h2>
+        <p class="copy">
+          Investment products may be structured according to strategy, duration,
+          and intended risk-return profile.
+        </p>
+        <div class="list">
+          <div class="list-item">
+            <strong>Conservative Allocation</strong>
+            <span>Solutions designed around capital preservation, moderate yield expectations, and lower volatility.</span>
+          </div>
+          <div class="list-item">
+            <strong>Balanced Strategies</strong>
+            <span>Products intended to combine measured growth with portfolio diversification and controlled risk exposure.</span>
+          </div>
+          <div class="list-item">
+            <strong>Growth-Oriented Structures</strong>
+            <span>Longer-horizon investment products with increased focus on appreciation potential and strategic allocation.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="section-title">Key characteristics</h2>
+        <p class="copy">
+          General reference features for investment products currently outlined on the platform.
+        </p>
+        <table class="table">
+          <tr><td>Reference Currency</td><td>EUR</td></tr>
+          <tr><td>Planning Horizon</td><td>Medium- to long-term</td></tr>
+          <tr><td>Primary Use</td><td>Capital growth and allocation</td></tr>
+          <tr><td>Structure</td><td>Product-dependent</td></tr>
+          <tr><td>Client Focus</td><td>Private financial positioning</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 class="section-title">Investment approach</h2>
+      <p class="copy">
+        Investment offerings are positioned as structured financial products intended to support
+        long-term planning, disciplined capital allocation, and measured development of private wealth.
+        Additional product detail may be refined as the platform evolves.
+      </p>
+    </div>
+
+    <div class="footer">
+      Davlad Bank © 2026 · Investment Products
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+    function applyTheme(theme){
+      document.body.classList.toggle("light", theme==="light");
+      btn.textContent = theme==="light" ? "☀️" : "🌙";
+    }
+    applyTheme(localStorage.getItem("theme") || "dark");
+    btn.addEventListener("click", ()=>{
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
+        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+        document.getElementById("top-date").textContent =
+          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
+      } catch {
+        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+      }
+    }
+    loadFxRates();
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Private Banking – Deutsche Version</title>
+  <style>
+    :root{
+      --bg:#080808;
+      --card:#151515;
+      --border:rgba(255,215,80,0.15);
+      --gold:#f3c54d;
+      --gold-soft:#ffdf8c;
+      --text:#f7f7f7;
+      --muted:#bdbdbd;
+      --shadow:0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    .container{
+      max-width:980px;
+      margin:0 auto;
+      padding:28px 20px 60px;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      font-size:22px;
+      font-weight:800;
+      color:var(--gold-soft);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:6px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    .lang-switch a{
+      padding:6px 10px;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .lang-switch .active{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      padding:44px;
+      text-align:center;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(243,197,77,0.10);
+      color:var(--gold-soft);
+      border:1px solid rgba(243,197,77,0.20);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:14px;
+      margin-bottom:22px;
+    }
+
+    h1{
+      font-size:44px;
+      margin:0 0 12px;
+    }
+
+    .subtitle{
+      font-size:18px;
+      line-height:1.8;
+      color:var(--muted);
+      max-width:700px;
+      margin:0 auto 26px;
+    }
+
+    .fun-box{
+      background:rgba(255,255,255,0.025);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+      max-width:700px;
+      margin:0 auto 24px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 22px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:800;
+      background:linear-gradient(180deg, #f3c54d, #d8a92c);
+      color:#111;
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:24px;
+      color:#8e8e8e;
+      font-size:14px;
+    }
+
+    @media (max-width:700px){
+      h1{font-size:34px}
+      .card{padding:28px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="nav">
+      <div class="brand">Davlad Private Banking</div>
+      <div class="lang-switch">
+        <a href="../index.html">EN</a>
+        <a href="index.html" class="active">DE</a>
+        <a href="../ua/index.html">UA</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="badge">Deutsche Lokalisierung</div>
+
+      <h1>Diese Seite befindet sich noch in Entwicklung</h1>
+
+      <div class="subtitle">
+        Die deutschsprachige Version von Davlad Private Banking
+        wird derzeit mit höchster strategischer Priorität vorbereitet.
+      </div>
+
+      <div class="fun-box">
+        Für eine vollständige deutsche Lokalisierung werden jedoch
+        zusätzliche Investitionen, operative Ressourcen und emotionale Stabilität benötigt.
+        <br><br>
+        Kurz gesagt: Die Übersetzung ist nicht gescheitert —
+        sie wartet lediglich auf frisches Kapital.
+      </div>
+
+      <a class="btn" href="../index.html">Zur englischen Version</a>
+    </div>
+
+    <div class="footer">
+      Davlad Private Banking © 2026 · Deutsche Version in strategischer Vorbereitung
+    </div>
+  </div>
+</body>
+</html>

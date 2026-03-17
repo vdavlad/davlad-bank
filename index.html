@@ -9,45 +9,45 @@
 
   <style>
     :root{
-      --bg:#080808;
-      --bg-soft:#111111;
-      --card:#151515;
-      --card-2:#1c1c1c;
-      --border:rgba(255,215,80,0.15);
-      --gold:#f3c54d;
-      --gold-soft:#ffdf8c;
-      --text:#f7f7f7;
-      --muted:#bdbdbd;
-      --shadow:0 20px 60px rgba(0,0,0,0.45);
+      --bg:#070707;
+      --card:#121212;
+      --card-2:#181818;
+
+      --text:#EAEAEA;
+      --muted:#8A8A8A;
+
+      --accent:#C6A85B;
+      --border:rgba(255,255,255,0.08);
+      --border-accent:rgba(198,168,91,0.25);
+
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
       --nav-bg:rgba(255,255,255,0.02);
       --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --badge-bg:rgba(243,197,77,0.10);
-      --hover-gold:rgba(243,197,77,0.10);
       --hero-bg:
-        radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
-        radial-gradient(circle at top left, rgba(243,197,77,0.05), transparent 18%),
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
         linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
       --topbar-bg:rgba(0,0,0,0.55);
     }
 
     body.light{
       --bg:#f6f2e8;
-      --bg-soft:#ebe4d4;
       --card:#fffdf8;
-      --card-2:#f8f3e8;
-      --border:rgba(166,124,0,0.14);
-      --gold:#c79b2b;
-      --gold-soft:#9f760a;
-      --text:#161616;
-      --muted:#6d6658;
+      --card-2:#f2eadc;
+
+      --text:#171717;
+      --muted:#6E675A;
+
+      --accent:#B8943F;
+      --border:rgba(0,0,0,0.08);
+      --border-accent:rgba(184,148,63,0.24);
+
       --shadow:0 18px 50px rgba(86,67,21,0.10);
-      --nav-bg:rgba(255,255,255,0.70);
-      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,250,242,0.78));
-      --badge-bg:rgba(199,155,43,0.10);
-      --hover-gold:rgba(199,155,43,0.10);
+      --nav-bg:rgba(255,255,255,0.72);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,250,242,0.78));
       --hero-bg:
-        radial-gradient(circle at top right, rgba(199,155,43,0.12), transparent 24%),
-        radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 26%),
+        radial-gradient(circle at top right, rgba(184,148,63,0.10), transparent 26%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.80), transparent 28%),
         linear-gradient(180deg, #f8f5ee 0%, #f3edde 100%);
       --topbar-bg:rgba(255,255,255,0.72);
     }
@@ -65,8 +65,8 @@
 
     .fx-topbar{
       width:100%;
-      font-size:13px;
-      letter-spacing:0.2px;
+      font-size:12px;
+      letter-spacing:0.15px;
       border-bottom:1px solid var(--border);
       background:var(--topbar-bg);
       backdrop-filter:blur(8px);
@@ -75,7 +75,7 @@
     .fx-inner{
       max-width:1280px;
       margin:0 auto;
-      padding:7px 20px;
+      padding:5px 20px;
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -92,17 +92,19 @@
 
     .fx-item{
       color:var(--muted);
+      opacity:0.92;
     }
 
     .fx-item span{
-      color:var(--gold-soft);
-      font-weight:700;
+      color:var(--text);
+      font-weight:600;
       margin-left:4px;
     }
 
     .fx-date{
       color:var(--muted);
-      font-size:12px;
+      font-size:11px;
+      opacity:0.9;
     }
 
     .container{
@@ -136,8 +138,8 @@
       left:0;
       right:0;
       height:1px;
-      background:linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity:0.65;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:0.6;
     }
 
     .brand-wrap{
@@ -149,28 +151,25 @@
     .logo{
       width:48px;
       height:48px;
-      border-radius:16px;
+      border-radius:12px;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(135deg, var(--gold), #b98913);
-      color:#111;
-      font-size:20px;
-      font-weight:800;
-      box-shadow:0 12px 30px rgba(185,137,19,0.25);
+      background:#0e0e0e;
+      border:1px solid var(--border);
+      box-shadow:0 10px 25px rgba(0,0,0,0.4);
       flex-shrink:0;
     }
 
     body.light .logo{
-      color:#fffdf8;
+      background:#f7f2e8;
     }
 
     .brand{
       font-size:22px;
       font-weight:800;
       letter-spacing:0.3px;
-      color:var(--gold-soft);
-      transition:color 0.25s ease;
+      color:var(--text);
     }
 
     .brand-sub{
@@ -197,19 +196,19 @@
       text-decoration:none;
       color:var(--text);
       font-weight:700;
-      padding:10px 14px;
+      padding:9px 12px;
       border-radius:10px;
-      transition:0.2s ease;
+      transition:0.18s ease;
     }
 
     .nav-links a:hover{
-      background:var(--hover-gold);
-      color:var(--gold-soft);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
     }
 
     .lang-switch{
       display:flex;
-      gap:6px;
+      gap:4px;
       border:1px solid var(--border);
       border-radius:10px;
       overflow:hidden;
@@ -217,49 +216,49 @@
     }
 
     .lang-switch a{
-      padding:6px 10px;
+      padding:6px 9px;
       text-decoration:none;
-      font-size:13px;
+      font-size:12px;
       font-weight:700;
       color:var(--muted);
-      transition:0.2s ease;
+      transition:0.18s ease;
     }
 
     .lang-switch a:hover{
-      background:rgba(243,197,77,0.15);
-      color:var(--gold-soft);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
     }
 
     .lang-switch .active{
-      background:var(--gold);
-      color:#111;
+      background:rgba(255,255,255,0.06);
+      color:var(--text);
     }
 
     .theme-btn{
       border:1px solid var(--border);
       background:transparent;
       color:var(--text);
-      padding:8px 12px;
+      padding:8px 10px;
       border-radius:10px;
       cursor:pointer;
-      font-size:14px;
+      font-size:13px;
       font-weight:700;
-      transition:0.2s ease;
+      transition:0.18s ease;
     }
 
     .theme-btn:hover{
-      background:var(--hover-gold);
-      color:var(--gold-soft);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
     }
 
     .full-banner{
-      position:relative;
-      min-height:440px;
-      border-radius:30px;
-      overflow:hidden;
-      border:1px solid var(--border);
+      width:100%;
+      min-height:500px;
+      border-bottom:1px solid var(--border);
       box-shadow:var(--shadow);
-      margin-bottom:24px;
+      margin-bottom:30px;
+      position:relative;
+      overflow:hidden;
       background:var(--card-bg);
     }
 
@@ -268,7 +267,7 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.54)),
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58)),
         url("images/banner_v1.jpg") center/cover no-repeat;
       transform:scale(1.01);
     }
@@ -276,194 +275,86 @@
     .banner-overlay{
       position:relative;
       z-index:2;
-      min-height:440px;
+      min-height:500px;
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
-      padding:36px;
-      background:linear-gradient(180deg, transparent 28%, rgba(0,0,0,0.62) 100%);
+      padding:42px 20px;
+      max-width:1280px;
+      margin:0 auto;
+      background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.64) 100%);
     }
 
     .banner-kicker{
       font-size:13px;
       letter-spacing:1.4px;
       text-transform:uppercase;
-      color:#f4ddb0;
+      color:#e8dcc0;
       margin-bottom:10px;
       font-weight:700;
     }
 
     .banner-title{
-      font-size:58px;
-      line-height:1.02;
-      margin:0 0 10px;
+      font-size:62px;
+      line-height:1;
+      margin:0 0 8px;
       color:#fffaf0;
       max-width:760px;
       font-weight:800;
     }
 
     .banner-subtitle{
-      font-size:20px;
-      color:#f4ddb0;
+      font-size:18px;
+      color:#efe3bf;
       margin:0 0 14px;
       font-style:italic;
     }
 
     .banner-text{
-      color:rgba(255,255,255,0.88);
-      line-height:1.8;
-      max-width:680px;
-      font-size:16px;
+      color:rgba(255,255,255,0.86);
+      line-height:1.75;
+      max-width:560px;
+      font-size:15px;
     }
 
     .service-grid{
       display:grid;
       grid-template-columns:repeat(5,1fr);
-      gap:16px;
-      margin-bottom:24px;
+      gap:14px;
+      margin-bottom:28px;
     }
 
     .service-card{
       text-decoration:none;
       background:var(--card-2);
       border:1px solid var(--border);
-      border-radius:18px;
-      padding:24px 18px;
+      border-radius:16px;
+      padding:20px 16px;
       text-align:center;
-      transition:0.2s ease;
+      transition:0.18s ease;
       color:var(--text);
       box-shadow:var(--shadow);
     }
 
     .service-card:hover{
-      transform:translateY(-3px);
-      border-color:rgba(243,197,77,0.35);
-      background:var(--card-bg);
+      transform:translateY(-1px);
+      border-color:var(--border-accent);
+      background:rgba(255,255,255,0.02);
     }
 
     .service-icon{
-      width:30px;
-      height:30px;
-      margin:0 auto 12px;
-      color:var(--gold-soft);
+      width:26px;
+      height:26px;
+      margin:0 auto 10px;
+      color:var(--accent);
       display:block;
     }
 
     .service-title{
       font-weight:700;
-      font-size:15px;
-      color:var(--gold-soft);
-      line-height:1.4;
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns:1.08fr 0.92fr;
-      gap:24px;
-      align-items:stretch;
-      margin-bottom:24px;
-    }
-
-    .card{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      overflow:hidden;
-      position:relative;
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(243,197,77,0.45), transparent);
-      opacity:0.85;
-    }
-
-    .hero-left{
-      padding:42px;
-    }
-
-    .badge{
-      display:inline-block;
-      background:var(--badge-bg);
-      color:var(--gold-soft);
-      border:1px solid rgba(243,197,77,0.20);
-      padding:8px 14px;
-      border-radius:999px;
       font-size:14px;
-      margin-bottom:22px;
-      transition:all 0.25s ease;
-    }
-
-    h1{
-      font-size:62px;
-      line-height:0.98;
-      margin:0 0 12px;
-      letter-spacing:-1.2px;
-      font-weight:800;
-    }
-
-    .slogan{
-      color:var(--gold-soft);
-      font-size:22px;
-      margin-bottom:24px;
-      letter-spacing:0.2px;
-      transition:color 0.25s ease;
-      font-style:italic;
-    }
-
-    .subtitle{
-      font-size:18px;
-      line-height:1.9;
-      color:var(--muted);
-      max-width:760px;
-      transition:color 0.25s ease;
-    }
-
-    .hero-right{
-      padding:24px;
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-
-    .welcome-card,
-    .stat{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:22px;
-    }
-
-    .welcome-title{
-      font-size:34px;
-      color:var(--gold-soft);
-      margin:0 0 10px;
-      font-weight:800;
-    }
-
-    .welcome-copy{
-      color:var(--muted);
-      line-height:1.85;
-      margin:0;
-    }
-
-    .stat-label{
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:8px;
-    }
-
-    .stat-value{
-      font-size:30px;
-      font-weight:800;
-      color:var(--gold-soft);
+      color:var(--text);
+      line-height:1.35;
     }
 
     .snapshot-card,
@@ -471,9 +362,9 @@
       margin-top:24px;
       background:var(--card-bg);
       border:1px solid var(--border);
-      border-radius:24px;
+      border-radius:22px;
       box-shadow:var(--shadow);
-      padding:28px;
+      padding:24px;
       position:relative;
       overflow:hidden;
     }
@@ -486,8 +377,8 @@
       left:0;
       right:0;
       height:1px;
-      background:linear-gradient(90deg, transparent, rgba(243,197,77,0.45), transparent);
-      opacity:0.85;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:0.6;
     }
 
     .snapshot-header,
@@ -503,15 +394,15 @@
     .snapshot-header h2,
     .fx-header h2{
       margin:0;
-      font-size:36px;
-      color:var(--gold-soft);
+      font-size:30px;
+      color:var(--text);
       font-weight:800;
     }
 
     .snapshot-updated,
     .fx-updated{
       color:var(--muted);
-      font-size:14px;
+      font-size:12px;
     }
 
     .snapshot-grid{
@@ -530,22 +421,22 @@
     .fx-item-card{
       background:var(--card-2);
       border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
+      border-radius:16px;
+      padding:16px;
     }
 
     .snapshot-label,
     .fx-label{
       color:var(--muted);
-      font-size:13px;
+      font-size:12px;
       margin-bottom:8px;
     }
 
     .snapshot-value,
     .fx-value{
-      font-size:28px;
-      font-weight:800;
-      color:var(--gold-soft);
+      font-size:24px;
+      font-weight:700;
+      color:var(--text);
     }
 
     .snapshot-note,
@@ -560,27 +451,46 @@
       margin-top:24px;
       display:grid;
       grid-template-columns:1fr 1fr 1fr;
-      gap:20px;
+      gap:18px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:0.6;
     }
 
     .mini-panel{
-      padding:28px 26px;
-      min-height:210px;
+      padding:24px 22px;
+      min-height:180px;
     }
 
     .mini-panel h3{
-      margin:0 0 12px;
-      font-size:28px;
-      color:var(--gold-soft);
-      transition:color 0.25s ease;
+      margin:0 0 10px;
+      font-size:24px;
+      color:var(--text);
       font-weight:800;
     }
 
     .mini-panel p{
       margin:0;
       color:var(--muted);
-      line-height:1.85;
-      transition:color 0.25s ease;
+      line-height:1.75;
+      font-size:15px;
     }
 
     .footer{
@@ -588,7 +498,6 @@
       margin-top:30px;
       color:#8e8e8e;
       font-size:14px;
-      transition:color 0.25s ease;
     }
 
     body.light .footer{
@@ -596,10 +505,6 @@
     }
 
     @media (max-width: 1100px){
-      .hero{
-        grid-template-columns:1fr;
-      }
-
       .snapshot-grid{
         grid-template-columns:1fr 1fr;
       }
@@ -614,10 +519,6 @@
         grid-template-columns:1fr;
       }
 
-      h1{
-        font-size:50px;
-      }
-
       .banner-title{
         font-size:40px;
       }
@@ -626,10 +527,6 @@
         flex-direction:column;
         align-items:flex-start;
       }
-
-      .hero-left{
-        padding:34px;
-      }
     }
 
     @media (max-width: 700px){
@@ -637,10 +534,6 @@
       .fx-grid,
       .service-grid{
         grid-template-columns:1fr;
-      }
-
-      h1{
-        font-size:42px;
       }
 
       .banner-title{
@@ -667,10 +560,20 @@
   </div>
 
   <div class="container">
-
     <div class="nav">
       <div class="brand-wrap">
-        <div class="logo">DB</div>
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="32" height="32" aria-hidden="true">
+            <path d="M16 12 H32 Q52 32 32 52 H16 Z"
+                  fill="none"
+                  stroke="#EAEAEA"
+                  stroke-width="3"/>
+            <line x1="10" y1="24" x2="42" y2="24"
+                  stroke="#C6A85B" stroke-width="2"/>
+            <line x1="10" y1="38" x2="42" y2="38"
+                  stroke="#C6A85B" stroke-width="2"/>
+          </svg>
+        </div>
         <div>
           <div class="brand">Davlad Bank</div>
           <div class="brand-sub">Private Capital • Advisory • Strategic Liquidity</div>
@@ -681,6 +584,10 @@
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="dashboard.html">Dashboard</a>
+          <a href="funding.html">Funding</a>
+          <a href="coming-soon.html">Investors</a>
+          <a href="coming-soon.html">FAQ</a>
+          <a href="coming-soon.html">Contact</a>
         </div>
 
         <div class="lang-switch">
@@ -692,19 +599,21 @@
         <button id="themeToggle" class="theme-btn">🌙</button>
       </div>
     </div>
+  </div>
 
-    <div class="full-banner">
-      <div class="banner-overlay">
-        <div class="banner-kicker">Munich • Independent Banking • Capital Oversight</div>
-        <h2 class="banner-title">Welcome</h2>
-        <div class="banner-subtitle">In liquidity we trust.</div>
-        <div class="banner-text">
-          Davlad Bank applies a disciplined approach to liquidity, capital planning,
-          and financial continuity under changing market conditions.
-        </div>
+  <div class="full-banner">
+    <div class="banner-overlay">
+      <div class="banner-kicker">Munich • Independent Banking • Capital Oversight</div>
+      <h2 class="banner-title">Welcome</h2>
+      <div class="banner-subtitle">In liquidity we trust.</div>
+      <div class="banner-text">
+        Davlad Bank applies a disciplined approach to liquidity, capital planning,
+        and financial continuity under changing market conditions.
       </div>
     </div>
+  </div>
 
+  <div class="container">
     <div class="service-grid">
       <a href="dashboard.html" class="service-card">
         <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -752,45 +661,6 @@
         </svg>
         <div class="service-title">Investors</div>
       </a>
-    </div>
-
-    <div class="hero">
-      <div class="card hero-left">
-        <div class="badge">Independent Financial Institution</div>
-
-        <h1>Davlad Bank</h1>
-        <div class="slogan">In liquidity we trust.</div>
-
-        <div class="subtitle">
-          Independent financial institution focused on liquidity management,
-          capital planning, and private advisory services.
-        </div>
-      </div>
-
-      <div class="card hero-right">
-        <div class="welcome-card">
-          <h3 class="welcome-title">Overview</h3>
-          <p class="welcome-copy">
-            Davlad Bank provides a structured approach to liquidity oversight,
-            capital planning, market reference monitoring, and strategic financial positioning.
-          </p>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Capital Mandate</div>
-          <div class="stat-value">Open</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Operating Focus</div>
-          <div class="stat-value">Liquidity</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Institutional Scope</div>
-          <div class="stat-value">Independent</div>
-        </div>
-      </div>
     </div>
 
     <div class="snapshot-card">
@@ -874,7 +744,6 @@
     <div class="footer">
       Davlad Bank © 2026 · Private Capital, Public Confidence
     </div>
-
   </div>
 
   <script>
@@ -924,17 +793,6 @@
       const topChf = document.getElementById("top-chf");
       const topDate = document.getElementById("top-date");
 
-      usdEl.textContent = "—";
-      gbpEl.textContent = "—";
-      chfEl.textContent = "—";
-      snapUsdEl.textContent = "—";
-      snapChfEl.textContent = "—";
-      topUsd.textContent = "—";
-      topGbp.textContent = "—";
-      topChf.textContent = "—";
-      updatedEl.textContent = "Loading…";
-      topDate.textContent = "Loading…";
-
       try {
         const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
@@ -959,14 +817,9 @@
           topChf.textContent = value;
         }
 
-        if (data?.date) {
-          const txt = `Updated: ${data.date}`;
-          updatedEl.textContent = txt;
-          topDate.textContent = txt;
-        } else {
-          updatedEl.textContent = "Updated: latest available";
-          topDate.textContent = "Updated: latest available";
-        }
+        const txt = data?.date ? `Updated: ${data.date}` : "Updated: latest available";
+        updatedEl.textContent = txt;
+        topDate.textContent = txt;
       } catch (err) {
         updatedEl.textContent = "Rates temporarily unavailable";
         topDate.textContent = "Rates temporarily unavailable";

@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Davlad Private Banking</title>
+  <title>Davlad Bank</title>
 
-  <!-- Premium serif for headings -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,9 +54,7 @@
         linear-gradient(180deg, #f8f5ee 0%, #f3edde 100%);
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{ box-sizing:border-box; }
 
     html,body{
       margin:0;
@@ -88,7 +85,7 @@
       border:1px solid var(--border);
       border-radius:18px;
       box-shadow:var(--shadow);
-      margin-bottom:28px;
+      margin-bottom:24px;
       backdrop-filter: blur(10px);
       transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       position:relative;
@@ -212,9 +209,66 @@
       color:var(--gold-soft);
     }
 
-    .hero-grid{
+    .full-banner{
+      position:relative;
+      min-height:420px;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+      background:var(--card-bg);
+    }
+
+    .full-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.52)),
+        url("images/banner.jpg") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      min-height:420px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 28%, rgba(0,0,0,0.62) 100%);
+    }
+
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#f4ddb0;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .banner-title{
+      font-family:"Cormorant Garamond", serif;
+      font-size:54px;
+      line-height:0.98;
+      margin:0 0 10px;
+      color:#fffaf0;
+      max-width:760px;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.88);
+      line-height:1.8;
+      max-width:660px;
+      font-size:16px;
+    }
+
+    .hero{
       display:grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns:1.08fr 0.92fr;
       gap:24px;
       align-items:stretch;
       margin-bottom:24px;
@@ -223,7 +277,7 @@
     .card{
       background:var(--card-bg);
       border:1px solid var(--border);
-      border-radius:28px;
+      border-radius:26px;
       box-shadow:var(--shadow);
       transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       overflow:hidden;
@@ -242,7 +296,7 @@
     }
 
     .hero-left{
-      padding:46px;
+      padding:42px;
     }
 
     .badge{
@@ -259,7 +313,7 @@
 
     h1{
       font-family:"Cormorant Garamond", serif;
-      font-size:76px;
+      font-size:70px;
       line-height:0.94;
       margin:0 0 12px;
       letter-spacing:-1.5px;
@@ -354,70 +408,30 @@
     }
 
     .hero-right{
+      padding:24px;
       display:flex;
       flex-direction:column;
-      gap:18px;
+      gap:16px;
     }
 
-    .banner-card{
-      min-height:420px;
-      position:relative;
-      overflow:hidden;
+    .welcome-card{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
     }
 
-    .banner-image{
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.42)),
-        url("images/banner_v1.jpg") center/cover no-repeat;
-      transform:scale(1.01);
-    }
-
-    body.light .banner-image{
-      filter:saturate(0.95) brightness(1.02);
-    }
-
-    .banner-overlay{
-      position:relative;
-      z-index:2;
-      height:100%;
-      min-height:420px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:28px;
-      background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.58) 100%);
-    }
-
-    .banner-kicker{
-      font-size:13px;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-      color:#f4ddb0;
-      margin-bottom:8px;
-      font-weight:700;
-    }
-
-    .banner-title{
+    .welcome-title{
       font-family:"Cormorant Garamond", serif;
-      font-size:38px;
-      line-height:1.05;
+      font-size:36px;
+      color:var(--gold-soft);
       margin:0 0 10px;
-      color:#fffaf0;
     }
 
-    .banner-text{
-      color:rgba(255,255,255,0.88);
-      line-height:1.75;
-      max-width:520px;
-      font-size:15px;
-    }
-
-    .stats-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
+    .welcome-copy{
+      color:var(--muted);
+      line-height:1.85;
+      margin:0;
     }
 
     .stat{
@@ -436,7 +450,7 @@
     }
 
     .stat-value{
-      font-size:28px;
+      font-size:30px;
       font-weight:800;
       color:var(--gold-soft);
       transition:color 0.25s ease;
@@ -465,6 +479,74 @@
       color:var(--muted);
       line-height:1.9;
       font-size:16px;
+    }
+
+    .fx-card{
+      margin-top:24px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .fx-card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(243,197,77,0.45), transparent);
+      opacity:0.85;
+    }
+
+    .fx-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .fx-header h2{
+      margin:0;
+      font-family:"Cormorant Garamond", serif;
+      font-size:38px;
+      color:var(--gold-soft);
+    }
+
+    .fx-updated{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .fx-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .fx-item{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .fx-label{
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:8px;
+    }
+
+    .fx-value{
+      font-size:28px;
+      font-weight:800;
+      color:var(--gold-soft);
     }
 
     .bottom-grid{
@@ -507,13 +589,9 @@
     }
 
     @media (max-width: 1100px){
-      .hero-grid,
+      .hero,
       .statement-grid{
         grid-template-columns:1fr;
-      }
-
-      .stats-grid{
-        grid-template-columns:1fr 1fr 1fr;
       }
     }
 
@@ -522,8 +600,16 @@
         grid-template-columns:1fr;
       }
 
+      .fx-grid{
+        grid-template-columns:1fr;
+      }
+
       h1{
-        font-size:54px;
+        font-size:50px;
+      }
+
+      .banner-title{
+        font-size:40px;
       }
 
       .nav{
@@ -537,16 +623,16 @@
     }
 
     @media (max-width: 700px){
-      .stats-grid{
-        grid-template-columns:1fr;
-      }
-
       h1{
-        font-size:44px;
+        font-size:42px;
       }
 
       .banner-title{
-        font-size:30px;
+        font-size:32px;
+      }
+
+      .fx-header h2{
+        font-size:32px;
       }
     }
   </style>
@@ -556,15 +642,14 @@
 
     <div class="nav">
       <div class="brand-wrap">
-        <div class="logo">DPB</div>
+        <div class="logo">DB</div>
         <div>
-          <div class="brand">Davlad Private Banking</div>
+          <div class="brand">Davlad Bank</div>
           <div class="brand-sub">Private Capital • Advisory • Strategic Liquidity</div>
         </div>
       </div>
 
       <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
-
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="dashboard.html">Dashboard</a>
@@ -581,16 +666,26 @@
         </div>
 
         <button id="themeToggle" class="theme-btn">🌙</button>
-
       </div>
     </div>
 
-    <div class="hero-grid">
+    <div class="full-banner">
+      <div class="banner-overlay">
+        <div class="banner-kicker">Munich • Private Banking • Founder-led institution</div>
+        <h2 class="banner-title">Disciplined capital aesthetics under temporary liquidity constraints.</h2>
+        <div class="banner-text">
+          Davlad Bank combines discretion, premium presentation, and high-conviction borrowing strategy
+          in support of founder confidence and operational continuity.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
       <div class="card hero-left">
         <div class="badge">Private Banking Division</div>
 
-        <h1>DPB</h1>
-        <div class="slogan">veni vidi valui.</div>
+        <h1>Davlad Bank</h1>
+        <div class="slogan">In liquidity we trust.</div>
 
         <div class="subtitle">
           Boutique financial institution specializing in strategic borrowing,
@@ -610,38 +705,33 @@
         <div class="buttons">
           <a class="btn btn-gold" href="dashboard.html">Open Dashboard</a>
           <a class="btn btn-outline" href="funding.html">Funding Terms</a>
-          <a class="btn btn-outline" href="investors.html">Investor Relations</a>
+          <a class="btn btn-outline" href="coming-soon.html">Investor Relations</a>
         </div>
       </div>
 
-      <div class="hero-right">
-        <div class="card banner-card">
-          <div class="banner-image"></div>
-          <div class="banner-overlay">
-            <div class="banner-kicker">Private Banking • Munich Office</div>
-            <h2 class="banner-title">Capital stewardship under elegant financial pressure.</h2>
-            <div class="banner-text">
-              Davlad Private Banking combines discretion, strategic flexibility,
-              and selective optimism in support of short-term solvency and long-term prestige.
-            </div>
-          </div>
+      <div class="card hero-right">
+        <div class="welcome-card">
+          <h3 class="welcome-title">Welcome</h3>
+          <p class="welcome-copy">
+            Welcome to Davlad Bank — a selective financial institution committed to elegant
+            presentation, strategic capital acquisition, and the preservation of institutional dignity
+            during short-term solvency fluctuations.
+          </p>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat">
-            <div class="stat-label">Required Capital</div>
-            <div class="stat-value">Unlimited</div>
-          </div>
+        <div class="stat">
+          <div class="stat-label">Required Capital</div>
+          <div class="stat-value">Unlimited</div>
+        </div>
 
-          <div class="stat">
-            <div class="stat-label">Risk Profile</div>
-            <div class="stat-value">Trust-Based</div>
-          </div>
+        <div class="stat">
+          <div class="stat-label">Risk Profile</div>
+          <div class="stat-value">Trust-Based</div>
+        </div>
 
-          <div class="stat">
-            <div class="stat-label">Credit Rating</div>
-            <div class="stat-value">BBB-</div>
-          </div>
+        <div class="stat">
+          <div class="stat-label">Credit Rating</div>
+          <div class="stat-value">BBB-</div>
         </div>
       </div>
     </div>
@@ -650,13 +740,37 @@
       <div class="statement-grid">
         <h2 class="statement-title">Institutional statement</h2>
         <div class="statement-copy">
-          Davlad Private Banking is committed to preserving founder confidence,
+          Davlad Bank is committed to preserving founder confidence,
           strategic optionality, and short-term solvency under evolving market conditions.
           Our institution maintains a disciplined focus on premium presentation,
           relationship-based capital access, and emotionally intelligent liquidity management.
         </div>
       </div>
     </div>
+
+    <section class="fx-card">
+      <div class="fx-header">
+        <h2>Reference Exchange Rates</h2>
+        <div class="fx-updated" id="fxUpdated">Loading…</div>
+      </div>
+
+      <div class="fx-grid">
+        <div class="fx-item">
+          <div class="fx-label">EUR / USD</div>
+          <div class="fx-value" id="fx-usd">—</div>
+        </div>
+
+        <div class="fx-item">
+          <div class="fx-label">EUR / UAH</div>
+          <div class="fx-value" id="fx-uah">—</div>
+        </div>
+
+        <div class="fx-item">
+          <div class="fx-label">EUR / GBP</div>
+          <div class="fx-value" id="fx-gbp">—</div>
+        </div>
+      </div>
+    </section>
 
     <div class="bottom-grid">
       <div class="card mini-panel">
@@ -676,7 +790,7 @@
     </div>
 
     <div class="footer">
-      Davlad Private Banking © 2026 · Private Capital, Public Confidence
+      Davlad Bank © 2026 · Private Capital, Public Confidence
     </div>
 
   </div>
@@ -703,6 +817,24 @@
       localStorage.setItem("theme", nextTheme);
       applyTheme(nextTheme);
     });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,UAH,GBP");
+        const data = await res.json();
+
+        document.getElementById("fx-usd").textContent = data.rates.USD.toFixed(4);
+        document.getElementById("fx-uah").textContent = data.rates.UAH.toFixed(4);
+        document.getElementById("fx-gbp").textContent = data.rates.GBP.toFixed(4);
+
+        const updated = data.date ? `Updated: ${data.date}` : "Updated: latest available";
+        document.getElementById("fxUpdated").textContent = updated;
+      } catch (err) {
+        document.getElementById("fxUpdated").textContent = "Rates temporarily unavailable";
+      }
+    }
+
+    loadFxRates();
   </script>
 </body>
 </html>

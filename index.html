@@ -4,715 +4,233 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Davlad Bank</title>
-<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-<link rel="apple-touch-icon" href="images/favicon.svg">
 
-  <style>
-    :root{
-      --bg:#080808;
-      --bg-soft:#111111;
-      --card:#151515;
-      --card-2:#1c1c1c;
-      --border:rgba(255,215,80,0.15);
-      --gold:#f3c54d;
-      --gold-soft:#ffdf8c;
-      --text:#f7f7f7;
-      --muted:#bdbdbd;
-      --shadow:0 20px 60px rgba(0,0,0,0.45);
-      --nav-bg:rgba(255,255,255,0.02);
-      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --badge-bg:rgba(243,197,77,0.10);
-      --hover-gold:rgba(243,197,77,0.10);
-      --hero-bg:
-        radial-gradient(circle at top right, rgba(243,197,77,0.08), transparent 22%),
-        radial-gradient(circle at top left, rgba(243,197,77,0.05), transparent 18%),
-        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
-    }
-
-    body.light{
-      --bg:#f6f2e8;
-      --bg-soft:#ebe4d4;
-      --card:#fffdf8;
-      --card-2:#f8f3e8;
-      --border:rgba(166,124,0,0.14);
-      --gold:#c79b2b;
-      --gold-soft:#9f760a;
-      --text:#161616;
-      --muted:#6d6658;
-      --shadow:0 18px 50px rgba(86,67,21,0.10);
-      --nav-bg:rgba(255,255,255,0.70);
-      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,250,242,0.78));
-      --badge-bg:rgba(199,155,43,0.10);
-      --hover-gold:rgba(199,155,43,0.10);
-      --hero-bg:
-        radial-gradient(circle at top right, rgba(199,155,43,0.12), transparent 24%),
-        radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 26%),
-        linear-gradient(180deg, #f8f5ee 0%, #f3edde 100%);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; }
-
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background:var(--hero-bg);
-      color:var(--text);
-      min-height:100vh;
-      transition:background 0.35s ease, color 0.25s ease;
-    }
-
-    .fx-topbar{
-      width:100%;
-      font-size:13px;
-      letter-spacing:0.2px;
-      border-bottom:1px solid var(--border);
-      background:rgba(0,0,0,0.55);
-      backdrop-filter:blur(8px);
-    }
-
-    body.light .fx-topbar{
-      background:rgba(255,255,255,0.72);
-    }
-
-    .fx-inner{
-      max-width:1280px;
-      margin:0 auto;
-      padding:7px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .fx-left{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .fx-item{
-      color:var(--muted);
-    }
-
-    .fx-item span{
-      color:var(--gold-soft);
-      font-weight:700;
-      margin-left:4px;
-    }
-
-    .fx-date{
-      color:var(--muted);
-      font-size:12px;
-    }
-
-    .container{
-      max-width:1280px;
-      margin:0 auto;
-      padding:20px 20px 70px;
-    }
-
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      padding:18px 22px;
-      background:var(--nav-bg);
-      border:1px solid var(--border);
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      margin-bottom:24px;
-      backdrop-filter: blur(10px);
-      transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      position:relative;
-      overflow:hidden;
-      flex-wrap:wrap;
-    }
-
-    .nav::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity:0.65;
-    }
-
-    .brand-wrap{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
-    .logo{
-      width:48px;
-      height:48px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg, var(--gold), #b98913);
-      color:#111;
-      font-size:20px;
-      font-weight:800;
-      box-shadow:0 12px 30px rgba(185,137,19,0.25);
-      flex-shrink:0;
-    }
-
-    body.light .logo{
-      color:#fffdf8;
-    }
-
-    .brand{
-      font-size:22px;
-      font-weight:800;
-      letter-spacing:0.3px;
-      color:var(--gold-soft);
-      transition:color 0.25s ease;
-    }
-
-    .brand-sub{
-      color:var(--muted);
-      font-size:13px;
-      margin-top:2px;
-    }
-
-    .nav-right{
-      display:flex;
-      align-items:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .nav-links a{
-      text-decoration:none;
-      color:var(--text);
-      font-weight:700;
-      padding:10px 14px;
-      border-radius:10px;
-      transition:0.2s ease;
-    }
-
-    .nav-links a:hover{
-      background:var(--hover-gold);
-      color:var(--gold-soft);
-    }
-
-    .lang-switch{
-      display:flex;
-      gap:6px;
-      border:1px solid var(--border);
-      border-radius:10px;
-      overflow:hidden;
-      transition:border-color 0.25s ease;
-    }
-
-    .lang-switch a{
-      padding:6px 10px;
-      text-decoration:none;
-      font-size:13px;
-      font-weight:700;
-      color:var(--muted);
-      transition:0.2s ease;
-    }
-
-    .lang-switch a:hover{
-      background:rgba(243,197,77,0.15);
-      color:var(--gold-soft);
-    }
-
-    .lang-switch .active{
-      background:var(--gold);
-      color:#111;
-    }
-
-    .theme-btn{
-      border:1px solid var(--border);
-      background:transparent;
-      color:var(--text);
-      padding:8px 12px;
-      border-radius:10px;
-      cursor:pointer;
-      font-size:14px;
-      font-weight:700;
-      transition:0.2s ease;
-    }
-
-    .theme-btn:hover{
-      background:var(--hover-gold);
-      color:var(--gold-soft);
-    }
-
-    .full-banner{
-      position:relative;
-      min-height:440px;
-      border-radius:30px;
-      overflow:hidden;
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      margin-bottom:24px;
-      background:var(--card-bg);
-    }
-
-    .full-banner::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.54)),
-        url("images/banner_v1.jpg") center/cover no-repeat;
-      transform:scale(1.01);
-    }
-
-    .banner-overlay{
-      position:relative;
-      z-index:2;
-      min-height:440px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:36px;
-      background:linear-gradient(180deg, transparent 28%, rgba(0,0,0,0.62) 100%);
-    }
-
-    .banner-kicker{
-      font-size:13px;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-      color:#f4ddb0;
-      margin-bottom:10px;
-      font-weight:700;
-    }
-
-    .banner-title{
-      font-size:58px;
-      line-height:1.02;
-      margin:0 0 10px;
-      color:#fffaf0;
-      max-width:760px;
-      font-weight:800;
-    }
-
-    .banner-subtitle{
-      font-size:20px;
-      color:#f4ddb0;
-      margin:0 0 14px;
-      font-style:italic;
-    }
-
-    .banner-text{
-      color:rgba(255,255,255,0.88);
-      line-height:1.8;
-      max-width:680px;
-      font-size:16px;
-    }
-
-    .service-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:16px;
-      margin-bottom:24px;
-    }
-
-    .service-card{
-      text-decoration:none;
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:24px 18px;
-      text-align:center;
-      transition:0.2s ease;
-      color:var(--text);
-      box-shadow:var(--shadow);
-    }
-
-    .service-card:hover{
-      transform:translateY(-3px);
-      border-color:rgba(243,197,77,0.35);
-      background:var(--card-bg);
-    }
-
-    .service-icon{
-      width:30px;
-      height:30px;
-      margin:0 auto 12px;
-      color:var(--gold-soft);
-      display:block;
-    }
-
-    .service-title{
-      font-weight:700;
-      font-size:15px;
-      color:var(--gold-soft);
-      line-height:1.4;
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns:1.08fr 0.92fr;
-      gap:24px;
-      align-items:stretch;
-      margin-bottom:24px;
-    }
-
-    .card{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      overflow:hidden;
-      position:relative;
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(243,197,77,0.45), transparent);
-      opacity:0.85;
-    }
-
-    .hero-left{
-      padding:42px;
-    }
-
-    .badge{
-      display:inline-block;
-      background:var(--badge-bg);
-      color:var(--gold-soft);
-      border:1px solid rgba(243,197,77,0.20);
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:14px;
-      margin-bottom:22px;
-      transition:all 0.25s ease;
-    }
-
-    h1{
-      font-size:62px;
-      line-height:0.98;
-      margin:0 0 12px;
-      letter-spacing:-1.2px;
-      font-weight:800;
-    }
-
-    .slogan{
-      color:var(--gold-soft);
-      font-size:22px;
-      margin-bottom:24px;
-      letter-spacing:0.2px;
-      transition:color 0.25s ease;
-      font-style:italic;
-    }
-
-    .subtitle{
-      font-size:18px;
-      line-height:1.9;
-      color:var(--muted);
-      max-width:760px;
-      transition:color 0.25s ease;
-    }
-
-    .hero-right{
-      padding:24px;
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-
-    .welcome-card,
-    .stat{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:22px;
-    }
-
-    .welcome-title{
-      font-size:34px;
-      color:var(--gold-soft);
-      margin:0 0 10px;
-      font-weight:800;
-    }
-
-    .welcome-copy{
-      color:var(--muted);
-      line-height:1.85;
-      margin:0;
-    }
-
-    .stat-label{
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:8px;
-    }
-
-    .stat-value{
-      font-size:30px;
-      font-weight:800;
-      color:var(--gold-soft);
-    }
-
-    .snapshot-card,
-    .fx-card{
-      margin-top:24px;
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      padding:28px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .snapshot-card::before,
-    .fx-card::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(243,197,77,0.45), transparent);
-      opacity:0.85;
-    }
-
-    .snapshot-header,
-    .fx-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-
-    .snapshot-header h2,
-    .fx-header h2{
-      margin:0;
-      font-size:36px;
-      color:var(--gold-soft);
-      font-weight:800;
-    }
-
-    .snapshot-updated,
-    .fx-updated{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .snapshot-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-    }
-
-    .fx-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
-
-    .snapshot-item,
-    .fx-item-card{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
-    }
-
-    .snapshot-label,
-    .fx-label{
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:8px;
-    }
-
-    .snapshot-value,
-    .fx-value{
-      font-size:28px;
-      font-weight:800;
-      color:var(--gold-soft);
-    }
-
-    .snapshot-note,
-    .fx-note{
-      margin-top:16px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.75;
-    }
-
-    .bottom-grid{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:20px;
-    }
-
-    .mini-panel{
-      padding:28px 26px;
-      min-height:210px;
-    }
-
-    .mini-panel h3{
-      margin:0 0 12px;
-      font-size:28px;
-      color:var(--gold-soft);
-      transition:color 0.25s ease;
-      font-weight:800;
-    }
-
-    .mini-panel p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.85;
-      transition:color 0.25s ease;
-    }
-
-    .footer{
-      text-align:center;
-      margin-top:30px;
-      color:#8e8e8e;
-      font-size:14px;
-      transition:color 0.25s ease;
-    }
-
-    body.light .footer{
-      color:#82786a;
-    }
-
-    @media (max-width: 1100px){
-      .hero{
-        grid-template-columns:1fr;
-      }
-
-      .snapshot-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .service-grid{
-        grid-template-columns:repeat(3,1fr);
-      }
-    }
-
-    @media (max-width: 950px){
-      .bottom-grid{
-        grid-template-columns:1fr;
-      }
-
-      h1{
-        font-size:50px;
-      }
-
-      .banner-title{
-        font-size:40px;
-      }
-
-      .nav{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .hero-left{
-        padding:34px;
-      }
-    }
-
-    @media (max-width: 700px){
-      .snapshot-grid,
-      .fx-grid,
-      .service-grid{
-        grid-template-columns:1fr;
-      }
-
-      h1{
-        font-size:42px;
-      }
-
-      .banner-title{
-        font-size:32px;
-      }
-
-      .snapshot-header h2,
-      .fx-header h2{
-        font-size:30px;
-      }
-    }
-  </style>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+<style>
+:root{
+  --bg:#080808;
+  --card:#151515;
+  --card-2:#1c1c1c;
+  --border:rgba(255,215,80,0.15);
+  --gold:#f3c54d;
+  --gold-soft:#ffdf8c;
+  --text:#f7f7f7;
+  --muted:#bdbdbd;
+}
+
+body.light{
+  --bg:#f6f2e8;
+  --card:#fffdf8;
+  --card-2:#f2eadc;
+  --border:rgba(166,124,0,0.14);
+  --gold:#c79b2b;
+  --gold-soft:#9f760a;
+  --text:#111;
+  --muted:#666;
+}
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* FX BAR */
+.fx-bar{
+  display:flex;
+  justify-content:space-between;
+  padding:6px 20px;
+  font-size:13px;
+  border-bottom:1px solid var(--border);
+}
+.fx-bar span{ color:var(--gold-soft); }
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  padding:16px 20px;
+}
+.nav a{
+  margin-right:14px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+}
+
+/* BANNER */
+.banner{
+  height:420px;
+  background:url("images/banner_v1.jpg") center/cover;
+  display:flex;
+  align-items:flex-end;
+  padding:30px;
+}
+.banner h1{ font-size:52px; margin:0; }
+.banner p{ color:var(--gold-soft); }
+
+/* SERVICES */
+.services{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  padding:20px;
+}
+.service{
+  background:var(--card-2);
+  border:1px solid var(--border);
+  padding:20px;
+  text-align:center;
+  border-radius:12px;
+  transition:.2s;
+}
+.service:hover{ transform:translateY(-3px); }
+
+/* CARDS */
+.section{
+  padding:20px;
+}
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+@media(max-width:900px){
+  .services{ grid-template-columns:1fr 1fr; }
+  .grid{ grid-template-columns:1fr 1fr; }
+}
+</style>
 </head>
+
 <body>
-  <div class="fx-topbar">
-    <div class="fx-inner">
-      <div class="fx-left">
-        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
-        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
-        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
-      </div>
-      <div class="fx-date" id="top-date">Loading…</div>
-    </div>
+
+<!-- FX BAR -->
+<div class="fx-bar">
+  <div>
+    EUR/USD <span id="usd">—</span> |
+    EUR/GBP <span id="gbp">—</span> |
+    EUR/CHF <span id="chf">—</span>
   </div>
+  <div id="date">Loading...</div>
+</div>
 
-  <div class="container">
+<!-- NAV -->
+<div class="nav">
+  <div><b>Davlad Bank</b></div>
+  <div>
+    <a href="#">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="#">Funding</a>
+    <a href="#">Investors</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
 
-    <div class="nav">
-      <div class="brand-wrap">
-        <div class="logo">DB</div>
-        <div>
-          <div class="brand">Davlad Bank</div>
-          <div class="brand-sub">Private Capital • Advisory • Strategic Liquidity</div>
-        </div>
-      </div>
+<!-- BANNER -->
+<div class="banner">
+  <div>
+    <h1>Welcome</h1>
+    <p>In liquidity we trust.</p>
+  </div>
+</div>
 
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="dashboard.html">Dashboard</a>
-          <a href="funding.html">Funding</a>
-          <a href="coming-soon.html">Investors</a>
-          <a href="coming-soon.html">FAQ</a>
-          <a href="coming-soon.html">Contact</a>
-        </div>
+<!-- SERVICES -->
+<div class="services">
 
-        <div class="lang-switch">
-          <a href="index.html" class="active">EN</a>
-          <a href="de/index.html">DE</a>
-          <a href="ua/index.html">UA</a>
-        </div>
+<div class="service">
+<svg width="28" height="28" stroke="currentColor" fill="none">
+<path d="M4 20h16M6 16V10M10 16V6M14 16V12M18 16V8"/>
+</svg>
+<br>Liquidity
+</div>
 
-        <button id="themeToggle" class="theme-btn">🌙</button>
-      </div>
-    </div>
+<div class="service">
+<svg width="28" height="28" stroke="currentColor" fill="none">
+<circle cx="12" cy="12" r="8"/>
+<path d="M8 12h8"/>
+</svg>
+<br>Funding
+</div>
 
-    <div class="full-banner">
-      <div class="banner-overlay">
-        <div class="banner-kicker">Munich • Independent Banking • Capital Oversight</div>
-        <h2 class="banner-title">Welcome</h2>
-        <div class="banner-subtitle">In liquidity we trust.</div>
-        <div class="banner-text">
-          Davlad Bank applies a disciplined approach to liquidity, capital planning,
-          and financial continuity under changing market conditions.
-        </div>
-      </div>
-    </div>
+<div class="service">
+<svg width="28" height="28" stroke="currentColor" fill="none">
+<path d="M4 20l6-6 4 4 6-10"/>
+</svg>
+<br>Advisory
+</div>
 
-    <div class="service-grid">
-      <a href="dashboard.html" class="service-card">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M4 19h16"></path>
-          <path d="M7 16V10
+<div class="service">
+<svg width="28" height="28" stroke="currentColor" fill="none">
+<circle cx="12" cy="12" r="10"/>
+</svg>
+<br>Markets
+</div>
+
+<div class="service">
+<svg width="28" height="28" stroke="currentColor" fill="none">
+<path d="M4 20h16M8 16l4-4 4 4"/>
+</svg>
+<br>Investors
+</div>
+
+</div>
+
+<!-- MARKET SNAPSHOT -->
+<div class="section">
+<div class="card">
+<h2>Market Snapshot</h2>
+
+<div class="grid">
+<div>DAX <br><b id="dax">—</b></div>
+<div>S&P 500 <br><b id="sp">—</b></div>
+<div>EUR/USD <br><b id="usd2">—</b></div>
+<div>EUR/CHF <br><b id="chf2">—</b></div>
+</div>
+
+</div>
+</div>
+
+<!-- FX BLOCK -->
+<div class="section">
+<div class="card">
+<h2>Exchange Rates</h2>
+
+<div class="grid">
+<div>EUR/USD <br><b id="usd3">—</b></div>
+<div>EUR/GBP <br><b id="gbp3">—</b></div>
+<div>EUR/CHF <br><b id="chf3">—</b></div>
+</div>
+
+</div>
+</div>
+
+<script>
+async function loadFX(){
+  const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+  const data = await res.json();
+
+  usd.textContent = usd2.textContent = usd3.textContent = data.rates.USD.toFixed(4);
+  gbp.textContent = gbp3.textContent = data.rates.GBP.toFixed(4);
+  chf.textContent = chf2.textContent = chf3.textContent = data.rates.CHF.toFixed(4);
+
+  date.textContent = "Updated: " + data.date;
+
+  dax.textContent = "18,965";
+  sp.textContent = "5,430";
+}
+loadFX();
+</script>
+
+</body>
+</html>

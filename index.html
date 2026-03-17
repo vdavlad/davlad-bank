@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Davlad Private Banking</title>
+
+  <!-- Premium serif for headings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#080808;
@@ -59,19 +65,17 @@
     }
 
     body{
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:"Inter", Arial, Helvetica, sans-serif;
       background:var(--hero-bg);
       color:var(--text);
       min-height:100vh;
-      transition:
-        background 0.35s ease,
-        color 0.25s ease;
+      transition:background 0.35s ease, color 0.25s ease;
     }
 
     .container{
-      max-width:1200px;
+      max-width:1280px;
       margin:0 auto;
-      padding:28px 20px 60px;
+      padding:28px 20px 70px;
     }
 
     .nav{
@@ -86,10 +90,46 @@
       box-shadow:var(--shadow);
       margin-bottom:28px;
       backdrop-filter: blur(10px);
-      transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+      transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .nav::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity:0.65;
+    }
+
+    .brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, var(--gold), #b98913);
+      color:#111;
+      font-family:"Cormorant Garamond", serif;
+      font-size:24px;
+      font-weight:700;
+      box-shadow:0 12px 30px rgba(185,137,19,0.25);
+      flex-shrink:0;
+    }
+
+    body.light .logo{
+      color:#fffdf8;
     }
 
     .brand{
@@ -98,6 +138,12 @@
       letter-spacing:0.3px;
       color:var(--gold-soft);
       transition:color 0.25s ease;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:2px;
     }
 
     .nav-links{
@@ -166,26 +212,37 @@
       color:var(--gold-soft);
     }
 
-    .hero{
+    .hero-grid{
       display:grid;
-      grid-template-columns:1.2fr 0.8fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap:24px;
       align-items:stretch;
+      margin-bottom:24px;
     }
 
     .card{
       background:var(--card-bg);
       border:1px solid var(--border);
-      border-radius:26px;
+      border-radius:28px;
       box-shadow:var(--shadow);
-      transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+      transition:background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(243,197,77,0.45), transparent);
+      opacity:0.85;
     }
 
     .hero-left{
-      padding:42px;
+      padding:46px;
     }
 
     .badge{
@@ -201,23 +258,26 @@
     }
 
     h1{
-      font-size:58px;
-      line-height:1.02;
-      margin:0 0 10px;
-      letter-spacing:-1.4px;
+      font-family:"Cormorant Garamond", serif;
+      font-size:76px;
+      line-height:0.94;
+      margin:0 0 12px;
+      letter-spacing:-1.5px;
+      font-weight:700;
     }
 
     .slogan{
       color:var(--gold-soft);
-      font-size:20px;
+      font-size:22px;
       font-style:italic;
-      margin-bottom:22px;
+      margin-bottom:24px;
+      letter-spacing:0.2px;
       transition:color 0.25s ease;
     }
 
     .subtitle{
       font-size:18px;
-      line-height:1.8;
+      line-height:1.9;
       color:var(--muted);
       max-width:760px;
       margin-bottom:28px;
@@ -229,11 +289,9 @@
       border:1px solid var(--border);
       border-radius:18px;
       padding:20px 22px;
-      margin-bottom:24px;
+      margin-bottom:26px;
       backdrop-filter: blur(8px);
-      transition:
-        background 0.25s ease,
-        border-color 0.25s ease;
+      transition:background 0.25s ease, border-color 0.25s ease;
     }
 
     .signature .name{
@@ -251,7 +309,7 @@
 
     .signature .about{
       color:var(--muted);
-      line-height:1.7;
+      line-height:1.8;
       transition:color 0.25s ease;
     }
 
@@ -296,10 +354,70 @@
     }
 
     .hero-right{
-      padding:24px;
       display:flex;
       flex-direction:column;
-      gap:16px;
+      gap:18px;
+    }
+
+    .banner-card{
+      min-height:420px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .banner-image{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.42)),
+        url("images/banner.jpg") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    body.light .banner-image{
+      filter:saturate(0.95) brightness(1.02);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      height:100%;
+      min-height:420px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:28px;
+      background:linear-gradient(180deg, transparent 35%, rgba(0,0,0,0.58) 100%);
+    }
+
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#f4ddb0;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+
+    .banner-title{
+      font-family:"Cormorant Garamond", serif;
+      font-size:38px;
+      line-height:1.05;
+      margin:0 0 10px;
+      color:#fffaf0;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.88);
+      line-height:1.75;
+      max-width:520px;
+      font-size:15px;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
 
     .stat{
@@ -307,9 +425,7 @@
       border:1px solid var(--border);
       border-radius:18px;
       padding:18px;
-      transition:
-        background 0.25s ease,
-        border-color 0.25s ease;
+      transition:background 0.25s ease, border-color 0.25s ease;
     }
 
     .stat-label{
@@ -320,23 +436,35 @@
     }
 
     .stat-value{
-      font-size:30px;
+      font-size:28px;
       font-weight:800;
       color:var(--gold-soft);
       transition:color 0.25s ease;
     }
 
-    .note{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px;
+    .statement-card{
+      margin-top:24px;
+      padding:28px 32px;
+    }
+
+    .statement-grid{
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .statement-title{
+      font-family:"Cormorant Garamond", serif;
+      font-size:42px;
+      line-height:1.05;
+      margin:0;
+    }
+
+    .statement-copy{
       color:var(--muted);
-      line-height:1.7;
-      transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
+      line-height:1.9;
+      font-size:16px;
     }
 
     .bottom-grid{
@@ -347,12 +475,14 @@
     }
 
     .mini-panel{
-      padding:24px;
+      padding:28px 26px;
+      min-height:210px;
     }
 
     .mini-panel h3{
       margin:0 0 12px;
-      font-size:22px;
+      font-family:"Cormorant Garamond", serif;
+      font-size:30px;
       color:var(--gold-soft);
       transition:color 0.25s ease;
     }
@@ -360,13 +490,13 @@
     .mini-panel p{
       margin:0;
       color:var(--muted);
-      line-height:1.7;
+      line-height:1.85;
       transition:color 0.25s ease;
     }
 
     .footer{
       text-align:center;
-      margin-top:28px;
+      margin-top:30px;
       color:#8e8e8e;
       font-size:14px;
       transition:color 0.25s ease;
@@ -376,19 +506,47 @@
       color:#82786a;
     }
 
+    @media (max-width: 1100px){
+      .hero-grid,
+      .statement-grid{
+        grid-template-columns:1fr;
+      }
+
+      .stats-grid{
+        grid-template-columns:1fr 1fr 1fr;
+      }
+    }
+
     @media (max-width: 950px){
-      .hero,
       .bottom-grid{
         grid-template-columns:1fr;
       }
 
       h1{
-        font-size:42px;
+        font-size:54px;
       }
 
       .nav{
         flex-direction:column;
         align-items:flex-start;
+      }
+
+      .hero-left{
+        padding:34px;
+      }
+    }
+
+    @media (max-width: 700px){
+      .stats-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:44px;
+      }
+
+      .banner-title{
+        font-size:30px;
       }
     }
   </style>
@@ -397,7 +555,13 @@
   <div class="container">
 
     <div class="nav">
-      <div class="brand">Davlad Private Banking</div>
+      <div class="brand-wrap">
+        <div class="logo">DPB</div>
+        <div>
+          <div class="brand">Davlad Private Banking</div>
+          <div class="brand-sub">Private Capital • Advisory • Strategic Liquidity</div>
+        </div>
+      </div>
 
       <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
 
@@ -421,7 +585,7 @@
       </div>
     </div>
 
-    <div class="hero">
+    <div class="hero-grid">
       <div class="card hero-left">
         <div class="badge">Private Banking Division</div>
 
@@ -450,25 +614,46 @@
         </div>
       </div>
 
-      <div class="card hero-right">
-        <div class="stat">
-          <div class="stat-label">Required Capital</div>
-          <div class="stat-value">Unlimited</div>
+      <div class="hero-right">
+        <div class="card banner-card">
+          <div class="banner-image"></div>
+          <div class="banner-overlay">
+            <div class="banner-kicker">Private Banking • Munich Office</div>
+            <h2 class="banner-title">Capital stewardship under elegant financial pressure.</h2>
+            <div class="banner-text">
+              Davlad Private Banking combines discretion, strategic flexibility,
+              and selective optimism in support of short-term solvency and long-term prestige.
+            </div>
+          </div>
         </div>
 
-        <div class="stat">
-          <div class="stat-label">Risk Profile</div>
-          <div class="stat-value">Trust-Based</div>
-        </div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-label">Required Capital</div>
+            <div class="stat-value">Unlimited</div>
+          </div>
 
-        <div class="stat">
-          <div class="stat-label">Credit Rating</div>
-          <div class="stat-value">BBB-</div>
-        </div>
+          <div class="stat">
+            <div class="stat-label">Risk Profile</div>
+            <div class="stat-value">Trust-Based</div>
+          </div>
 
-        <div class="note">
+          <div class="stat">
+            <div class="stat-label">Credit Rating</div>
+            <div class="stat-value">BBB-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card statement-card">
+      <div class="statement-grid">
+        <h2 class="statement-title">Institutional statement</h2>
+        <div class="statement-copy">
           Davlad Private Banking is committed to preserving founder confidence,
           strategic optionality, and short-term solvency under evolving market conditions.
+          Our institution maintains a disciplined focus on premium presentation,
+          relationship-based capital access, and emotionally intelligent liquidity management.
         </div>
       </div>
     </div>

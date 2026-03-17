@@ -19,18 +19,16 @@
       --topbar-bg:rgba(0,0,0,0.45);
     }
 
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#FAFAFA;
-        --card:#FFFFFF;
-        --card-2:#F4F4F4;
-        --text:#111111;
-        --muted:#6A6A6A;
-        --accent:#C2A24A;
-        --border:rgba(0,0,0,0.08);
-        --shadow:0 10px 30px rgba(0,0,0,0.06);
-        --topbar-bg:rgba(255,255,255,0.82);
-      }
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --topbar-bg:rgba(255,255,255,0.82);
     }
 
     *{ box-sizing:border-box; }
@@ -44,6 +42,50 @@
         radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
         var(--bg);
       color:var(--text);
+      overflow-x:hidden;
+      transition:background 0.3s ease, color 0.3s ease;
+    }
+
+    .market-bar{
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+      font-size:12px;
+      letter-spacing:0.15px;
+    }
+
+    .market-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:6px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .market-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .market-item{
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .market-item span{
+      color:var(--text);
+      font-weight:600;
+      margin-left:4px;
+    }
+
+    .market-date{
+      color:var(--muted);
+      font-size:11px;
     }
 
     .topbar{
@@ -53,7 +95,7 @@
     }
 
     .topbar-inner{
-      max-width:1100px;
+      max-width:1200px;
       margin:0 auto;
       padding:10px 20px;
       display:flex;
@@ -82,6 +124,13 @@
       border:1px solid var(--border);
     }
 
+    .controls{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
     .lang-switch{
       display:flex;
       gap:4px;
@@ -90,7 +139,8 @@
       overflow:hidden;
     }
 
-    .lang-switch button{
+    .lang-switch button,
+    .theme-btn{
       border:0;
       background:transparent;
       color:var(--muted);
@@ -98,6 +148,7 @@
       font-size:12px;
       font-weight:700;
       cursor:pointer;
+      transition:0.18s ease;
     }
 
     .lang-switch button.active{
@@ -105,12 +156,62 @@
       color:var(--text);
     }
 
+    .theme-btn{
+      border:1px solid var(--border);
+      border-radius:10px;
+      color:var(--text);
+      padding:7px 10px;
+    }
+
+    .theme-btn:hover,
+    .lang-switch button:hover{
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+    }
+
     .wrap{
-      min-height:calc(100vh - 64px);
+      min-height:calc(100vh - 98px);
       display:flex;
       align-items:center;
       justify-content:center;
       padding:24px;
+      position:relative;
+    }
+
+    .ambient{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .orb{
+      position:absolute;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:0.08;
+      background:var(--accent);
+      animation:floatOrb 12s ease-in-out infinite;
+    }
+
+    .orb.one{
+      top:8%;
+      right:12%;
+    }
+
+    .orb.two{
+      bottom:10%;
+      left:10%;
+      width:240px;
+      height:240px;
+      animation-duration:15s;
+    }
+
+    @keyframes floatOrb{
+      0%,100%{ transform:translate(0,0) scale(1); }
+      50%{ transform:translate(18px,-14px) scale(1.06); }
     }
 
     .box{
@@ -124,17 +225,24 @@
       text-align:center;
       position:relative;
       overflow:hidden;
+      z-index:1;
     }
 
     .box::before{
       content:"";
       position:absolute;
       top:0;
-      left:0;
-      right:0;
+      left:-30%;
+      width:40%;
       height:1px;
       background:linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:0.65;
+      opacity:0.85;
+      animation:shimmer 5.5s linear infinite;
+    }
+
+    @keyframes shimmer{
+      0%{ left:-30%; }
+      100%{ left:110%; }
     }
 
     h1{
@@ -220,6 +328,7 @@
       background:rgba(255,255,255,0.06);
       overflow:hidden;
       border:1px solid var(--border);
+      position:relative;
     }
 
     .progress-bar{
@@ -227,6 +336,30 @@
       height:100%;
       background:linear-gradient(90deg, var(--accent), rgba(198,168,91,0.75));
       border-radius:999px;
+      position:relative;
+      animation:barGlow 3s ease-in-out infinite;
+    }
+
+    .progress-bar::after{
+      content:"";
+      position:absolute;
+      top:0;
+      right:-18px;
+      width:36px;
+      height:100%;
+      background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.22), rgba(255,255,255,0));
+      animation:barSweep 2.8s linear infinite;
+    }
+
+    @keyframes barGlow{
+      0%,100%{ filter:brightness(1); }
+      50%{ filter:brightness(1.08); }
+    }
+
+    @keyframes barSweep{
+      0%{ transform:translateX(-120px); opacity:0; }
+      15%{ opacity:1; }
+      100%{ transform:translateX(180px); opacity:0; }
     }
 
     .meta-grid{
@@ -274,6 +407,19 @@
   </style>
 </head>
 <body>
+  <div class="market-bar">
+    <div class="market-inner">
+      <div class="market-left">
+        <div class="market-item">DAX <span id="m-dax">18,965</span></div>
+        <div class="market-item">S&amp;P 500 <span id="m-spx">5,430</span></div>
+        <div class="market-item">EUR/USD <span id="m-usd">—</span></div>
+        <div class="market-item">EUR/GBP <span id="m-gbp">—</span></div>
+        <div class="market-item">EUR/CHF <span id="m-chf">—</span></div>
+      </div>
+      <div class="market-date" id="marketDate">Loading…</div>
+    </div>
+  </div>
+
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">
@@ -292,15 +438,23 @@
         <span id="brandText">Davlad Bank</span>
       </div>
 
-      <div class="lang-switch">
-        <button class="active" data-lang="en">EN</button>
-        <button data-lang="de">DE</button>
-        <button data-lang="ua">UA</button>
+      <div class="controls">
+        <div class="lang-switch">
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
+        </div>
+        <button class="theme-btn" id="themeToggle">🌙</button>
       </div>
     </div>
   </div>
 
   <div class="wrap">
+    <div class="ambient">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+    </div>
+
     <div class="box">
       <div class="status">
         <span class="dot"></span>
@@ -319,8 +473,8 @@
 
       <div class="progress-card">
         <div class="progress-row">
-          <span class="label" id="progressLabel">Progress</span>
-          <span class="value">68%</span>
+          <span class="label" id="progressLabel">Maintenance status</span>
+          <span class="value" id="progressValue">In progress</span>
         </div>
         <div class="progress-track">
           <div class="progress-bar"></div>
@@ -329,8 +483,8 @@
 
       <div class="meta-grid">
         <div class="meta">
-          <div class="meta-label" id="etaLabel">Estimated availability</div>
-          <div class="meta-value" id="etaValue">Approximately 2 hours</div>
+          <div class="meta-label" id="accessLabel">Access</div>
+          <div class="meta-value" id="accessValue">Temporarily unavailable during maintenance</div>
         </div>
 
         <div class="meta">
@@ -353,12 +507,18 @@
         title: "System Maintenance",
         subtitle: "In liquidity we trust.",
         body: "Davlad Bank is currently undergoing infrastructure improvements, interface refinement, and system optimization.<br><br>Please check back shortly.",
-        progress: "Progress",
-        etaLabel: "Estimated availability",
-        etaValue: "Approximately 2 hours",
+        progress: "Maintenance status",
+        progressValue: "In progress",
+        accessLabel: "Access",
+        accessValue: "Temporarily unavailable during maintenance",
         noticeLabel: "Environment status",
-        noticeValue: "Secure maintenance window active",
-        footer: "Thank you for your patience while maintenance operations are being completed."
+        footer: "Thank you for your patience while maintenance operations are being completed.",
+        rotating: [
+          "Secure maintenance window active",
+          "Infrastructure update in progress",
+          "Interface refinement in progress",
+          "System optimization in progress"
+        ]
       },
       de: {
         brand: "Davlad Bank",
@@ -366,12 +526,18 @@
         title: "Systemwartung",
         subtitle: "In liquidity we trust.",
         body: "Davlad Bank führt derzeit Infrastrukturverbesserungen, Interface-Optimierungen und Systemanpassungen durch.<br><br>Bitte schauen Sie in Kürze wieder vorbei.",
-        progress: "Fortschritt",
-        etaLabel: "Voraussichtliche Verfügbarkeit",
-        etaValue: "Ungefähr 2 Stunden",
+        progress: "Wartungsstatus",
+        progressValue: "In Bearbeitung",
+        accessLabel: "Zugang",
+        accessValue: "Während der Wartung vorübergehend nicht verfügbar",
         noticeLabel: "Umgebungsstatus",
-        noticeValue: "Sicheres Wartungsfenster aktiv",
-        footer: "Vielen Dank für Ihre Geduld während der laufenden Wartungsarbeiten."
+        footer: "Vielen Dank für Ihre Geduld während der laufenden Wartungsarbeiten.",
+        rotating: [
+          "Sicheres Wartungsfenster aktiv",
+          "Infrastruktur-Update läuft",
+          "Interface-Optimierung läuft",
+          "Systemoptimierung läuft"
+        ]
       },
       ua: {
         brand: "Davlad Bank",
@@ -379,12 +545,18 @@
         title: "Системне обслуговування",
         subtitle: "In liquidity we trust.",
         body: "Davlad Bank наразі проводить оновлення інфраструктури, вдосконалення інтерфейсу та оптимізацію систем.<br><br>Будь ласка, завітайте трохи пізніше.",
-        progress: "Прогрес",
-        etaLabel: "Орієнтовний час доступності",
-        etaValue: "Приблизно 2 години",
+        progress: "Статус обслуговування",
+        progressValue: "У процесі",
+        accessLabel: "Доступ",
+        accessValue: "Тимчасово недоступно під час технічних робіт",
         noticeLabel: "Статус середовища",
-        noticeValue: "Активне захищене вікно обслуговування",
-        footer: "Дякуємо за терпіння під час завершення технічних робіт."
+        footer: "Дякуємо за терпіння під час завершення технічних робіт.",
+        rotating: [
+          "Активне захищене вікно обслуговування",
+          "Триває оновлення інфраструктури",
+          "Триває вдосконалення інтерфейсу",
+          "Триває оптимізація систем"
+        ]
       }
     };
 
@@ -395,14 +567,20 @@
       subtitle: document.getElementById("subtitleText"),
       body: document.getElementById("bodyText"),
       progress: document.getElementById("progressLabel"),
-      etaLabel: document.getElementById("etaLabel"),
-      etaValue: document.getElementById("etaValue"),
+      progressValue: document.getElementById("progressValue"),
+      accessLabel: document.getElementById("accessLabel"),
+      accessValue: document.getElementById("accessValue"),
       noticeLabel: document.getElementById("noticeLabel"),
       noticeValue: document.getElementById("noticeValue"),
       footer: document.getElementById("footerText")
     };
 
+    let currentLang = "en";
+    let rotatingIndex = 0;
+    let rotatingTimer = null;
+
     function setLanguage(lang) {
+      currentLang = lang;
       const t = translations[lang];
       els.brand.textContent = t.brand;
       els.status.textContent = t.status;
@@ -410,20 +588,74 @@
       els.subtitle.textContent = t.subtitle;
       els.body.innerHTML = t.body;
       els.progress.textContent = t.progress;
-      els.etaLabel.textContent = t.etaLabel;
-      els.etaValue.textContent = t.etaValue;
+      els.progressValue.textContent = t.progressValue;
+      els.accessLabel.textContent = t.accessLabel;
+      els.accessValue.textContent = t.accessValue;
       els.noticeLabel.textContent = t.noticeLabel;
-      els.noticeValue.textContent = t.noticeValue;
       els.footer.textContent = t.footer;
 
       document.querySelectorAll(".lang-switch button").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
+
+      startRotatingStatus();
+    }
+
+    function startRotatingStatus() {
+      if (rotatingTimer) clearInterval(rotatingTimer);
+      const list = translations[currentLang].rotating;
+      rotatingIndex = 0;
+      els.noticeValue.textContent = list[0];
+
+      rotatingTimer = setInterval(() => {
+        rotatingIndex = (rotatingIndex + 1) % list.length;
+        els.noticeValue.textContent = list[rotatingIndex];
+      }, 2600);
     }
 
     document.querySelectorAll(".lang-switch button").forEach(btn => {
       btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
     });
+
+    const themeBtn = document.getElementById("themeToggle");
+
+    function applyTheme(theme) {
+      if (theme === "light") {
+        document.body.classList.add("light");
+        themeBtn.textContent = "☀️";
+      } else {
+        document.body.classList.remove("light");
+        themeBtn.textContent = "🌙";
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    applyTheme(savedTheme);
+
+    themeBtn.addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+
+        if (data?.rates?.USD) document.getElementById("m-usd").textContent = data.rates.USD.toFixed(4);
+        if (data?.rates?.GBP) document.getElementById("m-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.CHF) document.getElementById("m-chf").textContent = data.rates.CHF.toFixed(4);
+
+        document.getElementById("marketDate").textContent =
+          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
+      } catch (err) {
+        document.getElementById("marketDate").textContent = "Market data temporarily unavailable";
+      }
+    }
+
+    setLanguage("en");
+    loadFxRates();
   </script>
 </body>
 </html>

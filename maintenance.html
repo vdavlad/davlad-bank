@@ -1008,21 +1008,25 @@
       applyTheme(next);
     });
 
-    async function loadFxRates() {
-      try {
-        const res = await fetch("https://api.exchangerate.host/latest?base=EUR&symbols=USD,GBP,CHF");
-        const data = await res.json();
+async function loadFxRates() {
+  try {
+    const res = await fetch("https://api.exchangerate.host/latest?base=EUR&symbols=USD,GBP,CHF");
+    const data = await res.json();
 
-        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
-        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
-        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
-
-        document.getElementById("top-date").textContent =
-          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
-      } catch {
-        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
-      }
+    if (data.rates) {
+      document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
+      document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
+      document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
     }
+
+    document.getElementById("top-date").textContent =
+      "Live FX • " + new Date().toLocaleTimeString();
+
+  } catch {
+    document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+  }
+}
+    setInterval(loadFxRates, 60000); // обновление каждую минуту
 
     let currentSlide = 0;
     const slides = document.querySelectorAll(".promo-slide");

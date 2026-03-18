@@ -123,8 +123,9 @@
 
     .nav::before,
     .status-card::before,
-    .loan-card::before,
-    .notice-card::before,
+    .countdown-card::before,
+    .timeline-card::before,
+    .info-card::before,
     .footer-main::before{
       content:"";
       position:absolute;
@@ -340,44 +341,16 @@
       font-size:15px;
     }
 
-    .mini-stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin:0 0 26px;
-    }
-
-    .mini-stat{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:18px 20px;
-      box-shadow:var(--shadow);
-    }
-
-    .mini-stat span{
-      display:block;
-      color:var(--muted);
-      font-size:12px;
-      margin-bottom:6px;
-    }
-
-    .mini-stat strong{
-      font-size:22px;
-      color:var(--text);
-      font-weight:800;
-    }
-
     .status-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      gap:16px;
       margin-bottom:24px;
     }
 
     .status-card{
-      border-radius:20px;
-      padding:22px;
+      border-radius:18px;
+      padding:20px;
       background:var(--card-bg);
       border:1px solid var(--border);
       box-shadow:var(--shadow);
@@ -402,44 +375,9 @@
       color:var(--accent);
     }
 
-    .loan-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:18px;
-      margin-bottom:24px;
-    }
-
-    .loan-card{
-      border-radius:20px;
-      padding:22px;
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .loan-title{
-      margin:0 0 10px;
-      font-size:22px;
-      font-weight:800;
-    }
-
-    .loan-copy{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.75;
-    }
-
-    .notice-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      margin-bottom:24px;
-    }
-
-    .notice-card{
+    .countdown-card,
+    .timeline-card,
+    .info-card{
       border-radius:22px;
       padding:24px;
       background:var(--card-bg);
@@ -447,19 +385,140 @@
       box-shadow:var(--shadow);
       position:relative;
       overflow:hidden;
+      margin-bottom:24px;
     }
 
-    .notice-title{
+    .section-kicker{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.1px;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .section-title{
       margin:0 0 10px;
-      font-size:28px;
+      font-size:30px;
       font-weight:800;
+      color:var(--text);
     }
 
-    .notice-copy{
+    .section-copy{
       margin:0;
       color:var(--muted);
       font-size:15px;
       line-height:1.8;
+    }
+
+    .countdown-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:20px;
+    }
+
+    .count-box{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+      text-align:center;
+    }
+
+    .count-value{
+      font-size:34px;
+      font-weight:800;
+      color:var(--accent);
+      line-height:1;
+      margin-bottom:8px;
+    }
+
+    .count-label{
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .timeline{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .timeline-step{
+      position:relative;
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      min-height:150px;
+    }
+
+    .timeline-step.active{
+      border-color:var(--border-accent);
+      box-shadow:inset 0 0 0 1px rgba(198,168,91,0.15);
+    }
+
+    .timeline-index{
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(198,168,91,0.12);
+      color:var(--accent);
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .timeline-step.active .timeline-index{
+      background:var(--accent);
+      color:#111;
+    }
+
+    .timeline-title{
+      font-size:18px;
+      font-weight:800;
+      margin:0 0 8px;
+    }
+
+    .timeline-copy{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:18px;
+      margin-top:8px;
+    }
+
+    .info-item{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:20px;
+    }
+
+    .info-item h3{
+      margin:0 0 10px;
+      font-size:22px;
+      font-weight:800;
+    }
+
+    .info-item p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
     }
 
     .footer-main{
@@ -514,10 +573,10 @@
     }
 
     @media (max-width:950px){
-      .mini-stats,
       .status-grid,
-      .loan-grid,
-      .notice-grid,
+      .countdown-grid,
+      .timeline,
+      .info-grid,
       .footer-grid{
         grid-template-columns:1fr;
       }
@@ -618,88 +677,106 @@
   </div>
 
   <div class="container">
-    <div class="mini-stats">
-      <div class="mini-stat">
-        <span id="stat1Label">Availability</span>
-        <strong id="stat1Value">1 June 2026</strong>
-      </div>
-      <div class="mini-stat">
-        <span id="stat2Label">Division Status</span>
-        <strong id="stat2Value">Pre-launch</strong>
-      </div>
-      <div class="mini-stat">
-        <span id="stat3Label">Current Issuance</span>
-        <strong id="stat3Value">Inactive</strong>
-      </div>
-    </div>
-
     <div class="status-grid">
       <div class="status-card">
-        <div class="status-label" id="status1Label">Availability Date</div>
+        <div class="status-label" id="status1Label">Available from</div>
         <div class="status-value accent" id="status1Value">1 June 2026</div>
       </div>
 
       <div class="status-card">
-        <div class="status-label" id="status2Label">Division Status</div>
+        <div class="status-label" id="status2Label">Division status</div>
         <div class="status-value" id="status2Value">Pre-launch</div>
       </div>
 
       <div class="status-card">
-        <div class="status-label" id="status3Label">Issuance Status</div>
-        <div class="status-value" id="status3Value">Temporarily inactive</div>
+        <div class="status-label" id="status3Label">Current issuance</div>
+        <div class="status-value" id="status3Value">Inactive</div>
       </div>
     </div>
 
-    <div class="loan-grid">
-      <div class="loan-card">
-        <h3 class="loan-title" id="loan1Title">Short-Term Credit</h3>
-        <p class="loan-copy" id="loan1Copy">
-          Planned as a compact lending product for shorter-duration financing needs and temporary liquidity support.
-        </p>
-      </div>
+    <div class="countdown-card">
+      <div class="section-kicker" id="countKicker">Launch Countdown</div>
+      <h2 class="section-title" id="countTitle">Time remaining until lending goes live</h2>
+      <p class="section-copy" id="countCopy">
+        The lending division remains in controlled preparation. The following countdown reflects the planned public activation date.
+      </p>
 
-      <div class="loan-card">
-        <h3 class="loan-title" id="loan2Title">Consumer Loan</h3>
-        <p class="loan-copy" id="loan2Copy">
-          Intended as a more standard financing format for personal use cases and structured repayment planning.
-        </p>
-      </div>
-
-      <div class="loan-card">
-        <h3 class="loan-title" id="loan3Title">Structured Lending</h3>
-        <p class="loan-copy" id="loan3Copy">
-          Planned as a more tailored product category depending on purpose, duration, and repayment logic.
-        </p>
+      <div class="countdown-grid">
+        <div class="count-box">
+          <div class="count-value" id="daysValue">—</div>
+          <div class="count-label" id="daysLabel">Days</div>
+        </div>
+        <div class="count-box">
+          <div class="count-value" id="hoursValue">—</div>
+          <div class="count-label" id="hoursLabel">Hours</div>
+        </div>
+        <div class="count-box">
+          <div class="count-value" id="minutesValue">—</div>
+          <div class="count-label" id="minutesLabel">Minutes</div>
+        </div>
+        <div class="count-box">
+          <div class="count-value" id="secondsValue">—</div>
+          <div class="count-label" id="secondsLabel">Seconds</div>
+        </div>
       </div>
     </div>
 
-    <div class="notice-grid">
-      <div class="notice-card">
-        <h2 class="notice-title" id="notice1Title">Current launch notice</h2>
-        <p class="notice-copy" id="notice1Copy">
-          Davlad Bank is currently prioritizing deposit development, capital structure alignment, and internal liquidity stabilization ahead of the launch of its lending products.
-        </p>
-      </div>
+    <div class="timeline-card">
+      <div class="section-kicker" id="timelineKicker">Readiness Timeline</div>
+      <h2 class="section-title" id="timelineTitle">Lending activation roadmap</h2>
+      <p class="section-copy" id="timelineCopy">
+        The lending line is being developed in stages, with product framework and launch sequencing aligned to internal capital priorities.
+      </p>
 
-      <div class="notice-card">
-        <h2 class="notice-title" id="notice2Title">Why lending is not yet active</h2>
-        <p class="notice-copy" id="notice2Copy">
-          Actual credit issuance remains deferred until internal liquidity conditions allow for a more stable launch environment and a more structured balance-sheet posture.
-        </p>
-      </div>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-index">01</div>
+          <h3 class="timeline-title" id="step1Title">Concept</h3>
+          <p class="timeline-copy" id="step1Copy">Core lending direction and product positioning defined.</p>
+        </div>
 
-      <div class="notice-card">
-        <h2 class="notice-title" id="notice3Title">Liquidity alignment</h2>
-        <p class="notice-copy" id="notice3Copy">
-          Current capital allocation continues to favor existing balance-sheet priorities. This page therefore presents the lending framework before full activation.
-        </p>
-      </div>
+        <div class="timeline-step active">
+          <div class="timeline-index">02</div>
+          <h3 class="timeline-title" id="step2Title">Capital Alignment</h3>
+          <p class="timeline-copy" id="step2Copy">Liquidity and balance-sheet priorities are currently being aligned.</p>
+        </div>
 
-      <div class="notice-card">
-        <h2 class="notice-title" id="notice4Title">Planned transition</h2>
-        <p class="notice-copy" id="notice4Copy">
-          From 1 June 2026, the platform is expected to begin presenting active lending products as part of its broader banking structure.
-        </p>
+        <div class="timeline-step">
+          <div class="timeline-index">03</div>
+          <h3 class="timeline-title" id="step3Title">Activation</h3>
+          <p class="timeline-copy" id="step3Copy">Operational readiness and issuance framework to be finalized.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-index">04</div>
+          <h3 class="timeline-title" id="step4Title">Lending Live</h3>
+          <p class="timeline-copy" id="step4Copy">Planned public availability of lending products from June 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="section-kicker" id="infoKicker">Planned Lending Formats</div>
+      <h2 class="section-title" id="infoTitle">What the lending division may include</h2>
+      <p class="section-copy" id="infoCopy">
+        Once activated, the lending division is expected to present a compact set of financing formats rather than a broad product catalogue.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <h3 id="info1Title">Short-Term Credit</h3>
+          <p id="info1Copy">A compact format for shorter-duration financing needs and temporary liquidity support.</p>
+        </div>
+
+        <div class="info-item">
+          <h3 id="info2Title">Consumer Loan</h3>
+          <p id="info2Copy">A more standard financing structure for personal use cases and planned repayment.</p>
+        </div>
+
+        <div class="info-item">
+          <h3 id="info3Title">Structured Lending</h3>
+          <p id="info3Copy">A more tailored lending category depending on purpose, duration, and repayment logic.</p>
+        </div>
       </div>
     </div>
 
@@ -770,6 +847,40 @@
       }
     }
 
+    function getLaunchDate() {
+      return new Date("2026-06-01T00:00:00");
+    }
+
+    const countdownLabels = {
+      en: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
+      de: { days: "Tage", hours: "Std.", minutes: "Min.", seconds: "Sek." },
+      ua: { days: "Дні", hours: "Год.", minutes: "Хв.", seconds: "Сек." }
+    };
+
+    function updateCountdown(currentLang = "en") {
+      const now = new Date();
+      const target = getLaunchDate();
+      let diff = target - now;
+
+      if (diff < 0) diff = 0;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("daysValue").textContent = days;
+      document.getElementById("hoursValue").textContent = hours;
+      document.getElementById("minutesValue").textContent = minutes;
+      document.getElementById("secondsValue").textContent = seconds;
+
+      const labels = countdownLabels[currentLang] || countdownLabels.en;
+      document.getElementById("daysLabel").textContent = labels.days;
+      document.getElementById("hoursLabel").textContent = labels.hours;
+      document.getElementById("minutesLabel").textContent = labels.minutes;
+      document.getElementById("secondsLabel").textContent = labels.seconds;
+    }
+
     const translations = {
       en: {
         brandSub: "Deposits • Investments • Loans",
@@ -786,35 +897,38 @@
         loansSubtitle: "Lending products will become available from 1 June 2026.",
         loansText: "The lending division is currently in pre-launch preparation. Credit issuance remains temporarily deferred pending internal liquidity alignment and balance-sheet prioritization.",
 
-        stat1Label: "Availability",
-        stat1Value: "1 June 2026",
-        stat2Label: "Division Status",
-        stat2Value: "Pre-launch",
-        stat3Label: "Current Issuance",
-        stat3Value: "Inactive",
-
-        status1Label: "Availability Date",
+        status1Label: "Available from",
         status1Value: "1 June 2026",
-        status2Label: "Division Status",
+        status2Label: "Division status",
         status2Value: "Pre-launch",
-        status3Label: "Issuance Status",
-        status3Value: "Temporarily inactive",
+        status3Label: "Current issuance",
+        status3Value: "Inactive",
 
-        loan1Title: "Short-Term Credit",
-        loan1Copy: "Planned as a compact lending product for shorter-duration financing needs and temporary liquidity support.",
-        loan2Title: "Consumer Loan",
-        loan2Copy: "Intended as a more standard financing format for personal use cases and structured repayment planning.",
-        loan3Title: "Structured Lending",
-        loan3Copy: "Planned as a more tailored product category depending on purpose, duration, and repayment logic.",
+        countKicker: "Launch Countdown",
+        countTitle: "Time remaining until lending goes live",
+        countCopy: "The lending division remains in controlled preparation. The following countdown reflects the planned public activation date.",
 
-        notice1Title: "Current launch notice",
-        notice1Copy: "Davlad Bank is currently prioritizing deposit development, capital structure alignment, and internal liquidity stabilization ahead of the launch of its lending products.",
-        notice2Title: "Why lending is not yet active",
-        notice2Copy: "Actual credit issuance remains deferred until internal liquidity conditions allow for a more stable launch environment and a more structured balance-sheet posture.",
-        notice3Title: "Liquidity alignment",
-        notice3Copy: "Current capital allocation continues to favor existing balance-sheet priorities. This page therefore presents the lending framework before full activation.",
-        notice4Title: "Planned transition",
-        notice4Copy: "From 1 June 2026, the platform is expected to begin presenting active lending products as part of its broader banking structure.",
+        timelineKicker: "Readiness Timeline",
+        timelineTitle: "Lending activation roadmap",
+        timelineCopy: "The lending line is being developed in stages, with product framework and launch sequencing aligned to internal capital priorities.",
+        step1Title: "Concept",
+        step1Copy: "Core lending direction and product positioning defined.",
+        step2Title: "Capital Alignment",
+        step2Copy: "Liquidity and balance-sheet priorities are currently being aligned.",
+        step3Title: "Activation",
+        step3Copy: "Operational readiness and issuance framework to be finalized.",
+        step4Title: "Lending Live",
+        step4Copy: "Planned public availability of lending products from June 2026.",
+
+        infoKicker: "Planned Lending Formats",
+        infoTitle: "What the lending division may include",
+        infoCopy: "Once activated, the lending division is expected to present a compact set of financing formats rather than a broad product catalogue.",
+        info1Title: "Short-Term Credit",
+        info1Copy: "A compact format for shorter-duration financing needs and temporary liquidity support.",
+        info2Title: "Consumer Loan",
+        info2Copy: "A more standard financing structure for personal use cases and planned repayment.",
+        info3Title: "Structured Lending",
+        info3Copy: "A more tailored lending category depending on purpose, duration, and repayment logic.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
@@ -839,35 +953,38 @@
         loansSubtitle: "Kreditprodukte werden ab dem 1. Juni 2026 verfügbar sein.",
         loansText: "Die Kreditdivision befindet sich derzeit in der Vorbereitungsphase. Die Kreditvergabe bleibt vorübergehend ausgesetzt, bis interne Liquiditätsabstimmung und Bilanzprioritäten dies zulassen.",
 
-        stat1Label: "Verfügbarkeit",
-        stat1Value: "1. Juni 2026",
-        stat2Label: "Divisionsstatus",
-        stat2Value: "Pre-launch",
-        stat3Label: "Aktuelle Vergabe",
-        stat3Value: "Inaktiv",
-
-        status1Label: "Verfügbarkeitsdatum",
+        status1Label: "Verfügbar ab",
         status1Value: "1. Juni 2026",
         status2Label: "Divisionsstatus",
         status2Value: "Pre-launch",
-        status3Label: "Vergabestatus",
-        status3Value: "Vorübergehend inaktiv",
+        status3Label: "Aktuelle Vergabe",
+        status3Value: "Inaktiv",
 
-        loan1Title: "Kurzfristiger Kredit",
-        loan1Copy: "Geplant als kompaktes Kreditprodukt für kurzfristige Finanzierungsbedarfe und temporäre Liquiditätsunterstützung.",
-        loan2Title: "Verbraucherkredit",
-        loan2Copy: "Gedacht als standardisierteres Finanzierungsformat für private Anwendungsfälle und strukturierte Rückzahlungsplanung.",
-        loan3Title: "Strukturierte Finanzierung",
-        loan3Copy: "Geplant als individuelleres Produkt je nach Zweck, Laufzeit und Rückzahlungslogik.",
+        countKicker: "Launch-Countdown",
+        countTitle: "Verbleibende Zeit bis zur Aktivierung der Kreditprodukte",
+        countCopy: "Die Kreditdivision befindet sich weiterhin in kontrollierter Vorbereitung. Der folgende Countdown zeigt das geplante öffentliche Aktivierungsdatum.",
+        
+        timelineKicker: "Readiness Timeline",
+        timelineTitle: "Roadmap zur Aktivierung der Kreditdivision",
+        timelineCopy: "Die Kreditlinie wird stufenweise aufgebaut, wobei Produktstruktur und Launch-Sequenz an interne Kapitalprioritäten angepasst werden.",
+        step1Title: "Konzept",
+        step1Copy: "Grundrichtung und Produktpositionierung der Kreditlinie definiert.",
+        step2Title: "Kapitalabstimmung",
+        step2Copy: "Liquidität und Bilanzprioritäten werden derzeit abgestimmt.",
+        step3Title: "Aktivierung",
+        step3Copy: "Operative Bereitschaft und Vergaberahmen werden finalisiert.",
+        step4Title: "Kredite live",
+        step4Copy: "Geplante öffentliche Verfügbarkeit der Kreditprodukte ab Juni 2026.",
 
-        notice1Title: "Aktueller Launch-Hinweis",
-        notice1Copy: "Davlad Bank priorisiert derzeit Einlagenentwicklung, Kapitalstrukturabstimmung und interne Liquiditätsstabilisierung vor dem Start ihrer Kreditprodukte.",
-        notice2Title: "Warum Kredite noch nicht aktiv sind",
-        notice2Copy: "Die tatsächliche Kreditvergabe bleibt ausgesetzt, bis interne Liquiditätsbedingungen ein stabileres Startumfeld und eine strukturiertere Bilanzhaltung ermöglichen.",
-        notice3Title: "Liquiditätsabstimmung",
-        notice3Copy: "Die aktuelle Kapitalallokation bevorzugt weiterhin bestehende Bilanzprioritäten. Diese Seite zeigt daher zunächst den Kreditrahmen vor voller Aktivierung.",
-        notice4Title: "Geplanter Übergang",
-        notice4Copy: "Ab dem 1. Juni 2026 soll die Plattform aktive Kreditprodukte als Teil ihrer breiteren Bankstruktur präsentieren.",
+        infoKicker: "Geplante Kreditformate",
+        infoTitle: "Was die Kreditdivision umfassen könnte",
+        infoCopy: "Nach Aktivierung soll die Kreditdivision eher ein kompaktes Set an Finanzierungsformaten zeigen als einen breiten Produktkatalog.",
+        info1Title: "Kurzfristiger Kredit",
+        info1Copy: "Ein kompaktes Format für kurzfristige Finanzierungsbedarfe und temporäre Liquiditätsunterstützung.",
+        info2Title: "Verbraucherkredit",
+        info2Copy: "Eine standardisiertere Finanzierungsstruktur für private Anwendungsfälle und geplante Rückzahlung.",
+        info3Title: "Strukturierte Finanzierung",
+        info3Copy: "Eine individuellere Kreditkategorie abhängig von Zweck, Laufzeit und Rückzahlungslogik.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
@@ -892,35 +1009,38 @@
         loansSubtitle: "Кредитні продукти стануть доступними з 1 червня 2026 року.",
         loansText: "Кредитний напрямок зараз перебуває на етапі підготовки до запуску. Видача кредитів тимчасово відкладена до завершення внутрішнього узгодження ліквідності та балансових пріоритетів.",
 
-        stat1Label: "Доступність",
-        stat1Value: "1 червня 2026",
-        stat2Label: "Статус напряму",
-        stat2Value: "Pre-launch",
-        stat3Label: "Поточна видача",
-        stat3Value: "Неактивна",
-
-        status1Label: "Дата доступності",
+        status1Label: "Доступно з",
         status1Value: "1 червня 2026",
         status2Label: "Статус напряму",
         status2Value: "Pre-launch",
-        status3Label: "Статус видачі",
-        status3Value: "Тимчасово неактивна",
+        status3Label: "Поточна видача",
+        status3Value: "Неактивна",
 
-        loan1Title: "Короткостроковий кредит",
-        loan1Copy: "Планується як компактний кредитний продукт для коротших фінансових потреб і тимчасової підтримки ліквідності.",
-        loan2Title: "Споживчий кредит",
-        loan2Copy: "Призначений як більш стандартний формат фінансування для особистих потреб і структурованого плану погашення.",
-        loan3Title: "Структуроване фінансування",
-        loan3Copy: "Планується як більш індивідуальна категорія продукту залежно від цілі, строку та логіки погашення.",
+        countKicker: "Зворотний відлік до запуску",
+        countTitle: "Час, що залишився до запуску кредитування",
+        countCopy: "Кредитний напрямок залишається на етапі контрольованої підготовки. Нижче наведено зворотний відлік до запланованої публічної дати активації.",
 
-        notice1Title: "Поточне повідомлення про запуск",
-        notice1Copy: "Davlad Bank наразі надає пріоритет розвитку депозитів, узгодженню структури капіталу та внутрішній стабілізації ліквідності перед запуском кредитних продуктів.",
-        notice2Title: "Чому кредитування ще не активне",
-        notice2Copy: "Фактична видача кредитів залишається відкладеною, доки внутрішні умови ліквідності не дозволять більш стабільне середовище запуску та структурованішу балансову позицію.",
-        notice3Title: "Узгодження ліквідності",
-        notice3Copy: "Поточний розподіл капіталу й надалі віддає перевагу чинним балансовим пріоритетам. Тому ця сторінка поки презентує кредитну рамку до повної активації.",
-        notice4Title: "Запланований перехід",
-        notice4Copy: "З 1 червня 2026 року платформа, як очікується, почне показувати активні кредитні продукти як частину ширшої банківської структури.",
+        timelineKicker: "Readiness Timeline",
+        timelineTitle: "Дорожня карта запуску кредитного напряму",
+        timelineCopy: "Кредитна лінійка розробляється поетапно, а структура продуктів і порядок запуску узгоджуються з внутрішніми капітальними пріоритетами.",
+        step1Title: "Концепція",
+        step1Copy: "Основний напрямок кредитування та позиціонування продуктів визначені.",
+        step2Title: "Узгодження капіталу",
+        step2Copy: "Ліквідність і балансові пріоритети зараз узгоджуються.",
+        step3Title: "Активація",
+        step3Copy: "Операційна готовність і рамка видачі мають бути фіналізовані.",
+        step4Title: "Кредити онлайн",
+        step4Copy: "Запланована публічна доступність кредитних продуктів з червня 2026 року.",
+
+        infoKicker: "Заплановані кредитні формати",
+        infoTitle: "Що може включати кредитний напрям",
+        infoCopy: "Після активації кредитний напрямок, ймовірно, презентуватиме компактний набір форматів фінансування, а не широкий продуктовий каталог.",
+        info1Title: "Короткостроковий кредит",
+        info1Copy: "Компактний формат для коротших фінансових потреб і тимчасової підтримки ліквідності.",
+        info2Title: "Споживчий кредит",
+        info2Copy: "Більш стандартна структура фінансування для особистих потреб і планового погашення.",
+        info3Title: "Структуроване фінансування",
+        info3Copy: "Більш індивідуальна кредитна категорія залежно від цілі, строку та логіки погашення.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
@@ -931,7 +1051,10 @@
       }
     };
 
+    let currentLanguage = localStorage.getItem("siteLanguage") || "en";
+
     function setLanguage(lang) {
+      currentLanguage = lang;
       const t = translations[lang];
 
       const map = {
@@ -949,13 +1072,6 @@
         loansSubtitle: "loansSubtitle",
         loansText: "loansText",
 
-        stat1Label: "stat1Label",
-        stat1Value: "stat1Value",
-        stat2Label: "stat2Label",
-        stat2Value: "stat2Value",
-        stat3Label: "stat3Label",
-        stat3Value: "stat3Value",
-
         status1Label: "status1Label",
         status1Value: "status1Value",
         status2Label: "status2Label",
@@ -963,21 +1079,31 @@
         status3Label: "status3Label",
         status3Value: "status3Value",
 
-        loan1Title: "loan1Title",
-        loan1Copy: "loan1Copy",
-        loan2Title: "loan2Title",
-        loan2Copy: "loan2Copy",
-        loan3Title: "loan3Title",
-        loan3Copy: "loan3Copy",
+        countKicker: "countKicker",
+        countTitle: "countTitle",
+        countCopy: "countCopy",
 
-        notice1Title: "notice1Title",
-        notice1Copy: "notice1Copy",
-        notice2Title: "notice2Title",
-        notice2Copy: "notice2Copy",
-        notice3Title: "notice3Title",
-        notice3Copy: "notice3Copy",
-        notice4Title: "notice4Title",
-        notice4Copy: "notice4Copy",
+        timelineKicker: "timelineKicker",
+        timelineTitle: "timelineTitle",
+        timelineCopy: "timelineCopy",
+        step1Title: "step1Title",
+        step1Copy: "step1Copy",
+        step2Title: "step2Title",
+        step2Copy: "step2Copy",
+        step3Title: "step3Title",
+        step3Copy: "step3Copy",
+        step4Title: "step4Title",
+        step4Copy: "step4Copy",
+
+        infoKicker: "infoKicker",
+        infoTitle: "infoTitle",
+        infoCopy: "infoCopy",
+        info1Title: "info1Title",
+        info1Copy: "info1Copy",
+        info2Title: "info2Title",
+        info2Copy: "info2Copy",
+        info3Title: "info3Title",
+        info3Copy: "info3Copy",
 
         footerCol1Title: "footerCol1Title",
         footerCol1Text: "footerCol1Text",
@@ -1005,16 +1131,17 @@
       });
 
       localStorage.setItem("siteLanguage", lang);
+      updateCountdown(lang);
     }
 
     document.querySelectorAll(".lang-switch button").forEach(button => {
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
 
-    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
-    setLanguage(savedLanguage);
-
+    setLanguage(currentLanguage);
     loadFxRates();
+    updateCountdown(currentLanguage);
+    setInterval(() => updateCountdown(currentLanguage), 1000);
   </script>
 </body>
 </html>

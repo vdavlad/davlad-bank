@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Davlad Bank — Maintenance</title>
+  <title>Davlad Bank — System Maintenance</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <link rel="apple-touch-icon" href="images/favicon.svg">
 
   <style>
     :root{
@@ -16,18 +15,8 @@
       --muted:#8A8A8A;
       --accent:#C6A85B;
       --border:rgba(255,255,255,0.08);
-      --border-accent:rgba(198,168,91,0.25);
       --shadow:0 20px 60px rgba(0,0,0,0.5);
-      --nav-bg:rgba(255,255,255,0.02);
-      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --hero-bg:
-        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
-        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
-        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
-      --topbar-bg:rgba(0,0,0,0.55);
-      --success:#9fc98b;
-      --warn:#d7b86b;
-      --danger:#c98b8b;
+      --topbar-bg:rgba(0,0,0,0.45);
     }
 
     body.light{
@@ -38,175 +27,115 @@
       --muted:#6A6A6A;
       --accent:#C2A24A;
       --border:rgba(0,0,0,0.08);
-      --border-accent:rgba(194,162,74,0.22);
       --shadow:0 10px 30px rgba(0,0,0,0.06);
-      --nav-bg:rgba(255,255,255,0.75);
-      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
-      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
-      --topbar-bg:rgba(255,255,255,0.85);
+      --topbar-bg:rgba(255,255,255,0.82);
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; }
 
     body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--hero-bg);
-      color:var(--text);
+      font-family: Arial, Helvetica, sans-serif;
       min-height:100vh;
-      transition:background .3s ease,color .3s ease;
+      background:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      transition:background 0.3s ease, color 0.3s ease;
     }
 
-    .fx-topbar{
-      width:100%;
-      font-size:12px;
-      letter-spacing:.15px;
+    .market-bar{
       border-bottom:1px solid var(--border);
       background:var(--topbar-bg);
       backdrop-filter:blur(8px);
+      font-size:12px;
+      letter-spacing:0.15px;
     }
 
-    .fx-inner{
+    .market-inner{
       max-width:1280px;
       margin:0 auto;
-      padding:5px 20px;
+      padding:6px 20px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:18px;
+      gap:16px;
       flex-wrap:wrap;
     }
 
-    .fx-left{
+    .market-left{
       display:flex;
       gap:18px;
       flex-wrap:wrap;
       align-items:center;
     }
 
-    .fx-item{
+    .market-item{
       color:var(--muted);
       white-space:nowrap;
     }
 
-    .fx-item span{
+    .market-item span{
       color:var(--text);
       font-weight:600;
       margin-left:4px;
     }
 
-    .fx-date{
+    .market-date{
       color:var(--muted);
       font-size:11px;
-      opacity:.9;
     }
 
-    .container{
-      max-width:1280px;
+    .topbar{
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+
+    .topbar-inner{
+      max-width:1200px;
       margin:0 auto;
-      padding:20px 20px 70px;
-    }
-
-    .nav{
+      padding:10px 20px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:20px;
-      padding:18px 22px;
-      background:var(--nav-bg);
-      border:1px solid var(--border);
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      margin-bottom:24px;
-      backdrop-filter:blur(10px);
-      position:relative;
-      overflow:hidden;
+      gap:16px;
       flex-wrap:wrap;
-    }
-
-    .nav::before,
-    .maintenance-card::before,
-    .status-card::before,
-    .logs-card::before,
-    .footer-main::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:.6;
-    }
-
-    .brand-wrap{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
-    .logo{
-      width:46px;
-      height:46px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#0B0B0B;
-      border:1px solid var(--border);
-      color:#F2F2F2;
-      flex-shrink:0;
-      cursor:pointer;
-      user-select:none;
-    }
-
-    body.light .logo{
-      background:#FFFFFF;
-      color:#111111;
     }
 
     .brand{
-      font-size:22px;
+      display:flex;
+      align-items:center;
+      gap:12px;
       font-weight:800;
-      color:var(--text);
-      letter-spacing:.3px;
+      letter-spacing:0.2px;
+    }
+        .footer{
+      text-align:center;
+      margin-top:30px;
+      color:#8e8e8e;
+      font-size:14px;
     }
 
-    .brand-sub{
-      color:var(--muted);
-      font-size:13px;
-      margin-top:2px;
-    }
+.logo{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#0B0B0B;
+  border:1px solid var(--border);
+  color:#F2F2F2;
+}
 
-    .nav-right{
+    .controls{
       display:flex;
       align-items:center;
-      gap:20px;
+      gap:10px;
       flex-wrap:wrap;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .nav-links a{
-      text-decoration:none;
-      color:var(--text);
-      font-weight:700;
-      padding:9px 12px;
-      border-radius:10px;
-      transition:.18s ease;
-    }
-
-    .nav-links a:hover{
-      background:rgba(255,255,255,.04);
-    }
-
-    body.light .nav-links a:hover{
-      background:rgba(0,0,0,.04);
     }
 
     .lang-switch{
@@ -217,561 +146,507 @@
       overflow:hidden;
     }
 
-    .lang-switch button{
+    .lang-switch button,
+    .theme-btn{
       border:0;
       background:transparent;
-      padding:6px 9px;
+      color:var(--muted);
+      padding:6px 10px;
       font-size:12px;
       font-weight:700;
-      color:var(--muted);
       cursor:pointer;
-      transition:.18s ease;
+      transition:0.18s ease;
     }
 
-    .lang-switch button:hover{
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-    }
-
-    body.light .lang-switch button:hover{
-      background:rgba(0,0,0,.04);
-    }
-
-    .lang-switch .active{
-      background:rgba(255,255,255,.06);
+    .lang-switch button.active{
+      background:rgba(255,255,255,0.06);
       color:var(--text);
     }
 
     .theme-btn{
       border:1px solid var(--border);
-      background:transparent;
-      color:var(--text);
-      padding:8px 10px;
       border-radius:10px;
-      cursor:pointer;
-      font-size:13px;
-      font-weight:700;
-      transition:.18s ease;
+      color:var(--text);
+      padding:7px 10px;
     }
 
-    .theme-btn:hover{
-      background:rgba(255,255,255,.04);
+    .theme-btn:hover,
+    .lang-switch button:hover{
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
     }
 
-    .maintenance-card,
-    .status-card,
-    .logs-card,
-    .footer-main{
-      border-radius:22px;
+    .wrap{
+      min-height:calc(100vh - 98px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
       padding:24px;
-      background:var(--card-bg);
+      position:relative;
+    }
+
+    .ambient{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .orb{
+      position:absolute;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:0.08;
+      background:var(--accent);
+      animation:floatOrb 12s ease-in-out infinite;
+    }
+
+    .orb.one{
+      top:8%;
+      right:12%;
+    }
+
+    .orb.two{
+      bottom:10%;
+      left:10%;
+      width:240px;
+      height:240px;
+      animation-duration:15s;
+    }
+
+    @keyframes floatOrb{
+      0%,100%{ transform:translate(0,0) scale(1); }
+      50%{ transform:translate(18px,-14px) scale(1.06); }
+    }
+
+    .box{
+      width:100%;
+      max-width:760px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid var(--border);
+      border-radius:24px;
       box-shadow:var(--shadow);
+      padding:40px 36px;
+      text-align:center;
       position:relative;
       overflow:hidden;
-      margin-bottom:24px;
-    }
-
-    .maintenance-card{
-      text-align:center;
-      padding:36px 24px;
-    }
-
-    .maintenance-bg-text{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      font-size:170px;
-      font-weight:900;
-      letter-spacing:8px;
-      color:#ffffff;
-      opacity:0.06;
-      white-space:nowrap;
-      pointer-events:none;
-      user-select:none;
       z-index:1;
     }
 
-    .maintenance-card > *:not(.maintenance-bg-text){
-      position:relative;
-      z-index:2;
+    .box::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-30%;
+      width:40%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:0.85;
+      animation:shimmer 5.5s linear infinite;
     }
 
-    .section-kicker{
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:1.1px;
-      color:var(--accent);
-      font-weight:700;
-      margin-bottom:8px;
+    @keyframes shimmer{
+      0%{ left:-30%; }
+      100%{ left:110%; }
     }
 
-    .maintenance-title{
+    h1{
       margin:0 0 10px;
-      font-size:48px;
+      font-size:40px;
       font-weight:800;
-      color:var(--text);
+      letter-spacing:-0.3px;
     }
 
-    .maintenance-subtitle{
-      margin:0 auto 14px;
-      max-width:760px;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.8;
+    .subtitle{
+      color:var(--accent);
+      font-size:17px;
+      font-style:italic;
+      margin-bottom:18px;
     }
 
-    .launch-date{
+    .status{
       display:inline-flex;
       align-items:center;
       gap:10px;
       padding:10px 16px;
-      border:1px solid var(--border-accent);
-      background:rgba(198,168,91,0.08);
       border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
       font-size:14px;
-      font-weight:700;
-      color:var(--text);
-      margin:6px 0 18px;
+      margin-bottom:22px;
     }
 
-    .countdown-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      max-width:760px;
-      margin:0 auto 20px;
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 10px rgba(198,168,91,0.4);
+      animation:pulse 1.6s infinite ease-in-out;
     }
 
-    .count-box{
+    @keyframes pulse{
+      0%,100%{ transform:scale(1); opacity:0.7; }
+      50%{ transform:scale(1.25); opacity:1; }
+    }
+
+    .text{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+      max-width:560px;
+      margin:0 auto 24px;
+    }
+
+    .progress-card{
       background:var(--card-2);
       border:1px solid var(--border);
-      border-radius:16px;
+      border-radius:18px;
       padding:18px;
-    }
-
-    .count-value{
-      font-size:34px;
-      font-weight:800;
-      color:var(--accent);
-      line-height:1;
-      margin-bottom:8px;
-    }
-
-    .count-label{
-      font-size:12px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .progress-wrap{
-      max-width:760px;
-      margin:0 auto 12px;
       text-align:left;
+      margin:0 auto 18px;
+      max-width:560px;
     }
 
-    .progress-meta{
+    .progress-row{
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:12px;
-      margin-bottom:8px;
-      font-size:13px;
+      margin-bottom:10px;
+      font-size:14px;
+    }
+
+    .progress-row .label{
       color:var(--muted);
     }
 
-    .progress-bar{
+    .progress-row .value{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .progress-track{
       width:100%;
-      height:14px;
+      height:10px;
       border-radius:999px;
-      border:1px solid var(--border);
-      background:var(--card-2);
+      background:rgba(255,255,255,0.06);
       overflow:hidden;
+      border:1px solid var(--border);
       position:relative;
     }
 
-    .progress-fill{
+    .progress-bar{
+      width:45%;
       height:100%;
-      width:0%;
+      background:linear-gradient(90deg, var(--accent), rgba(198,168,91,0.75));
       border-radius:999px;
-      background:linear-gradient(90deg, rgba(198,168,91,0.55), rgba(198,168,91,0.95));
-      transition:width .45s ease;
+      position:relative;
+      animation:barGlow 3s ease-in-out infinite;
     }
 
-    .status-rotator{
-      margin-top:12px;
-      font-size:14px;
-      color:var(--muted);
-      min-height:22px;
+    .progress-bar::after{
+      content:"";
+      position:absolute;
+      top:0;
+      right:-18px;
+      width:36px;
+      height:100%;
+      background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.22), rgba(255,255,255,0));
+      animation:barSweep 2.8s linear infinite;
     }
 
-    .philosophy-line{
-      margin-top:14px;
-      font-size:14px;
-      color:var(--accent);
-      font-style:italic;
+    @keyframes barGlow{
+      0%,100%{ filter:brightness(1); }
+      50%{ filter:brightness(1.08); }
     }
 
-    .grid-2{
+    @keyframes barSweep{
+      0%{ transform:translateX(-120px); opacity:0; }
+      15%{ opacity:1; }
+      100%{ transform:translateX(180px); opacity:0; }
+    }
+
+    .meta-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:24px;
-      align-items:start;
-    }
-
-    .section-title{
-      margin:0 0 12px;
-      font-size:28px;
-      font-weight:800;
-      color:var(--text);
-    }
-
-    .status-list{
-      display:grid;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    .status-row{
-      display:flex;
-      justify-content:space-between;
       gap:14px;
-      align-items:center;
-      padding:14px 16px;
+      max-width:560px;
+      margin:0 auto 18px;
+    }
+
+    .meta{
       background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:14px;
-    }
-
-    .status-name{
-      color:var(--text);
-      font-size:14px;
-      font-weight:700;
-    }
-
-    .status-value{
-      font-size:13px;
-      font-weight:700;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,0.02);
-      white-space:nowrap;
-    }
-
-    .status-value.success{ color:var(--success); }
-    .status-value.warn{ color:var(--warn); }
-    .status-value.danger{ color:var(--danger); }
-
-    .logs-box{
-      margin-top:12px;
-      background:#0b0b0b;
       border:1px solid var(--border);
       border-radius:16px;
       padding:16px;
-      min-height:250px;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size:13px;
-      line-height:1.7;
-      color:#d7d7d7;
-      overflow:auto;
+      text-align:left;
     }
 
-    body.light .logs-box{
-      background:#f7f7f7;
-      color:#222;
-    }
-
-    .log-line{
-      opacity:0;
-      animation:fadeIn .35s ease forwards;
-    }
-
-    @keyframes fadeIn{
-      from{opacity:0; transform:translateY(4px);}
-      to{opacity:1; transform:translateY(0);}
-    }
-
-    .easter-egg{
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--border-accent);
-      background:rgba(198,168,91,0.08);
-      color:var(--text);
-      font-size:13px;
-      display:none;
-    }
-
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.4fr 1fr 1fr;
-      gap:24px;
-    }
-
-    .footer-col h4{
-      margin:0 0 12px;
-      font-size:18px;
-    }
-
-    .footer-col p,
-    .footer-col a{
-      margin:0;
+    .meta-label{
       color:var(--muted);
-      font-size:14px;
-      line-height:1.8;
-      text-decoration:none;
+      font-size:12px;
+      margin-bottom:6px;
     }
 
-    .footer-col a:hover{
+    .meta-value{
       color:var(--text);
+      font-weight:700;
+      font-size:15px;
+      line-height:1.5;
     }
 
-    .footer{
-      text-align:center;
-      margin-top:24px;
-      color:#8e8e8e;
-      font-size:14px;
+    .notice{
+      max-width:560px;
+      margin:0 auto;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
     }
 
-    .legal-strip{
-      margin-top:18px;
-      padding:12px 20px;
-      text-align:center;
-      font-size:11px;
-      color:#7d7d7d;
-      border-top:1px solid var(--border);
-    }
+    body.light .logo{
+  background:#FFFFFF;
+  color:#111111;
+}
 
-    @media (max-width:980px){
-      .grid-2,
-      .countdown-grid,
-      .footer-grid{
-        grid-template-columns:1fr;
-      }
-
-      .maintenance-bg-text{
-        font-size:92px;
-      }
-
-      .maintenance-title{
-        font-size:36px;
-      }
-
-      .nav{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-    }
-
-    @media (max-width:700px){
-      .maintenance-bg-text{
-        font-size:58px;
-        letter-spacing:4px;
-      }
-
-      .maintenance-title{
-        font-size:30px;
-      }
+    @media (max-width:640px){
+      .box{ padding:30px 20px; }
+      h1{ font-size:30px; }
+      .meta-grid{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="fx-topbar">
-    <div class="fx-inner">
-      <div class="fx-left">
-        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
-        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
-        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+  <div class="market-bar">
+    <div class="market-inner">
+      <div class="market-left">
+        <div class="market-item">DAX <span id="m-dax">18,965</span></div>
+        <div class="market-item">S&amp;P 500 <span id="m-spx">5,430</span></div>
+        <div class="market-item">EUR/USD <span id="m-usd">—</span></div>
+        <div class="market-item">EUR/GBP <span id="m-gbp">—</span></div>
+        <div class="market-item">EUR/CHF <span id="m-chf">—</span></div>
       </div>
-      <div class="fx-date" id="top-date">Loading…</div>
+      <div class="market-date" id="marketDate">Loading…</div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="nav">
-      <div class="brand-wrap">
-        <div class="logo" id="logoTrigger">
-          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
-            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"/>
-            <line x1="16" y1="25.5" x2="41" y2="25.5"
-                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="38.5" x2="41" y2="38.5"
-                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div>
-          <div class="brand">Davlad Bank</div>
-          <div class="brand-sub" id="brandSub">Deposits • Investments • Loans</div>
-        </div>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+ <div class="logo">
+  <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+    <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+    <line x1="16" y1="25.5" x2="41" y2="25.5"
+          stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="16" y1="38.5" x2="41" y2="38.5"
+          stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
+        <span id="brandText">Davlad Bank</span>
       </div>
 
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="index.html" id="navHome">Home</a>
-          <a href="deposits.html" id="navDeposits">Deposits</a>
-          <a href="investments.html" id="navInvestments">Investments</a>
-          <a href="loans.html" id="navLoans">Loans</a>
-          <a href="about.html" id="navAbout">About</a>
-          <a href="contact.html" id="navContact">Contact</a>
-        </div>
-
+      <div class="controls">
         <div class="lang-switch">
           <button class="active" data-lang="en">EN</button>
           <button data-lang="de">DE</button>
           <button data-lang="ua">UA</button>
         </div>
-
-        <button id="themeToggle" class="theme-btn">🌙</button>
+        <button class="theme-btn" id="themeToggle">🌙</button>
       </div>
     </div>
+  </div>
 
-    <div class="maintenance-card">
-      <div class="maintenance-bg-text" id="bgText">MAINTENANCE</div>
-
-      <div class="section-kicker" id="heroKicker">Davlad Bank • System Upgrade • Controlled Downtime</div>
-      <h1 class="maintenance-title" id="heroTitle">The site is temporarily unavailable</h1>
-      <p class="maintenance-subtitle" id="heroSubtitle">
-        Core systems are currently being aligned, refined, and institutionally over-prepared.
-        Public availability is planned for 21 March 2026.
-      </p>
-
-      <div class="launch-date" id="launchDateText">Launching on 21 March 2026</div>
-
-      <div class="countdown-grid">
-        <div class="count-box">
-          <div class="count-value" id="daysValue">—</div>
-          <div class="count-label" id="daysLabel">Days</div>
-        </div>
-        <div class="count-box">
-          <div class="count-value" id="hoursValue">—</div>
-          <div class="count-label" id="hoursLabel">Hours</div>
-        </div>
-        <div class="count-box">
-          <div class="count-value" id="minutesValue">—</div>
-          <div class="count-label" id="minutesLabel">Minutes</div>
-        </div>
-        <div class="count-box">
-          <div class="count-value" id="secondsValue">—</div>
-          <div class="count-label" id="secondsLabel">Seconds</div>
-        </div>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-meta">
-          <span id="progressLabel">Deployment progress</span>
-          <span id="progressPercent">0%</span>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-      </div>
-
-      <div class="status-rotator" id="statusRotator">
-        Aligning financial structures…
-      </div>
-
-      <div class="philosophy-line" id="philosophyLine">
-        Liquidity is a process, not a state.
-      </div>
+  <div class="wrap">
+    <div class="ambient">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
     </div>
 
-    <div class="grid-2">
-      <div class="status-card">
-        <div class="section-kicker" id="systemKicker">System Status</div>
-        <h2 class="section-title" id="systemTitle">Initialization overview</h2>
+    <div class="box">
+      <div class="status">
+        <span class="dot"></span>
+        <span id="statusText">Scheduled maintenance</span>
+      </div>
 
-        <div class="status-list">
-          <div class="status-row">
-            <div class="status-name" id="status1Name">Core Engine</div>
-            <div class="status-value success" id="status1Value">Initializing</div>
-          </div>
+      <h1 id="titleText">System Maintenance</h1>
+      <div class="subtitle" id="subtitleText">In liquidity we trust.</div>
 
-          <div class="status-row">
-            <div class="status-name" id="status2Name">UI Layer</div>
-            <div class="status-value success" id="status2Value">Stable</div>
-          </div>
+      <div class="text" id="bodyText">
+        Davlad Bank is currently undergoing infrastructure improvements,
+        interface refinement, and system optimization.
+        <br><br>
+        Please check back shortly.
+      </div>
 
-          <div class="status-row">
-            <div class="status-name" id="status3Name">Investment Module</div>
-            <div class="status-value warn" id="status3Value">Active</div>
-          </div>
-
-          <div class="status-row">
-            <div class="status-name" id="status4Name">Liquidity Layer</div>
-            <div class="status-value danger" id="status4Value">Pending</div>
-          </div>
-
-          <div class="status-row">
-            <div class="status-name" id="status5Name">Loan System</div>
-            <div class="status-value danger" id="status5Value">Delayed</div>
-          </div>
+      <div class="progress-card">
+        <div class="progress-row">
+          <span class="label" id="progressLabel">Maintenance status</span>
+          <span class="value" id="progressValue">In progress</span>
         </div>
-
-        <div class="easter-egg" id="easterEgg">
-          Admin access denied. Liquidity override unavailable.
+        <div class="progress-track">
+          <div class="progress-bar"></div>
         </div>
       </div>
 
-      <div class="logs-card">
-        <div class="section-kicker" id="logsKicker">Initialization Logs</div>
-        <h2 class="section-title" id="logsTitle">System console</h2>
-        <div class="logs-box" id="logsBox"></div>
-      </div>
-    </div>
-
-    <div class="footer-main">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4 id="footerCol1Title">Davlad Bank</h4>
-          <p id="footerCol1Text">
-            Independent financial platform focused on deposits, investments, and structured lending.
-          </p>
+      <div class="meta-grid">
+        <div class="meta">
+          <div class="meta-label" id="accessLabel">Access</div>
+          <div class="meta-value" id="accessValue">Temporarily unavailable during maintenance</div>
         </div>
 
-        <div class="footer-col">
-          <h4 id="footerCol2Title">Navigation</h4>
-          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
-          <a href="investments.html" id="footerInvestments">Investments</a><br>
-          <a href="loans.html" id="footerLoans">Loans</a>
-        </div>
-
-        <div class="footer-col">
-          <h4 id="footerCol3Title">Company</h4>
-          <a href="about.html" id="footerAbout">About</a><br>
-          <a href="contact.html" id="footerContact">Contact</a>
+        <div class="meta">
+          <div class="meta-label" id="noticeLabel">Environment status</div>
+          <div class="meta-value" id="noticeValue">Secure maintenance window active</div>
         </div>
       </div>
-    </div>
 
-    <div class="footer" id="footerText">
-      Davlad Bank © 2026 · Controlled Maintenance Window
-    </div>
-
-    <div class="legal-strip" id="legalText">
-      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
+      <div class="notice" id="footerText">
+        Thank you for your patience while maintenance operations are being completed.
+      </div>
     </div>
   </div>
 
   <script>
-    const btn = document.getElementById("themeToggle");
-    let currentLanguage = localStorage.getItem("siteLanguage") || "en";
+    const translations = {
+      en: {
+        brand: "Davlad Bank",
+        status: "Scheduled maintenance",
+        title: "System Maintenance",
+        subtitle: "In liquidity we trust.",
+        body: "Davlad Bank is currently undergoing infrastructure improvements, interface refinement, and system optimization.<br><br>Please check back shortly.",
+        progress: "Maintenance status",
+        progressValue: "In progress",
+        accessLabel: "Access",
+        accessValue: "Temporarily unavailable during maintenance",
+        noticeLabel: "Environment status",
+        footer: "Thank you for your patience while maintenance operations are being completed.",
+        rotating: [
+          "Secure maintenance window active",
+          "Infrastructure update in progress",
+          "Interface refinement in progress",
+          "System optimization in progress"
+        ]
+      },
+      de: {
+        brand: "Davlad Bank",
+        status: "Geplante Wartung",
+        title: "Systemwartung",
+        subtitle: "In liquidity we trust.",
+        body: "Davlad Bank führt derzeit Infrastrukturverbesserungen, Interface-Optimierungen und Systemanpassungen durch.<br><br>Bitte schauen Sie in Kürze wieder vorbei.",
+        progress: "Wartungsstatus",
+        progressValue: "In Bearbeitung",
+        accessLabel: "Zugang",
+        accessValue: "Während der Wartung vorübergehend nicht verfügbar",
+        noticeLabel: "Umgebungsstatus",
+        footer: "Vielen Dank für Ihre Geduld während der laufenden Wartungsarbeiten.",
+        rotating: [
+          "Sicheres Wartungsfenster aktiv",
+          "Infrastruktur-Update läuft",
+          "Interface-Optimierung läuft",
+          "Systemoptimierung läuft"
+        ]
+      },
+      ua: {
+        brand: "Davlad Bank",
+        status: "Планове технічне обслуговування",
+        title: "Системне обслуговування",
+        subtitle: "In liquidity we trust.",
+        body: "Davlad Bank наразі проводить оновлення інфраструктури, вдосконалення інтерфейсу та оптимізацію систем.<br><br>Будь ласка, завітайте трохи пізніше.",
+        progress: "Статус обслуговування",
+        progressValue: "У процесі",
+        accessLabel: "Доступ",
+        accessValue: "Тимчасово недоступно під час технічних робіт",
+        noticeLabel: "Статус середовища",
+        footer: "Дякуємо за терпіння під час завершення технічних робіт.",
+        rotating: [
+          "Активне захищене вікно обслуговування",
+          "Триває оновлення інфраструктури",
+          "Триває вдосконалення інтерфейсу",
+          "Триває оптимізація систем"
+        ]
+      }
+    };
 
-    function applyTheme(theme){
-      document.body.classList.toggle("light", theme === "light");
-      btn.textContent = theme === "light" ? "☀️" : "🌙";
+    const els = {
+      brand: document.getElementById("brandText"),
+      status: document.getElementById("statusText"),
+      title: document.getElementById("titleText"),
+      subtitle: document.getElementById("subtitleText"),
+      body: document.getElementById("bodyText"),
+      progress: document.getElementById("progressLabel"),
+      progressValue: document.getElementById("progressValue"),
+      accessLabel: document.getElementById("accessLabel"),
+      accessValue: document.getElementById("accessValue"),
+      noticeLabel: document.getElementById("noticeLabel"),
+      noticeValue: document.getElementById("noticeValue"),
+      footer: document.getElementById("footerText")
+    };
+
+    let currentLang = "en";
+    let rotatingIndex = 0;
+    let rotatingTimer = null;
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+      els.brand.textContent = t.brand;
+      els.status.textContent = t.status;
+      els.title.textContent = t.title;
+      els.subtitle.textContent = t.subtitle;
+      els.body.innerHTML = t.body;
+      els.progress.textContent = t.progress;
+      els.progressValue.textContent = t.progressValue;
+      els.accessLabel.textContent = t.accessLabel;
+      els.accessValue.textContent = t.accessValue;
+      els.noticeLabel.textContent = t.noticeLabel;
+      els.footer.textContent = t.footer;
+
+      document.querySelectorAll(".lang-switch button").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+
+      startRotatingStatus();
     }
 
-    applyTheme(localStorage.getItem("theme") || "dark");
+    function startRotatingStatus() {
+      if (rotatingTimer) clearInterval(rotatingTimer);
+      const list = translations[currentLang].rotating;
+      rotatingIndex = 0;
+      els.noticeValue.textContent = list[0];
 
-    btn.addEventListener("click", () => {
+      rotatingTimer = setInterval(() => {
+        rotatingIndex = (rotatingIndex + 1) % list.length;
+        els.noticeValue.textContent = list[rotatingIndex];
+      }, 2600);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+
+    const themeBtn = document.getElementById("themeToggle");
+
+    function applyTheme(theme) {
+      if (theme === "light") {
+        document.body.classList.add("light");
+        themeBtn.textContent = "☀️";
+      } else {
+        document.body.classList.remove("light");
+        themeBtn.textContent = "🌙";
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    applyTheme(savedTheme);
+
+    themeBtn.addEventListener("click", () => {
       const next = document.body.classList.contains("light") ? "dark" : "light";
       localStorage.setItem("theme", next);
       applyTheme(next);
@@ -782,355 +657,22 @@
         const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
 
-        if (!data || !data.rates) throw new Error("No rates returned");
+        if (data?.rates?.USD) document.getElementById("m-usd").textContent = data.rates.USD.toFixed(4);
+        if (data?.rates?.GBP) document.getElementById("m-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.CHF) document.getElementById("m-chf").textContent = data.rates.CHF.toFixed(4);
 
-        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
-        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
-        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
-
-        document.getElementById("top-date").textContent =
-          `Official ECB reference rate • ${data.date}`;
-      } catch (error) {
-        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+        document.getElementById("marketDate").textContent =
+          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
+      } catch (err) {
+        document.getElementById("marketDate").textContent = "Market data temporarily unavailable";
       }
     }
 
-    function getLaunchDate() {
-      return new Date("2026-03-21T12:00:00");
-    }
-
-    const countdownLabels = {
-      en: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
-      de: { days: "Tage", hours: "Std.", minutes: "Min.", seconds: "Sek." },
-      ua: { days: "Дні", hours: "Год.", minutes: "Хв.", seconds: "Сек." }
-    };
-
-    function updateCountdown(lang = "en") {
-      const now = new Date();
-      const target = getLaunchDate();
-      let diff = target - now;
-
-      if (diff < 0) diff = 0;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      document.getElementById("daysValue").textContent = days;
-      document.getElementById("hoursValue").textContent = hours;
-      document.getElementById("minutesValue").textContent = minutes;
-      document.getElementById("secondsValue").textContent = seconds;
-
-      const labels = countdownLabels[lang] || countdownLabels.en;
-      document.getElementById("daysLabel").textContent = labels.days;
-      document.getElementById("hoursLabel").textContent = labels.hours;
-      document.getElementById("minutesLabel").textContent = labels.minutes;
-      document.getElementById("secondsLabel").textContent = labels.seconds;
-    }
-
-    function calculateProgressPercent() {
-      const startDate = new Date("2026-01-01T00:00:00");
-      const launchDate = getLaunchDate();
-      const now = new Date();
-
-      const total = launchDate - startDate;
-      const elapsed = now - startDate;
-      let percent = Math.max(0, Math.min(100, (elapsed / total) * 100));
-
-      if (percent < 40) {
-        percent = percent * 1.05;
-      } else if (percent < 70) {
-        percent = 40 + ((percent - 40) * 0.75);
-      } else if (percent < 90) {
-        percent = 62 + ((percent - 70) * 0.55);
-      } else {
-        percent = 73 + ((percent - 90) * 2.7);
-      }
-
-      return Math.max(3, Math.min(99, Math.round(percent)));
-    }
-
-    function updateProgress() {
-      const percent = calculateProgressPercent();
-      document.getElementById("progressFill").style.width = percent + "%";
-      document.getElementById("progressPercent").textContent = percent + "%";
-    }
-
-    const rotatingMessages = {
-      en: [
-        "Aligning financial structures…",
-        "Optimizing capital presentation…",
-        "Re-evaluating liquidity posture…",
-        "Refining institutional details…",
-        "Almost ready for public visibility…"
-      ],
-      de: [
-        "Finanzstrukturen werden abgestimmt…",
-        "Kapitalpräsentation wird optimiert…",
-        "Liquiditätslage wird neu bewertet…",
-        "Institutionelle Details werden verfeinert…",
-        "Fast bereit für die öffentliche Sichtbarkeit…"
-      ],
-      ua: [
-        "Узгоджуються фінансові структури…",
-        "Оптимізується презентація капіталу…",
-        "Переоцінюється ліквідна позиція…",
-        "Уточнюються інституційні деталі…",
-        "Майже готово до публічної доступності…"
-      ]
-    };
-
-    let rotatorIndex = 0;
-    function updateRotator(lang = "en") {
-      const messages = rotatingMessages[lang] || rotatingMessages.en;
-      document.getElementById("statusRotator").textContent = messages[rotatorIndex % messages.length];
-      rotatorIndex++;
-    }
-
-    const logMessages = {
-      en: [
-        "Initializing Davlad Core…",
-        "Loading financial modules…",
-        "Verifying interface layers…",
-        "Checking investment pathways…",
-        "Reviewing lending availability…",
-        "Warning: liquidity module not found",
-        "Switching to presentation-first mode…",
-        "Continuing system alignment…",
-        "Preparing public launch framework…",
-        "Maintenance process remains controlled."
-      ],
-      de: [
-        "Davlad Core wird initialisiert…",
-        "Finanzmodule werden geladen…",
-        "Interface-Ebenen werden geprüft…",
-        "Investment-Pfade werden kontrolliert…",
-        "Kreditverfügbarkeit wird überprüft…",
-        "Warnung: Liquiditätsmodul nicht gefunden",
-        "Wechsel in präsentationsorientierten Modus…",
-        "Systemabstimmung wird fortgesetzt…",
-        "Öffentlicher Launch-Rahmen wird vorbereitet…",
-        "Der Maintenance-Prozess bleibt kontrolliert."
-      ],
-      ua: [
-        "Ініціалізація Davlad Core…",
-        "Завантажуються фінансові модулі…",
-        "Перевіряються інтерфейсні шари…",
-        "Контролюються інвестиційні шляхи…",
-        "Перевіряється доступність кредитування…",
-        "Попередження: модуль ліквідності не знайдено",
-        "Перехід у режим пріоритету презентації…",
-        "Узгодження системи триває…",
-        "Готується рамка публічного запуску…",
-        "Процес maintenance залишається контрольованим."
-      ]
-    };
-
-    let logTimer = null;
-    function renderLogs(lang = "en") {
-      const box = document.getElementById("logsBox");
-      box.innerHTML = "";
-      const messages = logMessages[lang] || logMessages.en;
-
-      let i = 0;
-      if (logTimer) clearInterval(logTimer);
-
-      function addLine() {
-        if (i >= messages.length) return;
-        const line = document.createElement("div");
-        line.className = "log-line";
-        const time = new Date().toLocaleTimeString();
-        line.textContent = `[${time}] ${messages[i]}`;
-        box.appendChild(line);
-        box.scrollTop = box.scrollHeight;
-        i++;
-      }
-
-      addLine();
-      logTimer = setInterval(() => {
-        addLine();
-        if (i >= messages.length) clearInterval(logTimer);
-      }, 850);
-    }
-
-    const translations = {
-      en: {
-        brandSub: "Deposits • Investments • Loans",
-        navHome: "Home",
-        navDeposits: "Deposits",
-        navInvestments: "Investments",
-        navLoans: "Loans",
-        navAbout: "About",
-        navContact: "Contact",
-
-        bgText: "MAINTENANCE",
-        heroKicker: "Davlad Bank • System Upgrade • Controlled Downtime",
-        heroTitle: "The site is temporarily unavailable",
-        heroSubtitle: "Core systems are currently being aligned, refined, and institutionally over-prepared. Public availability is planned for 21 March 2026.",
-        launchDateText: "Launching on 21 March 2026",
-        progressLabel: "Deployment progress",
-        philosophyLine: "Liquidity is a process, not a state.",
-
-        systemKicker: "System Status",
-        systemTitle: "Initialization overview",
-        status1Name: "Core Engine",
-        status1Value: "Initializing",
-        status2Name: "UI Layer",
-        status2Value: "Stable",
-        status3Name: "Investment Module",
-        status3Value: "Active",
-        status4Name: "Liquidity Layer",
-        status4Value: "Pending",
-        status5Name: "Loan System",
-        status5Value: "Delayed",
-
-        logsKicker: "Initialization Logs",
-        logsTitle: "System console",
-        easterEgg: "Admin access denied. Liquidity override unavailable.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
-        footerCol2Title: "Navigation",
-        footerCol3Title: "Company",
-        footerText: "Davlad Bank © 2026 · Controlled Maintenance Window",
-        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
-      },
-
-      de: {
-        brandSub: "Einlagen • Investments • Kredite",
-        navHome: "Start",
-        navDeposits: "Einlagen",
-        navInvestments: "Investments",
-        navLoans: "Kredite",
-        navAbout: "Über uns",
-        navContact: "Kontakt",
-
-        bgText: "MAINTENANCE",
-        heroKicker: "Davlad Bank • System-Upgrade • Kontrollierte Auszeit",
-        heroTitle: "Die Seite ist vorübergehend nicht verfügbar",
-        heroSubtitle: "Kernsysteme werden derzeit abgestimmt, verfeinert und institutionell übervorbereitet. Die öffentliche Verfügbarkeit ist für den 21. März 2026 geplant.",
-        launchDateText: "Launch am 21. März 2026",
-        progressLabel: "Deployment-Fortschritt",
-        philosophyLine: "Liquidität ist ein Prozess, kein Zustand.",
-
-        systemKicker: "Systemstatus",
-        systemTitle: "Initialisierungsübersicht",
-        status1Name: "Core Engine",
-        status1Value: "Initialisiert",
-        status2Name: "UI-Ebene",
-        status2Value: "Stabil",
-        status3Name: "Investment-Modul",
-        status3Value: "Aktiv",
-        status4Name: "Liquiditätsebene",
-        status4Value: "Ausstehend",
-        status5Name: "Kreditsystem",
-        status5Value: "Verzögert",
-
-        logsKicker: "Initialisierungsprotokolle",
-        logsTitle: "Systemkonsole",
-        easterEgg: "Admin-Zugang verweigert. Liquiditäts-Override nicht verfügbar.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
-        footerCol2Title: "Navigation",
-        footerCol3Title: "Unternehmen",
-        footerText: "Davlad Bank © 2026 · Kontrolliertes Maintenance-Fenster",
-        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
-      },
-
-      ua: {
-        brandSub: "Депозити • Інвестиції • Кредити",
-        navHome: "Головна",
-        navDeposits: "Депозити",
-        navInvestments: "Інвестиції",
-        navLoans: "Кредити",
-        navAbout: "Про банк",
-        navContact: "Контакт",
-
-        bgText: "MAINTENANCE",
-        heroKicker: "Davlad Bank • Оновлення системи • Контрольована пауза",
-        heroTitle: "Сайт тимчасово недоступний",
-        heroSubtitle: "Базові системи зараз узгоджуються, вдосконалюються та інституційно надмірно готуються. Публічна доступність запланована на 21 березня 2026 року.",
-        launchDateText: "Запуск 21 березня 2026",
-        progressLabel: "Прогрес розгортання",
-        philosophyLine: "Ліквідність — це процес, а не стан.",
-
-        systemKicker: "Статус системи",
-        systemTitle: "Огляд ініціалізації",
-        status1Name: "Core Engine",
-        status1Value: "Ініціалізація",
-        status2Name: "UI-рівень",
-        status2Value: "Стабільний",
-        status3Name: "Інвестиційний модуль",
-        status3Value: "Активний",
-        status4Name: "Рівень ліквідності",
-        status4Value: "Очікується",
-        status5Name: "Кредитна система",
-        status5Value: "Затримується",
-
-        logsKicker: "Логи ініціалізації",
-        logsTitle: "Системна консоль",
-        easterEgg: "Доступ адміністратора відхилено. Перевизначення ліквідності недоступне.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
-        footerCol2Title: "Навігація",
-        footerCol3Title: "Компанія",
-        footerText: "Davlad Bank © 2026 · Контрольоване вікно maintenance",
-        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
-      }
-    };
-
-    function setLanguage(lang) {
-      currentLanguage = lang;
-      const t = translations[lang];
-
-      Object.keys(t).forEach(key => {
-        const el = document.getElementById(key);
-        if (el) el.textContent = t[key];
-      });
-
-      document.getElementById("footerDeposits").textContent = t.navDeposits;
-      document.getElementById("footerInvestments").textContent = t.navInvestments;
-      document.getElementById("footerLoans").textContent = t.navLoans;
-      document.getElementById("footerAbout").textContent = t.navAbout;
-      document.getElementById("footerContact").textContent = t.navContact;
-
-      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
-
-      document.querySelectorAll(".lang-switch button").forEach(button => {
-        button.classList.toggle("active", button.dataset.lang === lang);
-      });
-
-      localStorage.setItem("siteLanguage", lang);
-      updateCountdown(lang);
-      updateRotator(lang);
-      renderLogs(lang);
-    }
-
-    document.querySelectorAll(".lang-switch button").forEach(button => {
-      button.addEventListener("click", () => setLanguage(button.dataset.lang));
-    });
-
-    let logoClicks = 0;
-    const logoTrigger = document.getElementById("logoTrigger");
-    const easterEgg = document.getElementById("easterEgg");
-
-    logoTrigger.addEventListener("click", () => {
-      logoClicks++;
-      if (logoClicks >= 5) {
-        easterEgg.style.display = "block";
-      }
-    });
-
-    setLanguage(currentLanguage);
+    setLanguage("en");
     loadFxRates();
-    updateProgress();
-    updateCountdown(currentLanguage);
-    setInterval(() => updateCountdown(currentLanguage), 1000);
-    setInterval(updateProgress, 4000);
-    setInterval(() => updateRotator(currentLanguage), 2800);
   </script>
+      <div class="footer">
+      Davlad Bank © 2026 · Private Capital, Public Confidence
+    </div>
 </body>
 </html>

@@ -95,61 +95,13 @@
     .fx-date{
       color:var(--muted);
       font-size:11px;
+      opacity:.9;
     }
 
     .container{
       max-width:1280px;
       margin:0 auto;
       padding:20px 20px 70px;
-      position:relative;
-    }
-
-    .ambient{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      overflow:hidden;
-    }
-
-    .orb{
-      position:absolute;
-      width:260px;
-      height:260px;
-      border-radius:50%;
-      filter:blur(80px);
-      opacity:.06;
-      background:var(--accent);
-      animation:floatOrb 12s ease-in-out infinite;
-    }
-
-    .orb.one{
-      top:80px;
-      right:40px;
-    }
-
-    .orb.two{
-      bottom:80px;
-      left:20px;
-      width:220px;
-      height:220px;
-      animation-duration:15s;
-    }
-
-    @keyframes floatOrb{
-      0%,100%{transform:translate(0,0) scale(1)}
-      50%{transform:translate(18px,-14px) scale(1.06)}
-    }
-
-    .nav,
-    .panel,
-    .status-card,
-    .product-card,
-    .notice-card{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
     }
 
     .nav{
@@ -158,19 +110,22 @@
       align-items:center;
       gap:20px;
       padding:18px 22px;
+      background:var(--nav-bg);
+      border:1px solid var(--border);
       border-radius:18px;
+      box-shadow:var(--shadow);
       margin-bottom:24px;
       backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
       flex-wrap:wrap;
-      background:var(--nav-bg);
-      z-index:1;
     }
 
     .nav::before,
-    .panel::before,
     .status-card::before,
-    .product-card::before,
-    .notice-card::before{
+    .loan-card::before,
+    .notice-card::before,
+    .footer-main::before{
       content:"";
       position:absolute;
       top:0;
@@ -257,18 +212,24 @@
       overflow:hidden;
     }
 
-    .lang-switch a{
+    .lang-switch button{
+      border:0;
+      background:transparent;
       padding:6px 9px;
-      text-decoration:none;
       font-size:12px;
       font-weight:700;
       color:var(--muted);
+      cursor:pointer;
       transition:.18s ease;
     }
 
-    .lang-switch a:hover{
+    .lang-switch button:hover{
       background:rgba(255,255,255,.04);
       color:var(--text);
+    }
+
+    body.light .lang-switch button:hover{
+      background:rgba(0,0,0,.04);
     }
 
     .lang-switch .active{
@@ -285,60 +246,149 @@
       cursor:pointer;
       font-size:13px;
       font-weight:700;
+      transition:.18s ease;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:24px;
-      margin-bottom:24px;
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    .full-banner{
+      width:100%;
+      min-height:460px;
+      border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
       position:relative;
+      overflow:hidden;
+      background:var(--card-bg);
+    }
+
+    .loans-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.64)),
+        url("images/banner_v2.jpg") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      min-height:460px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:42px 20px;
+      max-width:1280px;
+      margin:0 auto;
+      overflow:hidden;
+    }
+
+    .banner-bg-text{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      font-size:210px;
+      font-weight:900;
+      letter-spacing:8px;
+      color:#ffffff;
+      opacity:0.12;
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
       z-index:1;
     }
 
-    .panel{
-      border-radius:22px;
-      padding:26px;
+    .banner-overlay > *:not(.banner-bg-text){
+      position:relative;
+      z-index:2;
     }
 
-    .kicker{
-      font-size:12px;
-      letter-spacing:1.2px;
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
       text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:12px;
+      color:#e8dcc0;
+      margin-bottom:10px;
       font-weight:700;
     }
 
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.05;
+    .banner-title{
+      font-size:62px;
+      line-height:1;
+      margin:0 0 8px;
+      color:#fffaf0;
+      max-width:760px;
+      font-weight:800;
     }
 
-    .lead{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
+    .banner-subtitle{
+      font-size:18px;
+      color:#d8c28a;
+      margin:0 0 14px;
+      font-style:italic;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.86);
+      line-height:1.75;
+      max-width:650px;
       font-size:15px;
-      max-width:720px;
+    }
+
+    .mini-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin:0 0 26px;
+    }
+
+    .mini-stat{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px 20px;
+      box-shadow:var(--shadow);
+    }
+
+    .mini-stat span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
+    }
+
+    .mini-stat strong{
+      font-size:22px;
+      color:var(--text);
+      font-weight:800;
     }
 
     .status-grid{
       display:grid;
-      gap:14px;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-bottom:24px;
     }
 
     .status-card{
-      border-radius:16px;
-      padding:16px;
-      background:var(--card-2);
+      border-radius:20px;
+      padding:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
     .status-label{
       color:var(--muted);
       font-size:12px;
-      margin-bottom:6px;
+      margin-bottom:8px;
     }
 
     .status-value{
@@ -352,41 +402,51 @@
       color:var(--accent);
     }
 
-    .product-grid{
+    .loan-grid{
       display:grid;
       grid-template-columns:1fr 1fr 1fr;
       gap:18px;
       margin-bottom:24px;
-      position:relative;
-      z-index:1;
     }
 
-    .product-card{
+    .loan-card{
       border-radius:20px;
       padding:22px;
       background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
-    .product-title{
+    .loan-title{
       margin:0 0 10px;
       font-size:22px;
       font-weight:800;
     }
 
-    .product-copy{
+    .loan-copy{
       margin:0;
       color:var(--muted);
       font-size:14px;
       line-height:1.75;
     }
 
+    .notice-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
     .notice-card{
       border-radius:22px;
       padding:24px;
       background:var(--card-bg);
-      margin-bottom:24px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
       position:relative;
-      z-index:1;
+      overflow:hidden;
     }
 
     .notice-title{
@@ -400,40 +460,90 @@
       color:var(--muted);
       font-size:15px;
       line-height:1.8;
-      max-width:920px;
     }
 
-    .split-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
+    .footer-main{
+      margin-top:24px;
+      padding:26px 22px;
+      border-radius:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
       position:relative;
-      z-index:1;
+      overflow:hidden;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .footer-col h4{
+      margin:0 0 12px;
+      font-size:18px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      text-decoration:none;
+    }
+
+    .footer-col a:hover{
+      color:var(--text);
     }
 
     .footer{
       text-align:center;
-      margin-top:30px;
+      margin-top:24px;
       color:#8e8e8e;
       font-size:14px;
-      position:relative;
-      z-index:1;
+    }
+
+    .legal-strip{
+      margin-top:18px;
+      padding:12px 20px;
+      text-align:center;
+      font-size:11px;
+      color:#7d7d7d;
+      border-top:1px solid var(--border);
     }
 
     @media (max-width:950px){
-      .hero,
-      .product-grid,
-      .split-grid{
+      .mini-stats,
+      .status-grid,
+      .loan-grid,
+      .notice-grid,
+      .footer-grid{
         grid-template-columns:1fr;
+      }
+
+      .banner-bg-text{
+        font-size:120px;
+      }
+
+      .banner-title{
+        font-size:40px;
       }
 
       .nav{
         flex-direction:column;
         align-items:flex-start;
       }
+    }
 
-      h1{
-        font-size:34px;
+    @media (max-width:700px){
+      .banner-bg-text{
+        font-size:78px;
+        letter-spacing:4px;
+      }
+
+      .banner-title{
+        font-size:32px;
       }
     }
   </style>
@@ -451,11 +561,6 @@
   </div>
 
   <div class="container">
-    <div class="ambient">
-      <div class="orb one"></div>
-      <div class="orb two"></div>
-    </div>
-
     <div class="nav">
       <div class="brand-wrap">
         <div class="logo">
@@ -473,113 +578,161 @@
           </svg>
         </div>
         <div>
-          <div class="brand">Davlad Bank</div>
-          <div class="brand-sub">Deposits • Investments • Loans</div>
+          <div class="brand" id="brandName">Davlad Bank</div>
+          <div class="brand-sub" id="brandSub">Deposits • Investments • Loans</div>
         </div>
       </div>
 
       <div class="nav-right">
         <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="deposits.html">Deposits</a>
-          <a href="investments.html">Investments</a>
-          <a href="loans.html">Loans</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" id="navHome">Home</a>
+          <a href="deposits.html" id="navDeposits">Deposits</a>
+          <a href="investments.html" id="navInvestments">Investments</a>
+          <a href="loans.html" id="navLoans">Loans</a>
+          <a href="about.html" id="navAbout">About</a>
+          <a href="contact.html" id="navContact">Contact</a>
         </div>
 
         <div class="lang-switch">
-          <a href="loans.html" class="active">EN</a>
-          <a href="de/loans.html">DE</a>
-          <a href="ua/loans.html">UA</a>
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
         </div>
 
         <button id="themeToggle" class="theme-btn">🌙</button>
       </div>
     </div>
+  </div>
 
-    <div class="hero">
-      <div class="panel">
-        <div class="kicker">Loans</div>
-        <h1>Loans will become available from 1 June 2026</h1>
-        <p class="lead">
-          The lending division is currently in pre-launch preparation. Credit issuance is temporarily
-          deferred pending internal liquidity alignment and balance-sheet prioritization.
-        </p>
+  <div class="full-banner loans-banner">
+    <div class="banner-overlay">
+      <div class="banner-bg-text" id="loansBgText">LOANS</div>
+
+      <div class="banner-kicker" id="loansKicker">Davlad Bank • Lending Division • Pre-Launch</div>
+      <h1 class="banner-title" id="loansTitle">Loans</h1>
+      <div class="banner-subtitle" id="loansSubtitle">Lending products will become available from 1 June 2026.</div>
+      <div class="banner-text" id="loansText">
+        The lending division is currently in pre-launch preparation. Credit issuance remains temporarily deferred pending internal liquidity alignment and balance-sheet prioritization.
       </div>
+    </div>
+  </div>
 
-      <div class="panel">
-        <div class="status-grid">
-          <div class="status-card">
-            <div class="status-label">Availability Date</div>
-            <div class="status-value accent">1 June 2026</div>
-          </div>
-
-          <div class="status-card">
-            <div class="status-label">Division Status</div>
-            <div class="status-value">Pre-launch</div>
-          </div>
-
-          <div class="status-card">
-            <div class="status-label">Issuance Status</div>
-            <div class="status-value">Temporarily inactive</div>
-          </div>
-        </div>
+  <div class="container">
+    <div class="mini-stats">
+      <div class="mini-stat">
+        <span id="stat1Label">Availability</span>
+        <strong id="stat1Value">1 June 2026</strong>
+      </div>
+      <div class="mini-stat">
+        <span id="stat2Label">Division Status</span>
+        <strong id="stat2Value">Pre-launch</strong>
+      </div>
+      <div class="mini-stat">
+        <span id="stat3Label">Current Issuance</span>
+        <strong id="stat3Value">Inactive</strong>
       </div>
     </div>
 
-    <div class="product-grid">
-      <div class="product-card">
-        <h2 class="product-title">Short-Term Credit</h2>
-        <p class="product-copy">
+    <div class="status-grid">
+      <div class="status-card">
+        <div class="status-label" id="status1Label">Availability Date</div>
+        <div class="status-value accent" id="status1Value">1 June 2026</div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-label" id="status2Label">Division Status</div>
+        <div class="status-value" id="status2Value">Pre-launch</div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-label" id="status3Label">Issuance Status</div>
+        <div class="status-value" id="status3Value">Temporarily inactive</div>
+      </div>
+    </div>
+
+    <div class="loan-grid">
+      <div class="loan-card">
+        <h3 class="loan-title" id="loan1Title">Short-Term Credit</h3>
+        <p class="loan-copy" id="loan1Copy">
           Planned as a compact lending product for shorter-duration financing needs and temporary liquidity support.
         </p>
       </div>
 
-      <div class="product-card">
-        <h2 class="product-title">Consumer Loan</h2>
-        <p class="product-copy">
+      <div class="loan-card">
+        <h3 class="loan-title" id="loan2Title">Consumer Loan</h3>
+        <p class="loan-copy" id="loan2Copy">
           Intended as a more standard financing format for personal use cases and structured repayment planning.
         </p>
       </div>
 
-      <div class="product-card">
-        <h2 class="product-title">Structured Lending</h2>
-        <p class="product-copy">
+      <div class="loan-card">
+        <h3 class="loan-title" id="loan3Title">Structured Lending</h3>
+        <p class="loan-copy" id="loan3Copy">
           Planned as a more tailored product category depending on purpose, duration, and repayment logic.
         </p>
       </div>
     </div>
 
-    <div class="notice-card">
-      <h2 class="notice-title">Current launch notice</h2>
-      <p class="notice-copy">
-        Davlad Bank is currently prioritizing deposit development, capital structure alignment, and internal liquidity stabilization
-        ahead of the launch of its lending products. Current lending activity remains paused while capital allocation continues to favor
-        existing balance-sheet priorities. The lending framework is planned, but not yet active for issuance.
-      </p>
-    </div>
-
-    <div class="split-grid">
+    <div class="notice-grid">
       <div class="notice-card">
-        <h2 class="notice-title">Why lending is not yet active</h2>
-        <p class="notice-copy">
-          The lending line is being introduced in stages. While product structure and presentation logic are already defined,
-          actual issuance remains deferred until internal liquidity conditions allow for a more stable launch environment.
+        <h2 class="notice-title" id="notice1Title">Current launch notice</h2>
+        <p class="notice-copy" id="notice1Copy">
+          Davlad Bank is currently prioritizing deposit development, capital structure alignment, and internal liquidity stabilization ahead of the launch of its lending products.
         </p>
       </div>
 
       <div class="notice-card">
-        <h2 class="notice-title">Planned transition</h2>
-        <p class="notice-copy">
+        <h2 class="notice-title" id="notice2Title">Why lending is not yet active</h2>
+        <p class="notice-copy" id="notice2Copy">
+          Actual credit issuance remains deferred until internal liquidity conditions allow for a more stable launch environment and a more structured balance-sheet posture.
+        </p>
+      </div>
+
+      <div class="notice-card">
+        <h2 class="notice-title" id="notice3Title">Liquidity alignment</h2>
+        <p class="notice-copy" id="notice3Copy">
+          Current capital allocation continues to favor existing balance-sheet priorities. This page therefore presents the lending framework before full activation.
+        </p>
+      </div>
+
+      <div class="notice-card">
+        <h2 class="notice-title" id="notice4Title">Planned transition</h2>
+        <p class="notice-copy" id="notice4Copy">
           From 1 June 2026, the platform is expected to begin presenting active lending products as part of its broader banking structure.
-          Until then, this page serves as a pre-launch notice and future product outline.
         </p>
       </div>
     </div>
 
-    <div class="footer">
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 id="footerCol1Title">Davlad Bank</h4>
+          <p id="footerCol1Text">
+            Independent financial platform focused on deposits, investments, and structured lending.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol2Title">Navigation</h4>
+          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+          <a href="investments.html" id="footerInvestments">Investments</a><br>
+          <a href="loans.html" id="footerLoans">Loans</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol3Title">Company</h4>
+          <a href="about.html" id="footerAbout">About</a><br>
+          <a href="contact.html" id="footerContact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footerText">
       Davlad Bank © 2026 · Lending Division Pre-Launch Notice
+    </div>
+
+    <div class="legal-strip" id="legalText">
+      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
     </div>
   </div>
 
@@ -604,16 +757,262 @@
         const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
 
-        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
-        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
-        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+        if (!data || !data.rates) throw new Error("No rates returned");
+
+        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
 
         document.getElementById("top-date").textContent =
-          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
-      } catch {
+          `Official ECB reference rate • ${data.date}`;
+      } catch (error) {
         document.getElementById("top-date").textContent = "Rates temporarily unavailable";
       }
     }
+
+    const translations = {
+      en: {
+        brandSub: "Deposits • Investments • Loans",
+        navHome: "Home",
+        navDeposits: "Deposits",
+        navInvestments: "Investments",
+        navLoans: "Loans",
+        navAbout: "About",
+        navContact: "Contact",
+
+        loansBgText: "LOANS",
+        loansKicker: "Davlad Bank • Lending Division • Pre-Launch",
+        loansTitle: "Loans",
+        loansSubtitle: "Lending products will become available from 1 June 2026.",
+        loansText: "The lending division is currently in pre-launch preparation. Credit issuance remains temporarily deferred pending internal liquidity alignment and balance-sheet prioritization.",
+
+        stat1Label: "Availability",
+        stat1Value: "1 June 2026",
+        stat2Label: "Division Status",
+        stat2Value: "Pre-launch",
+        stat3Label: "Current Issuance",
+        stat3Value: "Inactive",
+
+        status1Label: "Availability Date",
+        status1Value: "1 June 2026",
+        status2Label: "Division Status",
+        status2Value: "Pre-launch",
+        status3Label: "Issuance Status",
+        status3Value: "Temporarily inactive",
+
+        loan1Title: "Short-Term Credit",
+        loan1Copy: "Planned as a compact lending product for shorter-duration financing needs and temporary liquidity support.",
+        loan2Title: "Consumer Loan",
+        loan2Copy: "Intended as a more standard financing format for personal use cases and structured repayment planning.",
+        loan3Title: "Structured Lending",
+        loan3Copy: "Planned as a more tailored product category depending on purpose, duration, and repayment logic.",
+
+        notice1Title: "Current launch notice",
+        notice1Copy: "Davlad Bank is currently prioritizing deposit development, capital structure alignment, and internal liquidity stabilization ahead of the launch of its lending products.",
+        notice2Title: "Why lending is not yet active",
+        notice2Copy: "Actual credit issuance remains deferred until internal liquidity conditions allow for a more stable launch environment and a more structured balance-sheet posture.",
+        notice3Title: "Liquidity alignment",
+        notice3Copy: "Current capital allocation continues to favor existing balance-sheet priorities. This page therefore presents the lending framework before full activation.",
+        notice4Title: "Planned transition",
+        notice4Copy: "From 1 June 2026, the platform is expected to begin presenting active lending products as part of its broader banking structure.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Company",
+        footerText: "Davlad Bank © 2026 · Lending Division Pre-Launch Notice",
+        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+      },
+
+      de: {
+        brandSub: "Einlagen • Investments • Kredite",
+        navHome: "Start",
+        navDeposits: "Einlagen",
+        navInvestments: "Investments",
+        navLoans: "Kredite",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+
+        loansBgText: "KREDITE",
+        loansKicker: "Davlad Bank • Kreditdivision • Vorbereitungsphase",
+        loansTitle: "Kredite",
+        loansSubtitle: "Kreditprodukte werden ab dem 1. Juni 2026 verfügbar sein.",
+        loansText: "Die Kreditdivision befindet sich derzeit in der Vorbereitungsphase. Die Kreditvergabe bleibt vorübergehend ausgesetzt, bis interne Liquiditätsabstimmung und Bilanzprioritäten dies zulassen.",
+
+        stat1Label: "Verfügbarkeit",
+        stat1Value: "1. Juni 2026",
+        stat2Label: "Divisionsstatus",
+        stat2Value: "Pre-launch",
+        stat3Label: "Aktuelle Vergabe",
+        stat3Value: "Inaktiv",
+
+        status1Label: "Verfügbarkeitsdatum",
+        status1Value: "1. Juni 2026",
+        status2Label: "Divisionsstatus",
+        status2Value: "Pre-launch",
+        status3Label: "Vergabestatus",
+        status3Value: "Vorübergehend inaktiv",
+
+        loan1Title: "Kurzfristiger Kredit",
+        loan1Copy: "Geplant als kompaktes Kreditprodukt für kurzfristige Finanzierungsbedarfe und temporäre Liquiditätsunterstützung.",
+        loan2Title: "Verbraucherkredit",
+        loan2Copy: "Gedacht als standardisierteres Finanzierungsformat für private Anwendungsfälle und strukturierte Rückzahlungsplanung.",
+        loan3Title: "Strukturierte Finanzierung",
+        loan3Copy: "Geplant als individuelleres Produkt je nach Zweck, Laufzeit und Rückzahlungslogik.",
+
+        notice1Title: "Aktueller Launch-Hinweis",
+        notice1Copy: "Davlad Bank priorisiert derzeit Einlagenentwicklung, Kapitalstrukturabstimmung und interne Liquiditätsstabilisierung vor dem Start ihrer Kreditprodukte.",
+        notice2Title: "Warum Kredite noch nicht aktiv sind",
+        notice2Copy: "Die tatsächliche Kreditvergabe bleibt ausgesetzt, bis interne Liquiditätsbedingungen ein stabileres Startumfeld und eine strukturiertere Bilanzhaltung ermöglichen.",
+        notice3Title: "Liquiditätsabstimmung",
+        notice3Copy: "Die aktuelle Kapitalallokation bevorzugt weiterhin bestehende Bilanzprioritäten. Diese Seite zeigt daher zunächst den Kreditrahmen vor voller Aktivierung.",
+        notice4Title: "Geplanter Übergang",
+        notice4Copy: "Ab dem 1. Juni 2026 soll die Plattform aktive Kreditprodukte als Teil ihrer breiteren Bankstruktur präsentieren.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Unternehmen",
+        footerText: "Davlad Bank © 2026 · Hinweis zur Vorbereitungsphase der Kreditdivision",
+        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+      },
+
+      ua: {
+        brandSub: "Депозити • Інвестиції • Кредити",
+        navHome: "Головна",
+        navDeposits: "Депозити",
+        navInvestments: "Інвестиції",
+        navLoans: "Кредити",
+        navAbout: "Про банк",
+        navContact: "Контакт",
+
+        loansBgText: "КРЕДИТИ",
+        loansKicker: "Davlad Bank • Кредитний напрям • Pre-Launch",
+        loansTitle: "Кредити",
+        loansSubtitle: "Кредитні продукти стануть доступними з 1 червня 2026 року.",
+        loansText: "Кредитний напрямок зараз перебуває на етапі підготовки до запуску. Видача кредитів тимчасово відкладена до завершення внутрішнього узгодження ліквідності та балансових пріоритетів.",
+
+        stat1Label: "Доступність",
+        stat1Value: "1 червня 2026",
+        stat2Label: "Статус напряму",
+        stat2Value: "Pre-launch",
+        stat3Label: "Поточна видача",
+        stat3Value: "Неактивна",
+
+        status1Label: "Дата доступності",
+        status1Value: "1 червня 2026",
+        status2Label: "Статус напряму",
+        status2Value: "Pre-launch",
+        status3Label: "Статус видачі",
+        status3Value: "Тимчасово неактивна",
+
+        loan1Title: "Короткостроковий кредит",
+        loan1Copy: "Планується як компактний кредитний продукт для коротших фінансових потреб і тимчасової підтримки ліквідності.",
+        loan2Title: "Споживчий кредит",
+        loan2Copy: "Призначений як більш стандартний формат фінансування для особистих потреб і структурованого плану погашення.",
+        loan3Title: "Структуроване фінансування",
+        loan3Copy: "Планується як більш індивідуальна категорія продукту залежно від цілі, строку та логіки погашення.",
+
+        notice1Title: "Поточне повідомлення про запуск",
+        notice1Copy: "Davlad Bank наразі надає пріоритет розвитку депозитів, узгодженню структури капіталу та внутрішній стабілізації ліквідності перед запуском кредитних продуктів.",
+        notice2Title: "Чому кредитування ще не активне",
+        notice2Copy: "Фактична видача кредитів залишається відкладеною, доки внутрішні умови ліквідності не дозволять більш стабільне середовище запуску та структурованішу балансову позицію.",
+        notice3Title: "Узгодження ліквідності",
+        notice3Copy: "Поточний розподіл капіталу й надалі віддає перевагу чинним балансовим пріоритетам. Тому ця сторінка поки презентує кредитну рамку до повної активації.",
+        notice4Title: "Запланований перехід",
+        notice4Copy: "З 1 червня 2026 року платформа, як очікується, почне показувати активні кредитні продукти як частину ширшої банківської структури.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+        footerCol2Title: "Навігація",
+        footerCol3Title: "Компанія",
+        footerText: "Davlad Bank © 2026 · Повідомлення про підготовчий етап кредитного напряму",
+        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+
+      const map = {
+        brandSub: "brandSub",
+        navHome: "navHome",
+        navDeposits: "navDeposits",
+        navInvestments: "navInvestments",
+        navLoans: "navLoans",
+        navAbout: "navAbout",
+        navContact: "navContact",
+
+        loansBgText: "loansBgText",
+        loansKicker: "loansKicker",
+        loansTitle: "loansTitle",
+        loansSubtitle: "loansSubtitle",
+        loansText: "loansText",
+
+        stat1Label: "stat1Label",
+        stat1Value: "stat1Value",
+        stat2Label: "stat2Label",
+        stat2Value: "stat2Value",
+        stat3Label: "stat3Label",
+        stat3Value: "stat3Value",
+
+        status1Label: "status1Label",
+        status1Value: "status1Value",
+        status2Label: "status2Label",
+        status2Value: "status2Value",
+        status3Label: "status3Label",
+        status3Value: "status3Value",
+
+        loan1Title: "loan1Title",
+        loan1Copy: "loan1Copy",
+        loan2Title: "loan2Title",
+        loan2Copy: "loan2Copy",
+        loan3Title: "loan3Title",
+        loan3Copy: "loan3Copy",
+
+        notice1Title: "notice1Title",
+        notice1Copy: "notice1Copy",
+        notice2Title: "notice2Title",
+        notice2Copy: "notice2Copy",
+        notice3Title: "notice3Title",
+        notice3Copy: "notice3Copy",
+        notice4Title: "notice4Title",
+        notice4Copy: "notice4Copy",
+
+        footerCol1Title: "footerCol1Title",
+        footerCol1Text: "footerCol1Text",
+        footerCol2Title: "footerCol2Title",
+        footerCol3Title: "footerCol3Title",
+        footerText: "footerText",
+        legalText: "legalText"
+      };
+
+      Object.keys(map).forEach(key => {
+        const el = document.getElementById(map[key]);
+        if (el && t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.getElementById("footerDeposits").textContent = t.navDeposits;
+      document.getElementById("footerInvestments").textContent = t.navInvestments;
+      document.getElementById("footerLoans").textContent = t.navLoans;
+      document.getElementById("footerAbout").textContent = t.navAbout;
+      document.getElementById("footerContact").textContent = t.navContact;
+
+      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+      document.querySelectorAll(".lang-switch button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
 
     loadFxRates();
   </script>

@@ -98,6 +98,25 @@
       opacity:.9;
     }
 
+    .fx-change{
+  margin-left:6px;
+  font-size:11px;
+  font-weight:700;
+  opacity:.9;
+}
+
+.fx-up{
+  color:#7ecb8a;
+}
+
+.fx-down{
+  color:#d97b7b;
+}
+
+.fx-flat{
+  color:var(--muted);
+}
+
     .container{
       max-width:1280px;
       margin:0 auto;
@@ -745,9 +764,9 @@
   <div class="fx-topbar">
     <div class="fx-inner">
       <div class="fx-left">
-        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
-        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
-        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+<div class="fx-item">EUR/USD <span id="top-usd">—</span> <span id="chg-usd" class="fx-change"></span></div>
+<div class="fx-item">EUR/GBP <span id="top-gbp">—</span> <span id="chg-gbp" class="fx-change"></span></div>
+<div class="fx-item">EUR/CHF <span id="top-chf">—</span> <span id="chg-chf" class="fx-change"></span></div>
       </div>
       <div class="fx-date" id="top-date">Loading…</div>
     </div>
@@ -1008,25 +1027,68 @@
       applyTheme(next);
     });
 
+let previousRates = null;
+
+function updateRateWithChange(rateId, changeId, newValue, oldValue) {
+  const rateEl = document.getElementById(rateId);
+  const changeEl = document.getElementById(changeId);
+
+  rateEl.textContent = newValue.toFixed(4);
+
+  changeEl.className = "fx-change";
+
+  if (oldValue == null) {
+    changeEl.textContent = "•";
+    changeEl.classList.add("fx-flat");
+    return;
+  }
+
+  const diff = newValue - oldValue;
+
+  if (Math.abs(diff) < 0.00005) {
+    changeEl.textContent = "•";
+    changeEl.classList.add("fx-flat");
+  } else if (diff > 0) {
+    changeEl.textContent = "▲";
+    changeEl.classList.add("fx-up");
+  } else {
+    changeEl.textContent = "▼";
+    changeEl.classList.add("fx-down");
+  }
+}
+
 async function loadFxRates() {
   try {
     const res = await fetch("https://api.exchangerate.host/latest?base=EUR&symbols=USD,GBP,CHF");
     const data = await res.json();
 
-    if (data.rates) {
-      document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
-      document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
-      document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+    if (!data || !data.rates) {
+      throw new Error("No rates returned");
     }
 
-    document.getElementById("top-date").textContent =
-      "Live FX • " + new Date().toLocaleTimeString();
+    const usd = Number(data.rates.USD);
+    const gbp = Number(data.rates.GBP);
+    const chf = Number(data.rates.CHF);
 
-  } catch {
+    updateRateWithChange("top-usd", "chg-usd", usd, previousRates?.USD ?? null);
+    updateRateWithChange("top-gbp", "chg-gbp", gbp, previousRates?.GBP ?? null);
+    updateRateWithChange("top-chf", "chg-chf", chf, previousRates?.CHF ?? null);
+
+    previousRates = { USD: usd, GBP: gbp, CHF: chf };
+
+    document.getElementById("top-date").textContent =
+      "Live FX • " + new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      });
+  } catch (error) {
     document.getElementById("top-date").textContent = "Rates temporarily unavailable";
   }
 }
-    setInterval(loadFxRates, 60000); // обновление каждую минуту
+
+loadFxRates();
+setInterval(loadFxRates, 60000);
 
     let currentSlide = 0;
     const slides = document.querySelectorAll(".promo-slide");

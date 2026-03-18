@@ -274,18 +274,37 @@
       transform:scale(1.01);
     }
 
-    .banner-overlay{
-      position:relative;
-      z-index:2;
-      min-height:500px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:42px 20px;
-      max-width:1280px;
-      margin:0 auto;
-      background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.64) 100%);
-    }
+.banner-overlay{
+  position:relative;
+  overflow:hidden;
+}
+
+/* BIG BACKGROUND TEXT */
+.banner-bg-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  
+  font-size:220px;
+  font-weight:900;
+  letter-spacing:8px;
+  
+  color:#ffffff;
+  opacity:0.05;
+
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+
+  z-index:1;
+}
+
+/* чтобы основной текст был сверху */
+.banner-overlay > *:not(.banner-bg-text){
+  position:relative;
+  z-index:2;
+}
 
     .banner-kicker{
       font-size:13px;

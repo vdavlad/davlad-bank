@@ -1027,68 +1027,28 @@
       applyTheme(next);
     });
 
-let previousRates = null;
-
-function updateRateWithChange(rateId, changeId, newValue, oldValue) {
-  const rateEl = document.getElementById(rateId);
-  const changeEl = document.getElementById(changeId);
-
-  rateEl.textContent = newValue.toFixed(4);
-
-  changeEl.className = "fx-change";
-
-  if (oldValue == null) {
-    changeEl.textContent = "•";
-    changeEl.classList.add("fx-flat");
-    return;
-  }
-
-  const diff = newValue - oldValue;
-
-  if (Math.abs(diff) < 0.00005) {
-    changeEl.textContent = "•";
-    changeEl.classList.add("fx-flat");
-  } else if (diff > 0) {
-    changeEl.textContent = "▲";
-    changeEl.classList.add("fx-up");
-  } else {
-    changeEl.textContent = "▼";
-    changeEl.classList.add("fx-down");
-  }
-}
-
 async function loadFxRates() {
   try {
-    const res = await fetch("https://api.exchangerate.host/latest?base=EUR&symbols=USD,GBP,CHF");
+    const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
     const data = await res.json();
 
     if (!data || !data.rates) {
       throw new Error("No rates returned");
     }
 
-    const usd = Number(data.rates.USD);
-    const gbp = Number(data.rates.GBP);
-    const chf = Number(data.rates.CHF);
-
-    updateRateWithChange("top-usd", "chg-usd", usd, previousRates?.USD ?? null);
-    updateRateWithChange("top-gbp", "chg-gbp", gbp, previousRates?.GBP ?? null);
-    updateRateWithChange("top-chf", "chg-chf", chf, previousRates?.CHF ?? null);
-
-    previousRates = { USD: usd, GBP: gbp, CHF: chf };
+    document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+    document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+    document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
 
     document.getElementById("top-date").textContent =
-      "Live FX • " + new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-      });
+      `Official ECB reference rate • ${data.date}`;
   } catch (error) {
     document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+    console.error("FX load error:", error);
   }
 }
 
 loadFxRates();
-setInterval(loadFxRates, 60000);
 
     let currentSlide = 0;
     const slides = document.querySelectorAll(".promo-slide");

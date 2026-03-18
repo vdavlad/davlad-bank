@@ -95,6 +95,7 @@
     .fx-date{
       color:var(--muted);
       font-size:11px;
+      opacity:.9;
     }
 
     .container{
@@ -103,34 +104,27 @@
       padding:20px 20px 70px;
     }
 
-    .nav,
-    .panel,
-    .investment-card,
-    .feature-card{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-
     .nav{
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:20px;
       padding:18px 22px;
+      background:var(--nav-bg);
+      border:1px solid var(--border);
       border-radius:18px;
+      box-shadow:var(--shadow);
       margin-bottom:24px;
       backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
       flex-wrap:wrap;
-      background:var(--nav-bg);
     }
 
     .nav::before,
-    .panel::before,
     .investment-card::before,
-    .feature-card::before{
+    .feature-card::before,
+    .footer-main::before{
       content:"";
       position:absolute;
       top:0;
@@ -217,18 +211,24 @@
       overflow:hidden;
     }
 
-    .lang-switch a{
+    .lang-switch button{
+      border:0;
+      background:transparent;
       padding:6px 9px;
-      text-decoration:none;
       font-size:12px;
       font-weight:700;
       color:var(--muted);
+      cursor:pointer;
       transition:.18s ease;
     }
 
-    .lang-switch a:hover{
+    .lang-switch button:hover{
       background:rgba(255,255,255,.04);
       color:var(--text);
+    }
+
+    body.light .lang-switch button:hover{
+      background:rgba(0,0,0,.04);
     }
 
     .lang-switch .active{
@@ -245,65 +245,126 @@
       cursor:pointer;
       font-size:13px;
       font-weight:700;
+      transition:.18s ease;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:24px;
-      margin-bottom:24px;
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
     }
 
-    .panel{
-      border-radius:22px;
-      padding:26px;
+    .full-banner{
+      width:100%;
+      min-height:460px;
+      border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+      position:relative;
+      overflow:hidden;
+      background:var(--card-bg);
     }
 
-    .kicker{
-      font-size:12px;
-      letter-spacing:1.2px;
+    .investments-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.62)),
+        url("images/banner_v2.jpg") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      min-height:460px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:42px 20px;
+      max-width:1280px;
+      margin:0 auto;
+      overflow:hidden;
+    }
+
+    .banner-bg-text{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      font-size:210px;
+      font-weight:900;
+      letter-spacing:8px;
+      color:#ffffff;
+      opacity:0.12;
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
+      z-index:1;
+    }
+
+    .banner-overlay > *:not(.banner-bg-text){
+      position:relative;
+      z-index:2;
+    }
+
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
       text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:12px;
+      color:#e8dcc0;
+      margin-bottom:10px;
       font-weight:700;
     }
 
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.05;
+    .banner-title{
+      font-size:62px;
+      line-height:1;
+      margin:0 0 8px;
+      color:#fffaf0;
+      max-width:760px;
+      font-weight:800;
     }
 
-    .lead{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
+    .banner-subtitle{
+      font-size:18px;
+      color:#d8c28a;
+      margin:0 0 14px;
+      font-style:italic;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.86);
+      line-height:1.75;
+      max-width:620px;
       font-size:15px;
-      max-width:720px;
     }
 
-    .metric-grid{
+    .mini-stats{
       display:grid;
-      gap:14px;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin:0 0 26px;
     }
 
-    .metric{
-      background:var(--card-2);
+    .mini-stat{
+      background:var(--card-bg);
       border:1px solid var(--border);
       border-radius:16px;
-      padding:16px;
+      padding:18px 20px;
+      box-shadow:var(--shadow);
     }
 
-    .metric-label{
+    .mini-stat span{
+      display:block;
       color:var(--muted);
       font-size:12px;
       margin-bottom:6px;
     }
 
-    .metric-value{
-      font-size:24px;
-      font-weight:800;
+    .mini-stat strong{
+      font-size:22px;
       color:var(--text);
+      font-weight:800;
     }
 
     .investment-grid{
@@ -316,6 +377,11 @@
     .investment-card{
       border-radius:22px;
       padding:24px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
     .investment-head{
@@ -436,6 +502,11 @@
     .feature-card{
       border-radius:20px;
       padding:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
     .feature-title{
@@ -452,18 +523,71 @@
       line-height:1.75;
     }
 
+    .footer-main{
+      margin-top:24px;
+      padding:26px 22px;
+      border-radius:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .footer-col h4{
+      margin:0 0 12px;
+      font-size:18px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      text-decoration:none;
+    }
+
+    .footer-col a:hover{
+      color:var(--text);
+    }
+
     .footer{
       text-align:center;
-      margin-top:30px;
+      margin-top:24px;
       color:#8e8e8e;
       font-size:14px;
     }
 
+    .legal-strip{
+      margin-top:18px;
+      padding:12px 20px;
+      text-align:center;
+      font-size:11px;
+      color:#7d7d7d;
+      border-top:1px solid var(--border);
+    }
+
     @media (max-width:950px){
-      .hero,
+      .mini-stats,
       .investment-grid,
-      .feature-grid{
+      .feature-grid,
+      .footer-grid{
         grid-template-columns:1fr;
+      }
+
+      .banner-bg-text{
+        font-size:120px;
+      }
+
+      .banner-title{
+        font-size:40px;
       }
 
       .nav{
@@ -479,13 +603,18 @@
       .investment-tag{
         text-align:left;
       }
-
-      h1{
-        font-size:34px;
-      }
     }
 
     @media (max-width:700px){
+      .banner-bg-text{
+        font-size:78px;
+        letter-spacing:4px;
+      }
+
+      .banner-title{
+        font-size:32px;
+      }
+
       .detail-grid{
         grid-template-columns:1fr;
       }
@@ -522,56 +651,58 @@
           </svg>
         </div>
         <div>
-          <div class="brand">Davlad Bank</div>
-          <div class="brand-sub">Deposits • Investments • Loans</div>
+          <div class="brand" id="brandName">Davlad Bank</div>
+          <div class="brand-sub" id="brandSub">Deposits • Investments • Loans</div>
         </div>
       </div>
 
       <div class="nav-right">
         <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="deposits.html">Deposits</a>
-          <a href="investments.html">Investments</a>
-          <a href="loans.html">Loans</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" id="navHome">Home</a>
+          <a href="deposits.html" id="navDeposits">Deposits</a>
+          <a href="investments.html" id="navInvestments">Investments</a>
+          <a href="loans.html" id="navLoans">Loans</a>
+          <a href="about.html" id="navAbout">About</a>
+          <a href="contact.html" id="navContact">Contact</a>
         </div>
 
         <div class="lang-switch">
-          <a href="investments.html" class="active">EN</a>
-          <a href="de/investments.html">DE</a>
-          <a href="ua/investments.html">UA</a>
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
         </div>
 
         <button id="themeToggle" class="theme-btn">🌙</button>
       </div>
     </div>
+  </div>
 
-    <div class="hero">
-      <div class="panel">
-        <div class="kicker">Investments</div>
-        <h1>Structured investment opportunities within Davlad Bank</h1>
-        <p class="lead">
-          Davlad Bank presents a focused investment structure combining fixed-income style instruments
-          with selective direct participation in the bank’s long-term capital story.
-        </p>
+  <div class="full-banner investments-banner">
+    <div class="banner-overlay">
+      <div class="banner-bg-text" id="investmentsBgText">INVESTMENTS</div>
+
+      <div class="banner-kicker" id="investmentsKicker">Davlad Bank • Capital Products • Structured Allocation</div>
+      <h1 class="banner-title" id="investmentsTitle">Investments</h1>
+      <div class="banner-subtitle" id="investmentsSubtitle">Structured capital opportunities with defined positioning.</div>
+      <div class="banner-text" id="investmentsText">
+        Explore two investment formats designed for different participation styles: Davlad Bonds for structured return logic and Direct Investment for more selective strategic exposure.
       </div>
+    </div>
+  </div>
 
-      <div class="panel">
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="metric-label">Available Products</div>
-            <div class="metric-value">2 Investments</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Structure</div>
-            <div class="metric-value">Bonds / Direct</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Access</div>
-            <div class="metric-value">Open / Selective</div>
-          </div>
-        </div>
+  <div class="container">
+    <div class="mini-stats">
+      <div class="mini-stat">
+        <span id="stat1Label">Products</span>
+        <strong id="stat1Value">2</strong>
+      </div>
+      <div class="mini-stat">
+        <span id="stat2Label">Structure</span>
+        <strong id="stat2Value">Bonds / Direct</strong>
+      </div>
+      <div class="mini-stat">
+        <span id="stat3Label">Access</span>
+        <strong id="stat3Value">Open / Selective</strong>
       </div>
     </div>
 
@@ -579,123 +710,149 @@
       <div class="investment-card">
         <div class="investment-head">
           <div>
-            <h2 class="investment-title">Davlad Bonds</h2>
-            <p class="investment-copy">
-              A fixed-income style investment format designed for structured capital placement,
-              defined maturity horizons, and a more predictable return profile.
+            <h2 class="investment-title" id="bondsTitle">Davlad Bonds</h2>
+            <p class="investment-copy" id="bondsCopy">
+              A fixed-income style investment format designed for structured capital placement, defined maturity horizons, and a more predictable return profile.
             </p>
           </div>
 
           <div class="investment-tag">
-            <div class="tag-value">Fixed Income</div>
-            <div class="tag-label">Structured return logic</div>
+            <div class="tag-value" id="bondsTagValue">Fixed Income</div>
+            <div class="tag-label" id="bondsTagLabel">Structured return logic</div>
           </div>
         </div>
 
         <div class="detail-grid">
           <div class="detail-box">
-            <div class="detail-label">Indicative Return</div>
-            <div class="detail-value">6–9%</div>
+            <div class="detail-label" id="bondsDetail1Label">Indicative Return</div>
+            <div class="detail-value" id="bondsDetail1Value">6–9%</div>
           </div>
 
           <div class="detail-box">
-            <div class="detail-label">Term</div>
-            <div class="detail-value">6–24 months</div>
+            <div class="detail-label" id="bondsDetail2Label">Term</div>
+            <div class="detail-value" id="bondsDetail2Value">6–24 months</div>
           </div>
 
           <div class="detail-box">
-            <div class="detail-label">Risk Profile</div>
-            <div class="detail-value">Moderate</div>
+            <div class="detail-label" id="bondsDetail3Label">Risk Profile</div>
+            <div class="detail-value" id="bondsDetail3Value">Moderate</div>
           </div>
 
           <div class="detail-box">
-            <div class="detail-label">Positioning</div>
-            <div class="detail-value">Structured allocation</div>
+            <div class="detail-label" id="bondsDetail4Label">Positioning</div>
+            <div class="detail-value" id="bondsDetail4Value">Structured allocation</div>
           </div>
         </div>
 
-        <div class="investment-note">
-          Designed for investors seeking a more defined horizon, clearer return expectations, and a product structure that resembles fixed-income instruments.
+        <div class="investment-note" id="bondsNote">
+          Designed for investors seeking a more defined horizon, clearer return expectations, and a product structure resembling fixed-income instruments.
         </div>
 
         <div class="investment-actions">
-          <a href="investment-bonds.html" class="investment-btn">View investment</a>
+          <a href="investment-bonds.html" class="investment-btn" id="bondsBtn">View investment</a>
         </div>
       </div>
 
       <div class="investment-card">
         <div class="investment-head">
           <div>
-            <h2 class="investment-title">Direct Investment</h2>
-            <p class="investment-copy">
-              A more selective investment format intended to provide direct exposure to Davlad Bank’s
-              capital structure and long-term strategic development.
+            <h2 class="investment-title" id="directTitle">Direct Investment</h2>
+            <p class="investment-copy" id="directCopy">
+              A more selective investment format intended to provide direct exposure to Davlad Bank’s capital structure and long-term strategic development.
             </p>
           </div>
 
           <div class="investment-tag">
-            <div class="tag-value">Selective Access</div>
-            <div class="tag-label">Participation-based</div>
+            <div class="tag-value" id="directTagValue">Selective Access</div>
+            <div class="tag-label" id="directTagLabel">Participation-based</div>
           </div>
         </div>
 
         <div class="detail-grid">
           <div class="detail-box">
-            <div class="detail-label">Return Logic</div>
-            <div class="detail-value">Variable</div>
+            <div class="detail-label" id="directDetail1Label">Return Logic</div>
+            <div class="detail-value" id="directDetail1Value">Variable</div>
           </div>
 
           <div class="detail-box">
-            <div class="detail-label">Term</div>
-            <div class="detail-value">Flexible</div>
+            <div class="detail-label" id="directDetail2Label">Term</div>
+            <div class="detail-value" id="directDetail2Value">Flexible</div>
           </div>
 
           <div class="detail-box">
-            <div class="detail-label">Access</div>
-            <div class="detail-value">Selected investors</div>
+            <div class="detail-label" id="directDetail3Label">Access</div>
+            <div class="detail-value" id="directDetail3Value">Selected investors</div>
           </div>
 
           <div class="detail-box">
-            <div class="detail-label">Positioning</div>
-            <div class="detail-value">Strategic participation</div>
+            <div class="detail-label" id="directDetail4Label">Positioning</div>
+            <div class="detail-value" id="directDetail4Value">Strategic participation</div>
           </div>
         </div>
 
-        <div class="investment-note">
+        <div class="investment-note" id="directNote">
           Intended for investors interested in a more direct relationship to the bank’s internal capital narrative and future development profile.
         </div>
 
         <div class="investment-actions">
-          <a href="investment-direct.html" class="investment-btn">View investment</a>
+          <a href="investment-direct.html" class="investment-btn" id="directBtn">View investment</a>
         </div>
       </div>
     </div>
 
     <div class="feature-grid">
       <div class="feature-card">
-        <h3 class="feature-title">Structure</h3>
-        <p class="feature-copy">
+        <h3 class="feature-title" id="feature1Title">Structure</h3>
+        <p class="feature-copy" id="feature1Copy">
           The investment line is intentionally limited to two clearly differentiated formats with distinct positioning.
         </p>
       </div>
 
       <div class="feature-card">
-        <h3 class="feature-title">Clarity</h3>
-        <p class="feature-copy">
+        <h3 class="feature-title" id="feature2Title">Clarity</h3>
+        <p class="feature-copy" id="feature2Copy">
           One product emphasizes defined return logic, while the other reflects direct strategic participation.
         </p>
       </div>
 
       <div class="feature-card">
-        <h3 class="feature-title">Selectivity</h3>
-        <p class="feature-copy">
+        <h3 class="feature-title" id="feature3Title">Selectivity</h3>
+        <p class="feature-copy" id="feature3Copy">
           The broader investment concept combines open product presentation with more selective access where appropriate.
         </p>
       </div>
     </div>
 
-    <div class="footer">
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 id="footerCol1Title">Davlad Bank</h4>
+          <p id="footerCol1Text">
+            Independent financial platform focused on deposits, investments, and structured lending.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol2Title">Navigation</h4>
+          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+          <a href="investments.html" id="footerInvestments">Investments</a><br>
+          <a href="loans.html" id="footerLoans">Loans</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol3Title">Company</h4>
+          <a href="about.html" id="footerAbout">About</a><br>
+          <a href="contact.html" id="footerContact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footerText">
       Davlad Bank © 2026 · Investment Products
+    </div>
+
+    <div class="legal-strip" id="legalText">
+      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
     </div>
   </div>
 
@@ -720,16 +877,318 @@
         const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
 
-        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
-        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
-        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+        if (!data || !data.rates) throw new Error("No rates returned");
+
+        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
 
         document.getElementById("top-date").textContent =
-          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
-      } catch {
+          `Official ECB reference rate • ${data.date}`;
+      } catch (error) {
         document.getElementById("top-date").textContent = "Rates temporarily unavailable";
       }
     }
+
+    const translations = {
+      en: {
+        brandSub: "Deposits • Investments • Loans",
+        navHome: "Home",
+        navDeposits: "Deposits",
+        navInvestments: "Investments",
+        navLoans: "Loans",
+        navAbout: "About",
+        navContact: "Contact",
+
+        investmentsBgText: "INVESTMENTS",
+        investmentsKicker: "Davlad Bank • Capital Products • Structured Allocation",
+        investmentsTitle: "Investments",
+        investmentsSubtitle: "Structured capital opportunities with defined positioning.",
+        investmentsText: "Explore two investment formats designed for different participation styles: Davlad Bonds for structured return logic and Direct Investment for more selective strategic exposure.",
+
+        stat1Label: "Products",
+        stat1Value: "2",
+        stat2Label: "Structure",
+        stat2Value: "Bonds / Direct",
+        stat3Label: "Access",
+        stat3Value: "Open / Selective",
+
+        bondsTitle: "Davlad Bonds",
+        bondsCopy: "A fixed-income style investment format designed for structured capital placement, defined maturity horizons, and a more predictable return profile.",
+        bondsTagValue: "Fixed Income",
+        bondsTagLabel: "Structured return logic",
+        bondsDetail1Label: "Indicative Return",
+        bondsDetail1Value: "6–9%",
+        bondsDetail2Label: "Term",
+        bondsDetail2Value: "6–24 months",
+        bondsDetail3Label: "Risk Profile",
+        bondsDetail3Value: "Moderate",
+        bondsDetail4Label: "Positioning",
+        bondsDetail4Value: "Structured allocation",
+        bondsNote: "Designed for investors seeking a more defined horizon, clearer return expectations, and a product structure resembling fixed-income instruments.",
+        bondsBtn: "View investment",
+
+        directTitle: "Direct Investment",
+        directCopy: "A more selective investment format intended to provide direct exposure to Davlad Bank’s capital structure and long-term strategic development.",
+        directTagValue: "Selective Access",
+        directTagLabel: "Participation-based",
+        directDetail1Label: "Return Logic",
+        directDetail1Value: "Variable",
+        directDetail2Label: "Term",
+        directDetail2Value: "Flexible",
+        directDetail3Label: "Access",
+        directDetail3Value: "Selected investors",
+        directDetail4Label: "Positioning",
+        directDetail4Value: "Strategic participation",
+        directNote: "Intended for investors interested in a more direct relationship to the bank’s internal capital narrative and future development profile.",
+        directBtn: "View investment",
+
+        feature1Title: "Structure",
+        feature1Copy: "The investment line is intentionally limited to two clearly differentiated formats with distinct positioning.",
+        feature2Title: "Clarity",
+        feature2Copy: "One product emphasizes defined return logic, while the other reflects direct strategic participation.",
+        feature3Title: "Selectivity",
+        feature3Copy: "The broader investment concept combines open product presentation with more selective access where appropriate.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Company",
+        footerText: "Davlad Bank © 2026 · Investment Products",
+        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+      },
+
+      de: {
+        brandSub: "Einlagen • Investments • Kredite",
+        navHome: "Start",
+        navDeposits: "Einlagen",
+        navInvestments: "Investments",
+        navLoans: "Kredite",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+
+        investmentsBgText: "INVESTMENTS",
+        investmentsKicker: "Davlad Bank • Kapitalprodukte • Strukturierte Allokation",
+        investmentsTitle: "Investments",
+        investmentsSubtitle: "Strukturierte Kapitalchancen mit klarer Positionierung.",
+        investmentsText: "Entdecken Sie zwei Investmentformate für unterschiedliche Beteiligungsstile: Davlad Bonds für strukturierte Ertragslogik und Direct Investment für selektivere strategische Beteiligung.",
+
+        stat1Label: "Produkte",
+        stat1Value: "2",
+        stat2Label: "Struktur",
+        stat2Value: "Bonds / Direkt",
+        stat3Label: "Zugang",
+        stat3Value: "Offen / Selektiv",
+
+        bondsTitle: "Davlad Bonds",
+        bondsCopy: "Ein Fixed-Income-ähnliches Investmentformat für strukturierte Kapitalplatzierung, definierte Laufzeiten und ein planbareres Renditeprofil.",
+        bondsTagValue: "Fixed Income",
+        bondsTagLabel: "Strukturierte Ertragslogik",
+        bondsDetail1Label: "Indikative Rendite",
+        bondsDetail1Value: "6–9%",
+        bondsDetail2Label: "Laufzeit",
+        bondsDetail2Value: "6–24 Monate",
+        bondsDetail3Label: "Risikoprofil",
+        bondsDetail3Value: "Moderat",
+        bondsDetail4Label: "Positionierung",
+        bondsDetail4Value: "Strukturierte Allokation",
+        bondsNote: "Gedacht für Anlegerinnen und Anleger, die einen klareren Horizont, besser planbare Renditeerwartungen und eine fixed-income-nahe Produktstruktur suchen.",
+        bondsBtn: "Investment ansehen",
+
+        directTitle: "Direktinvestment",
+        directCopy: "Ein selektiveres Investmentformat für direktere Exponierung gegenüber der Kapitalstruktur der Davlad Bank und ihrer langfristigen strategischen Entwicklung.",
+        directTagValue: "Selektiver Zugang",
+        directTagLabel: "Beteiligungsbasiert",
+        directDetail1Label: "Renditelogik",
+        directDetail1Value: "Variabel",
+        directDetail2Label: "Laufzeit",
+        directDetail2Value: "Flexibel",
+        directDetail3Label: "Zugang",
+        directDetail3Value: "Ausgewählte Investoren",
+        directDetail4Label: "Positionierung",
+        directDetail4Value: "Strategische Beteiligung",
+        directNote: "Gedacht für Investorinnen und Investoren, die eine direktere Beziehung zur internen Kapitalerzählung und künftigen Entwicklung der Bank suchen.",
+        directBtn: "Investment ansehen",
+
+        feature1Title: "Struktur",
+        feature1Copy: "Die Investmentlinie ist bewusst auf zwei klar differenzierte Formate mit unterschiedlicher Positionierung begrenzt.",
+        feature2Title: "Klarheit",
+        feature2Copy: "Ein Produkt betont definierte Ertragslogik, das andere spiegelt direkte strategische Beteiligung wider.",
+        feature3Title: "Selektivität",
+        feature3Copy: "Das Investmentkonzept verbindet offene Produktdarstellung mit selektiverem Zugang, wo passend.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Unternehmen",
+        footerText: "Davlad Bank © 2026 · Investmentprodukte",
+        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+      },
+
+      ua: {
+        brandSub: "Депозити • Інвестиції • Кредити",
+        navHome: "Головна",
+        navDeposits: "Депозити",
+        navInvestments: "Інвестиції",
+        navLoans: "Кредити",
+        navAbout: "Про банк",
+        navContact: "Контакт",
+
+        investmentsBgText: "ІНВЕСТИЦІЇ",
+        investmentsKicker: "Davlad Bank • Капітальні продукти • Структурована алокація",
+        investmentsTitle: "Інвестиції",
+        investmentsSubtitle: "Структуровані можливості капіталу з чітким позиціонуванням.",
+        investmentsText: "Ознайомтеся з двома форматами інвестування для різних стилів участі: Davlad Bonds для структурованої логіки дохідності та Direct Investment для більш вибіркової стратегічної участі.",
+
+        stat1Label: "Продукти",
+        stat1Value: "2",
+        stat2Label: "Структура",
+        stat2Value: "Bonds / Direct",
+        stat3Label: "Доступ",
+        stat3Value: "Відкритий / Вибірковий",
+
+        bondsTitle: "Davlad Bonds",
+        bondsCopy: "Інвестиційний формат у стилі fixed income для структурованого розміщення капіталу, визначених строків і більш передбачуваного профілю дохідності.",
+        bondsTagValue: "Fixed Income",
+        bondsTagLabel: "Структурована логіка доходу",
+        bondsDetail1Label: "Орієнтовна дохідність",
+        bondsDetail1Value: "6–9%",
+        bondsDetail2Label: "Термін",
+        bondsDetail2Value: "6–24 місяці",
+        bondsDetail3Label: "Ризиковий профіль",
+        bondsDetail3Value: "Помірний",
+        bondsDetail4Label: "Позиціонування",
+        bondsDetail4Value: "Структурована алокація",
+        bondsNote: "Підходить для інвесторів, які шукають більш визначений горизонт, зрозуміліші очікування дохідності та структуру, схожу на fixed-income інструменти.",
+        bondsBtn: "Переглянути інвестицію",
+
+        directTitle: "Прямі інвестиції",
+        directCopy: "Більш вибірковий формат інвестування для прямішого доступу до капітальної структури Davlad Bank та її довгострокового стратегічного розвитку.",
+        directTagValue: "Вибірковий доступ",
+        directTagLabel: "Формат участі",
+        directDetail1Label: "Логіка дохідності",
+        directDetail1Value: "Змінна",
+        directDetail2Label: "Термін",
+        directDetail2Value: "Гнучкий",
+        directDetail3Label: "Доступ",
+        directDetail3Value: "Відібрані інвестори",
+        directDetail4Label: "Позиціонування",
+        directDetail4Value: "Стратегічна участь",
+        directNote: "Призначено для інвесторів, яких цікавить пряміший зв’язок із внутрішньою капітальною логікою та майбутнім розвитком банку.",
+        directBtn: "Переглянути інвестицію",
+
+        feature1Title: "Структура",
+        feature1Copy: "Інвестиційна лінійка навмисно обмежена двома чітко відмінними форматами з різним позиціонуванням.",
+        feature2Title: "Прозорість",
+        feature2Copy: "Один продукт підкреслює визначену логіку доходу, інший відображає пряму стратегічну участь.",
+        feature3Title: "Вибірковість",
+        feature3Copy: "Ширша інвестиційна концепція поєднує відкриту презентацію продуктів із більш вибірковим доступом там, де це доречно.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+        footerCol2Title: "Навігація",
+        footerCol3Title: "Компанія",
+        footerText: "Davlad Bank © 2026 · Інвестиційні продукти",
+        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+
+      const map = {
+        brandSub: "brandSub",
+        navHome: "navHome",
+        navDeposits: "navDeposits",
+        navInvestments: "navInvestments",
+        navLoans: "navLoans",
+        navAbout: "navAbout",
+        navContact: "navContact",
+
+        investmentsBgText: "investmentsBgText",
+        investmentsKicker: "investmentsKicker",
+        investmentsTitle: "investmentsTitle",
+        investmentsSubtitle: "investmentsSubtitle",
+        investmentsText: "investmentsText",
+
+        stat1Label: "stat1Label",
+        stat1Value: "stat1Value",
+        stat2Label: "stat2Label",
+        stat2Value: "stat2Value",
+        stat3Label: "stat3Label",
+        stat3Value: "stat3Value",
+
+        bondsTitle: "bondsTitle",
+        bondsCopy: "bondsCopy",
+        bondsTagValue: "bondsTagValue",
+        bondsTagLabel: "bondsTagLabel",
+        bondsDetail1Label: "bondsDetail1Label",
+        bondsDetail1Value: "bondsDetail1Value",
+        bondsDetail2Label: "bondsDetail2Label",
+        bondsDetail2Value: "bondsDetail2Value",
+        bondsDetail3Label: "bondsDetail3Label",
+        bondsDetail3Value: "bondsDetail3Value",
+        bondsDetail4Label: "bondsDetail4Label",
+        bondsDetail4Value: "bondsDetail4Value",
+        bondsNote: "bondsNote",
+        bondsBtn: "bondsBtn",
+
+        directTitle: "directTitle",
+        directCopy: "directCopy",
+        directTagValue: "directTagValue",
+        directTagLabel: "directTagLabel",
+        directDetail1Label: "directDetail1Label",
+        directDetail1Value: "directDetail1Value",
+        directDetail2Label: "directDetail2Label",
+        directDetail2Value: "directDetail2Value",
+        directDetail3Label: "directDetail3Label",
+        directDetail3Value: "directDetail3Value",
+        directDetail4Label: "directDetail4Label",
+        directDetail4Value: "directDetail4Value",
+        directNote: "directNote",
+        directBtn: "directBtn",
+
+        feature1Title: "feature1Title",
+        feature1Copy: "feature1Copy",
+        feature2Title: "feature2Title",
+        feature2Copy: "feature2Copy",
+        feature3Title: "feature3Title",
+        feature3Copy: "feature3Copy",
+
+        footerCol1Title: "footerCol1Title",
+        footerCol1Text: "footerCol1Text",
+        footerCol2Title: "footerCol2Title",
+        footerCol3Title: "footerCol3Title",
+        footerText: "footerText",
+        legalText: "legalText"
+      };
+
+      Object.keys(map).forEach(key => {
+        const el = document.getElementById(map[key]);
+        if (el && t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.getElementById("footerDeposits").textContent = t.navDeposits;
+      document.getElementById("footerInvestments").textContent = t.navInvestments;
+      document.getElementById("footerLoans").textContent = t.navLoans;
+      document.getElementById("footerAbout").textContent = t.navAbout;
+      document.getElementById("footerContact").textContent = t.navContact;
+
+      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+      document.querySelectorAll(".lang-switch button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
 
     loadFxRates();
   </script>

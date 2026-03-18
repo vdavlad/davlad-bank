@@ -1010,7 +1010,7 @@
 
     async function loadFxRates() {
       try {
-        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const res = await fetch("https://api.exchangerate.host/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
 
         if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);

@@ -1,257 +1,1031 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Davlad Bank</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Bank</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
 
-<style>
-:root{
-  --bg:#070707;
-  --card:#121212;
-  --card-2:#181818;
-  --text:#EAEAEA;
-  --muted:#8A8A8A;
-  --accent:#C6A85B;
-  --border:rgba(255,255,255,0.08);
-}
+  <style>
+    :root{
+      --bg:#070707;
+      --card:#121212;
+      --card-2:#181818;
+      --text:#EAEAEA;
+      --muted:#8A8A8A;
+      --accent:#C6A85B;
+      --border:rgba(255,255,255,0.08);
+      --border-accent:rgba(198,168,91,0.25);
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      --topbar-bg:rgba(0,0,0,0.55);
+    }
 
-body.light{
-  --bg:#FAFAFA;
-  --card:#FFFFFF;
-  --card-2:#F4F4F4;
-  --text:#111;
-  --muted:#666;
-  --border:rgba(0,0,0,0.08);
-}
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --border-accent:rgba(194,162,74,0.22);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --nav-bg:rgba(255,255,255,0.75);
+      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
+      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+      --topbar-bg:rgba(255,255,255,0.85);
+    }
 
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
 
-/* FX BAR */
-.fx{
-  display:flex;
-  justify-content:space-between;
-  padding:6px 20px;
-  font-size:12px;
-  border-bottom:1px solid var(--border);
-}
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
+      color:var(--text);
+      min-height:100vh;
+      transition:background .3s ease,color .3s ease;
+    }
 
-/* NAV */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  padding:16px 20px;
-  border-bottom:1px solid var(--border);
-}
+    .fx-topbar{
+      width:100%;
+      font-size:12px;
+      letter-spacing:.15px;
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
 
-.logo{
-  font-weight:800;
-  font-size:20px;
-}
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:5px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
 
-.nav a{
-  margin-left:16px;
-  text-decoration:none;
-  color:var(--text);
-}
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-/* BANNER */
-.banner{
-  height:420px;
-  background:url("images/banner_v1.jpg") center/cover;
-  display:flex;
-  align-items:flex-end;
-  padding:40px;
-  color:white;
-}
+    .fx-item{
+      color:var(--muted);
+      white-space:nowrap;
+    }
 
-.banner h1{
-  font-size:48px;
-  margin:0;
-}
+    .fx-item span{
+      color:var(--text);
+      font-weight:600;
+      margin-left:4px;
+    }
 
-/* SERVICES */
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  padding:20px;
-}
+    .fx-date{
+      color:var(--muted);
+      font-size:11px;
+      opacity:.9;
+    }
 
-.card{
-  border:1px solid var(--border);
-  padding:20px;
-  border-radius:12px;
-}
+    .container{
+      max-width:1280px;
+      margin:0 auto;
+      padding:20px 20px 70px;
+    }
 
-/* PROMO */
-.promo{
-  padding:20px;
-  border:1px solid var(--border);
-  margin:20px;
-}
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      background:var(--nav-bg);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+      backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
+      flex-wrap:wrap;
+    }
 
-.slide{display:none;}
-.slide.active{display:block;}
+    .nav::before,
+    .service-card::before,
+    .promo-wrap::before,
+    .news-card::before,
+    .footer-main::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.6;
+    }
 
-/* NEWS */
-.news{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  padding:20px;
-}
+    .brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
-/* FOOTER */
-.footer{
-  padding:20px;
-  border-top:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-}
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0B0B0B;
+      border:1px solid var(--border);
+      color:#F2F2F2;
+      flex-shrink:0;
+    }
 
-.legal{
-  text-align:center;
-  font-size:11px;
-  padding:10px;
-  color:gray;
-}
+    body.light .logo{
+      background:#FFFFFF;
+      color:#111111;
+    }
 
-/* MOBILE */
-@media(max-width:800px){
-  .services,.news{grid-template-columns:1fr;}
-}
-</style>
+    .brand{
+      font-size:22px;
+      font-weight:800;
+      color:var(--text);
+      letter-spacing:.3px;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:2px;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      padding:9px 12px;
+      border-radius:10px;
+      transition:.18s ease;
+    }
+
+    .nav-links a:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    body.light .nav-links a:hover{
+      background:rgba(0,0,0,.04);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:4px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    .lang-switch button{
+      border:0;
+      background:transparent;
+      padding:6px 9px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .lang-switch button:hover{
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    body.light .lang-switch button:hover{
+      background:rgba(0,0,0,.04);
+    }
+
+    .lang-switch .active{
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+    }
+
+    .theme-btn{
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:700;
+      transition:.18s ease;
+    }
+
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    .full-banner{
+      width:100%;
+      min-height:500px;
+      border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:30px;
+      position:relative;
+      overflow:hidden;
+      background:var(--card-bg);
+    }
+
+    .full-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58)),
+        url("images/banner_v1.jpg") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      min-height:500px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:42px 20px;
+      max-width:1280px;
+      margin:0 auto;
+      background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.64) 100%);
+    }
+
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#e8dcc0;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .banner-title{
+      font-size:62px;
+      line-height:1;
+      margin:0 0 8px;
+      color:#fffaf0;
+      max-width:760px;
+      font-weight:800;
+    }
+
+    .banner-subtitle{
+      font-size:18px;
+      color:#d8c28a;
+      margin:0 0 14px;
+      font-style:italic;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.86);
+      line-height:1.75;
+      max-width:560px;
+      font-size:15px;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-bottom:30px;
+    }
+
+    .service-card{
+      text-decoration:none;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:24px 18px;
+      text-align:center;
+      transition:.18s ease;
+      color:var(--text);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card:hover{
+      transform:translateY(-1px);
+      border-color:var(--border-accent);
+      background:rgba(255,255,255,.02);
+    }
+
+    .service-icon{
+      width:28px;
+      height:28px;
+      margin:0 auto 12px;
+      color:var(--accent);
+      display:block;
+    }
+
+    .service-title{
+      font-weight:700;
+      font-size:16px;
+      color:var(--text);
+      line-height:1.35;
+      margin-bottom:8px;
+    }
+
+    .service-copy{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+      max-width:320px;
+      margin:0 auto;
+    }
+
+    .promo-wrap{
+      margin-bottom:34px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--card-bg);
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .promo-header{
+      padding:16px 22px 0;
+    }
+
+    .section-heading{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .section-kicker{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.1px;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:6px;
+    }
+
+    .section-title{
+      margin:0;
+      font-size:30px;
+      font-weight:800;
+      color:var(--text);
+    }
+
+    .promo-stage{
+      position:relative;
+      min-height:180px;
+    }
+
+    .promo-slide{
+      display:none;
+      padding:24px 22px 28px;
+    }
+
+    .promo-slide.active{
+      display:block;
+    }
+
+    .promo-slide h3{
+      margin:0 0 10px;
+      font-size:28px;
+      line-height:1.15;
+      color:var(--text);
+    }
+
+    .promo-slide p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+      max-width:700px;
+    }
+
+    .promo-dots{
+      display:flex;
+      gap:8px;
+      padding:0 22px 20px;
+    }
+
+    .promo-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:rgba(255,255,255,.18);
+      transition:.18s ease;
+    }
+
+    .promo-dot.active{
+      background:var(--accent);
+    }
+
+    .news-section{
+      margin-bottom:34px;
+    }
+
+    .news-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .news-card{
+      padding:22px;
+      border-radius:18px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .news-card h4{
+      margin:0 0 8px;
+      font-size:18px;
+      line-height:1.3;
+    }
+
+    .news-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    .footer-main{
+      margin-top:24px;
+      padding:26px 22px;
+      border-radius:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .footer-col h4{
+      margin:0 0 12px;
+      font-size:18px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      text-decoration:none;
+    }
+
+    .footer-col a:hover{
+      color:var(--text);
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:24px;
+      color:#8e8e8e;
+      font-size:14px;
+    }
+
+    .legal-strip{
+      margin-top:18px;
+      padding:12px 20px;
+      text-align:center;
+      font-size:11px;
+      color:#7d7d7d;
+      border-top:1px solid var(--border);
+    }
+
+    @media (max-width:950px){
+      .service-grid,
+      .news-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .banner-title{
+        font-size:40px;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width:700px){
+      .banner-title{
+        font-size:32px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="fx">
-  <div>EUR/USD <span id="usd">-</span></div>
-  <div>EUR/GBP <span id="gbp">-</span></div>
-  <div>EUR/CHF <span id="chf">-</span></div>
-</div>
-
-<div class="nav">
-  <div class="logo">Davlad Bank</div>
-  <div>
-    <a href="#">Home</a>
-    <a href="deposits.html">Deposits</a>
-    <a href="investments.html">Investments</a>
-    <a href="loans.html">Loans</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <button onclick="toggleTheme()">☀️</button>
-  </div>
-</div>
-
-<div class="banner">
-  <div>
-    <h1>Welcome</h1>
-    <p>In liquidity we trust.</p>
-  </div>
-</div>
-
-<div class="services">
-  <div class="card">
-    <h3>Deposits</h3>
-    <p>Secure saving solutions for stability and flexibility.</p>
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Investments</h3>
-    <p>Structured products for long-term growth.</p>
+  <div class="container">
+    <div class="nav">
+      <div class="brand-wrap">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand" id="brandName">Davlad Bank</div>
+          <div class="brand-sub" id="brandSub">Deposits • Investments • Loans</div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="index.html" id="navHome">Home</a>
+          <a href="deposits.html" id="navDeposits">Deposits</a>
+          <a href="investments.html" id="navInvestments">Investments</a>
+          <a href="loans.html" id="navLoans">Loans</a>
+          <a href="about.html" id="navAbout">About</a>
+          <a href="contact.html" id="navContact">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Loans</h3>
-    <p>Lending solutions tailored to your needs.</p>
-  </div>
-</div>
-
-<div class="promo">
-  <div class="slide active">
-    <h3>Mars Expansion Program</h3>
-    <p>Private access to off-planet liquidity.</p>
-  </div>
-
-  <div class="slide">
-    <h3>Emergency Liquidity</h3>
-    <p>When timing matters more than planning.</p>
+  <div class="full-banner">
+    <div class="banner-overlay">
+      <div class="banner-kicker" id="bannerKicker">Munich • Banking • Financial Products</div>
+      <h1 class="banner-title" id="bannerTitle">Welcome</h1>
+      <div class="banner-subtitle" id="bannerSubtitle">In liquidity we trust.</div>
+      <div class="banner-text" id="bannerText">
+        Davlad Bank provides a focused range of financial products across deposits, investments, and lending solutions.
+      </div>
+    </div>
   </div>
 
-  <div class="slide">
-    <h3>Lifestyle Financing</h3>
-    <p>Because some decisions should not wait.</p>
+  <div class="container">
+    <div class="service-grid">
+      <a href="deposits.html" class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19h16"></path>
+          <path d="M6 19V9"></path>
+          <path d="M18 19V9"></path>
+          <path d="M3 9l9-5 9 5"></path>
+          <path d="M9 13h6"></path>
+        </svg>
+        <div class="service-title" id="service1Title">Deposits</div>
+        <div class="service-copy" id="service1Copy">Secure saving solutions designed for stability, flexibility, and disciplined capital allocation.</div>
+      </a>
+
+      <a href="investments.html" class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19l6-6 4 4 6-10"></path>
+          <path d="M18 7h2v2"></path>
+        </svg>
+        <div class="service-title" id="service2Title">Investments</div>
+        <div class="service-copy" id="service2Copy">Structured investment products focused on long-term positioning and measured portfolio growth.</div>
+      </a>
+
+      <a href="loans.html" class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="12" rx="2"></rect>
+          <path d="M3 10h18"></path>
+          <circle cx="16" cy="14" r="1"></circle>
+        </svg>
+        <div class="service-title" id="service3Title">Loans</div>
+        <div class="service-copy" id="service3Copy">Lending solutions tailored to financing needs, timing requirements, and repayment capacity.</div>
+      </a>
+    </div>
+
+    <div class="promo-wrap">
+      <div class="promo-header">
+        <div class="section-kicker" id="promoKicker">Featured</div>
+        <h2 class="section-title" id="promoHeading">Promoted opportunities</h2>
+      </div>
+
+      <div class="promo-stage">
+        <div class="promo-slide active">
+          <h3 id="promo1Title">Mars Expansion Program</h3>
+          <p id="promo1Text">Private access to off-planet liquidity opportunities.</p>
+        </div>
+
+        <div class="promo-slide">
+          <h3 id="promo2Title">Emergency Liquidity Facility</h3>
+          <p id="promo2Text">When timing matters more than planning.</p>
+        </div>
+
+        <div class="promo-slide">
+          <h3 id="promo3Title">Lifestyle Financing</h3>
+          <p id="promo3Text">Because some decisions should not wait.</p>
+        </div>
+
+        <div class="promo-slide">
+          <h3 id="promo4Title">Strategic Optimism Fund</h3>
+          <p id="promo4Text">For long-term belief in uncertain outcomes.</p>
+        </div>
+      </div>
+
+      <div class="promo-dots">
+        <span class="promo-dot active"></span>
+        <span class="promo-dot"></span>
+        <span class="promo-dot"></span>
+        <span class="promo-dot"></span>
+      </div>
+    </div>
+
+    <div class="news-section">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker" id="newsKicker">What’s New</div>
+          <h2 class="section-title" id="newsHeading">Latest updates from the bank</h2>
+        </div>
+      </div>
+
+      <div class="news-grid">
+        <div class="news-card">
+          <h4 id="news1Title">New deposits</h4>
+          <p id="news1Text">Short-term and long-term deposit products are now available.</p>
+        </div>
+
+        <div class="news-card">
+          <h4 id="news2Title">Investment section expanded</h4>
+          <p id="news2Text">Davlad Bonds and Direct Investment are now part of the investment offering.</p>
+        </div>
+
+        <div class="news-card">
+          <h4 id="news3Title">Loans timeline</h4>
+          <p id="news3Text">Lending products are expected to become available from 1 June 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 id="footerCol1Title">Davlad Bank</h4>
+          <p id="footerCol1Text">
+            Independent financial platform focused on deposits, investments, and structured lending.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol2Title">Navigation</h4>
+          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+          <a href="investments.html" id="footerInvestments">Investments</a><br>
+          <a href="loans.html" id="footerLoans">Loans</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol3Title">Company</h4>
+          <a href="about.html" id="footerAbout">About</a><br>
+          <a href="contact.html" id="footerContact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footerText">
+      Davlad Bank © 2026 · Private Capital, Structured Presentation
+    </div>
+
+    <div class="legal-strip" id="legalText">
+      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
+    </div>
   </div>
-</div>
 
-<div class="news">
-  <div class="card">
-    <h4>New deposits</h4>
-    <p>Short and long-term options available.</p>
-  </div>
+  <script>
+    const btn = document.getElementById("themeToggle");
 
-  <div class="card">
-    <h4>Investments live</h4>
-    <p>Davlad Bonds launched.</p>
-  </div>
+    function applyTheme(theme){
+      document.body.classList.toggle("light", theme === "light");
+      btn.textContent = theme === "light" ? "☀️" : "🌙";
+    }
 
-  <div class="card">
-    <h4>Loans</h4>
-    <p>Available starting June.</p>
-  </div>
-</div>
+    applyTheme(localStorage.getItem("theme") || "dark");
 
-<div class="footer">
-  <div>
-    <b>Davlad Bank</b><br>
-    Independent financial platform
-  </div>
+    btn.addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
 
-  <div>
-    <a href="about.html">About</a><br>
-    <a href="contact.html">Contact</a>
-  </div>
-</div>
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
 
-<div class="legal">
-  Davlad Bank is not a licensed financial institution. For demonstration purposes only.
-</div>
+        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
+        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
+        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
 
-<script>
-async function loadFX(){
-  try{
-    const res = await fetch("https://api.exchangerate.host/latest?base=EUR&symbols=USD,GBP,CHF");
-    const data = await res.json();
+        document.getElementById("top-date").textContent =
+          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
+      } catch {
+        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+      }
+    }
 
-    document.getElementById("usd").textContent = data.rates.USD.toFixed(4);
-    document.getElementById("gbp").textContent = data.rates.GBP.toFixed(4);
-    document.getElementById("chf").textContent = data.rates.CHF.toFixed(4);
-  }catch(e){
-    console.log("FX error");
-  }
-}
-loadFX();
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".promo-slide");
+    const dots = document.querySelectorAll(".promo-dot");
 
-let i=0;
-const slides=document.querySelectorAll(".slide");
+    function showSlide(index) {
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    }
 
-setInterval(()=>{
-  slides[i].classList.remove("active");
-  i=(i+1)%slides.length;
-  slides[i].classList.add("active");
-},15000);
+    if (slides.length) {
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, 15000);
+    }
 
-function toggleTheme(){
-  document.body.classList.toggle("light");
-}
-</script>
+    const translations = {
+      en: {
+        brandSub: "Deposits • Investments • Loans",
+        navHome: "Home",
+        navDeposits: "Deposits",
+        navInvestments: "Investments",
+        navLoans: "Loans",
+        navAbout: "About",
+        navContact: "Contact",
 
+        bannerKicker: "Munich • Banking • Financial Products",
+        bannerTitle: "Welcome",
+        bannerSubtitle: "In liquidity we trust.",
+        bannerText: "Davlad Bank provides a focused range of financial products across deposits, investments, and lending solutions.",
+
+        service1Title: "Deposits",
+        service1Copy: "Secure saving solutions designed for stability, flexibility, and disciplined capital allocation.",
+        service2Title: "Investments",
+        service2Copy: "Structured investment products focused on long-term positioning and measured portfolio growth.",
+        service3Title: "Loans",
+        service3Copy: "Lending solutions tailored to financing needs, timing requirements, and repayment capacity.",
+
+        promoKicker: "Featured",
+        promoHeading: "Promoted opportunities",
+        promo1Title: "Mars Expansion Program",
+        promo1Text: "Private access to off-planet liquidity opportunities.",
+        promo2Title: "Emergency Liquidity Facility",
+        promo2Text: "When timing matters more than planning.",
+        promo3Title: "Lifestyle Financing",
+        promo3Text: "Because some decisions should not wait.",
+        promo4Title: "Strategic Optimism Fund",
+        promo4Text: "For long-term belief in uncertain outcomes.",
+
+        newsKicker: "What’s New",
+        newsHeading: "Latest updates from the bank",
+        news1Title: "New deposits",
+        news1Text: "Short-term and long-term deposit products are now available.",
+        news2Title: "Investment section expanded",
+        news2Text: "Davlad Bonds and Direct Investment are now part of the investment offering.",
+        news3Title: "Loans timeline",
+        news3Text: "Lending products are expected to become available from 1 June 2026.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Company",
+        footerText: "Davlad Bank © 2026 · Private Capital, Structured Presentation",
+        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+      },
+
+      de: {
+        brandSub: "Einlagen • Investments • Kredite",
+        navHome: "Start",
+        navDeposits: "Einlagen",
+        navInvestments: "Investments",
+        navLoans: "Kredite",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+
+        bannerKicker: "München • Banking • Finanzprodukte",
+        bannerTitle: "Willkommen",
+        bannerSubtitle: "In liquidity we trust.",
+        bannerText: "Davlad Bank bietet eine fokussierte Auswahl an Finanzprodukten in den Bereichen Einlagen, Investments und Kreditlösungen.",
+
+        service1Title: "Einlagen",
+        service1Copy: "Sichere Sparlösungen für Stabilität, Flexibilität und disziplinierte Kapitalallokation.",
+        service2Title: "Investments",
+        service2Copy: "Strukturierte Investmentprodukte mit Fokus auf langfristige Positionierung und kontrolliertes Wachstum.",
+        service3Title: "Kredite",
+        service3Copy: "Kreditlösungen abgestimmt auf Finanzierungsbedarf, Timing und Rückzahlungsfähigkeit.",
+
+        promoKicker: "Im Fokus",
+        promoHeading: "Ausgewählte Möglichkeiten",
+        promo1Title: "Mars Expansion Program",
+        promo1Text: "Privater Zugang zu außerplanetaren Liquiditätschancen.",
+        promo2Title: "Emergency Liquidity Facility",
+        promo2Text: "Wenn Timing wichtiger ist als Planung.",
+        promo3Title: "Lifestyle Financing",
+        promo3Text: "Weil manche Entscheidungen nicht warten sollten.",
+        promo4Title: "Strategic Optimism Fund",
+        promo4Text: "Für langfristigen Glauben an unsichere Ergebnisse.",
+
+        newsKicker: "What’s New",
+        newsHeading: "Neuigkeiten der Bank",
+        news1Title: "Neue Einlagen",
+        news1Text: "Kurzfristige und langfristige Einlagenprodukte sind jetzt verfügbar.",
+        news2Title: "Investmentbereich erweitert",
+        news2Text: "Davlad Bonds und Direct Investment gehören jetzt zum Investmentangebot.",
+        news3Title: "Kredit-Zeitplan",
+        news3Text: "Kreditprodukte werden voraussichtlich ab dem 1. Juni 2026 verfügbar sein.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Unternehmen",
+        footerText: "Davlad Bank © 2026 · Private Capital, Structured Presentation",
+        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+      },
+
+      ua: {
+        brandSub: "Депозити • Інвестиції • Кредити",
+        navHome: "Головна",
+        navDeposits: "Депозити",
+        navInvestments: "Інвестиції",
+        navLoans: "Кредити",
+        navAbout: "Про банк",
+        navContact: "Контакт",
+
+        bannerKicker: "Мюнхен • Banking • Фінансові продукти",
+        bannerTitle: "Ласкаво просимо",
+        bannerSubtitle: "In liquidity we trust.",
+        bannerText: "Davlad Bank пропонує сфокусовану лінійку фінансових продуктів у сферах депозитів, інвестицій та кредитних рішень.",
+
+        service1Title: "Депозити",
+        service1Copy: "Надійні ощадні рішення для стабільності, гнучкості та дисциплінованого розміщення капіталу.",
+        service2Title: "Інвестиції",
+        service2Copy: "Структуровані інвестиційні продукти з фокусом на довгострокове позиціонування та помірне зростання.",
+        service3Title: "Кредити",
+        service3Copy: "Кредитні рішення, адаптовані до потреб фінансування, часу та платоспроможності.",
+
+        promoKicker: "Featured",
+        promoHeading: "Рекомендовані можливості",
+        promo1Title: "Mars Expansion Program",
+        promo1Text: "Приватний доступ до міжпланетних можливостей ліквідності.",
+        promo2Title: "Emergency Liquidity Facility",
+        promo2Text: "Коли час важливіший за планування.",
+        promo3Title: "Lifestyle Financing",
+        promo3Text: "Тому що деякі рішення не повинні чекати.",
+        promo4Title: "Strategic Optimism Fund",
+        promo4Text: "Для довгострокової віри в невизначені результати.",
+
+        newsKicker: "What’s New",
+        newsHeading: "Останні новини банку",
+        news1Title: "Нові депозити",
+        news1Text: "Короткострокові та довгострокові депозитні продукти вже доступні.",
+        news2Title: "Інвестиційний розділ розширено",
+        news2Text: "Davlad Bonds та Direct Investment тепер входять до інвестиційної пропозиції.",
+        news3Title: "Кредитний таймлайн",
+        news3Text: "Кредитні продукти очікуються до запуску з 1 червня 2026 року.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+        footerCol2Title: "Навігація",
+        footerCol3Title: "Компанія",
+        footerText: "Davlad Bank © 2026 · Private Capital, Structured Presentation",
+        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+
+      document.getElementById("brandSub").textContent = t.brandSub;
+      document.getElementById("navHome").textContent = t.navHome;
+      document.getElementById("navDeposits").textContent = t.navDeposits;
+      document.getElementById("navInvestments").textContent = t.navInvestments;
+      document.getElementById("navLoans").textContent = t.navLoans;
+      document.getElementById("navAbout").textContent = t.navAbout;
+      document.getElementById("navContact").textContent = t.navContact;
+
+      document.getElementById("bannerKicker").textContent = t.bannerKicker;
+      document.getElementById("bannerTitle").textContent = t.bannerTitle;
+      document.getElementById("bannerSubtitle").textContent = t.bannerSubtitle;
+      document.getElementById("bannerText").textContent = t.bannerText;
+
+      document.getElementById("service1Title").textContent = t.service1Title;
+      document.getElementById("service1Copy").textContent = t.service1Copy;
+      document.getElementById("service2Title").textContent = t.service2Title;
+      document.getElementById("service2Copy").textContent = t.service2Copy;
+      document.getElementById("service3Title").textContent = t.service3Title;
+      document.getElementById("service3Copy").textContent = t.service3Copy;
+
+      document.getElementById("promoKicker").textContent = t.promoKicker;
+      document.getElementById("promoHeading").textContent = t.promoHeading;
+      document.getElementById("promo1Title").textContent = t.promo1Title;
+      document.getElementById("promo1Text").textContent = t.promo1Text;
+      document.getElementById("promo2Title").textContent = t.promo2Title;
+      document.getElementById("promo2Text").textContent = t.promo2Text;
+      document.getElementById("promo3Title").textContent = t.promo3Title;
+      document.getElementById("promo3Text").textContent = t.promo3Text;
+      document.getElementById("promo4Title").textContent = t.promo4Title;
+      document.getElementById("promo4Text").textContent = t.promo4Text;
+
+      document.getElementById("newsKicker").textContent = t.newsKicker;
+      document.getElementById("newsHeading").textContent = t.newsHeading;
+      document.getElementById("news1Title").textContent = t.news1Title;
+      document.getElementById("news1Text").textContent = t.news1Text;
+      document.getElementById("news2Title").textContent = t.news2Title;
+      document.getElementById("news2Text").textContent = t.news2Text;
+      document.getElementById("news3Title").textContent = t.news3Title;
+      document.getElementById("news3Text").textContent = t.news3Text;
+
+      document.getElementById("footerCol1Title").textContent = t.footerCol1Title;
+      document.getElementById("footerCol1Text").textContent = t.footerCol1Text;
+      document.getElementById("footerCol2Title").textContent = t.footerCol2Title;
+      document.getElementById("footerCol3Title").textContent = t.footerCol3Title;
+      document.getElementById("footerDeposits").textContent = t.navDeposits;
+      document.getElementById("footerInvestments").textContent = t.navInvestments;
+      document.getElementById("footerLoans").textContent = t.navLoans;
+      document.getElementById("footerAbout").textContent = t.navAbout;
+      document.getElementById("footerContact").textContent = t.navContact;
+      document.getElementById("footerText").textContent = t.footerText;
+      document.getElementById("legalText").textContent = t.legalText;
+
+      document.querySelectorAll(".lang-switch button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
+
+    loadFxRates();
+  </script>
 </body>
 </html>

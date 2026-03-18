@@ -253,30 +253,39 @@
       background:rgba(255,255,255,.04);
     }
 
-    .full-banner{
-      width:100%;
-      min-height:500px;
-      border-bottom:1px solid var(--border);
-      box-shadow:var(--shadow);
-      margin-bottom:30px;
-      position:relative;
-      overflow:hidden;
-      background:var(--card-bg);
-    }
+.full-banner{
+  width:100%;
+  min-height:500px;
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--shadow);
+  margin-bottom:30px;
+  position:relative;
+  overflow:hidden;
+  background:var(--card-bg);
+}
 
-    .full-banner::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58)),
-        url("images/banner_v1.jpg") center/cover no-repeat;
-      transform:scale(1.01);
-    }
+.full-banner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58)),
+    url("images/banner_v1.jpg") center/cover no-repeat;
+  transform:scale(1.01);
+}
 
 .banner-overlay{
   position:relative;
+  z-index:2;
+  min-height:500px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:42px 20px;
+  max-width:1280px;
+  margin:0 auto;
   overflow:hidden;
+  background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.64) 100%);
 }
 
 /* BIG BACKGROUND TEXT */
@@ -285,58 +294,66 @@
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-  
   font-size:220px;
   font-weight:900;
   letter-spacing:8px;
-  
   color:#ffffff;
   opacity:0.05;
-
   white-space:nowrap;
   pointer-events:none;
   user-select:none;
-
   z-index:1;
 }
 
-/* чтобы основной текст был сверху */
 .banner-overlay > *:not(.banner-bg-text){
   position:relative;
   z-index:2;
 }
 
-    .banner-kicker{
-      font-size:13px;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-      color:#e8dcc0;
-      margin-bottom:10px;
-      font-weight:700;
-    }
+.banner-kicker{
+  font-size:13px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:#e8dcc0;
+  margin-bottom:10px;
+  font-weight:700;
+}
 
-    .banner-title{
-      font-size:62px;
-      line-height:1;
-      margin:0 0 8px;
-      color:#fffaf0;
-      max-width:760px;
-      font-weight:800;
-    }
+.banner-title{
+  font-size:62px;
+  line-height:1;
+  margin:0 0 8px;
+  color:#fffaf0;
+  max-width:760px;
+  font-weight:800;
+}
 
-    .banner-subtitle{
-      font-size:18px;
-      color:#d8c28a;
-      margin:0 0 14px;
-      font-style:italic;
-    }
+.banner-subtitle{
+  font-size:18px;
+  color:#d8c28a;
+  margin:0 0 14px;
+  font-style:italic;
+}
 
-    .banner-text{
-      color:rgba(255,255,255,0.86);
-      line-height:1.75;
-      max-width:560px;
-      font-size:15px;
-    }
+.banner-text{
+  color:rgba(255,255,255,0.86);
+  line-height:1.75;
+  max-width:560px;
+  font-size:15px;
+}
+
+@media (max-width:900px){
+  .banner-bg-text{
+    font-size:120px;
+  }
+}
+
+@media (max-width:600px){
+  .banner-bg-text{
+    font-size:80px;
+    letter-spacing:4px;
+  }
+}
 
     .service-grid{
       display:grid;
@@ -685,14 +702,16 @@
   </div>
 
   <div class="full-banner">
-    <div class="banner-overlay">
-      <div class="banner-kicker" id="bannerKicker">Munich • Banking • Financial Products</div>
-      <h1 class="banner-title" id="bannerTitle">Welcome</h1>
-      <div class="banner-subtitle" id="bannerSubtitle">In liquidity we trust.</div>
-      <div class="banner-text" id="bannerText">
-        Davlad Bank provides a focused range of financial products across deposits, investments, and lending solutions.
-      </div>
-    </div>
+<div class="banner-overlay">
+  <div class="banner-bg-text">WELCOME</div>
+
+  <div class="banner-kicker">Munich • Banking • Financial Products</div>
+  <h1 class="banner-title">Welcome</h1>
+  <div class="banner-subtitle">In liquidity we trust.</div>
+  <div class="banner-text">
+    Davlad Bank provides a focused range of financial products across deposits, investments, and lending solutions.
+  </div>
+</div>
   </div>
 
   <div class="container">

@@ -95,6 +95,7 @@
     .fx-date{
       color:var(--muted);
       font-size:11px;
+      opacity:.9;
     }
 
     .container{
@@ -103,34 +104,27 @@
       padding:20px 20px 70px;
     }
 
-    .nav,
-    .panel,
-    .deposit-card,
-    .feature-card{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-
     .nav{
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:20px;
       padding:18px 22px;
+      background:var(--nav-bg);
+      border:1px solid var(--border);
       border-radius:18px;
+      box-shadow:var(--shadow);
       margin-bottom:24px;
       backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
       flex-wrap:wrap;
-      background:var(--nav-bg);
     }
 
     .nav::before,
-    .panel::before,
     .deposit-card::before,
-    .feature-card::before{
+    .feature-card::before,
+    .footer-main::before{
       content:"";
       position:absolute;
       top:0;
@@ -217,18 +211,24 @@
       overflow:hidden;
     }
 
-    .lang-switch a{
+    .lang-switch button{
+      border:0;
+      background:transparent;
       padding:6px 9px;
-      text-decoration:none;
       font-size:12px;
       font-weight:700;
       color:var(--muted);
+      cursor:pointer;
       transition:.18s ease;
     }
 
-    .lang-switch a:hover{
+    .lang-switch button:hover{
       background:rgba(255,255,255,.04);
       color:var(--text);
+    }
+
+    body.light .lang-switch button:hover{
+      background:rgba(0,0,0,.04);
     }
 
     .lang-switch .active{
@@ -245,65 +245,126 @@
       cursor:pointer;
       font-size:13px;
       font-weight:700;
+      transition:.18s ease;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:24px;
-      margin-bottom:24px;
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
     }
 
-    .panel{
-      border-radius:22px;
-      padding:26px;
+    .full-banner{
+      width:100%;
+      min-height:460px;
+      border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+      position:relative;
+      overflow:hidden;
+      background:var(--card-bg);
     }
 
-    .kicker{
-      font-size:12px;
-      letter-spacing:1.2px;
+    .deposits-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.62)),
+        url("images/banner_v2.jpg") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      min-height:460px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:42px 20px;
+      max-width:1280px;
+      margin:0 auto;
+      overflow:hidden;
+    }
+
+    .banner-bg-text{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      font-size:210px;
+      font-weight:900;
+      letter-spacing:8px;
+      color:#ffffff;
+      opacity:0.05;
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
+      z-index:1;
+    }
+
+    .banner-overlay > *:not(.banner-bg-text){
+      position:relative;
+      z-index:2;
+    }
+
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
       text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:12px;
+      color:#e8dcc0;
+      margin-bottom:10px;
       font-weight:700;
     }
 
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.05;
+    .banner-title{
+      font-size:62px;
+      line-height:1;
+      margin:0 0 8px;
+      color:#fffaf0;
+      max-width:760px;
+      font-weight:800;
     }
 
-    .lead{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
+    .banner-subtitle{
+      font-size:18px;
+      color:#d8c28a;
+      margin:0 0 14px;
+      font-style:italic;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.86);
+      line-height:1.75;
+      max-width:620px;
       font-size:15px;
-      max-width:720px;
     }
 
-    .metric-grid{
+    .mini-stats{
       display:grid;
-      gap:14px;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin:0 0 26px;
     }
 
-    .metric{
-      background:var(--card-2);
+    .mini-stat{
+      background:var(--card-bg);
       border:1px solid var(--border);
       border-radius:16px;
-      padding:16px;
+      padding:18px 20px;
+      box-shadow:var(--shadow);
     }
 
-    .metric-label{
+    .mini-stat span{
+      display:block;
       color:var(--muted);
       font-size:12px;
       margin-bottom:6px;
     }
 
-    .metric-value{
-      font-size:24px;
-      font-weight:800;
+    .mini-stat strong{
+      font-size:22px;
       color:var(--text);
+      font-weight:800;
     }
 
     .deposit-grid{
@@ -316,6 +377,11 @@
     .deposit-card{
       border-radius:22px;
       padding:24px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
     .deposit-head{
@@ -397,34 +463,34 @@
     }
 
     .deposit-actions{
-  margin-top:18px;
-  display:flex;
-  justify-content:flex-start;
-}
+      margin-top:18px;
+      display:flex;
+      justify-content:flex-start;
+    }
 
-.deposit-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 16px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:700;
-  color:var(--text);
-  border:1px solid var(--border);
-  background:var(--card-2);
-  transition:.18s ease;
-}
+    .deposit-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      color:var(--text);
+      border:1px solid var(--border);
+      background:var(--card-2);
+      transition:.18s ease;
+    }
 
-.deposit-btn:hover{
-  border-color:var(--border-accent);
-  background:rgba(255,255,255,.04);
-  transform:translateY(-1px);
-}
+    .deposit-btn:hover{
+      border-color:var(--border-accent);
+      background:rgba(255,255,255,.04);
+      transform:translateY(-1px);
+    }
 
-body.light .deposit-btn:hover{
-  background:rgba(0,0,0,.03);
-}
+    body.light .deposit-btn:hover{
+      background:rgba(0,0,0,.03);
+    }
 
     .feature-grid{
       display:grid;
@@ -436,6 +502,11 @@ body.light .deposit-btn:hover{
     .feature-card{
       border-radius:20px;
       padding:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
     .feature-title{
@@ -452,18 +523,71 @@ body.light .deposit-btn:hover{
       line-height:1.75;
     }
 
+    .footer-main{
+      margin-top:24px;
+      padding:26px 22px;
+      border-radius:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .footer-col h4{
+      margin:0 0 12px;
+      font-size:18px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      text-decoration:none;
+    }
+
+    .footer-col a:hover{
+      color:var(--text);
+    }
+
     .footer{
       text-align:center;
-      margin-top:30px;
+      margin-top:24px;
       color:#8e8e8e;
       font-size:14px;
     }
 
+    .legal-strip{
+      margin-top:18px;
+      padding:12px 20px;
+      text-align:center;
+      font-size:11px;
+      color:#7d7d7d;
+      border-top:1px solid var(--border);
+    }
+
     @media (max-width:950px){
-      .hero,
+      .mini-stats,
       .deposit-grid,
-      .feature-grid{
+      .feature-grid,
+      .footer-grid{
         grid-template-columns:1fr;
+      }
+
+      .banner-bg-text{
+        font-size:120px;
+      }
+
+      .banner-title{
+        font-size:40px;
       }
 
       .nav{
@@ -479,13 +603,18 @@ body.light .deposit-btn:hover{
       .deposit-rate{
         text-align:left;
       }
-
-      h1{
-        font-size:34px;
-      }
     }
 
     @media (max-width:700px){
+      .banner-bg-text{
+        font-size:78px;
+        letter-spacing:4px;
+      }
+
+      .banner-title{
+        font-size:32px;
+      }
+
       .detail-grid{
         grid-template-columns:1fr;
       }
@@ -522,178 +651,209 @@ body.light .deposit-btn:hover{
           </svg>
         </div>
         <div>
-          <div class="brand">Davlad Bank</div>
-          <div class="brand-sub">Deposits • Investments • Loans</div>
+          <div class="brand" id="brandName">Davlad Bank</div>
+          <div class="brand-sub" id="brandSub">Deposits • Investments • Loans</div>
         </div>
       </div>
 
       <div class="nav-right">
         <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="deposits.html">Deposits</a>
-          <a href="investments.html">Investments</a>
-          <a href="loans.html">Loans</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" id="navHome">Home</a>
+          <a href="deposits.html" id="navDeposits">Deposits</a>
+          <a href="investments.html" id="navInvestments">Investments</a>
+          <a href="loans.html" id="navLoans">Loans</a>
+          <a href="about.html" id="navAbout">About</a>
+          <a href="contact.html" id="navContact">Contact</a>
         </div>
 
         <div class="lang-switch">
-          <a href="deposits.html" class="active">EN</a>
-          <a href="de/deposits.html">DE</a>
-          <a href="ua/deposits.html">UA</a>
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
         </div>
 
         <button id="themeToggle" class="theme-btn">🌙</button>
       </div>
     </div>
+  </div>
 
-    <div class="hero">
-      <div class="panel">
-        <div class="kicker">Deposits</div>
-        <h1>Deposit products for short and long horizons</h1>
-        <p class="lead">
-          Davlad Bank presents two structured deposit options designed for capital preservation,
-          predictable return expectations, and different liquidity preferences across short- and long-term planning.
-        </p>
+  <div class="full-banner deposits-banner">
+    <div class="banner-overlay">
+      <div class="banner-bg-text" id="depositsBgText">DEPOSITS</div>
+
+      <div class="banner-kicker" id="depositsKicker">Davlad Bank • Saving Products • Structured Capital</div>
+      <h1 class="banner-title" id="depositsTitle">Deposits</h1>
+      <div class="banner-subtitle" id="depositsSubtitle">Structured saving with short and long horizons.</div>
+      <div class="banner-text" id="depositsText">
+        Explore two deposit products designed for capital preservation, predictable return logic,
+        and flexible planning across different time horizons.
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="mini-stats">
+      <div class="mini-stat">
+        <span id="stat1Label">Products</span>
+        <strong id="stat1Value">2</strong>
+      </div>
+      <div class="mini-stat">
+        <span id="stat2Label">Reference Currency</span>
+        <strong id="stat2Value">EUR</strong>
+      </div>
+      <div class="mini-stat">
+        <span id="stat3Label">Structure</span>
+        <strong id="stat3Value">Short / Long</strong>
+      </div>
+    </div>
+
+    <div class="deposit-grid">
+      <div class="deposit-card">
+        <div class="deposit-head">
+          <div>
+            <h2 class="deposit-title" id="shortTitle">Short-Term Deposit</h2>
+            <p class="deposit-copy" id="shortCopy">
+              A compact deposit solution intended for shorter planning horizons and clients seeking a more flexible capital placement.
+            </p>
+          </div>
+
+          <div class="deposit-rate">
+            <div class="rate-value">4.50%</div>
+            <div class="rate-label" id="shortRateLabel">Indicative annual rate</div>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-box">
+            <div class="detail-label" id="termLabel1">Term</div>
+            <div class="detail-value" id="shortTerm">3 months</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label" id="currencyLabel1">Currency</div>
+            <div class="detail-value">EUR</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label" id="interestLabel1">Interest Payout</div>
+            <div class="detail-value" id="shortInterest">At maturity</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label" id="positioningLabel1">Positioning</div>
+            <div class="detail-value" id="shortPositioning">Short-horizon savings</div>
+          </div>
+        </div>
+
+        <div class="deposit-note" id="shortNote">
+          Suitable for temporary capital allocation where predictability and a shorter holding period are preferred.
+        </div>
+
+        <div class="deposit-actions">
+          <a href="deposit-short.html" class="deposit-btn" id="shortBtn">View deposit</a>
+        </div>
       </div>
 
-      <div class="panel">
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="metric-label">Available Products</div>
-            <div class="metric-value">2 Deposits</div>
+      <div class="deposit-card">
+        <div class="deposit-head">
+          <div>
+            <h2 class="deposit-title" id="longTitle">Long-Term Deposit</h2>
+            <p class="deposit-copy" id="longCopy">
+              A longer-duration deposit option designed for more stable capital commitment and enhanced yield expectations over time.
+            </p>
           </div>
-          <div class="metric">
-            <div class="metric-label">Reference Currency</div>
-            <div class="metric-value">EUR</div>
+
+          <div class="deposit-rate">
+            <div class="rate-value">7.25%</div>
+            <div class="rate-label" id="longRateLabel">Indicative annual rate</div>
           </div>
-          <div class="metric">
-            <div class="metric-label">Structure</div>
-            <div class="metric-value">Short / Long Term</div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-box">
+            <div class="detail-label" id="termLabel2">Term</div>
+            <div class="detail-value" id="longTerm">12–24 months</div>
           </div>
+
+          <div class="detail-box">
+            <div class="detail-label" id="currencyLabel2">Currency</div>
+            <div class="detail-value">EUR</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label" id="interestLabel2">Interest Payout</div>
+            <div class="detail-value" id="longInterest">Monthly / at maturity</div>
+          </div>
+
+          <div class="detail-box">
+            <div class="detail-label" id="positioningLabel2">Positioning</div>
+            <div class="detail-value" id="longPositioning">Long-horizon savings</div>
+          </div>
+        </div>
+
+        <div class="deposit-note" id="longNote">
+          Intended for clients prioritizing a longer planning horizon, structured savings discipline, and stronger return potential.
+        </div>
+
+        <div class="deposit-actions">
+          <a href="deposit-long.html" class="deposit-btn" id="longBtn">View deposit</a>
         </div>
       </div>
     </div>
 
-<div class="deposit-grid">
-  <div class="deposit-card">
-    <div class="deposit-head">
-      <div>
-        <h2 class="deposit-title">Short-Term Deposit</h2>
-        <p class="deposit-copy">
-          A compact deposit solution intended for shorter planning horizons and clients seeking a more flexible capital placement.
-        </p>
-      </div>
-
-      <div class="deposit-rate">
-        <div class="rate-value">4.50%</div>
-        <div class="rate-label">Indicative annual rate</div>
-      </div>
-    </div>
-
-    <div class="detail-grid">
-      <div class="detail-box">
-        <div class="detail-label">Term</div>
-        <div class="detail-value">3 months</div>
-      </div>
-
-      <div class="detail-box">
-        <div class="detail-label">Currency</div>
-        <div class="detail-value">EUR</div>
-      </div>
-
-      <div class="detail-box">
-        <div class="detail-label">Interest Payout</div>
-        <div class="detail-value">At maturity</div>
-      </div>
-
-      <div class="detail-box">
-        <div class="detail-label">Positioning</div>
-        <div class="detail-value">Short-horizon savings</div>
-      </div>
-    </div>
-
-    <div class="deposit-note">
-      Suitable for temporary capital allocation where predictability and a shorter holding period are preferred.
-    </div>
-
-    <div class="deposit-actions">
-      <a href="deposit-short.html" class="deposit-btn">View deposit</a>
-    </div>
-  </div>
-
-  <div class="deposit-card">
-    <div class="deposit-head">
-      <div>
-        <h2 class="deposit-title">Long-Term Deposit</h2>
-        <p class="deposit-copy">
-          A longer-duration deposit option designed for more stable capital commitment and enhanced yield expectations over time.
-        </p>
-      </div>
-
-      <div class="deposit-rate">
-        <div class="rate-value">7.25%</div>
-        <div class="rate-label">Indicative annual rate</div>
-      </div>
-    </div>
-
-    <div class="detail-grid">
-      <div class="detail-box">
-        <div class="detail-label">Term</div>
-        <div class="detail-value">12–24 months</div>
-      </div>
-
-      <div class="detail-box">
-        <div class="detail-label">Currency</div>
-        <div class="detail-value">EUR</div>
-      </div>
-
-      <div class="detail-box">
-        <div class="detail-label">Interest Payout</div>
-        <div class="detail-value">Monthly / at maturity</div>
-      </div>
-
-      <div class="detail-box">
-        <div class="detail-label">Positioning</div>
-        <div class="detail-value">Long-horizon savings</div>
-      </div>
-    </div>
-
-    <div class="deposit-note">
-      Intended for clients prioritizing a longer planning horizon, structured savings discipline, and stronger return potential.
-    </div>
-
-    <div class="deposit-actions">
-      <a href="deposit-long.html" class="deposit-btn">View deposit</a>
-    </div>
-  </div>
-</div>
-
     <div class="feature-grid">
       <div class="feature-card">
-        <h3 class="feature-title">Stability</h3>
-        <p class="feature-copy">
+        <h3 class="feature-title" id="feature1Title">Stability</h3>
+        <p class="feature-copy" id="feature1Copy">
           Deposit products are positioned around predictable return logic and structured capital placement.
         </p>
       </div>
 
       <div class="feature-card">
-        <h3 class="feature-title">Clarity</h3>
-        <p class="feature-copy">
+        <h3 class="feature-title" id="feature2Title">Clarity</h3>
+        <p class="feature-copy" id="feature2Copy">
           The current structure is intentionally limited to two clearly differentiated deposit horizons.
         </p>
       </div>
 
       <div class="feature-card">
-        <h3 class="feature-title">Flexibility</h3>
-        <p class="feature-copy">
+        <h3 class="feature-title" id="feature3Title">Flexibility</h3>
+        <p class="feature-copy" id="feature3Copy">
           Clients may choose between shorter access timing and longer-term return orientation.
         </p>
       </div>
     </div>
 
-    <div class="footer">
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 id="footerCol1Title">Davlad Bank</h4>
+          <p id="footerCol1Text">
+            Independent financial platform focused on deposits, investments, and structured lending.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol2Title">Navigation</h4>
+          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+          <a href="investments.html" id="footerInvestments">Investments</a><br>
+          <a href="loans.html" id="footerLoans">Loans</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol3Title">Company</h4>
+          <a href="about.html" id="footerAbout">About</a><br>
+          <a href="contact.html" id="footerContact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footerText">
       Davlad Bank © 2026 · Deposit Products
+    </div>
+
+    <div class="legal-strip" id="legalText">
+      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
     </div>
   </div>
 
@@ -718,16 +878,302 @@ body.light .deposit-btn:hover{
         const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
 
-        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
-        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
-        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+        if (!data || !data.rates) throw new Error("No rates returned");
+
+        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
 
         document.getElementById("top-date").textContent =
-          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
-      } catch {
+          `Official ECB reference rate • ${data.date}`;
+      } catch (error) {
         document.getElementById("top-date").textContent = "Rates temporarily unavailable";
       }
     }
+
+    const translations = {
+      en: {
+        brandSub: "Deposits • Investments • Loans",
+        navHome: "Home",
+        navDeposits: "Deposits",
+        navInvestments: "Investments",
+        navLoans: "Loans",
+        navAbout: "About",
+        navContact: "Contact",
+
+        depositsBgText: "DEPOSITS",
+        depositsKicker: "Davlad Bank • Saving Products • Structured Capital",
+        depositsTitle: "Deposits",
+        depositsSubtitle: "Structured saving with short and long horizons.",
+        depositsText: "Explore two deposit products designed for capital preservation, predictable return logic, and flexible planning across different time horizons.",
+
+        stat1Label: "Products",
+        stat1Value: "2",
+        stat2Label: "Reference Currency",
+        stat2Value: "EUR",
+        stat3Label: "Structure",
+        stat3Value: "Short / Long",
+
+        shortTitle: "Short-Term Deposit",
+        shortCopy: "A compact deposit solution intended for shorter planning horizons and clients seeking a more flexible capital placement.",
+        shortRateLabel: "Indicative annual rate",
+        termLabel1: "Term",
+        shortTerm: "3 months",
+        currencyLabel1: "Currency",
+        interestLabel1: "Interest Payout",
+        shortInterest: "At maturity",
+        positioningLabel1: "Positioning",
+        shortPositioning: "Short-horizon savings",
+        shortNote: "Suitable for temporary capital allocation where predictability and a shorter holding period are preferred.",
+        shortBtn: "View deposit",
+
+        longTitle: "Long-Term Deposit",
+        longCopy: "A longer-duration deposit option designed for more stable capital commitment and enhanced yield expectations over time.",
+        longRateLabel: "Indicative annual rate",
+        termLabel2: "Term",
+        longTerm: "12–24 months",
+        currencyLabel2: "Currency",
+        interestLabel2: "Interest Payout",
+        longInterest: "Monthly / at maturity",
+        positioningLabel2: "Positioning",
+        longPositioning: "Long-horizon savings",
+        longNote: "Intended for clients prioritizing a longer planning horizon, structured savings discipline, and stronger return potential.",
+        longBtn: "View deposit",
+
+        feature1Title: "Stability",
+        feature1Copy: "Deposit products are positioned around predictable return logic and structured capital placement.",
+        feature2Title: "Clarity",
+        feature2Copy: "The current structure is intentionally limited to two clearly differentiated deposit horizons.",
+        feature3Title: "Flexibility",
+        feature3Copy: "Clients may choose between shorter access timing and longer-term return orientation.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Company",
+        footerText: "Davlad Bank © 2026 · Deposit Products",
+        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+      },
+
+      de: {
+        brandSub: "Einlagen • Investments • Kredite",
+        navHome: "Start",
+        navDeposits: "Einlagen",
+        navInvestments: "Investments",
+        navLoans: "Kredite",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+
+        depositsBgText: "EINLAGEN",
+        depositsKicker: "Davlad Bank • Sparprodukte • Strukturiertes Kapital",
+        depositsTitle: "Einlagen",
+        depositsSubtitle: "Strukturiertes Sparen mit kurzen und langen Horizonten.",
+        depositsText: "Entdecken Sie zwei Einlagenprodukte für Kapitalerhalt, planbare Ertragslogik und flexible Planung über verschiedene Zeithorizonte hinweg.",
+
+        stat1Label: "Produkte",
+        stat1Value: "2",
+        stat2Label: "Referenzwährung",
+        stat2Value: "EUR",
+        stat3Label: "Struktur",
+        stat3Value: "Kurz / Lang",
+
+        shortTitle: "Kurzfristige Einlage",
+        shortCopy: "Eine kompakte Einlagenlösung für kürzere Planungshorizonte und Kundinnen und Kunden, die eine flexiblere Kapitalplatzierung suchen.",
+        shortRateLabel: "Indikativer Jahreszins",
+        termLabel1: "Laufzeit",
+        shortTerm: "3 Monate",
+        currencyLabel1: "Währung",
+        interestLabel1: "Zinsauszahlung",
+        shortInterest: "Bei Fälligkeit",
+        positioningLabel1: "Positionierung",
+        shortPositioning: "Kurzfristiges Sparen",
+        shortNote: "Geeignet für temporäre Kapitalallokation, wenn Planbarkeit und eine kürzere Bindung bevorzugt werden.",
+        shortBtn: "Einlage ansehen",
+
+        longTitle: "Langfristige Einlage",
+        longCopy: "Eine länger laufende Einlagenoption für stabilere Kapitalbindung und höhere Ertragserwartungen über die Zeit.",
+        longRateLabel: "Indikativer Jahreszins",
+        termLabel2: "Laufzeit",
+        longTerm: "12–24 Monate",
+        currencyLabel2: "Währung",
+        interestLabel2: "Zinsauszahlung",
+        longInterest: "Monatlich / bei Fälligkeit",
+        positioningLabel2: "Positionierung",
+        longPositioning: "Langfristiges Sparen",
+        longNote: "Gedacht für Kundinnen und Kunden mit längerem Planungshorizont, strukturierter Sparlogik und stärkerem Renditefokus.",
+        longBtn: "Einlage ansehen",
+
+        feature1Title: "Stabilität",
+        feature1Copy: "Die Einlagenprodukte sind auf planbare Ertragslogik und strukturierte Kapitalplatzierung ausgerichtet.",
+        feature2Title: "Klarheit",
+        feature2Copy: "Die aktuelle Struktur ist bewusst auf zwei klar differenzierte Einlagenhorizonte begrenzt.",
+        feature3Title: "Flexibilität",
+        feature3Copy: "Kundinnen und Kunden können zwischen kürzerer Verfügbarkeit und langfristigerer Renditeorientierung wählen.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Unternehmen",
+        footerText: "Davlad Bank © 2026 · Einlagenprodukte",
+        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+      },
+
+      ua: {
+        brandSub: "Депозити • Інвестиції • Кредити",
+        navHome: "Головна",
+        navDeposits: "Депозити",
+        navInvestments: "Інвестиції",
+        navLoans: "Кредити",
+        navAbout: "Про банк",
+        navContact: "Контакт",
+
+        depositsBgText: "ДЕПОЗИТИ",
+        depositsKicker: "Davlad Bank • Ощадні продукти • Структурований капітал",
+        depositsTitle: "Депозити",
+        depositsSubtitle: "Структуровані заощадження з коротким і довгим горизонтом.",
+        depositsText: "Ознайомтеся з двома депозитними продуктами, створеними для збереження капіталу, передбачуваної дохідності та гнучкого планування на різних часових горизонтах.",
+
+        stat1Label: "Продукти",
+        stat1Value: "2",
+        stat2Label: "Базова валюта",
+        stat2Value: "EUR",
+        stat3Label: "Структура",
+        stat3Value: "Короткий / Довгий",
+
+        shortTitle: "Короткостроковий депозит",
+        shortCopy: "Компактне депозитне рішення для коротших горизонтів планування та більш гнучкого розміщення капіталу.",
+        shortRateLabel: "Орієнтовна річна ставка",
+        termLabel1: "Термін",
+        shortTerm: "3 місяці",
+        currencyLabel1: "Валюта",
+        interestLabel1: "Виплата відсотків",
+        shortInterest: "При погашенні",
+        positioningLabel1: "Позиціонування",
+        shortPositioning: "Короткий горизонт заощаджень",
+        shortNote: "Підходить для тимчасового розміщення капіталу, коли важливі передбачуваність і коротший строк.",
+        shortBtn: "Переглянути депозит",
+
+        longTitle: "Довгостроковий депозит",
+        longCopy: "Депозитний продукт із довшим строком для більш стабільного розміщення капіталу та вищого потенціалу дохідності.",
+        longRateLabel: "Орієнтовна річна ставка",
+        termLabel2: "Термін",
+        longTerm: "12–24 місяці",
+        currencyLabel2: "Валюта",
+        interestLabel2: "Виплата відсотків",
+        longInterest: "Щомісяця / при погашенні",
+        positioningLabel2: "Позиціонування",
+        longPositioning: "Довгий горизонт заощаджень",
+        longNote: "Призначений для клієнтів, які орієнтуються на довший горизонт, дисципліновані заощадження та вищий дохідний потенціал.",
+        longBtn: "Переглянути депозит",
+
+        feature1Title: "Стабільність",
+        feature1Copy: "Депозитні продукти побудовані навколо передбачуваної логіки дохідності та структурованого розміщення капіталу.",
+        feature2Title: "Прозорість",
+        feature2Copy: "Поточна структура навмисно обмежена двома чітко відокремленими депозитними горизонтами.",
+        feature3Title: "Гнучкість",
+        feature3Copy: "Клієнти можуть обирати між коротшим доступом до коштів і довгостроковішою орієнтацією на дохідність.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+        footerCol2Title: "Навігація",
+        footerCol3Title: "Компанія",
+        footerText: "Davlad Bank © 2026 · Депозитні продукти",
+        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+
+      const map = {
+        brandSub: "brandSub",
+        navHome: "navHome",
+        navDeposits: "navDeposits",
+        navInvestments: "navInvestments",
+        navLoans: "navLoans",
+        navAbout: "navAbout",
+        navContact: "navContact",
+
+        depositsBgText: "depositsBgText",
+        depositsKicker: "depositsKicker",
+        depositsTitle: "depositsTitle",
+        depositsSubtitle: "depositsSubtitle",
+        depositsText: "depositsText",
+
+        stat1Label: "stat1Label",
+        stat1Value: "stat1Value",
+        stat2Label: "stat2Label",
+        stat2Value: "stat2Value",
+        stat3Label: "stat3Label",
+        stat3Value: "stat3Value",
+
+        shortTitle: "shortTitle",
+        shortCopy: "shortCopy",
+        shortRateLabel: "shortRateLabel",
+        termLabel1: "termLabel1",
+        shortTerm: "shortTerm",
+        currencyLabel1: "currencyLabel1",
+        interestLabel1: "interestLabel1",
+        shortInterest: "shortInterest",
+        positioningLabel1: "positioningLabel1",
+        shortPositioning: "shortPositioning",
+        shortNote: "shortNote",
+        shortBtn: "shortBtn",
+
+        longTitle: "longTitle",
+        longCopy: "longCopy",
+        longRateLabel: "longRateLabel",
+        termLabel2: "termLabel2",
+        longTerm: "longTerm",
+        currencyLabel2: "currencyLabel2",
+        interestLabel2: "interestLabel2",
+        longInterest: "longInterest",
+        positioningLabel2: "positioningLabel2",
+        longPositioning: "longPositioning",
+        longNote: "longNote",
+        longBtn: "longBtn",
+
+        feature1Title: "feature1Title",
+        feature1Copy: "feature1Copy",
+        feature2Title: "feature2Title",
+        feature2Copy: "feature2Copy",
+        feature3Title: "feature3Title",
+        feature3Copy: "feature3Copy",
+
+        footerCol1Title: "footerCol1Title",
+        footerCol1Text: "footerCol1Text",
+        footerCol2Title: "footerCol2Title",
+        footerCol3Title: "footerCol3Title",
+        footerText: "footerText",
+        legalText: "legalText"
+      };
+
+      Object.keys(map).forEach(key => {
+        const el = document.getElementById(map[key]);
+        if (el && t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.getElementById("footerDeposits").textContent = t.navDeposits;
+      document.getElementById("footerInvestments").textContent = t.navInvestments;
+      document.getElementById("footerLoans").textContent = t.navLoans;
+      document.getElementById("footerAbout").textContent = t.navAbout;
+      document.getElementById("footerContact").textContent = t.navContact;
+
+      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+      document.querySelectorAll(".lang-switch button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
 
     loadFxRates();
   </script>

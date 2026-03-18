@@ -408,34 +408,80 @@
       color:var(--text);
     }
 
-    .promo-stage{
-      position:relative;
-      min-height:180px;
-    }
+.promo-stage{
+  position:relative;
+  min-height:260px;
+}
 
-    .promo-slide{
-      display:none;
-      padding:24px 22px 28px;
-    }
+.promo-slide{
+  display:none;
+  min-height:260px;
+  padding:28px 24px;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  position:relative;
+}
 
-    .promo-slide.active{
-      display:block;
-    }
+.promo-slide::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(0,0,0,0.62), rgba(0,0,0,0.26));
+}
 
-    .promo-slide h3{
-      margin:0 0 10px;
-      font-size:28px;
-      line-height:1.15;
-      color:var(--text);
-    }
+.promo-slide.active{
+  display:flex;
+  align-items:flex-end;
+}
 
-    .promo-slide p{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.8;
-      max-width:700px;
-    }
+.promo-content{
+  position:relative;
+  z-index:2;
+  max-width:720px;
+}
+
+.promo-slide h3{
+  margin:0 0 10px;
+  font-size:28px;
+  line-height:1.15;
+  color:#fff;
+}
+
+.promo-slide p{
+  margin:0;
+  color:rgba(255,255,255,0.84);
+  font-size:15px;
+  line-height:1.8;
+  max-width:700px;
+}
+
+.promo-mars{
+  background-image:url("images/ad-mars.jpg");
+}
+
+.promo-liquidity{
+  background-image:url("images/ad-liquidity.jpg");
+}
+
+.promo-lifestyle{
+  background-image:url("images/ad-lifestyle.jpg");
+}
+
+.promo-optimism{
+  background-image:url("images/ad-optimism.jpg");
+}
+
+@media (max-width:700px){
+  .promo-stage,
+  .promo-slide{
+    min-height:220px;
+  }
+
+  .promo-slide h3{
+    font-size:24px;
+  }
+}
 
     .promo-dots{
       display:flex;
@@ -670,27 +716,35 @@
         <h2 class="section-title" id="promoHeading">Promoted opportunities</h2>
       </div>
 
-      <div class="promo-stage">
-        <div class="promo-slide active">
-          <h3 id="promo1Title">Mars Expansion Program</h3>
-          <p id="promo1Text">Private access to off-planet liquidity opportunities.</p>
-        </div>
+<div class="promo-stage">
+  <div class="promo-slide active promo-mars">
+    <div class="promo-content">
+      <h3 id="promo1Title">Mars Expansion Program</h3>
+      <p id="promo1Text">Private access to off-planet liquidity opportunities.</p>
+    </div>
+  </div>
 
-        <div class="promo-slide">
-          <h3 id="promo2Title">Emergency Liquidity Facility</h3>
-          <p id="promo2Text">When timing matters more than planning.</p>
-        </div>
+  <div class="promo-slide promo-liquidity">
+    <div class="promo-content">
+      <h3 id="promo2Title">Emergency Liquidity Facility</h3>
+      <p id="promo2Text">When timing matters more than planning.</p>
+    </div>
+  </div>
 
-        <div class="promo-slide">
-          <h3 id="promo3Title">Lifestyle Financing</h3>
-          <p id="promo3Text">Because some decisions should not wait.</p>
-        </div>
+  <div class="promo-slide promo-lifestyle">
+    <div class="promo-content">
+      <h3 id="promo3Title">Lifestyle Financing</h3>
+      <p id="promo3Text">Because some decisions should not wait.</p>
+    </div>
+  </div>
 
-        <div class="promo-slide">
-          <h3 id="promo4Title">Strategic Optimism Fund</h3>
-          <p id="promo4Text">For long-term belief in uncertain outcomes.</p>
-        </div>
-      </div>
+  <div class="promo-slide promo-optimism">
+    <div class="promo-content">
+      <h3 id="promo4Title">Strategic Optimism Fund</h3>
+      <p id="promo4Text">For long-term belief in uncertain outcomes.</p>
+    </div>
+  </div>
+</div>
 
       <div class="promo-dots">
         <span class="promo-dot active"></span>

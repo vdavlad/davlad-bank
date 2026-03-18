@@ -457,6 +457,103 @@
   background-repeat:no-repeat;
   position:relative;
 }
+    .promo-slide.active{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.promo-price{
+  position:relative;
+  z-index:2;
+  flex-shrink:0;
+  text-align:right;
+  min-width:160px;
+  align-self:center;
+  font-size:54px;
+  line-height:0.95;
+  font-weight:900;
+  color:rgba(255,255,255,0.88);
+  letter-spacing:-2px;
+}
+
+.promo-price small{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+}
+
+.news-meta{
+  display:inline-block;
+  margin-bottom:10px;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--accent);
+  font-weight:700;
+}
+
+.fraud-wrap{
+  margin-bottom:34px;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--danger-border);
+  background:var(--card-bg);
+  box-shadow:var(--shadow);
+  position:relative;
+  padding:22px;
+}
+
+.fraud-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.fraud-card{
+  border:1px solid var(--danger-border);
+  border-radius:18px;
+  padding:20px;
+  background:linear-gradient(180deg, rgba(201,125,125,0.06), rgba(255,255,255,0.01));
+}
+
+.fraud-card h4{
+  margin:0 0 8px;
+  font-size:18px;
+  line-height:1.3;
+  color:var(--danger);
+}
+
+.fraud-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+}
+
+@media (max-width:950px){
+  .fraud-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:700px){
+  .promo-slide.active{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .promo-price{
+    text-align:left;
+    min-width:0;
+    font-size:40px;
+  }
+}
 
 .promo-slide::before{
   content:"";
@@ -700,18 +797,18 @@
     </div>
   </div>
 
-  <div class="full-banner">
-<div class="banner-overlay">
-  <div class="banner-bg-text">WELCOME</div>
+<div class="full-banner">
+  <div class="banner-overlay">
+    <div class="banner-bg-text" id="bannerBgText">WELCOME</div>
 
-  <div class="banner-kicker">Munich • Banking • Financial Products</div>
-  <h1 class="banner-title">Welcome</h1>
-  <div class="banner-subtitle">In liquidity we trust.</div>
-  <div class="banner-text">
-    Davlad Bank provides a focused range of financial products across deposits, investments, and lending solutions.
+    <div class="banner-kicker" id="bannerKicker">Munich • Banking • Financial Products</div>
+    <h1 class="banner-title" id="bannerTitle">Welcome</h1>
+    <div class="banner-subtitle" id="bannerSubtitle">In liquidity we trust.</div>
+    <div class="banner-text" id="bannerText">
+      Davlad Bank provides a focused range of financial products across deposits, investments, and lending solutions.
+    </div>
   </div>
 </div>
-  </div>
 
   <div class="container">
     <div class="service-grid">
@@ -759,12 +856,20 @@
       <h3 id="promo1Title">Mars Expansion Program</h3>
       <p id="promo1Text">Private access to off-planet liquidity opportunities.</p>
     </div>
+    <div class="promo-price" id="promo1Price">
+      €999k
+      <small id="promo1PriceLabel">starting point</small>
+    </div>
   </div>
 
   <div class="promo-slide promo-liquidity">
     <div class="promo-content">
       <h3 id="promo2Title">Emergency Liquidity Facility</h3>
       <p id="promo2Text">When timing matters more than planning.</p>
+    </div>
+    <div class="promo-price" id="promo2Price">
+      €25k
+      <small id="promo2PriceLabel">subject to timing</small>
     </div>
   </div>
 
@@ -773,12 +878,20 @@
       <h3 id="promo3Title">Lifestyle Financing</h3>
       <p id="promo3Text">Because some decisions should not wait.</p>
     </div>
+    <div class="promo-price" id="promo3Price">
+      €12k
+      <small id="promo3PriceLabel">illustrative example</small>
+    </div>
   </div>
 
   <div class="promo-slide promo-optimism">
     <div class="promo-content">
       <h3 id="promo4Title">Strategic Optimism Fund</h3>
       <p id="promo4Text">For long-term belief in uncertain outcomes.</p>
+    </div>
+    <div class="promo-price" id="promo4Price">
+      €1m
+      <small id="promo4PriceLabel">vision required</small>
     </div>
   </div>
 </div>
@@ -791,31 +904,60 @@
       </div>
     </div>
 
-    <div class="news-section">
-      <div class="section-heading">
-        <div>
-          <div class="section-kicker" id="newsKicker">What’s New</div>
-          <h2 class="section-title" id="newsHeading">Latest updates from the bank</h2>
-        </div>
-      </div>
-
-      <div class="news-grid">
-        <div class="news-card">
-          <h4 id="news1Title">New deposits</h4>
-          <p id="news1Text">Short-term and long-term deposit products are now available.</p>
-        </div>
-
-        <div class="news-card">
-          <h4 id="news2Title">Investment section expanded</h4>
-          <p id="news2Text">Davlad Bonds and Direct Investment are now part of the investment offering.</p>
-        </div>
-
-        <div class="news-card">
-          <h4 id="news3Title">Loans timeline</h4>
-          <p id="news3Text">Lending products are expected to become available from 1 June 2026.</p>
-        </div>
-      </div>
+<div class="news-section">
+  <div class="section-heading">
+    <div>
+      <div class="section-kicker" id="newsKicker">What’s New</div>
+      <h2 class="section-title" id="newsHeading">Latest updates from the bank</h2>
     </div>
+  </div>
+
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-meta" id="news1Meta">Product Update</div>
+      <h4 id="news1Title">New deposits</h4>
+      <p id="news1Text">Short-term and long-term deposit products are now available.</p>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta" id="news2Meta">Investment Update</div>
+      <h4 id="news2Title">Investment section expanded</h4>
+      <p id="news2Text">Davlad Bonds and Direct Investment are now part of the investment offering.</p>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta" id="news3Meta">Roadmap</div>
+      <h4 id="news3Title">Loans timeline</h4>
+      <p id="news3Text">Lending products are expected to become available from 1 June 2026.</p>
+    </div>
+  </div>
+</div>
+
+    <div class="fraud-wrap">
+  <div class="section-heading">
+    <div>
+      <div class="section-kicker" id="fraudKicker">Security Notice</div>
+      <h2 class="section-title" id="fraudHeading">How to recognize a bank that is not real</h2>
+    </div>
+  </div>
+
+  <div class="fraud-grid">
+    <div class="fraud-card">
+      <h4 id="fraud1Title">Unrealistic promises</h4>
+      <p id="fraud1Text">Be cautious when a “bank” promises guaranteed wealth, instant approval, or returns that sound detached from reality.</p>
+    </div>
+
+    <div class="fraud-card">
+      <h4 id="fraud2Title">Unclear identity</h4>
+      <p id="fraud2Text">A real institution should have a transparent identity, a consistent public presence, and clearly stated ownership or structure.</p>
+    </div>
+
+    <div class="fraud-card">
+      <h4 id="fraud3Title">Pressure and urgency</h4>
+      <p id="fraud3Text">Fraudulent actors often create artificial urgency, push immediate payments, or discourage proper verification.</p>
+    </div>
+  </div>
+</div>
 
     <div class="footer-main">
       <div class="footer-grid">
@@ -940,6 +1082,30 @@
         news3Title: "Loans timeline",
         news3Text: "Lending products are expected to become available from 1 June 2026.",
 
+        bannerBgText: "WELCOME",
+
+promo1Price: "€999k",
+promo1PriceLabel: "starting point",
+promo2Price: "€25k",
+promo2PriceLabel: "subject to timing",
+promo3Price: "€12k",
+promo3PriceLabel: "illustrative example",
+promo4Price: "€1m",
+promo4PriceLabel: "vision required",
+
+news1Meta: "Product Update",
+news2Meta: "Investment Update",
+news3Meta: "Roadmap",
+
+fraudKicker: "Security Notice",
+fraudHeading: "How to recognize a bank that is not real",
+fraud1Title: "Unrealistic promises",
+fraud1Text: "Be cautious when a “bank” promises guaranteed wealth, instant approval, or returns that sound detached from reality.",
+fraud2Title: "Unclear identity",
+fraud2Text: "A real institution should have a transparent identity, a consistent public presence, and clearly stated ownership or structure.",
+fraud3Title: "Pressure and urgency",
+fraud3Text: "Fraudulent actors often create artificial urgency, push immediate payments, or discourage proper verification.",
+
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
         footerCol2Title: "Navigation",
@@ -979,6 +1145,30 @@
         promo3Text: "Weil manche Entscheidungen nicht warten sollten.",
         promo4Title: "Strategic Optimism Fund",
         promo4Text: "Für langfristigen Glauben an unsichere Ergebnisse.",
+
+        bannerBgText: "WILLKOMMEN",
+
+promo1Price: "999 Tsd. €",
+promo1PriceLabel: "ab diesem Niveau",
+promo2Price: "25 Tsd. €",
+promo2PriceLabel: "abhängig vom Timing",
+promo3Price: "12 Tsd. €",
+promo3PriceLabel: "illustratives Beispiel",
+promo4Price: "1 Mio. €",
+promo4PriceLabel: "Vision erforderlich",
+
+news1Meta: "Produktupdate",
+news2Meta: "Investment-Update",
+news3Meta: "Roadmap",
+
+fraudKicker: "Sicherheitshinweis",
+fraudHeading: "Woran man erkennt, dass eine Bank nicht echt ist",
+fraud1Title: "Unrealistische Versprechen",
+fraud1Text: "Vorsicht, wenn eine „Bank“ garantierten Reichtum, Sofortzusagen oder Renditen verspricht, die von jeder Realität abgekoppelt wirken.",
+fraud2Title: "Unklare Identität",
+fraud2Text: "Ein echtes Institut sollte eine transparente Identität, eine konsistente öffentliche Präsenz und klar erkennbare Eigentums- oder Strukturangaben haben.",
+fraud3Title: "Druck und künstliche Eile",
+fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf sofortige Zahlungen und entmutigen sorgfältige Verifizierung.",
 
         newsKicker: "What’s New",
         newsHeading: "Neuigkeiten der Bank",
@@ -1029,6 +1219,30 @@
         promo4Title: "Strategic Optimism Fund",
         promo4Text: "Для довгострокової віри в невизначені результати.",
 
+        bannerBgText: "ВІТАЄМО",
+
+promo1Price: "€999 тис.",
+promo1PriceLabel: "стартовий рівень",
+promo2Price: "€25 тис.",
+promo2PriceLabel: "залежить від часу",
+promo3Price: "€12 тис.",
+promo3PriceLabel: "умовний приклад",
+promo4Price: "€1 млн",
+promo4PriceLabel: "потрібне бачення",
+
+news1Meta: "Оновлення продукту",
+news2Meta: "Оновлення інвестицій",
+news3Meta: "Дорожня карта",
+
+fraudKicker: "Попередження безпеки",
+fraudHeading: "Як розпізнати, що банк не є справжнім",
+fraud1Title: "Нереалістичні обіцянки",
+fraud1Text: "Будьте обережні, якщо «банк» обіцяє гарантоване багатство, миттєве схвалення або прибутковість, відірвану від реальності.",
+fraud2Title: "Нечітка ідентичність",
+fraud2Text: "Справжня установа повинна мати прозору ідентичність, послідовну публічну присутність і чітко вказану структуру або власність.",
+fraud3Title: "Тиск і штучна терміновість",
+fraud3Text: "Шахраї часто створюють штучну терміновість, підштовхують до негайних платежів і відмовляють від нормальної перевірки.",
+
         newsKicker: "What’s New",
         newsHeading: "Останні новини банку",
         news1Title: "Нові депозити",
@@ -1050,6 +1264,7 @@
     function setLanguage(lang) {
       const t = translations[lang];
 
+      document.getElementById("bannerBgText").textContent = t.bannerBgText;
       document.getElementById("brandSub").textContent = t.brandSub;
       document.getElementById("navHome").textContent = t.navHome;
       document.getElementById("navDeposits").textContent = t.navDeposits;
@@ -1081,6 +1296,15 @@
       document.getElementById("promo4Title").textContent = t.promo4Title;
       document.getElementById("promo4Text").textContent = t.promo4Text;
 
+      document.getElementById("promo1Price").childNodes[0].nodeValue = t.promo1Price;
+document.getElementById("promo1PriceLabel").textContent = t.promo1PriceLabel;
+document.getElementById("promo2Price").childNodes[0].nodeValue = t.promo2Price;
+document.getElementById("promo2PriceLabel").textContent = t.promo2PriceLabel;
+document.getElementById("promo3Price").childNodes[0].nodeValue = t.promo3Price;
+document.getElementById("promo3PriceLabel").textContent = t.promo3PriceLabel;
+document.getElementById("promo4Price").childNodes[0].nodeValue = t.promo4Price;
+document.getElementById("promo4PriceLabel").textContent = t.promo4PriceLabel;
+
       document.getElementById("newsKicker").textContent = t.newsKicker;
       document.getElementById("newsHeading").textContent = t.newsHeading;
       document.getElementById("news1Title").textContent = t.news1Title;
@@ -1089,6 +1313,10 @@
       document.getElementById("news2Text").textContent = t.news2Text;
       document.getElementById("news3Title").textContent = t.news3Title;
       document.getElementById("news3Text").textContent = t.news3Text;
+
+      document.getElementById("news1Meta").textContent = t.news1Meta;
+document.getElementById("news2Meta").textContent = t.news2Meta;
+document.getElementById("news3Meta").textContent = t.news3Meta;
 
       document.getElementById("footerCol1Title").textContent = t.footerCol1Title;
       document.getElementById("footerCol1Text").textContent = t.footerCol1Text;
@@ -1101,6 +1329,15 @@
       document.getElementById("footerContact").textContent = t.navContact;
       document.getElementById("footerText").textContent = t.footerText;
       document.getElementById("legalText").textContent = t.legalText;
+
+      document.getElementById("fraudKicker").textContent = t.fraudKicker;
+document.getElementById("fraudHeading").textContent = t.fraudHeading;
+document.getElementById("fraud1Title").textContent = t.fraud1Title;
+document.getElementById("fraud1Text").textContent = t.fraud1Text;
+document.getElementById("fraud2Title").textContent = t.fraud2Title;
+document.getElementById("fraud2Text").textContent = t.fraud2Text;
+document.getElementById("fraud3Title").textContent = t.fraud3Title;
+document.getElementById("fraud3Text").textContent = t.fraud3Text;
 
       document.querySelectorAll(".lang-switch button").forEach(button => {
         button.classList.toggle("active", button.dataset.lang === lang);

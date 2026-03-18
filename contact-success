@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Bank — Message Received</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
+  <style>
+    :root{
+      --bg:#070707;
+      --card:#121212;
+      --card-2:#181818;
+      --text:#EAEAEA;
+      --muted:#8A8A8A;
+      --accent:#C6A85B;
+      --border:rgba(255,255,255,0.08);
+      --border-accent:rgba(198,168,91,0.25);
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      --topbar-bg:rgba(0,0,0,0.55);
+    }
+
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --border-accent:rgba(194,162,74,0.22);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --nav-bg:rgba(255,255,255,0.75);
+      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
+      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+      --topbar-bg:rgba(255,255,255,0.85);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
+      color:var(--text);
+      min-height:100vh;
+      transition:background .3s ease,color .3s ease;
+    }
+
+    .fx-topbar{
+      width:100%;
+      font-size:12px;
+      letter-spacing:.15px;
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:5px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .fx-item{
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .fx-item span{
+      color:var(--text);
+      font-weight:600;
+      margin-left:4px;
+    }
+
+    .fx-date{
+      color:var(--muted);
+      font-size:11px;
+      opacity:.9;
+    }
+
+    .container{
+      max-width:1280px;
+      margin:0 auto;
+      padding:20px 20px 70px;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      background:var(--nav-bg);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+      backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
+      flex-wrap:wrap;
+    }
+
+    .nav::before,
+    .success-card::before,
+    .footer-main::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.6;
+    }
+
+    .brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0B0B0B;
+      border:1px solid var(--border);
+      color:#F2F2F2;
+      flex-shrink:0;
+    }
+
+    body.light .logo{
+      background:#FFFFFF;
+      color:#111111;
+    }
+
+    .brand{
+      font-size:22px;
+      font-weight:800;
+      color:var(--text);
+      letter-spacing:.3px;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:2px;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      padding:9px 12px;
+      border-radius:10px;
+      transition:.18s ease;
+    }
+
+    .nav-links a:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    body.light .nav-links a:hover{
+      background:rgba(0,0,0,.04);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:4px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    .lang-switch button{
+      border:0;
+      background:transparent;
+      padding:6px 9px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .lang-switch button:hover{
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    body.light .lang-switch button:hover{
+      background:rgba(0,0,0,.04);
+    }
+
+    .lang-switch .active{
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+    }
+
+    .theme-btn{
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:700;
+      transition:.18s ease;
+    }
+
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    .success-wrap{
+      min-height:calc(100vh - 180px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .success-card{
+      width:100%;
+      max-width:860px;
+      border-radius:24px;
+      padding:36px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      text-align:center;
+    }
+
+    .success-bg-text{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      font-size:140px;
+      font-weight:900;
+      letter-spacing:8px;
+      color:#ffffff;
+      opacity:0.05;
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
+      z-index:1;
+    }
+
+    .success-card > *:not(.success-bg-text){
+      position:relative;
+      z-index:2;
+    }
+
+    .success-kicker{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.1px;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .success-title{
+      font-size:40px;
+      font-weight:800;
+      margin:0 0 10px;
+    }
+
+    .success-subtitle{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      max-width:660px;
+      margin:0 auto 22px;
+      white-space:pre-line;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin:26px 0;
+    }
+
+    .mini-box{
+      background:var(--card-2);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:18px;
+    }
+
+    .mini-label{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:6px;
+    }
+
+    .mini-value{
+      color:var(--text);
+      font-weight:800;
+      font-size:18px;
+      line-height:1.4;
+    }
+
+    .button-row{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.18s ease;
+    }
+
+    .btn-primary{
+      border:1px solid var(--border-accent);
+      background:linear-gradient(180deg, rgba(198,168,91,0.18), rgba(198,168,91,0.08));
+      color:var(--text);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--border);
+      background:var(--card-2);
+      color:var(--text);
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .footer-main{
+      margin-top:24px;
+      padding:26px 22px;
+      border-radius:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .footer-col h4{
+      margin:0 0 12px;
+      font-size:18px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      text-decoration:none;
+    }
+
+    .footer-col a:hover{
+      color:var(--text);
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:24px;
+      color:#8e8e8e;
+      font-size:14px;
+    }
+
+    .legal-strip{
+      margin-top:18px;
+      padding:12px 20px;
+      text-align:center;
+      font-size:11px;
+      color:#7d7d7d;
+      border-top:1px solid var(--border);
+    }
+
+    @media (max-width:950px){
+      .mini-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .success-bg-text{
+        font-size:90px;
+      }
+
+      .success-title{
+        font-size:30px;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width:700px){
+      .success-bg-text{
+        font-size:56px;
+        letter-spacing:4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="nav">
+      <div class="brand-wrap">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Davlad Bank</div>
+          <div class="brand-sub" id="brandSub">Deposits • Investments • Loans</div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="index.html" id="navHome">Home</a>
+          <a href="deposits.html" id="navDeposits">Deposits</a>
+          <a href="investments.html" id="navInvestments">Investments</a>
+          <a href="loans.html" id="navLoans">Loans</a>
+          <a href="about.html" id="navAbout">About</a>
+          <a href="contact.html" id="navContact">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+      </div>
+    </div>
+
+    <div class="success-wrap">
+      <div class="success-card">
+        <div class="success-bg-text" id="successBgText">SENT</div>
+
+        <div class="success-kicker" id="successKicker">Message Received</div>
+        <h1 class="success-title" id="successTitle">Your message has been delivered</h1>
+        <p class="success-subtitle" id="successSubtitle">The bank has received your correspondence.
+
+Institutional appreciation has been noted.
+A response may follow depending on liquidity, time, and administrative elegance.</p>
+
+        <div class="mini-grid">
+          <div class="mini-box">
+            <div class="mini-label" id="mini1Label">Delivery Method</div>
+            <div class="mini-value" id="mini1Value">Confirmed</div>
+          </div>
+
+          <div class="mini-box">
+            <div class="mini-label" id="mini2Label">Institutional Reaction</div>
+            <div class="mini-value" id="mini2Value">Appreciative</div>
+          </div>
+
+          <div class="mini-box">
+            <div class="mini-label" id="mini3Label">Next Step</div>
+            <div class="mini-value" id="mini3Value">Awaiting review</div>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <a href="index.html" class="btn btn-primary" id="homeBtn">Return home</a>
+          <a href="contact.html" class="btn btn-secondary" id="backBtn">Send another message</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 id="footerCol1Title">Davlad Bank</h4>
+          <p id="footerCol1Text">Independent financial platform focused on deposits, investments, and structured lending.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol2Title">Navigation</h4>
+          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+          <a href="investments.html" id="footerInvestments">Investments</a><br>
+          <a href="loans.html" id="footerLoans">Loans</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol3Title">Company</h4>
+          <a href="about.html" id="footerAbout">About</a><br>
+          <a href="contact.html" id="footerContact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footerText">Davlad Bank © 2026 · Correspondence Confirmed</div>
+
+    <div class="legal-strip" id="legalText">
+      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+
+    function applyTheme(theme){
+      document.body.classList.toggle("light", theme === "light");
+      btn.textContent = theme === "light" ? "☀️" : "🌙";
+    }
+
+    applyTheme(localStorage.getItem("theme") || "dark");
+
+    btn.addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+
+        if (!data || !data.rates) throw new Error("No rates returned");
+
+        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
+
+        document.getElementById("top-date").textContent =
+          `Official ECB reference rate • ${data.date}`;
+      } catch (error) {
+        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+      }
+    }
+
+    const translations = {
+      en: {
+        brandSub: "Deposits • Investments • Loans",
+        navHome: "Home",
+        navDeposits: "Deposits",
+        navInvestments: "Investments",
+        navLoans: "Loans",
+        navAbout: "About",
+        navContact: "Contact",
+
+        successBgText: "SENT",
+        successKicker: "Message Received",
+        successTitle: "Your message has been delivered",
+        successSubtitle: `The bank has received your correspondence.
+
+Institutional appreciation has been noted.
+A response may follow depending on liquidity, time, and administrative elegance.`,
+
+        mini1Label: "Delivery Method",
+        mini1Value: "Confirmed",
+        mini2Label: "Institutional Reaction",
+        mini2Value: "Appreciative",
+        mini3Label: "Next Step",
+        mini3Value: "Awaiting review",
+
+        homeBtn: "Return home",
+        backBtn: "Send another message",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Company",
+        footerText: "Davlad Bank © 2026 · Correspondence Confirmed",
+        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+      },
+
+      de: {
+        brandSub: "Einlagen • Investments • Kredite",
+        navHome: "Start",
+        navDeposits: "Einlagen",
+        navInvestments: "Investments",
+        navLoans: "Kredite",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+
+        successBgText: "GESENDET",
+        successKicker: "Nachricht eingegangen",
+        successTitle: "Ihre Nachricht wurde übermittelt",
+        successSubtitle: `Die Bank hat Ihre Korrespondenz erhalten.
+
+Institutionelle Wertschätzung wurde vermerkt.
+Eine Antwort kann je nach Liquidität, Zeit und administrativer Eleganz folgen.`,
+
+        mini1Label: "Übermittlungsstatus",
+        mini1Value: "Bestätigt",
+        mini2Label: "Institutionelle Reaktion",
+        mini2Value: "Wertschätzend",
+        mini3Label: "Nächster Schritt",
+        mini3Value: "Prüfung ausstehend",
+
+        homeBtn: "Zur Startseite",
+        backBtn: "Weitere Nachricht senden",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Unternehmen",
+        footerText: "Davlad Bank © 2026 · Korrespondenz bestätigt",
+        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+      },
+
+      ua: {
+        brandSub: "Депозити • Інвестиції • Кредити",
+        navHome: "Головна",
+        navDeposits: "Депозити",
+        navInvestments: "Інвестиції",
+        navLoans: "Кредити",
+        navAbout: "Про банк",
+        navContact: "Контакт",
+
+        successBgText: "НАДІСЛАНО",
+        successKicker: "Повідомлення отримано",
+        successTitle: "Ваше повідомлення доставлено",
+        successSubtitle: `Банк отримав вашу кореспонденцію.
+
+Інституційна вдячність зафіксована.
+Відповідь може надійти залежно від ліквідності, часу та адміністративної елегантності.`,
+
+        mini1Label: "Статус доставки",
+        mini1Value: "Підтверджено",
+        mini2Label: "Інституційна реакція",
+        mini2Value: "Вдячна",
+        mini3Label: "Наступний крок",
+        mini3Value: "Очікує розгляду",
+
+        homeBtn: "Повернутися на головну",
+        backBtn: "Надіслати ще одне повідомлення",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+        footerCol2Title: "Навігація",
+        footerCol3Title: "Компанія",
+        footerText: "Davlad Bank © 2026 · Кореспонденцію підтверджено",
+        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+
+      const map = {
+        brandSub: "brandSub",
+        navHome: "navHome",
+        navDeposits: "navDeposits",
+        navInvestments: "navInvestments",
+        navLoans: "navLoans",
+        navAbout: "navAbout",
+        navContact: "navContact",
+
+        successBgText: "successBgText",
+        successKicker: "successKicker",
+        successTitle: "successTitle",
+        successSubtitle: "successSubtitle",
+
+        mini1Label: "mini1Label",
+        mini1Value: "mini1Value",
+        mini2Label: "mini2Label",
+        mini2Value: "mini2Value",
+        mini3Label: "mini3Label",
+        mini3Value: "mini3Value",
+
+        homeBtn: "homeBtn",
+        backBtn: "backBtn",
+
+        footerCol1Title: "footerCol1Title",
+        footerCol1Text: "footerCol1Text",
+        footerCol2Title: "footerCol2Title",
+        footerCol3Title: "footerCol3Title",
+        footerText: "footerText",
+        legalText: "legalText"
+      };
+
+      Object.keys(map).forEach(key => {
+        const el = document.getElementById(map[key]);
+        if (el && t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.getElementById("footerDeposits").textContent = t.navDeposits;
+      document.getElementById("footerInvestments").textContent = t.navInvestments;
+      document.getElementById("footerLoans").textContent = t.navLoans;
+      document.getElementById("footerAbout").textContent = t.navAbout;
+      document.getElementById("footerContact").textContent = t.navContact;
+
+      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+      document.querySelectorAll(".lang-switch button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
+    loadFxRates();
+  </script>
+</body>
+</html>

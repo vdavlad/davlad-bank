@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Davlad Bank — About</title>
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <link rel="apple-touch-icon" href="images/favicon.svg">
 
   <style>
     :root{
@@ -16,507 +14,236 @@
       --muted:#8A8A8A;
       --accent:#C6A85B;
       --border:rgba(255,255,255,0.08);
-      --border-accent:rgba(198,168,91,0.25);
       --shadow:0 20px 60px rgba(0,0,0,0.5);
-      --nav-bg:rgba(255,255,255,0.02);
       --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --hero-bg:
-        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
-        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
-        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
-      --topbar-bg:rgba(0,0,0,0.55);
     }
 
     body.light{
       --bg:#FAFAFA;
       --card:#FFFFFF;
       --card-2:#F4F4F4;
-      --text:#111111;
+      --text:#111;
       --muted:#6A6A6A;
       --accent:#C2A24A;
       --border:rgba(0,0,0,0.08);
-      --border-accent:rgba(194,162,74,0.22);
       --shadow:0 10px 30px rgba(0,0,0,0.06);
-      --nav-bg:rgba(255,255,255,0.75);
-      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
-      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
-      --topbar-bg:rgba(255,255,255,0.85);
+      --card-bg:linear-gradient(180deg,#fff,#f7f7f7);
     }
-
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
 
     body{
+      margin:0;
       font-family:Arial, Helvetica, sans-serif;
-      background:var(--hero-bg);
+      background:var(--bg);
       color:var(--text);
-      min-height:100vh;
-      transition:background .3s ease,color .3s ease;
     }
-
-    .fx-topbar{
-      width:100%;
-      font-size:12px;
-      letter-spacing:.15px;
-      border-bottom:1px solid var(--border);
-      background:var(--topbar-bg);
-      backdrop-filter:blur(8px);
-    }
-
-    .fx-inner{
-      max-width:1280px;
-      margin:0 auto;
-      padding:5px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .fx-left{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .fx-item{color:var(--muted);white-space:nowrap}
-    .fx-item span{color:var(--text);font-weight:600;margin-left:4px}
-    .fx-date{color:var(--muted);font-size:11px}
 
     .container{
-      max-width:1280px;
-      margin:0 auto;
-      padding:20px 20px 70px;
+      max-width:1100px;
+      margin:auto;
+      padding:20px;
     }
 
-    .nav,
-    .panel{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
+    .full-banner{
+      min-height:420px;
       position:relative;
       overflow:hidden;
+      margin-bottom:30px;
     }
 
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      padding:18px 22px;
-      margin-bottom:24px;
-      backdrop-filter:blur(10px);
-      flex-wrap:wrap;
-      background:var(--nav-bg);
-      border-radius:18px;
-    }
-
-    .nav::before,
-    .panel::before{
+    .full-banner::before{
       content:"";
       position:absolute;
-      top:0; left:0; right:0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:.6;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
+        url("images/banner_v2.jpg") center/cover no-repeat;
     }
 
-    .brand-wrap{
-      display:flex;
-      align-items:center;
-      gap:14px;
+    .banner-overlay{
+      position:relative;
+      padding:40px 20px;
+      max-width:1100px;
+      margin:auto;
     }
 
-    .logo{
-      width:46px;
-      height:46px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#0B0B0B;
-      border:1px solid var(--border);
-      color:#F2F2F2;
-      flex-shrink:0;
+    .banner-bg-text{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      font-size:180px;
+      font-weight:900;
+      color:white;
+      opacity:0.12;
+      white-space:nowrap;
     }
 
-    body.light .logo{
-      background:#FFFFFF;
-      color:#111111;
-    }
-
-    .brand{
-      font-size:22px;
-      font-weight:800;
-      color:var(--text);
-      letter-spacing:.3px;
-    }
-
-    .brand-sub{
-      color:var(--muted);
-      font-size:13px;
-      margin-top:2px;
-    }
-
-    .nav-right{
-      display:flex;
-      align-items:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .nav-links a{
-      text-decoration:none;
-      color:var(--text);
-      font-weight:700;
-      padding:9px 12px;
-      border-radius:10px;
-      transition:.18s ease;
-    }
-
-    .nav-links a:hover{
-      background:rgba(255,255,255,.04);
-    }
-
-    body.light .nav-links a:hover{
-      background:rgba(0,0,0,.04);
-    }
-
-    .lang-switch{
-      display:flex;
-      gap:4px;
-      border:1px solid var(--border);
-      border-radius:10px;
-      overflow:hidden;
-    }
-
-    .lang-switch a{
-      padding:6px 9px;
-      text-decoration:none;
-      font-size:12px;
-      font-weight:700;
-      color:var(--muted);
-      transition:.18s ease;
-    }
-
-    .lang-switch a:hover{
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-    }
-
-    .lang-switch .active{
-      background:rgba(255,255,255,.06);
-      color:var(--text);
-    }
-
-    .theme-btn{
-      border:1px solid var(--border);
-      background:transparent;
-      color:var(--text);
-      padding:8px 10px;
-      border-radius:10px;
-      cursor:pointer;
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:24px;
-      margin-bottom:24px;
-    }
-
-    .panel{padding:26px}
-
-    .kicker{
-      font-size:12px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:12px;
-      font-weight:700;
-    }
-
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.05;
-    }
-
-    .lead{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:15px;
-      max-width:720px;
-    }
-
-    .metric-grid{
-      display:grid;
-      gap:14px;
-    }
-
-    .metric{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:16px;
-    }
-
-    .metric-label{
-      color:var(--muted);
-      font-size:12px;
-      margin-bottom:6px;
-    }
-
-    .metric-value{
-      font-size:24px;
+    .banner-title{
+      font-size:56px;
       font-weight:800;
     }
 
-    .section-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      margin-bottom:24px;
+    .banner-sub{
+      color:#d8c28a;
+      font-style:italic;
     }
 
-    .section-title{
-      margin:0 0 10px;
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:24px;
+      margin-bottom:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .title{
       font-size:28px;
+      font-weight:800;
+      margin-bottom:10px;
     }
 
-    .copy{
-      color:var(--muted);
-      font-size:15px;
+    .text{
       line-height:1.8;
-      margin:0 0 18px;
-    }
-
-    .list{
-      display:grid;
-      gap:12px;
-    }
-
-    .list-item{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:16px;
-    }
-
-    .list-item strong{
-      display:block;
-      margin-bottom:6px;
-      font-size:15px;
-    }
-
-    .list-item span{
       color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
+    }
+
+    .timeline{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:16px;
+    }
+
+    .timeline-item{
+      background:var(--card-2);
+      padding:18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+    }
+
+    .year{
+      color:var(--accent);
+      font-weight:800;
+      margin-bottom:6px;
     }
 
     .footer{
       text-align:center;
+      color:var(--muted);
       margin-top:30px;
-      color:#8e8e8e;
-      font-size:14px;
     }
 
-    @media (max-width:950px){
-      .hero,.section-grid{grid-template-columns:1fr}
-      .nav{flex-direction:column;align-items:flex-start}
-      h1{font-size:34px}
+    @media(max-width:900px){
+      .timeline{
+        grid-template-columns:1fr;
+      }
+      .banner-bg-text{
+        font-size:90px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="fx-topbar">
-    <div class="fx-inner">
-      <div class="fx-left">
-        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
-        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
-        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
-      </div>
-      <div class="fx-date" id="top-date">Loading…</div>
+
+<div class="full-banner">
+  <div class="banner-overlay">
+    <div class="banner-bg-text" id="bg">ABOUT</div>
+    <h1 class="banner-title" id="title">About</h1>
+    <div class="banner-sub" id="subtitle">A fictional bank with real dedication.</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="title" id="storyTitle">Founding Story</div>
+    <div class="text" id="storyText">
+Davlad Bank is not a licensed financial institution. It is a conceptual project, a design experiment, and a long-running personal idea shaped by curiosity about finance, structure, and systems.
+
+Its origins go back to around 2005.
+
+While spending time at his grandparents’ home, surrounded by documents, papers, an old computer, and a calculator, the future founder developed an early fascination with financial processes and institutional structure. During that time, an initial concept emerged under the name “Bank Krot” — a name chosen without realizing that it might sound somewhat questionable in a financial context.
+
+The idea remained dormant for many years.
+
+In early 2026, it unexpectedly returned — this time with a more self-aware and ironic angle: the concept of a fictional bank with ambition, visual identity, structured products, and no actual liquidity behind it.
+
+What started as a joke quickly evolved into interface sketches, product ideas, and a growing interest in building something that feels real, even if it is not.
+
+Today, Davlad Bank exists somewhere between fiction and structure.
+
+It serves as a personal project, a creative outlet, and a learning platform for exploring financial logic, product design, and digital presentation.
+
+The project will continue to evolve over time — with new features, new tools, and new ideas — at least until the CEO resolves his own liquidity situation.
+
+Until then, the bank remains:
+ambitious in presentation, limited in liquidity, and ongoing by design.
     </div>
   </div>
 
-  <div class="container">
-    <div class="nav">
-      <div class="brand-wrap">
-        <div class="logo">
-          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
-            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"/>
-            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div>
-          <div class="brand">Davlad Bank</div>
-          <div class="brand-sub">Deposits • Investments • Loans</div>
-        </div>
+  <div class="card">
+    <div class="title" id="timelineTitle">Timeline</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">2005</div>
+        <div id="t1">First concept “Bank Krot” appears</div>
       </div>
-
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="deposits.html">Deposits</a>
-          <a href="investments.html">Investments</a>
-          <a href="loans.html">Loans</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="lang-switch">
-          <a href="about.html" class="active">EN</a>
-          <a href="de/about.html">DE</a>
-          <a href="ua/about.html">UA</a>
-        </div>
-
-        <button id="themeToggle" class="theme-btn">🌙</button>
+      <div class="timeline-item">
+        <div class="year">2026</div>
+        <div id="t2">Idea returns in a new form</div>
       </div>
-    </div>
-
-    <div class="hero">
-      <div class="panel">
-        <div class="kicker">About</div>
-        <h1>About Davlad Bank</h1>
-        <p class="lead">
-          Davlad Bank is a conceptual banking institution focused on deposits,
-          investments, and lending solutions presented through a structured and modern interface.
-        </p>
+      <div class="timeline-item">
+        <div class="year">Now</div>
+        <div id="t3">Davlad Bank continues to evolve</div>
       </div>
-
-      <div class="panel">
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="metric-label">Institution Type</div>
-            <div class="metric-value">Independent</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Primary Scope</div>
-            <div class="metric-value">Banking Products</div>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Presentation Style</div>
-            <div class="metric-value">Private Banking Inspired</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-grid">
-      <div class="panel">
-        <h2 class="section-title">Overview</h2>
-        <p class="copy">
-          Davlad Bank is designed as a focused financial platform centered on a small and clear set
-          of banking products. The project emphasizes clarity, structure, and a premium visual identity.
-        </p>
-
-        <div class="list">
-          <div class="list-item">
-            <strong>Deposits</strong>
-            <span>Saving-oriented products with a focus on stability, structure, and capital preservation.</span>
-          </div>
-          <div class="list-item">
-            <strong>Investments</strong>
-            <span>Investment products intended for long-term positioning and disciplined portfolio development.</span>
-          </div>
-          <div class="list-item">
-            <strong>Loans</strong>
-            <span>Lending solutions presented as structured financing products for practical capital access.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <h2 class="section-title">Philosophy</h2>
-        <p class="copy">
-          The institution is built around a minimalist product structure and a consistent banking-style interface.
-          The goal is to present a coherent financial brand with a clear product focus rather than a broad universal-bank model.
-        </p>
-
-        <div class="list">
-          <div class="list-item">
-            <strong>Clarity</strong>
-            <span>A limited number of clearly defined product areas.</span>
-          </div>
-          <div class="list-item">
-            <strong>Structure</strong>
-            <span>Consistent visual hierarchy and product presentation across the platform.</span>
-          </div>
-          <div class="list-item">
-            <strong>Identity</strong>
-            <span>A banking concept combining modern interface design with a restrained premium tone.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h2 class="section-title">Positioning</h2>
-      <p class="copy">
-        Davlad Bank represents a simplified and product-oriented interpretation of a modern banking institution.
-        It is positioned around deposits, investments, and lending, while maintaining a visual language inspired by private banking and financial platforms.
-      </p>
-    </div>
-
-    <div class="footer">
-      Davlad Bank © 2026 · About the Institution
     </div>
   </div>
 
-  <script>
-    const btn = document.getElementById("themeToggle");
+  <div class="card">
+    <div class="title" id="statusTitle">Current Status</div>
+    <div class="text" id="statusText">
+Davlad Bank remains a conceptual project and a personal initiative.  
+It is not a real financial institution, but it continues to develop as a platform for experimentation, design, and learning.
+    </div>
+  </div>
 
-    function applyTheme(theme){
-      document.body.classList.toggle("light", theme === "light");
-      btn.textContent = theme === "light" ? "☀️" : "🌙";
-    }
+  <div class="footer">Davlad Bank © 2026</div>
 
-    applyTheme(localStorage.getItem("theme") || "dark");
+</div>
 
-    btn.addEventListener("click", () => {
-      const next = document.body.classList.contains("light") ? "dark" : "light";
-      localStorage.setItem("theme", next);
-      applyTheme(next);
-    });
+<script>
+const translations = {
+  de: {
+    title:"Über uns",
+    subtitle:"Eine fiktive Bank mit echter Hingabe.",
+    storyTitle:"Gründungsgeschichte",
+    timelineTitle:"Zeitlinie",
+    statusTitle:"Aktueller Status",
+    t1:"Erstes Konzept „Bank Krot“ entsteht",
+    t2:"Idee kehrt in neuer Form zurück",
+    t3:"Davlad Bank entwickelt sich weiter"
+  },
+  ua:{
+    title:"Про нас",
+    subtitle:"Вигаданий банк із справжньою відданістю.",
+    storyTitle:"Історія створення",
+    timelineTitle:"Хронологія",
+    statusTitle:"Поточний стан",
+    t1:"Перший концепт «Bank Krot»",
+    t2:"Ідея повертається у новій формі",
+    t3:"Davlad Bank продовжує розвиватися"
+  }
+};
 
-    async function loadFxRates() {
-      try {
-        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
-        const data = await res.json();
+function setLang(lang){
+  if(!translations[lang]) return;
+  Object.keys(translations[lang]).forEach(id=>{
+    document.getElementById(id).innerText = translations[lang][id];
+  });
+}
 
-        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
-        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
-        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+</script>
 
-        document.getElementById("top-date").textContent =
-          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
-      } catch {
-        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
-      }
-    }
-
-    loadFxRates();
-  </script>
 </body>
 </html>

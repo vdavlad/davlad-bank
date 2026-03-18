@@ -16,6 +16,7 @@
       --muted:#8A8A8A;
       --accent:#C6A85B;
       --border:rgba(255,255,255,0.08);
+      --border-accent:rgba(198,168,91,0.25);
       --shadow:0 20px 60px rgba(0,0,0,0.5);
       --nav-bg:rgba(255,255,255,0.02);
       --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -34,6 +35,7 @@
       --muted:#6A6A6A;
       --accent:#C2A24A;
       --border:rgba(0,0,0,0.08);
+      --border-accent:rgba(194,162,74,0.22);
       --shadow:0 10px 30px rgba(0,0,0,0.06);
       --nav-bg:rgba(255,255,255,0.75);
       --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
@@ -79,24 +81,27 @@
       align-items:center;
     }
 
-    .fx-item{color:var(--muted);white-space:nowrap}
-    .fx-item span{color:var(--text);font-weight:600;margin-left:4px}
-    .fx-date{color:var(--muted);font-size:11px}
+    .fx-item{
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .fx-item span{
+      color:var(--text);
+      font-weight:600;
+      margin-left:4px;
+    }
+
+    .fx-date{
+      color:var(--muted);
+      font-size:11px;
+      opacity:.9;
+    }
 
     .container{
       max-width:1280px;
       margin:0 auto;
       padding:20px 20px 70px;
-    }
-
-    .nav,
-    .panel{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
     }
 
     .nav{
@@ -105,18 +110,27 @@
       align-items:center;
       gap:20px;
       padding:18px 22px;
+      background:var(--nav-bg);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
       margin-bottom:24px;
       backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
       flex-wrap:wrap;
-      background:var(--nav-bg);
-      border-radius:18px;
     }
 
     .nav::before,
-    .panel::before{
+    .contact-intro::before,
+    .channel-card::before,
+    .form-card::before,
+    .footer-main::before{
       content:"";
       position:absolute;
-      top:0; left:0; right:0;
+      top:0;
+      left:0;
+      right:0;
       height:1px;
       background:linear-gradient(90deg, transparent, var(--accent), transparent);
       opacity:.6;
@@ -198,18 +212,24 @@
       overflow:hidden;
     }
 
-    .lang-switch a{
+    .lang-switch button{
+      border:0;
+      background:transparent;
       padding:6px 9px;
-      text-decoration:none;
       font-size:12px;
       font-weight:700;
       color:var(--muted);
+      cursor:pointer;
       transition:.18s ease;
     }
 
-    .lang-switch a:hover{
+    .lang-switch button:hover{
       background:rgba(255,255,255,.04);
       color:var(--text);
+    }
+
+    body.light .lang-switch button:hover{
+      background:rgba(0,0,0,.04);
     }
 
     .lang-switch .active{
@@ -226,119 +246,319 @@
       cursor:pointer;
       font-size:13px;
       font-weight:700;
+      transition:.18s ease;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:24px;
-      margin-bottom:24px;
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
     }
 
-    .panel{padding:26px}
+    .full-banner{
+      width:100%;
+      min-height:460px;
+      border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+      position:relative;
+      overflow:hidden;
+      background:var(--card-bg);
+    }
 
-    .kicker{
-      font-size:12px;
-      letter-spacing:1.2px;
+    .contact-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.64)),
+        url("images/banner_v2.jpg") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      min-height:460px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:42px 20px;
+      max-width:1280px;
+      margin:0 auto;
+      overflow:hidden;
+    }
+
+    .banner-bg-text{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      font-size:210px;
+      font-weight:900;
+      letter-spacing:8px;
+      color:#ffffff;
+      opacity:0.12;
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
+      z-index:1;
+    }
+
+    .banner-overlay > *:not(.banner-bg-text){
+      position:relative;
+      z-index:2;
+    }
+
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
       text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:12px;
+      color:#e8dcc0;
+      margin-bottom:10px;
       font-weight:700;
     }
 
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.05;
-    }
-
-    .lead{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:15px;
-      max-width:720px;
-    }
-
-    .contact-grid{
-      display:grid;
-      gap:14px;
-    }
-
-    .contact-card{
-      background:var(--card-2);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:16px;
-    }
-
-    .contact-label{
-      color:var(--muted);
-      font-size:12px;
-      margin-bottom:6px;
-    }
-
-    .contact-value{
-      font-size:20px;
+    .banner-title{
+      font-size:62px;
+      line-height:1;
+      margin:0 0 8px;
+      color:#fffaf0;
+      max-width:760px;
       font-weight:800;
-      color:var(--text);
-      line-height:1.5;
     }
 
-    .section-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
+    .banner-subtitle{
+      font-size:18px;
+      color:#d8c28a;
+      margin:0 0 14px;
+      font-style:italic;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.86);
+      line-height:1.75;
+      max-width:700px;
+      font-size:15px;
+    }
+
+    .contact-intro,
+    .form-card,
+    .footer-main{
+      border-radius:22px;
+      padding:24px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
       margin-bottom:24px;
+    }
+
+    .section-kicker{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.1px;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:8px;
     }
 
     .section-title{
       margin:0 0 10px;
-      font-size:28px;
+      font-size:30px;
+      font-weight:800;
+      color:var(--text);
     }
 
-    .copy{
+    .section-copy{
+      margin:0;
       color:var(--muted);
       font-size:15px;
       line-height:1.8;
-      margin:0 0 18px;
+      white-space:pre-line;
     }
 
-    .list{
+    .channel-grid{
       display:grid;
-      gap:12px;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-bottom:24px;
     }
 
-    .list-item{
-      background:var(--card-2);
+    .channel-card{
+      border-radius:20px;
+      padding:22px;
+      background:var(--card-bg);
       border:1px solid var(--border);
-      border-radius:16px;
-      padding:16px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
 
-    .list-item strong{
-      display:block;
-      margin-bottom:6px;
-      font-size:15px;
+    .channel-title{
+      margin:0 0 10px;
+      font-size:22px;
+      font-weight:800;
+      color:var(--text);
     }
 
-    .list-item span{
+    .channel-copy{
+      margin:0;
       color:var(--muted);
       font-size:14px;
+      line-height:1.75;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    .field label{
+      font-size:13px;
+      font-weight:700;
+      color:var(--text);
+    }
+
+    .field input,
+    .field textarea{
+      width:100%;
+      border:1px solid var(--border);
+      background:var(--card-2);
+      color:var(--text);
+      border-radius:14px;
+      padding:14px 14px;
+      font:inherit;
+      outline:none;
+      transition:.18s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus{
+      border-color:var(--border-accent);
+      box-shadow:0 0 0 1px rgba(198,168,91,0.15);
+    }
+
+    .field textarea{
+      min-height:160px;
+      resize:vertical;
+    }
+
+    .form-actions{
+      margin-top:18px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .submit-btn{
+      border:1px solid var(--border-accent);
+      background:linear-gradient(180deg, rgba(198,168,91,0.18), rgba(198,168,91,0.08));
+      color:var(--text);
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .submit-btn:hover{
+      transform:translateY(-1px);
+      background:linear-gradient(180deg, rgba(198,168,91,0.24), rgba(198,168,91,0.10));
+    }
+
+    .form-note{
+      color:var(--muted);
+      font-size:13px;
       line-height:1.7;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .footer-col h4{
+      margin:0 0 12px;
+      font-size:18px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      text-decoration:none;
+    }
+
+    .footer-col a:hover{
+      color:var(--text);
     }
 
     .footer{
       text-align:center;
-      margin-top:30px;
+      margin-top:24px;
       color:#8e8e8e;
       font-size:14px;
     }
 
+    .legal-strip{
+      margin-top:18px;
+      padding:12px 20px;
+      text-align:center;
+      font-size:11px;
+      color:#7d7d7d;
+      border-top:1px solid var(--border);
+    }
+
     @media (max-width:950px){
-      .hero,.section-grid{grid-template-columns:1fr}
-      .nav{flex-direction:column;align-items:flex-start}
-      h1{font-size:34px}
+      .channel-grid,
+      .footer-grid,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .banner-bg-text{
+        font-size:120px;
+      }
+
+      .banner-title{
+        font-size:40px;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width:700px){
+      .banner-bg-text{
+        font-size:78px;
+        letter-spacing:4px;
+      }
+
+      .banner-title{
+        font-size:32px;
+      }
     }
   </style>
 </head>
@@ -365,114 +585,149 @@
                   stroke-width="3"
                   stroke-linecap="round"
                   stroke-linejoin="round"/>
-            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
         <div>
           <div class="brand">Davlad Bank</div>
-          <div class="brand-sub">Deposits • Investments • Loans</div>
+          <div class="brand-sub" id="brandSub">Deposits • Investments • Loans</div>
         </div>
       </div>
 
       <div class="nav-right">
         <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="deposits.html">Deposits</a>
-          <a href="investments.html">Investments</a>
-          <a href="loans.html">Loans</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" id="navHome">Home</a>
+          <a href="deposits.html" id="navDeposits">Deposits</a>
+          <a href="investments.html" id="navInvestments">Investments</a>
+          <a href="loans.html" id="navLoans">Loans</a>
+          <a href="about.html" id="navAbout">About</a>
+          <a href="contact.html" id="navContact">Contact</a>
         </div>
 
         <div class="lang-switch">
-          <a href="contact.html" class="active">EN</a>
-          <a href="de/contact.html">DE</a>
-          <a href="ua/contact.html">UA</a>
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
         </div>
 
         <button id="themeToggle" class="theme-btn">🌙</button>
       </div>
     </div>
+  </div>
 
-    <div class="hero">
-      <div class="panel">
-        <div class="kicker">Contact</div>
-        <h1>Contact Davlad Bank</h1>
-        <p class="lead">
-          General communication channels and reference contact information for the platform.
-          Additional contact routes may be introduced as the project structure evolves.
-        </p>
+  <div class="full-banner contact-banner">
+    <div class="banner-overlay">
+      <div class="banner-bg-text" id="contactBgText">CONTACT</div>
+
+      <div class="banner-kicker" id="contactKicker">Davlad Bank • Communications • Institutional Outreach</div>
+      <h1 class="banner-title" id="contactTitle">Contact</h1>
+      <div class="banner-subtitle" id="contactSubtitle">Carrier pigeon remains under consideration.</div>
+      <div class="banner-text" id="contactText">
+        While the bank is still in formation, any feedback, observation, correction, suggestion, or institutional concern is welcome and may contribute to its continued evolution.
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="contact-intro">
+      <div class="section-kicker" id="introKicker">Communication Policy</div>
+      <h2 class="section-title" id="introTitle">How to reach the bank</h2>
+      <p class="section-copy" id="introCopy">Davlad Bank is theoretically reachable through carrier pigeon, telegraph, ceremonial correspondence, or unusually persistent intent.
+
+Operational response times may depend on liquidity, scheduling, and institutional mood.
+
+In practical terms, the feedback form below is currently the most efficient communication channel.</p>
+    </div>
+
+    <div class="channel-grid">
+      <div class="channel-card">
+        <h3 class="channel-title" id="channel1Title">Carrier Pigeon</h3>
+        <p class="channel-copy" id="channel1Copy">A traditional and prestigious delivery channel currently under logistical review.</p>
       </div>
 
-      <div class="panel">
-        <div class="contact-grid">
-          <div class="contact-card">
-            <div class="contact-label">Primary Contact</div>
-            <div class="contact-value">contact@davladbank.com</div>
+      <div class="channel-card">
+        <h3 class="channel-title" id="channel2Title">Telegraph</h3>
+        <p class="channel-copy" id="channel2Copy">Institutionally respected, historically elegant, and operationally improbable.</p>
+      </div>
+
+      <div class="channel-card">
+        <h3 class="channel-title" id="channel3Title">Feedback Form</h3>
+        <p class="channel-copy" id="channel3Copy">At present, the most realistic and institutionally efficient route for public communication.</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="section-kicker" id="formKicker">Feedback</div>
+      <h2 class="section-title" id="formTitle">Send a message to the bank</h2>
+      <p class="section-copy" id="formCopy">Comments, corrections, product ideas, design feedback, and general observations are welcome.</p>
+
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <div class="form-grid">
+          <div class="field">
+            <label for="name" id="labelName">Name</label>
+            <input type="text" id="name" name="name" required />
           </div>
-          <div class="contact-card">
-            <div class="contact-label">Response Format</div>
-            <div class="contact-value">Direct communication</div>
+
+          <div class="field">
+            <label for="email" id="labelEmail">Email</label>
+            <input type="email" id="email" name="email" required />
           </div>
-          <div class="contact-card">
-            <div class="contact-label">Availability</div>
-            <div class="contact-value">Subject to operating conditions</div>
+
+          <div class="field full">
+            <label for="subject" id="labelSubject">Subject</label>
+            <input type="text" id="subject" name="subject" required />
           </div>
+
+          <div class="field full">
+            <label for="message" id="labelMessage">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+        </div>
+
+        <input type="hidden" name="_subject" value="Davlad Bank feedback submission" />
+
+        <div class="form-actions">
+          <button type="submit" class="submit-btn" id="submitBtn">Send feedback</button>
+          <div class="form-note" id="formNote">
+            Replace YOUR_FORMSPREE_ID in the form action before going live.
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 id="footerCol1Title">Davlad Bank</h4>
+          <p id="footerCol1Text">
+            Independent financial platform focused on deposits, investments, and structured lending.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol2Title">Navigation</h4>
+          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+          <a href="investments.html" id="footerInvestments">Investments</a><br>
+          <a href="loans.html" id="footerLoans">Loans</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol3Title">Company</h4>
+          <a href="about.html" id="footerAbout">About</a><br>
+          <a href="contact.html" id="footerContact">Contact</a>
         </div>
       </div>
     </div>
 
-    <div class="section-grid">
-      <div class="panel">
-        <h2 class="section-title">Communication</h2>
-        <p class="copy">
-          Contact channels are intended for general product inquiries, platform questions,
-          and future communication regarding deposits, investments, and lending products.
-        </p>
-
-        <div class="list">
-          <div class="list-item">
-            <strong>General Inquiries</strong>
-            <span>Questions related to the bank concept, structure, or available product areas.</span>
-          </div>
-          <div class="list-item">
-            <strong>Product Questions</strong>
-            <span>Requests related to deposits, investments, or loans as presented on the platform.</span>
-          </div>
-          <div class="list-item">
-            <strong>Future Channels</strong>
-            <span>Additional communication routes may be added in later development phases.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <h2 class="section-title">Contact note</h2>
-        <p class="copy">
-          The current contact structure is presented as part of the platform’s overall concept and visual framework.
-          Communication logic may be expanded as more sections are completed.
-        </p>
-
-        <div class="list">
-          <div class="list-item">
-            <strong>Institutional Tone</strong>
-            <span>Communication is presented in a structured banking-style format.</span>
-          </div>
-          <div class="list-item">
-            <strong>Platform Status</strong>
-            <span>Some sections remain in active development and may currently redirect to interim pages.</span>
-          </div>
-          <div class="list-item">
-            <strong>Ongoing Expansion</strong>
-            <span>Contact presentation may evolve together with the multilingual site structure.</span>
-          </div>
-        </div>
-      </div>
+    <div class="footer" id="footerText">
+      Davlad Bank © 2026 · Institutional Correspondence
     </div>
 
-    <div class="footer">
-      Davlad Bank © 2026 · Contact Information
+    <div class="legal-strip" id="legalText">
+      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
     </div>
   </div>
 
@@ -497,17 +752,271 @@
         const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
         const data = await res.json();
 
-        if (data?.rates?.USD) document.getElementById("top-usd").textContent = data.rates.USD.toFixed(4);
-        if (data?.rates?.GBP) document.getElementById("top-gbp").textContent = data.rates.GBP.toFixed(4);
-        if (data?.rates?.CHF) document.getElementById("top-chf").textContent = data.rates.CHF.toFixed(4);
+        if (!data || !data.rates) throw new Error("No rates returned");
+
+        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
 
         document.getElementById("top-date").textContent =
-          data?.date ? `Updated: ${data.date}` : "Updated: latest available";
-      } catch {
+          `Official ECB reference rate • ${data.date}`;
+      } catch (error) {
         document.getElementById("top-date").textContent = "Rates temporarily unavailable";
       }
     }
 
+    const translations = {
+      en: {
+        brandSub: "Deposits • Investments • Loans",
+        navHome: "Home",
+        navDeposits: "Deposits",
+        navInvestments: "Investments",
+        navLoans: "Loans",
+        navAbout: "About",
+        navContact: "Contact",
+
+        contactBgText: "CONTACT",
+        contactKicker: "Davlad Bank • Communications • Institutional Outreach",
+        contactTitle: "Contact",
+        contactSubtitle: "Carrier pigeon remains under consideration.",
+        contactText: "While the bank is still in formation, any feedback, observation, correction, suggestion, or institutional concern is welcome and may contribute to its continued evolution.",
+
+        introKicker: "Communication Policy",
+        introTitle: "How to reach the bank",
+        introCopy: `Davlad Bank is theoretically reachable through carrier pigeon, telegraph, ceremonial correspondence, or unusually persistent intent.
+
+Operational response times may depend on liquidity, scheduling, and institutional mood.
+
+In practical terms, the feedback form below is currently the most efficient communication channel.`,
+
+        channel1Title: "Carrier Pigeon",
+        channel1Copy: "A traditional and prestigious delivery channel currently under logistical review.",
+        channel2Title: "Telegraph",
+        channel2Copy: "Institutionally respected, historically elegant, and operationally improbable.",
+        channel3Title: "Feedback Form",
+        channel3Copy: "At present, the most realistic and institutionally efficient route for public communication.",
+
+        formKicker: "Feedback",
+        formTitle: "Send a message to the bank",
+        formCopy: "Comments, corrections, product ideas, design feedback, and general observations are welcome.",
+        labelName: "Name",
+        labelEmail: "Email",
+        labelSubject: "Subject",
+        labelMessage: "Message",
+        submitBtn: "Send feedback",
+        formNote: "Replace YOUR_FORMSPREE_ID in the form action before going live.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Company",
+        footerText: "Davlad Bank © 2026 · Institutional Correspondence",
+        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+      },
+
+      de: {
+        brandSub: "Einlagen • Investments • Kredite",
+        navHome: "Start",
+        navDeposits: "Einlagen",
+        navInvestments: "Investments",
+        navLoans: "Kredite",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+
+        contactBgText: "KONTAKT",
+        contactKicker: "Davlad Bank • Kommunikation • Institutionelle Erreichbarkeit",
+        contactTitle: "Kontakt",
+        contactSubtitle: "Brieftauben werden weiterhin geprüft.",
+        contactText: "Während sich die Bank noch im Aufbau befindet, sind Feedback, Hinweise, Korrekturen, Vorschläge und institutionelle Anmerkungen ausdrücklich willkommen und können zur weiteren Entwicklung beitragen.",
+
+        introKicker: "Kommunikationsrichtlinie",
+        introTitle: "Wie man die Bank erreicht",
+        introCopy: `Davlad Bank ist theoretisch über Brieftaube, Telegraph, feierliche Korrespondenz oder ungewöhnlich ausdauernde Absicht erreichbar.
+
+Antwortzeiten können von Liquidität, Zeitplanung und institutioneller Stimmung abhängen.
+
+Praktisch gesehen ist das untenstehende Feedback-Formular derzeit der effizienteste Kommunikationskanal.`,
+
+        channel1Title: "Brieftaube",
+        channel1Copy: "Ein traditioneller und prestigeträchtiger Übertragungsweg, der derzeit logistisch geprüft wird.",
+        channel2Title: "Telegraph",
+        channel2Copy: "Institutionell respektiert, historisch elegant und operativ eher unwahrscheinlich.",
+        channel3Title: "Feedback-Formular",
+        channel3Copy: "Aktuell der realistischste und institutionell effizienteste Weg für öffentliche Kommunikation.",
+
+        formKicker: "Feedback",
+        formTitle: "Eine Nachricht an die Bank senden",
+        formCopy: "Kommentare, Korrekturen, Produktideen, Design-Feedback und allgemeine Beobachtungen sind willkommen.",
+        labelName: "Name",
+        labelEmail: "E-Mail",
+        labelSubject: "Betreff",
+        labelMessage: "Nachricht",
+        submitBtn: "Feedback senden",
+        formNote: "Ersetze YOUR_FORMSPREE_ID in der Formular-Action, bevor die Seite live geht.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Unternehmen",
+        footerText: "Davlad Bank © 2026 · Institutionelle Korrespondenz",
+        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+      },
+
+      ua: {
+        brandSub: "Депозити • Інвестиції • Кредити",
+        navHome: "Головна",
+        navDeposits: "Депозити",
+        navInvestments: "Інвестиції",
+        navLoans: "Кредити",
+        navAbout: "Про банк",
+        navContact: "Контакт",
+
+        contactBgText: "КОНТАКТ",
+        contactKicker: "Davlad Bank • Комунікації • Інституційний зв’язок",
+        contactTitle: "Контакт",
+        contactSubtitle: "Голубина пошта все ще розглядається.",
+        contactText: "Поки банк ще проходить етап становлення, будь-який фідбек, спостереження, виправлення, пропозиція чи інституційне зауваження є доречними та можуть допомогти подальшому розвитку.",
+
+        introKicker: "Комунікаційна політика",
+        introTitle: "Як зв’язатися з банком",
+        introCopy: `Теоретично з Davlad Bank можна зв’язатися через голубину пошту, телеграф, урочисте листування або незвично наполегливий намір.
+
+Час відповіді може залежати від ліквідності, графіка та інституційного настрою.
+
+На практиці форма зворотного зв’язку нижче наразі є найефективнішим каналом.`,
+
+        channel1Title: "Голубина пошта",
+        channel1Copy: "Традиційний і престижний канал доставки, який наразі проходить логістичний перегляд.",
+        channel2Title: "Телеграф",
+        channel2Copy: "Інституційно поважний, історично елегантний і операційно малоймовірний.",
+        channel3Title: "Форма фідбеку",
+        channel3Copy: "Наразі найреалістичніший і найефективніший канал публічної комунікації.",
+
+        formKicker: "Фідбек",
+        formTitle: "Надіслати повідомлення банку",
+        formCopy: "Коментарі, виправлення, ідеї продуктів, дизайн-фідбек і загальні спостереження вітаються.",
+        labelName: "Ім’я",
+        labelEmail: "Email",
+        labelSubject: "Тема",
+        labelMessage: "Повідомлення",
+        submitBtn: "Надіслати фідбек",
+        formNote: "Замініть YOUR_FORMSPREE_ID у form action перед публікацією сайту.",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+        footerCol2Title: "Навігація",
+        footerCol3Title: "Компанія",
+        footerText: "Davlad Bank © 2026 · Інституційне листування",
+        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+
+      const map = {
+        brandSub: "brandSub",
+        navHome: "navHome",
+        navDeposits: "navDeposits",
+        navInvestments: "navInvestments",
+        navLoans: "navLoans",
+        navAbout: "navAbout",
+        navContact: "navContact",
+
+        contactBgText: "contactBgText",
+        contactKicker: "contactKicker",
+        contactTitle: "contactTitle",
+        contactSubtitle: "contactSubtitle",
+        contactText: "contactText",
+
+        introKicker: "introKicker",
+        introTitle: "introTitle",
+        introCopy: "introCopy",
+
+        channel1Title: "channel1Title",
+        channel1Copy: "channel1Copy",
+        channel2Title: "channel2Title",
+        channel2Copy: "channel2Copy",
+        channel3Title: "channel3Title",
+        channel3Copy: "channel3Copy",
+
+        formKicker: "formKicker",
+        formTitle: "formTitle",
+        formCopy: "formCopy",
+        labelName: "labelName",
+        labelEmail: "labelEmail",
+        labelSubject: "labelSubject",
+        labelMessage: "labelMessage",
+        submitBtn: "submitBtn",
+        formNote: "formNote",
+
+        footerCol1Title: "footerCol1Title",
+        footerCol1Text: "footerCol1Text",
+        footerCol2Title: "footerCol2Title",
+        footerCol3Title: "footerCol3Title",
+        footerText: "footerText",
+        legalText: "legalText"
+      };
+
+      Object.keys(map).forEach(key => {
+        const el = document.getElementById(map[key]);
+        if (el && t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.getElementById("footerDeposits").textContent = t.navDeposits;
+      document.getElementById("footerInvestments").textContent = t.navInvestments;
+      document.getElementById("footerLoans").textContent = t.navLoans;
+      document.getElementById("footerAbout").textContent = t.navAbout;
+      document.getElementById("footerContact").textContent = t.navContact;
+
+      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+      document.querySelectorAll(".lang-switch button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const btn = document.getElementById("themeToggle");
+
+    function applyTheme(theme){
+      document.body.classList.toggle("light", theme === "light");
+      btn.textContent = theme === "light" ? "☀️" : "🌙";
+    }
+
+    applyTheme(localStorage.getItem("theme") || "dark");
+
+    btn.addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+
+        if (!data || !data.rates) throw new Error("No rates returned");
+
+        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
+
+        document.getElementById("top-date").textContent =
+          `Official ECB reference rate • ${data.date}`;
+      } catch (error) {
+        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+      }
+    }
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
     loadFxRates();
   </script>
 </body>

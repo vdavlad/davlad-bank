@@ -664,35 +664,58 @@ In practical terms, the feedback form below is currently the most efficient comm
       <h2 class="section-title" id="formTitle">Send a message to the bank</h2>
       <p class="section-copy" id="formCopy">Comments, corrections, product ideas, design feedback, and general observations are welcome.</p>
 
-      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <form action="https://formspree.io/f/mwvraljl" method="POST">
+        <input type="hidden" name="_subject" value="Davlad Bank feedback submission" />
+        <input type="text" name="_gotcha" style="display:none">
+        
         <div class="form-grid">
           <div class="field">
             <label for="name" id="labelName">Name</label>
-            <input type="text" id="name" name="name" required />
+            <input 
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+            />
           </div>
 
           <div class="field">
-            <label for="email" id="labelEmail">Email</label>
-            <input type="email" id="email" name="email" required />
+            <label for="email" id="labelEmail">Email (optional)</label>
+            <input 
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Optional"
+            />
           </div>
 
           <div class="field full">
             <label for="subject" id="labelSubject">Subject</label>
-            <input type="text" id="subject" name="subject" required />
+            <input 
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="What is this about?"
+              required
+            />
           </div>
 
           <div class="field full">
             <label for="message" id="labelMessage">Message</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea 
+              id="message"
+              name="message"
+              placeholder="Write your message to Davlad Bank..."
+              required
+            ></textarea>
           </div>
         </div>
-
-        <input type="hidden" name="_subject" value="Davlad Bank feedback submission" />
 
         <div class="form-actions">
           <button type="submit" class="submit-btn" id="submitBtn">Send feedback</button>
           <div class="form-note" id="formNote">
-            <form action="https://formspree.io/f/mwvraljl" method="POST">
+            Feedback may be submitted without providing an email address. Messages are transmitted over a secure connection.
           </div>
         </div>
       </form>
@@ -796,11 +819,11 @@ In practical terms, the feedback form below is currently the most efficient comm
         formTitle: "Send a message to the bank",
         formCopy: "Comments, corrections, product ideas, design feedback, and general observations are welcome.",
         labelName: "Name",
-        labelEmail: "Email",
+        labelEmail: "Email (optional)",
         labelSubject: "Subject",
         labelMessage: "Message",
         submitBtn: "Send feedback",
-        formNote: "Replace YOUR_FORMSPREE_ID in the form action before going live.",
+        formNote: "Feedback may be submitted without providing an email address. Messages are transmitted over a secure connection.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
@@ -844,11 +867,11 @@ Praktisch gesehen ist das untenstehende Feedback-Formular derzeit der effiziente
         formTitle: "Eine Nachricht an die Bank senden",
         formCopy: "Kommentare, Korrekturen, Produktideen, Design-Feedback und allgemeine Beobachtungen sind willkommen.",
         labelName: "Name",
-        labelEmail: "E-Mail",
+        labelEmail: "E-Mail (optional)",
         labelSubject: "Betreff",
         labelMessage: "Nachricht",
         submitBtn: "Feedback senden",
-        formNote: "Ersetze YOUR_FORMSPREE_ID in der Formular-Action, bevor die Seite live geht.",
+        formNote: "Feedback kann auch ohne Angabe einer E-Mail-Adresse gesendet werden. Nachrichten werden über eine sichere Verbindung übertragen.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
@@ -892,11 +915,11 @@ Praktisch gesehen ist das untenstehende Feedback-Formular derzeit der effiziente
         formTitle: "Надіслати повідомлення банку",
         formCopy: "Коментарі, виправлення, ідеї продуктів, дизайн-фідбек і загальні спостереження вітаються.",
         labelName: "Ім’я",
-        labelEmail: "Email",
+        labelEmail: "Email (необов’язково)",
         labelSubject: "Тема",
         labelMessage: "Повідомлення",
         submitBtn: "Надіслати фідбек",
-        formNote: "Замініть YOUR_FORMSPREE_ID у form action перед публікацією сайту.",
+        formNote: "Фідбек можна надсилати без вказання email-адреси. Повідомлення передаються через захищене з’єднання.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",

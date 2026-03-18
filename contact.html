@@ -336,7 +336,7 @@
     .banner-text{
       color:rgba(255,255,255,0.86);
       line-height:1.75;
-      max-width:700px;
+      max-width:720px;
       font-size:15px;
     }
 
@@ -451,7 +451,7 @@
     }
 
     .field textarea{
-      min-height:160px;
+      min-height:170px;
       resize:vertical;
     }
 
@@ -702,9 +702,7 @@ In practical terms, the feedback form below is currently the most efficient comm
       <div class="footer-grid">
         <div class="footer-col">
           <h4 id="footerCol1Title">Davlad Bank</h4>
-          <p id="footerCol1Text">
-            Independent financial platform focused on deposits, investments, and structured lending.
-          </p>
+          <p id="footerCol1Text">Independent financial platform focused on deposits, investments, and structured lending.</p>
         </div>
 
         <div class="footer-col">
@@ -722,9 +720,7 @@ In practical terms, the feedback form below is currently the most efficient comm
       </div>
     </div>
 
-    <div class="footer" id="footerText">
-      Davlad Bank © 2026 · Institutional Correspondence
-    </div>
+    <div class="footer" id="footerText">Davlad Bank © 2026 · Institutional Correspondence</div>
 
     <div class="legal-strip" id="legalText">
       Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
@@ -981,39 +977,6 @@ Praktisch gesehen ist das untenstehende Feedback-Formular derzeit der effiziente
     document.querySelectorAll(".lang-switch button").forEach(button => {
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
-
-    const btn = document.getElementById("themeToggle");
-
-    function applyTheme(theme){
-      document.body.classList.toggle("light", theme === "light");
-      btn.textContent = theme === "light" ? "☀️" : "🌙";
-    }
-
-    applyTheme(localStorage.getItem("theme") || "dark");
-
-    btn.addEventListener("click", () => {
-      const next = document.body.classList.contains("light") ? "dark" : "light";
-      localStorage.setItem("theme", next);
-      applyTheme(next);
-    });
-
-    async function loadFxRates() {
-      try {
-        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
-        const data = await res.json();
-
-        if (!data || !data.rates) throw new Error("No rates returned");
-
-        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
-        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
-        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
-
-        document.getElementById("top-date").textContent =
-          `Official ECB reference rate • ${data.date}`;
-      } catch (error) {
-        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
-      }
-    }
 
     const savedLanguage = localStorage.getItem("siteLanguage") || "en";
     setLanguage(savedLanguage);

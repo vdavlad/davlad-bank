@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davlad Hero Comparison</title>
+
+<style>
+:root{
+  --bg:#050505;
+  --text:#f5f5f5;
+  --muted:#b8b8b8;
+  --accent:#c6a85b;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* SECTION */
+.section{
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* BANNER */
+.banner{
+  position:relative;
+  min-height:500px;
+  display:flex;
+  align-items:center;
+  padding:60px;
+  overflow:hidden;
+}
+
+.banner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
+    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600") center/cover;
+}
+
+/* CONTENT */
+.banner-overlay{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+}
+
+/* BIG TEXT */
+.banner-bg-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:180px;
+  font-weight:900;
+  letter-spacing:6px;
+  opacity:0.07;
+  pointer-events:none;
+}
+
+/* TEXT */
+.banner-kicker{
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+
+.banner-title{
+  font-size:56px;
+  font-weight:800;
+  margin:0 0 10px;
+}
+
+.banner-subtitle{
+  font-size:18px;
+  color:var(--muted);
+}
+
+/* LABEL */
+.label{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:rgba(255,255,255,0.05);
+  padding:6px 12px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .banner{
+    padding:40px 20px;
+  }
+  .banner-bg-text{
+    font-size:90px;
+  }
+  .banner-title{
+    font-size:36px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- 1 PREMIUM -->
+<section class="section">
+  <div class="banner">
+    <div class="label">VERSION 1 — PREMIUM</div>
+
+    <div class="banner-bg-text">DAVLAD</div>
+
+    <div class="banner-overlay">
+      <div class="banner-kicker">PRIVATE BANKING</div>
+      <h1 class="banner-title">Davlad Bank</h1>
+      <div class="banner-subtitle">In liquidity we trust.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 MINIMAL -->
+<section class="section">
+  <div class="banner">
+    <div class="label">VERSION 2 — MINIMAL</div>
+
+    <div class="banner-bg-text">LIQUIDITY</div>
+
+    <div class="banner-overlay">
+      <div class="banner-kicker">DAVLAD BANK</div>
+      <h1 class="banner-title">Liquidity</h1>
+      <div class="banner-subtitle">In liquidity we trust.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 PRODUCT -->
+<section class="section">
+  <div class="banner">
+    <div class="label">VERSION 3 — PRODUCT</div>
+
+    <div class="banner-bg-text">BANKING</div>
+
+    <div class="banner-overlay">
+      <div class="banner-kicker">DAVLAD BANK</div>
+      <h1 class="banner-title">Private Banking</h1>
+      <div class="banner-subtitle">Deposits • Investments • Lending</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 FUN -->
+<section class="section">
+  <div class="banner">
+    <div class="label">VERSION 4 — FUN</div>
+
+    <div class="banner-bg-text">PENDING</div>
+
+    <div class="banner-overlay">
+      <div class="banner-kicker">DAVLAD BANK</div>
+      <h1 class="banner-title">Liquidity Pending</h1>
+      <div class="banner-subtitle">In liquidity we trust.</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

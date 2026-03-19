@@ -855,19 +855,11 @@
 </div>
 
 <div class="section-intro">
-
-  <div class="section-kicker" data-i18n="coreKicker">
-    Core Products
-  </div>
-
-  <h2 class="section-title" data-i18n="coreTitle">
-    Structured financial access
-  </h2>
-
-  <p class="section-copy" data-i18n="coreText">
+  <div class="section-kicker" id="coreKicker">Core Products</div>
+  <h2 class="section-title" id="coreTitle">Structured financial access</h2>
+  <p class="section-copy" id="coreText">
     Explore the bank’s current product architecture across deposits, investments, and lending.
   </p>
-
 </div>
 
   <div class="container">
@@ -1351,6 +1343,10 @@ fraud3Text: "Шахраї часто створюють штучну термі�
       document.getElementById("bannerTitle").textContent = t.bannerTitle;
       document.getElementById("bannerSubtitle").textContent = t.bannerSubtitle;
 
+      document.getElementById("coreKicker").textContent = t.coreKicker;
+      document.getElementById("coreTitle").textContent = t.coreTitle;
+      document.getElementById("coreText").textContent = t.coreText;
+
       document.getElementById("service1Title").textContent = t.service1Title;
       document.getElementById("service1Copy").textContent = t.service1Copy;
       document.getElementById("service2Title").textContent = t.service2Title;
@@ -1411,8 +1407,6 @@ document.getElementById("fraud2Title").textContent = t.fraud2Title;
 document.getElementById("fraud2Text").textContent = t.fraud2Text;
 document.getElementById("fraud3Title").textContent = t.fraud3Title;
 document.getElementById("fraud3Text").textContent = t.fraud3Text;
-      
-      updateTranslations(lang);
 
       document.querySelectorAll(".lang-switch button").forEach(button => {
         button.classList.toggle("active", button.dataset.lang === lang);
@@ -1430,14 +1424,6 @@ document.getElementById("fraud3Text").textContent = t.fraud3Text;
 
     loadFxRates();
     
-    function updateTranslations(lang){
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if(translations[lang] && translations[lang][key]){
-      el.textContent = translations[lang][key];
-    }
-  });
-}
   </script>
 </body>
 </html>

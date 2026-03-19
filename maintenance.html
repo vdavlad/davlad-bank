@@ -1411,6 +1411,8 @@ document.getElementById("fraud2Title").textContent = t.fraud2Title;
 document.getElementById("fraud2Text").textContent = t.fraud2Text;
 document.getElementById("fraud3Title").textContent = t.fraud3Title;
 document.getElementById("fraud3Text").textContent = t.fraud3Text;
+      
+      updateTranslations(lang);
 
       document.querySelectorAll(".lang-switch button").forEach(button => {
         button.classList.toggle("active", button.dataset.lang === lang);

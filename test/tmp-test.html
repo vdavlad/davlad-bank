@@ -490,7 +490,7 @@
       color:var(--text);
     }
 
-    .cards-section{
+.cards-section{
   margin:60px 0;
 }
 
@@ -503,44 +503,70 @@
   display:flex;
   justify-content:center;
   gap:60px;
-  align-items:flex-end;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+
+.card-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* ОБЕ КАРТЫ НА ОДНОЙ ВЫСОТЕ */
+.premium{
+  transform:none;
 }
 
 /* CARD BASE */
-.card{
+.bank-card{
   width:320px;
   height:200px;
   border-radius:20px;
   position:relative;
   overflow:hidden;
   transform-style:preserve-3d;
-  transition:0.2s;
-}
-
-/* ПОВОРОТ НА ДРУГОЙ БОК */
-.card{
+  transition:transform 0.2s ease;
   transform:rotate(-90deg) scale(0.9);
 }
 
 /* BLACK */
 .black{
-  background:linear-gradient(145deg,#0a0a0a,#050505);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255,255,255,0.05), transparent 24%),
+    linear-gradient(145deg,#0a0a0a,#050505);
   box-shadow:0 20px 60px rgba(0,0,0,0.6);
 }
 
 /* RESERVE */
 .reserve{
   background:
-    radial-gradient(circle at 70% 30%, rgba(198,168,91,0.15), transparent 30%),
+    radial-gradient(circle at 70% 30%, rgba(198,168,91,0.12), transparent 30%),
     linear-gradient(145deg,#0a0a0a,#050505);
   box-shadow:
     0 25px 80px rgba(0,0,0,0.7),
-    0 0 40px rgba(198,168,91,0.15);
+    0 0 30px rgba(198,168,91,0.12);
 }
 
-/* PREMIUM ВЫШЕ */
-.premium{
-  transform:translateY(-20px);
+/* ДВЕ ЗОЛОТЫЕ ПОЛОСКИ В ТВОЕМ СТИЛЕ */
+.reserve::before,
+.reserve::after{
+  content:"";
+  position:absolute;
+  top:18px;
+  bottom:18px;
+  width:2px;
+  background:linear-gradient(180deg, rgba(184,154,74,0.15), rgba(184,154,74,0.95), rgba(184,154,74,0.15));
+  border-radius:2px;
+  z-index:1;
+}
+
+.reserve::before{
+  left:18px;
+}
+
+.reserve::after{
+  right:18px;
 }
 
 /* CHIP */
@@ -552,19 +578,31 @@
   height:35px;
   background:linear-gradient(145deg,#bbb,#777);
   border-radius:6px;
+  z-index:2;
 }
 
 .chip.gold{
   background:linear-gradient(145deg,#e0c98f,#9e7d2f);
 }
 
-/* LOGO */
-.logo{
+/* ЛОГО НА КАРТЕ — НОВОЕ ИМЯ КЛАССА */
+.card-logo{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
   width:70px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+}
+
+.card-logo svg{
+  width:100%;
+  height:100%;
+  display:block;
 }
 
 /* BRAND */
@@ -574,6 +612,7 @@
   right:20px;
   font-size:14px;
   color:#fff;
+  z-index:2;
 }
 
 /* TIER */
@@ -584,6 +623,7 @@
   font-size:12px;
   color:#C6A85B;
   letter-spacing:2px;
+  z-index:2;
 }
 
 /* MASTERCARD */
@@ -593,6 +633,7 @@
   right:15px;
   width:40px;
   height:25px;
+  z-index:2;
 }
 
 .mc::before,
@@ -616,9 +657,23 @@
 /* LABEL */
 .card-label{
   text-align:center;
-  margin-top:10px;
+  margin-top:-10px;
   font-size:14px;
   color:var(--muted);
+}
+
+@media (max-width:900px){
+  .cards-wrap{
+    gap:30px;
+  }
+
+  .bank-card{
+    transform:rotate(-90deg) scale(0.78);
+  }
+
+  .card-label{
+    margin-top:-22px;
+  }
 }
 
 .promo-stage{
@@ -1035,7 +1090,7 @@
       </a>
     </div>
 
-    <section class="cards-section">
+ <section class="cards-section">
 
   <div class="cards-intro">
     <div class="section-kicker">Card Concept</div>
@@ -1049,49 +1104,55 @@
 
     <!-- BLACK -->
     <div class="card-item">
-      <div class="card black" id="cardBlack">
+      <div class="bank-card black" id="cardBlack">
 
         <div class="chip"></div>
 
         <div class="brand-top">Davlad Bank</div>
 
-        <div class="logo">
-          <!-- SVG -->
+        <div class="card-logo">
           <svg viewBox="0 0 64 64">
             <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#1F1F1F"/>
             <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-                  fill="none" stroke="#F2F2F2" stroke-width="3"/>
-            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2"/>
-            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2"/>
+                  fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
 
         <div class="mc"></div>
-
       </div>
+
       <div class="card-label">Davlad Black</div>
     </div>
 
     <!-- RESERVE -->
     <div class="card-item premium">
-      <div class="card reserve" id="cardReserve">
+      <div class="bank-card reserve" id="cardReserve">
 
         <div class="chip gold"></div>
 
         <div class="brand-top">Davlad Bank</div>
 
-        <div class="logo"></div>
+        <div class="card-logo">
+          <svg viewBox="0 0 64 64">
+            <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#1F1F1F"/>
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
 
         <div class="tier">RESERVE</div>
 
         <div class="mc"></div>
-
       </div>
+
       <div class="card-label">Davlad Reserve</div>
     </div>
 
   </div>
-
 </section>
 
     <div class="promo-wrap">
@@ -1242,15 +1303,17 @@
     </div>
   </div>
 
-  <script>
+<script>
 function applyTilt(card){
+  if (!card) return;
+
   card.addEventListener("mousemove", e => {
     const r = card.getBoundingClientRect();
     const x = e.clientX - r.left;
     const y = e.clientY - r.top;
 
-    const rx = -(y - r.height/2)/15;
-    const ry = (x - r.width/2)/15;
+    const rx = -(y - r.height / 2) / 18;
+    const ry = (x - r.width / 2) / 18;
 
     card.style.transform = `
       rotate(-90deg)

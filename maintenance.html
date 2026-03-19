@@ -373,6 +373,34 @@
   }
 }
 
+    .section-intro{
+  max-width:760px;
+  margin:40px auto 30px;
+  text-align:center;
+}
+
+.section-kicker{
+  font-size:12px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:10px;
+  font-weight:700;
+}
+
+.section-title{
+  font-size:34px;
+  margin:0 0 12px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.section-copy{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.7;
+}
+
     .service-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -826,6 +854,22 @@
   </div>
 </div>
 
+<div class="section-intro">
+
+  <div class="section-kicker" data-i18n="coreKicker">
+    Core Products
+  </div>
+
+  <h2 class="section-title" data-i18n="coreTitle">
+    Structured financial access
+  </h2>
+
+  <p class="section-copy" data-i18n="coreText">
+    Explore the bank’s current product architecture across deposits, investments, and lending.
+  </p>
+
+</div>
+
   <div class="container">
     <div class="service-grid">
       <a href="deposits.html" class="service-card">
@@ -1076,6 +1120,9 @@ loadFxRates();
         bannerKicker: "WELCOME",
         bannerTitle: "Davlad Bank",
         bannerSubtitle: "In liquidity we trust.",
+        coreKicker: "Core Products",
+        coreTitle: "Structured financial access",
+        coreText: "Explore the bank’s current product architecture across deposits, investments, and lending.",
       
 
         service1Title: "Deposits",
@@ -1149,6 +1196,9 @@ fraud3Text: "Fraudulent actors often create artificial urgency, push immediate p
         bannerKicker: "WILLKOMMEN",
         bannerTitle: "Davlad Bank",
         bannerSubtitle: "In liquidity we trust.",
+        coreKicker: "Kernprodukte",
+        coreTitle: "Strukturierter Zugang zu Finanzlösungen",
+        coreText: "Entdecken Sie die Produktstruktur der Bank in den Bereichen Einlagen, Investments und Kreditvergabe.",
 
         service1Title: "Einlagen",
         service1Copy: "Sichere Sparlösungen für Stabilität, Flexibilität und disziplinierte Kapitalallokation.",
@@ -1221,6 +1271,9 @@ fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf
         bannerKicker: "ВІТАЄМО",
         bannerTitle: "Davlad Bank",
         bannerSubtitle: "In liquidity we trust.",
+        coreKicker: "Основні продукти",
+        coreTitle: "Структурований доступ до фінансових рішень",
+        coreText: "Ознайомтесь із продуктовою структурою банку: депозити, інвестиції та кредитування.",
 
         service1Title: "Депозити",
         service1Copy: "Надійні ощадні рішення для стабільності, гнучкості та дисциплінованого розміщення капіталу.",

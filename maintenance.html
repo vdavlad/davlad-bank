@@ -423,29 +423,10 @@
     }
 
     .service-card:hover{
-      transform:translateY(-2px) scale(1.01);
+      transform:translateY(-1px);
       border-color:var(--border-accent);
       background:rgba(255,255,255,.02);
     }
-
-    .service-card:hover .service-icon{
-  color:#e7d39a;
-}
-
-    .service-card{
-  position:relative;
-}
-
-.service-card::after{
-  content:"";
-  position:absolute;
-  bottom:0;
-  left:20px;
-  right:20px;
-  height:1px;
-  background:linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity:0.2;
-}
 
     .service-icon{
       width:28px;
@@ -462,16 +443,6 @@
       line-height:1.35;
       margin-bottom:8px;
     }
-
-    .service-label{
-  font-size:11px;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:6px;
-  font-weight:700;
-  opacity:0.85;
-}
 
     .service-copy{
       color:var(--muted);
@@ -909,11 +880,8 @@
           <path d="M3 9l9-5 9 5"></path>
           <path d="M9 13h6"></path>
         </svg>
-<div class="service-label" id="service1Label">Capital Stability</div>
-<div class="service-title" id="service1Title">Deposits</div>
-<div class="service-copy" id="service1Copy">
-  Structured capital preservation designed for stability, controlled growth, and long-term positioning.
-</div>
+        <div class="service-title" id="service1Title">Deposits</div>
+        <div class="service-copy" id="service1Copy">Secure saving solutions designed for stability, flexibility, and disciplined capital allocation.</div>
       </a>
 
       <a href="investments.html" class="service-card">
@@ -1156,7 +1124,7 @@ loadFxRates();
         coreTitle: "Structured financial access",
         coreText: "Explore the bank’s current product architecture across deposits, investments, and lending.",
       
-        service1Label: "Capital Stability",
+
         service1Title: "Deposits",
         service1Copy: "Secure saving solutions designed for stability, flexibility, and disciplined capital allocation.",
         service2Title: "Investments",
@@ -1231,8 +1199,7 @@ fraud3Text: "Fraudulent actors often create artificial urgency, push immediate p
         coreKicker: "Kernstruktur",
         coreTitle: "Ein strukturiertes Finanzökosystem",
         coreText: "Entdecken Sie eine sich entwickelnde Umgebung, in der Kapital, Strategie und Finanztools gemeinsam wachsen und sich weiterentwickeln.",
-        
-        service1Label: "Kapitalstabilität",
+
         service1Title: "Einlagen",
         service1Copy: "Sichere Sparlösungen für Stabilität, Flexibilität und disziplinierte Kapitalallokation.",
         service2Title: "Investments",
@@ -1308,7 +1275,6 @@ fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf
         coreTitle: "Структурована фінансова екосистема",
         coreText: "Ознайомтесь із середовищем, що розвивається, де капітал, стратегія та фінансові інструменти зростають разом із системою.",
 
-        service1Label: "Stabilnist Kapitaly",
         service1Title: "Депозити",
         service1Copy: "Надійні ощадні рішення для стабільності, гнучкості та дисциплінованого розміщення капіталу.",
         service2Title: "Інвестиції",

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Card</title>
+  <style>
+    :root{
+      --bg:#050505;
+      --panel:#101010;
+      --text:#f2f2f2;
+      --muted:#9a9a9a;
+      --accent:#b89a4a;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 30px 80px rgba(0,0,0,0.60);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(184,154,74,0.10), transparent 24%),
+        radial-gradient(circle at 82% 26%, rgba(255,255,255,0.04), transparent 22%),
+        linear-gradient(180deg, #040404 0%, #0a0a0a 100%);
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      overflow:hidden;
+    }
+
+    .scene{
+      width:min(1100px, 100%);
+      padding:40px 20px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .copy{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .copy::before,
+    .card-stage::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.7;
+    }
+
+    .eyebrow{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:44px;
+      line-height:1.02;
+    }
+
+    .sub{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.75;
+      max-width:42ch;
+    }
+
+    .list{
+      display:grid;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .list-item{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.02);
+      border-radius:16px;
+      padding:14px 16px;
+      color:var(--text);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .card-stage{
+      position:relative;
+      min-height:560px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      perspective:1400px;
+    }
+
+    .card-wrap{
+      position:relative;
+      width:520px;
+      height:520px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card{
+      width:420px;
+      height:265px;
+      border-radius:24px;
+      position:relative;
+      overflow:hidden;
+      transform-style:preserve-3d;
+      transition:transform 0.18s ease;
+      transform:rotate(90deg) scale(0.86);
+      box-shadow:
+        0 28px 70px rgba(0,0,0,0.65),
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        inset 0 -1px 0 rgba(255,255,255,0.02);
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255,255,255,0.08), transparent 25%),
+        radial-gradient(circle at 75% 38%, rgba(184,154,74,0.10), transparent 26%),
+        linear-gradient(145deg, #0d0d0d 0%, #050505 55%, #111111 100%);
+      border:1px solid rgba(255,255,255,0.10);
+      animation:floatCard 4.2s ease-in-out infinite;
+    }
+
+    @keyframes floatCard{
+      0%,100%{
+        translate:0 0;
+      }
+      50%{
+        translate:0 -10px;
+      }
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(115deg,
+          transparent 0 35%,
+          rgba(255,255,255,0.02) 42%,
+          rgba(255,255,255,0.05) 48%,
+          rgba(255,255,255,0.02) 54%,
+          transparent 62% 100%);
+      pointer-events:none;
+    }
+
+    .shine{
+      position:absolute;
+      inset:-40%;
+      background:linear-gradient(
+        115deg,
+        transparent 35%,
+        rgba(255,255,255,0.00) 42%,
+        rgba(255,255,255,0.16) 50%,
+        rgba(255,255,255,0.00) 58%,
+        transparent 65%
+      );
+      transform:translateX(-120%) rotate(8deg);
+      animation:shineMove 4.8s ease-in-out infinite;
+      pointer-events:none;
+      mix-blend-mode:screen;
+    }
+
+    @keyframes shineMove{
+      0%, 18%{
+        transform:translateX(-120%) rotate(8deg);
+      }
+      40%{
+        transform:translateX(18%) rotate(8deg);
+      }
+      100%{
+        transform:translateX(18%) rotate(8deg);
+      }
+    }
+
+    .brand-top{
+      position:absolute;
+      top:24px;
+      right:26px;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.2px;
+      color:#f3f3f3;
+      text-shadow:0 2px 8px rgba(0,0,0,0.35);
+      z-index:3;
+    }
+
+    .chip{
+      position:absolute;
+      top:28px;
+      left:28px;
+      width:68px;
+      height:50px;
+      border-radius:10px;
+      background:
+        linear-gradient(145deg, #d4d4d4 0%, #a4a4a4 18%, #7d7d7d 52%, #c2c2c2 100%);
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.55),
+        inset 0 -1px 2px rgba(0,0,0,0.28),
+        0 2px 6px rgba(0,0,0,0.25);
+      overflow:hidden;
+      z-index:3;
+    }
+
+    .chip .contact{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,
+          transparent 0 17%,
+          rgba(70,70,70,0.65) 17% 20%,
+          transparent 20% 39%,
+          rgba(70,70,70,0.65) 39% 42%,
+          transparent 42% 61%,
+          rgba(70,70,70,0.65) 61% 64%,
+          transparent 64% 83%,
+          rgba(70,70,70,0.65) 83% 86%,
+          transparent 86% 100%);
+      opacity:.85;
+    }
+
+    .chip .rows{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg,
+          transparent 0 22%,
+          rgba(60,60,60,0.58) 22% 25%,
+          transparent 25% 47%,
+          rgba(60,60,60,0.58) 47% 50%,
+          transparent 50% 72%,
+          rgba(60,60,60,0.58) 72% 75%,
+          transparent 75% 100%);
+      opacity:.75;
+    }
+
+    .chip .center-cut{
+      position:absolute;
+      top:7px;
+      left:22px;
+      width:24px;
+      height:36px;
+      border-radius:5px;
+      border:1px solid rgba(40,40,40,0.38);
+      background:linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.08));
+      box-shadow:inset 0 1px 1px rgba(255,255,255,0.25);
+    }
+
+    .logo{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:2;
+    }
+
+    .logo svg{
+      width:120px;
+      height:120px;
+      filter:drop-shadow(0 5px 14px rgba(0,0,0,0.45));
+    }
+
+    .card-bottom-name{
+      position:absolute;
+      left:28px;
+      bottom:26px;
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:.2px;
+      color:#f3f3f3;
+      text-shadow:0 2px 8px rgba(0,0,0,0.35);
+      z-index:3;
+    }
+
+    .tier{
+      position:absolute;
+      left:28px;
+      bottom:54px;
+      font-size:11px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:rgba(184,154,74,0.92);
+      font-weight:700;
+      z-index:3;
+    }
+
+    .mc{
+      position:absolute;
+      right:26px;
+      bottom:22px;
+      width:60px;
+      height:38px;
+      z-index:3;
+    }
+
+    .mc::before,
+    .mc::after{
+      content:"";
+      position:absolute;
+      top:0;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      box-shadow:0 1px 6px rgba(0,0,0,0.25);
+    }
+
+    .mc::before{
+      left:0;
+      background:#EB001B;
+    }
+
+    .mc::after{
+      right:0;
+      background:#F79E1B;
+      opacity:.95;
+    }
+
+    @media (max-width: 920px){
+      .scene{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:36px;
+      }
+
+      .card-stage{
+        min-height:500px;
+      }
+
+      .card-wrap{
+        width:100%;
+        height:460px;
+      }
+
+      .card{
+        transform:rotate(90deg) scale(0.72);
+      }
+    }
+
+    @media (max-width: 520px){
+      .card-wrap{
+        height:380px;
+      }
+
+      .card{
+        transform:rotate(90deg) scale(0.60);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <section class="copy">
+      <div class="eyebrow">Davlad Card Concept</div>
+      <h1>Black Mastercard</h1>
+      <p class="sub">
+        A premium concept card built around your Davlad favicon, with a realistic chip, subtle shine, floating motion, and interactive 3D tilt.
+      </p>
+
+      <div class="list">
+        <div class="list-item">3D tilt follows cursor movement for a more premium product feel.</div>
+        <div class="list-item">Floating motion adds subtle depth without looking gimmicky.</div>
+        <div class="list-item">Animated shine creates a polished fintech-style surface effect.</div>
+      </div>
+    </section>
+
+    <section class="card-stage">
+      <div class="card-wrap">
+        <div class="card" id="card3d">
+          <div class="shine"></div>
+
+          <div class="brand-top">Davlad Bank</div>
+
+          <div class="chip">
+            <div class="contact"></div>
+            <div class="rows"></div>
+            <div class="center-cut"></div>
+          </div>
+
+          <div class="logo" aria-label="Davlad logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+              <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#1F1F1F" stroke-width="1"/>
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                    fill="none"
+                    stroke="#F2F2F2"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5"
+                    stroke="#B89A4A"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5"
+                    stroke="#B89A4A"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="tier">Black</div>
+          <div class="card-bottom-name">Davlad Bank</div>
+          <div class="mc" aria-label="Mastercard"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const card = document.getElementById("card3d");
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = -(y - centerY) / 16;
+      const rotateY = (x - centerX) / 16;
+
+      card.style.transform = `
+        rotate(90deg)
+        scale(0.86)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+      `;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotate(90deg) scale(0.86)";
+    });
+
+    function applyMobileScale() {
+      if (window.innerWidth <= 520) {
+        card.style.transform = "rotate(90deg) scale(0.60)";
+      } else if (window.innerWidth <= 920) {
+        card.style.transform = "rotate(90deg) scale(0.72)";
+      } else {
+        card.style.transform = "rotate(90deg) scale(0.86)";
+      }
+    }
+
+    window.addEventListener("resize", applyMobileScale);
+    applyMobileScale();
+  </script>
+</body>
+</html>

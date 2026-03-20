@@ -293,6 +293,49 @@
   transform:scale(1.01);
 }
 
+.full-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(2px 2px at 20% 15%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 70% 10%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.8px 1.8px at 40% 25%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.2px 1.2px at 85% 18%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 60% 12%, rgba(255,255,255,0.4), transparent);
+
+  /* ВАЖНО — маска сверху вниз */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 55%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 55%);
+
+  animation: starTwinkle 4s ease-in-out infinite alternate;
+  opacity:0.55;
+}
+
+ .full-banner .stars-layer{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3), transparent);
+  animation: starTwinkleSlow 6s ease-in-out infinite alternate;
+  opacity:0.4;
+}
+
+@keyframes starTwinkle{
+  0%{
+    opacity:0.25;
+    transform:scale(1);
+  }
+  100%{
+    opacity:0.6;
+    transform:scale(1.05);
+  }
+}   
+
 .banner-overlay{
   position:relative;
   z-index:2;
@@ -1309,6 +1352,7 @@
   </div>
 
 <div class="full-banner">
+  <div class="stars-layer"></div>
   <div class="banner-overlay">
     <div class="banner-bg-text" id="bannerBgText">ORIGIN</div>
 

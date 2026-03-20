@@ -574,24 +574,6 @@ opacity:0.15; /* чуть сильнее */
   margin:70px 0 46px;
 }
 
-.banner-overlay{
-  position:relative;
-  z-index:2;
-  min-height:500px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  padding:42px 20px;
-  max-width:1280px;
-  margin:0 auto;
-  overflow:visible;
-}
-
-.full-banner{
-  position:relative;
-  overflow:hidden;
-}    
-
 /* HERO BLOCK */
 .card-hero-bg,
 .card-box-bg{
@@ -1798,12 +1780,13 @@ body.light .image-banner-text{
   </div>
 
 <div class="full-banner">
-<div class="banner-bg-text" id="bannerBgText">ORIGIN</div>
   <div class="stars stars-a"></div>
 <div class="stars stars-b"></div>
 <div class="stars stars-c"></div>
   <div class="stars stars-pulse"></div>
   <div class="banner-overlay">
+    <div class="banner-bg-text" id="bannerBgText">ORIGIN</div>
+
     <div class="banner-kicker" id="bannerKicker">WELCOME</div>
     <h1 class="banner-title" id="bannerTitle">Davlad Bank</h1>
     <div class="banner-subtitle" id="bannerSubtitle">In liquidity we trust.</div>

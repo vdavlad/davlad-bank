@@ -719,6 +719,10 @@ body.light .inv-calc-field select{
   box-shadow: 0 0 10px rgba(217,123,123,0.6);
 }
 
+.inv-calc-btn-secondary{
+  background:transparent;
+}    
+
 .inv-risk-text{
   font-size:13px;
   color:var(--muted);
@@ -1171,7 +1175,7 @@ body.light .inv-calc-field select{
         <button class="inv-calc-btn" id="invButton" onclick="calculateInvestment()">
           Simulate outcome
         </button>
-        <button class="inv-calc-btn" onclick="resetCalculator()" style="margin-left:10px;">
+      <button class="inv-calc-btn inv-calc-btn-secondary" id="invReset" onclick="resetCalculator()">
   Reset
 </button>
       </div>
@@ -1391,6 +1395,7 @@ body.light .inv-calc-field select{
       invConfidenceLabel: "Confidence level",
       invConfidenceValue: "Confidence",
       invButton: "Simulate outcome",
+      invReset: "Reset",
       invResultLabel: "Projected outcome",
       invRangeLabel: "Expected range",
       invMemeBonds: "Stable expectations with limited emotional movement.",
@@ -1495,6 +1500,7 @@ invGuideNote: "This simulation is conceptual. Market behavior may differ. Emotio
       invConfidenceLabel: "Vertrauensniveau",
       invConfidenceValue: "Vertrauen",
       invButton: "Ergebnis simulieren",
+      invReset: "Zurücksetzen",
       invResultLabel: "Prognostiziertes Ergebnis",
       invRangeLabel: "Erwarteter Bereich",
       invMemeBonds: "Stabile Erwartungen mit begrenzter emotionaler Bewegung.",
@@ -1599,6 +1605,7 @@ invGuideNote: "Diese Simulation ist konzeptionell. Marktverhalten kann abweichen
       invConfidenceLabel: "Рівень впевненості",
       invConfidenceValue: "Впевненість",
       invButton: "Симулювати результат",
+      invReset: "Скинути",
       invResultLabel: "Прогнозований результат",
       invRangeLabel: "Очікуваний діапазон",
       invMemeBonds: "Стабільні очікування з мінімальними емоційними коливаннями.",
@@ -1736,6 +1743,7 @@ invGuideNote: "Це концептуальна модель. Реальні ри
     safeSetText("invConfidenceValue", t.invConfidenceValue);
 
     safeSetText("invButton", t.invButton);
+    safeSetText("invReset", t.invReset);
     safeSetText("invResultLabel", t.invResultLabel);
     safeSetText("invRangeLabel", t.invRangeLabel);
     safeSetText("invRiskLabel", t.invRiskLabel);

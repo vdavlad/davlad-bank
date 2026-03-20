@@ -453,350 +453,191 @@
     }
 
     .cards-section{
-  margin:60px 0 46px;
+  margin:80px 0;
 }
 
-.cards-intro{
-  text-align:center;
-  max-width:760px;
-  margin:0 auto 34px;
-}
-
-.cards-wrap{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  gap:42px;
-  flex-wrap:wrap;
-}
-
-.card-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  width:250px;
-}
-
-.card-visual{
-  width:270px;
-  height:350px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* HERO */
+.card-hero{
   position:relative;
-}
-
-.bank-card{
-  width:340px;
-  height:214px;
-  border-radius:22px;
-  position:relative;
+  border-radius:24px;
   overflow:hidden;
-  transform-style:preserve-3d;
-  transform-origin:center center;
-  transform:rotate(-90deg) scale(0.92);
-  transition:
-    transform .22s ease,
-    box-shadow .22s ease,
-    filter .22s ease,
-    opacity .22s ease;
-  border:1px solid rgba(255,255,255,0.10);
-  box-shadow:0 20px 60px rgba(0,0,0,0.55);
-  margin-bottom:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:50px;
+  margin-bottom:50px;
 }
 
-    .bank-card::before{
-  content:"";
+.card-bg{
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.00) 28%),
-    linear-gradient(120deg, transparent 0 38%, rgba(255,255,255,0.05) 48%, transparent 58%);
-  pointer-events:none;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(0.5);
 }
 
-.bank-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-    radial-gradient(rgba(255,255,255,0.035) 0.6px, transparent 0.6px);
-  background-size:6px 6px;
-  opacity:0.18;
-  pointer-events:none;
+/* BACKGROUNDS */
+.survival-bg{
+  background-image:url("images/survival.jpg");
 }
 
-.survival::after{
-  opacity:0.24;
-}    
+.illusion-bg{
+  background-image:url("images/illusion.jpg");
+}
+
+.delusion-bg{
+  background-image:url("images/delusion.jpg");
+}
+
+/* HERO CONTENT */
+.card-hero-content{
+  position:relative;
+  z-index:2;
+  max-width:500px;
+}
+
+.card-badge{
+  font-size:12px;
+  letter-spacing:1.5px;
+  color:#C6A85B;
+  margin-bottom:10px;
+}
+
+.card-hero-title{
+  font-size:40px;
+  margin:0 0 10px;
+}
+
+.card-hero-sub{
+  color:#d8c28a;
+  margin-bottom:10px;
+}
+
+.card-hero-text{
+  color:#ccc;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.card-btn{
+  padding:12px 22px;
+  border:none;
+  background:#C6A85B;
+  color:#000;
+  font-weight:700;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.card-micro{
+  margin-top:10px;
+  font-size:12px;
+  color:#aaa;
+}
+
+/* CARD VISUAL */
+.card-visual{
+  position:relative;
+  z-index:2;
+}
+
+/* GRID */
+.card-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.card-box{
+  position:relative;
+  padding:40px 20px;
+  border-radius:20px;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* CARDS */
+.card{
+  width:220px;
+  height:340px;
+  border-radius:20px;
+  margin:0 auto 20px;
+  position:relative;
+  backdrop-filter:blur(10px);
+  transform:rotate(-8deg);
+}
 
 /* SURVIVAL */
 .survival{
-  background:
-    radial-gradient(circle at 18% 16%, rgba(255,255,255,0.05), transparent 24%),
-    linear-gradient(145deg,#0a0a0a,#050505 62%, #111111);
+  background:linear-gradient(145deg,#0a0a0a,#050505);
 }
 
-.survival:hover{
-  box-shadow:0 28px 72px rgba(0,0,0,0.72);
-  filter:brightness(1.03);
-}
-
-/* ILLUSION */
+/* ILLUSION (ПРОЗРАЧНАЯ) */
 .illusion{
-  background:
-    linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
-    radial-gradient(circle at 72% 28%, rgba(255,255,255,0.10), transparent 24%),
-    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
-  backdrop-filter:blur(14px) saturate(1.08);
-  -webkit-backdrop-filter:blur(14px) saturate(1.08);
-  border:1px solid rgba(255,255,255,0.24);
-  box-shadow:
-    0 18px 52px rgba(0,0,0,0.28),
-    inset 0 1px 0 rgba(255,255,255,0.18),
-    inset 0 -1px 0 rgba(255,255,255,0.05);
-}
-
-.illusion:hover{
-  opacity:0.88;
-  filter:brightness(1.08);
-  box-shadow:
-    0 24px 64px rgba(0,0,0,0.34),
-    inset 0 1px 0 rgba(255,255,255,0.24),
-    inset 0 -1px 0 rgba(255,255,255,0.06);
-}
-.illusion .card-brand-top{
-  color:#2f2f2f;
-  text-shadow:none;
-}
-
-.illusion .card-tier{
-  color:#9f7f33;
-}
-
-.illusion .card-mc{
-  filter:saturate(0.95);
-}
-
-.illusion-shine{
-  position:absolute;
-  inset:-30%;
-  background:linear-gradient(
-    115deg,
-    transparent 35%,
-    rgba(255,255,255,0.00) 42%,
-    rgba(255,255,255,0.18) 50%,
-    rgba(255,255,255,0.00) 58%,
-    transparent 66%
-  );
-  transform:translateX(-120%) rotate(8deg);
-  pointer-events:none;
-  transition:transform .8s ease;
-}
-
-.illusion:hover .illusion-shine{
-  transform:translateX(20%) rotate(8deg);
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter:blur(25px);
 }
 
 /* DELUSION */
 .delusion{
-  background:
-    linear-gradient(135deg, #2a2a2a 0%, #686868 34%, #b89a4a 66%, #efd28a 100%);
-  border:1px solid rgba(255,255,255,0.18);
-  box-shadow:
-    0 24px 70px rgba(0,0,0,0.58),
-    0 0 30px rgba(198,168,91,0.14);
+  background:linear-gradient(145deg,#1a1a1a,#0a0a0a);
+  box-shadow:0 0 30px rgba(198,168,91,0.3);
 }
 
-.delusion:hover{
-  box-shadow:
-    0 30px 82px rgba(0,0,0,0.68),
-    0 0 42px rgba(198,168,91,0.24);
-  filter:brightness(1.04) saturate(1.04);
-}
-
-/* common details */
-.card-brand-top{
+/* CHIP */
+.chip{
+  width:50px;
+  height:35px;
+  background:linear-gradient(145deg,#bbb,#777);
   position:absolute;
-  top:16px;
-  right:20px;
-  font-size:14px;
-  color:#ffffff;
-  z-index:2;
-  text-shadow:0 2px 8px rgba(0,0,0,0.35);
-}
-
-.card-tier{
-  position:absolute;
-  bottom:44px;
+  top:20px;
   left:20px;
-  font-size:12px;
-  letter-spacing:2px;
-  color:#C6A85B;
-  z-index:2;
-  font-weight:700;
+  border-radius:6px;
 }
 
-.bank-card-logo{
+.chip.gold{
+  background:linear-gradient(145deg,#e0c98f,#9e7d2f);
+}
+
+/* LOGO */
+.card-logo{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:76px;
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:2;
+  width:60px;
 }
 
-.bank-card-logo svg{
-  width:100%;
-  height:100%;
-  display:block;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,0.35));
-}
-
-.card-mc{
+/* BRAND */
+.brand-top{
   position:absolute;
-  bottom:16px;
-  right:16px;
-  width:42px;
-  height:26px;
-  z-index:2;
+  top:15px;
+  right:20px;
+  font-size:13px;
+  color:#fff;
 }
 
-.card-mc::before,
-.card-mc::after{
+/* MC */
+.mc{
+  position:absolute;
+  bottom:15px;
+  right:15px;
+  width:40px;
+  height:25px;
+}
+
+.mc::before,
+.mc::after{
   content:"";
   position:absolute;
-  width:26px;
-  height:26px;
+  width:25px;
+  height:25px;
   border-radius:50%;
 }
 
-.card-mc::before{
-  background:#EB001B;
-  left:0;
-}
-
-.card-mc::after{
-  background:#F79E1B;
-  left:16px;
-}
-
-/* realistic chip */
-.card-chip{
-  position:absolute;
-  top:18px;
-  left:18px;
-  width:58px;
-  height:42px;
-  border-radius:8px;
-  overflow:hidden;
-  z-index:2;
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,0.34),
-    inset 0 -1px 2px rgba(0,0,0,0.24),
-    0 2px 6px rgba(0,0,0,0.22);
-}
-
-.card-chip.silver{
-  background:linear-gradient(145deg,#d2d2d2 0%, #a9a9a9 24%, #7a7a7a 60%, #c8c8c8 100%);
-}
-
-.card-chip.gold{
-  background:linear-gradient(145deg,#f0d48a 0%, #d2b15a 26%, #8d6a26 62%, #e6c77a 100%);
-}
-
-.chip-line{
-  position:absolute;
-  background:rgba(55,55,55,0.40);
-  border-radius:2px;
-}
-
-.chip-line-v1{ top:0; bottom:0; left:11px; width:2px; }
-.chip-line-v2{ top:0; bottom:0; left:27px; width:2px; }
-.chip-line-v3{ top:0; bottom:0; left:43px; width:2px; }
-
-.chip-line-h1{ left:0; right:0; top:10px; height:2px; }
-.chip-line-h2{ left:0; right:0; top:20px; height:2px; }
-.chip-line-h3{ left:0; right:0; top:30px; height:2px; }
-
-.chip-core{
-  position:absolute;
-  top:7px;
-  left:19px;
-  width:20px;
-  height:28px;
-  border-radius:4px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.20), rgba(0,0,0,0.08));
-  border:1px solid rgba(60,60,60,0.20);
-  box-shadow:inset 0 1px 1px rgba(255,255,255,0.18);
-}
-
-.card-label{
-  text-align:center;
-  margin-top:10px;
-  font-size:15px;
-  color:var(--text);
-  font-weight:700;
-}
-
-.card-note{
-  text-align:center;
-  margin-top:6px;
-  font-size:13px;
-  line-height:1.6;
-  color:var(--muted);
-  max-width:230px;
-}
-
-.cards-footnote{
-  margin-top:24px;
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  font-style:italic;
-}
-
-@media (max-width:1100px){
-  .cards-wrap{
-    gap:26px;
-  }
-
-  .card-visual{
-    width:260px;
-    height:340px;
-  }
-
-  .bank-card{
-    width:330px;
-    height:208px;
-    transform:rotate(-90deg) scale(0.94);
-  }
-}
-
-@media (max-width:700px){
-  .card-item{
-    width:100%;
-  }
-
-  .card-visual{
-    width:100%;
-    height:320px;
-  }
-
-  .bank-card{
-    width:320px;
-    height:202px;
-    transform:rotate(-90deg) scale(0.82);
-  }
-
-  .cards-section{
-    margin:46px 0 36px;
-  }
-}
+.mc::before{background:#EB001B;}
+.mc::after{background:#F79E1B;left:15px;}
 
     .promo-wrap{
       margin-bottom:34px;
@@ -1252,126 +1093,103 @@
 
     <section class="cards-section">
 
-  <div class="cards-intro">
-    <div class="section-kicker">Card Concept</div>
-    <h2 class="section-title">Davlad Cards</h2>
-    <p class="section-copy">
-      A conceptual card system designed within the Davlad ecosystem.
-    </p>
-  </div>
+  <!-- SURVIVAL HERO -->
+  <div class="card-hero">
 
-  <div class="cards-wrap">
+    <div class="card-bg survival-bg"></div>
 
-    <!-- SURVIVAL -->
-    <div class="card-item">
-      <div class="card-visual">
-        <div class="bank-card survival" id="cardSurvival">
+    <div class="card-hero-content">
 
-          <div class="card-brand-top">Davlad Bank</div>
+      <div class="card-badge">FREE ENTRY</div>
 
-          <div class="card-chip silver">
-            <span class="chip-line chip-line-v1"></span>
-            <span class="chip-line chip-line-v2"></span>
-            <span class="chip-line chip-line-v3"></span>
-            <span class="chip-line chip-line-h1"></span>
-            <span class="chip-line chip-line-h2"></span>
-            <span class="chip-line chip-line-h3"></span>
-            <span class="chip-core"></span>
-          </div>
+      <h2 class="card-hero-title">Davlad Survival</h2>
 
-<div class="bank-card-logo">
-  <svg viewBox="0 0 64 64" aria-hidden="true">
-    <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-          fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-    <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-</div>
+      <p class="card-hero-sub">
+        The rational starting point
+      </p>
 
-          <div class="card-tier">SURVIVAL</div>
-          <div class="card-mc" aria-hidden="true"></div>
-        </div>
-      </div>
+      <p class="card-hero-text">
+        Free access to the Davlad system for everyday financial endurance. Built for essentials, not illusions.
+      </p>
 
-      <div class="card-label">Davlad Survival</div>
-      <div class="card-note">Core access to financial reality.</div>
+      <button class="card-btn">Get Survival</button>
+
+      <div class="card-micro">No annual fee</div>
+
     </div>
 
-    <!-- ILLUSION -->
-    <div class="card-item">
-      <div class="card-visual">
-        <div class="bank-card illusion" id="cardIllusion">
+    <!-- CARD -->
+    <div class="card-visual">
+      <div class="card survival">
 
-          <div class="card-brand-top">Davlad Bank</div>
+        <div class="chip"></div>
 
-          <div class="card-chip silver">
-            <span class="chip-line chip-line-v1"></span>
-            <span class="chip-line chip-line-v2"></span>
-            <span class="chip-line chip-line-v3"></span>
-            <span class="chip-line chip-line-h1"></span>
-            <span class="chip-line chip-line-h2"></span>
-            <span class="chip-line chip-line-h3"></span>
-            <span class="chip-core"></span>
-          </div>
+        <div class="brand-top">Davlad Bank</div>
 
-<div class="bank-card-logo">
-  <svg viewBox="0 0 64 64" aria-hidden="true">
-    <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-          fill="none" stroke="#303030" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-    <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-</div>
-
-          <div class="card-tier">ILLUSION</div>
-          <div class="card-mc" aria-hidden="true"></div>
-          <div class="illusion-shine"></div>
+        <div class="card-logo">
+          <!-- ТВОЙ SVG -->
+          <svg viewBox="0 0 64 64">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+              fill="none" stroke="#F2F2F2" stroke-width="3"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5"
+              stroke="#B89A4A" stroke-width="2"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5"
+              stroke="#B89A4A" stroke-width="2"/>
+          </svg>
         </div>
+
+        <div class="mc"></div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PREMIUM CARDS -->
+  <div class="card-grid">
+
+    <!-- ILLUSION -->
+    <div class="card-box">
+      <div class="card-bg illusion-bg"></div>
+
+      <div class="card illusion">
+
+        <div class="chip"></div>
+        <div class="brand-top">Davlad Bank</div>
+
+        <div class="card-logo light">
+          <!-- SVG -->
+        </div>
+
+        <div class="mc"></div>
+
       </div>
 
-      <div class="card-label">Davlad Illusion</div>
-      <div class="card-note">Structured perception of stability.</div>
+      <h3>Illusion</h3>
+      <p>Structured perception of stability.</p>
     </div>
 
     <!-- DELUSION -->
-    <div class="card-item">
-      <div class="card-visual">
-        <div class="bank-card delusion" id="cardDelusion">
+    <div class="card-box">
+      <div class="card-bg delusion-bg"></div>
 
-          <div class="card-brand-top">Davlad Bank</div>
+      <div class="card delusion">
 
-          <div class="card-chip gold">
-            <span class="chip-line chip-line-v1"></span>
-            <span class="chip-line chip-line-v2"></span>
-            <span class="chip-line chip-line-v3"></span>
-            <span class="chip-line chip-line-h1"></span>
-            <span class="chip-line chip-line-h2"></span>
-            <span class="chip-line chip-line-h3"></span>
-            <span class="chip-core"></span>
-          </div>
+        <div class="chip gold"></div>
+        <div class="brand-top">Davlad Bank</div>
 
-<div class="bank-card-logo">
-  <svg viewBox="0 0 64 64" aria-hidden="true">
-    <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-          fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-    <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-</div>
-
-          <div class="card-tier">DELUSION</div>
-          <div class="card-mc" aria-hidden="true"></div>
+        <div class="card-logo">
+          <!-- SVG -->
         </div>
+
+        <div class="mc"></div>
+
       </div>
 
-      <div class="card-label">Davlad Delusion</div>
-      <div class="card-note">Confidence beyond measurable limits.</div>
+      <h3>Delusion</h3>
+      <p>Confidence beyond measurable limits.</p>
     </div>
 
-  </div>
-
-  <div class="cards-footnote">
-    System progression is interpretative.
   </div>
 
 </section>
@@ -1905,45 +1723,5 @@ document.getElementById("fraud3Text").textContent = t.fraud3Text;
     loadFxRates();
     
   </script>
-  <script>
-function applyCardTilt(card){
-  if (!card) return;
-
-  const baseTransformDesktop = "rotate(-90deg) scale(1)";
-  const baseTransformTablet = "rotate(-90deg) scale(0.94)";
-  const baseTransformMobile = "rotate(-90deg) scale(0.82)";
-
-  function getBaseTransform(){
-    if (window.innerWidth <= 700) return baseTransformMobile;
-    if (window.innerWidth <= 1100) return baseTransformTablet;
-    return baseTransformDesktop;
-  }
-
-  card.addEventListener("mousemove", (e) => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-
-    const rx = -(y - r.height / 2) / 28;
-    const ry = (x - r.width / 2) / 28;
-
-    card.style.transform = `${getBaseTransform()} rotateX(${rx}deg) rotateY(${ry}deg)`;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = getBaseTransform();
-  });
-
-  window.addEventListener("resize", () => {
-    card.style.transform = getBaseTransform();
-  });
-
-  card.style.transform = getBaseTransform();
-}
-
-applyCardTilt(document.getElementById("cardSurvival"));
-applyCardTilt(document.getElementById("cardIllusion"));
-applyCardTilt(document.getElementById("cardDelusion"));
-</script>
 </body>
 </html>

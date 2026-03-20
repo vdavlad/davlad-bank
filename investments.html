@@ -715,6 +715,10 @@ body.light .inv-calc-field select{
   background:#d97b7b;
 }
 
+    .inv-risk-fill.inv-risk-high {
+  box-shadow: 0 0 10px rgba(217,123,123,0.6);
+}
+
 .inv-risk-text{
   font-size:13px;
   color:var(--muted);
@@ -739,6 +743,79 @@ body.light .inv-calc-field select{
 
   .inv-result-value{
     font-size:23px;
+  }
+}
+
+    .inv-guide{
+  margin:24px 0 10px;
+  padding:22px;
+  border-radius:20px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.inv-guide::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.6;
+}
+
+.inv-guide-head{
+  margin-bottom:16px;
+}
+
+.inv-guide-title{
+  margin:4px 0 0;
+  font-size:22px;
+  font-weight:800;
+}
+
+.inv-guide-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.inv-guide-item{
+  background:var(--card-2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+
+.inv-guide-item strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.inv-guide-item p{
+  font-size:13px;
+  line-height:1.6;
+  color:var(--muted);
+  margin:0;
+}
+
+.inv-guide-note{
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  font-style:italic;
+}
+
+@media (max-width:900px){
+  .inv-guide-grid{
+    grid-template-columns:1fr;
   }
 }
    
@@ -1111,7 +1188,7 @@ body.light .inv-calc-field select{
         </div>
 
         <div class="inv-calc-card">
-          <div class="inv-result-label">Interpretation</div>
+          <div class="inv-result-label" id="invInterpretLabel">Interpretation</div>
           <div class="inv-result-value" id="invMeme">Stable expectations with limited emotional movement.</div>
         </div>
       </div>
@@ -1138,6 +1215,44 @@ body.light .inv-calc-field select{
     </div>
   </div>
 </section>
+
+  <div class="inv-guide">
+
+  <div class="inv-guide-head">
+    <div class="section-kicker" id="invGuideKicker">Interpretation Guide</div>
+    <h3 class="inv-guide-title" id="invGuideTitle">How to read this simulation</h3>
+  </div>
+
+  <div class="inv-guide-grid">
+
+    <div class="inv-guide-item">
+      <strong id="invGuide1Title">Define your scenario</strong>
+      <p id="invGuide1Text">
+        Adjust capital, time horizon, and market outlook to reflect your personal narrative rather than objective market conditions.
+      </p>
+    </div>
+
+    <div class="inv-guide-item">
+      <strong id="invGuide2Title">Observe the range</strong>
+      <p id="invGuide2Text">
+        The projected interval reflects how uncertainty, volatility tolerance, and perception interact over time.
+      </p>
+    </div>
+
+    <div class="inv-guide-item">
+      <strong id="invGuide3Title">Interpret with caution</strong>
+      <p id="invGuide3Text">
+        Higher outcomes may reflect conviction — or timing illusion. The model does not distinguish between the two.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="inv-guide-note" id="invGuideNote">
+    This simulation is conceptual. Market behavior may differ. Emotional confidence is not priced in.
+  </div>
+
+</div>
 
     <div class="footer-main">
       <div class="footer-grid">
@@ -1288,6 +1403,20 @@ body.light .inv-calc-field select{
       invRiskTextMid: "Balanced positioning with controlled volatility exposure.",
       invRiskTextHigh: "Elevated exposure with outcome variability driven by market interpretation.",
 
+      invGuideKicker: "Interpretation Guide",
+invGuideTitle: "How to read this simulation",
+
+invGuide1Title: "Define your scenario",
+invGuide1Text: "Adjust capital, time horizon, and market outlook to reflect your personal narrative rather than objective market conditions.",
+
+invGuide2Title: "Observe the range",
+invGuide2Text: "The projected interval reflects how uncertainty, volatility tolerance, and perception interact over time.",
+
+invGuide3Title: "Interpret with caution",
+invGuide3Text: "Higher outcomes may reflect conviction — or timing illusion. The model does not distinguish between the two.",
+
+invGuideNote: "This simulation is conceptual. Market behavior may differ. Emotional confidence is not priced in.",
+
       footerCol1Title: "Davlad Bank",
       footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
       footerCol2Title: "Navigation",
@@ -1378,6 +1507,20 @@ body.light .inv-calc-field select{
       invRiskTextMid: "Ausgewogene Positionierung mit kontrollierter Volatilität.",
       invRiskTextHigh: "Erhöhte Exposition mit ergebnisabhängiger Marktinterpretation.",
 
+      invGuideKicker: "Hinweis",
+invGuideTitle: "Wie man diese Simulation liest",
+
+invGuide1Title: "Szenario definieren",
+invGuide1Text: "Passen Sie Kapital, Zeithorizont und Markteinschätzung an Ihre persönliche Sicht an, nicht nur an objektive Daten.",
+
+invGuide2Title: "Bandbreite beobachten",
+invGuide2Text: "Die Spannweite zeigt, wie Unsicherheit, Volatilität und Wahrnehmung zusammenwirken.",
+
+invGuide3Title: "Mit Vorsicht interpretieren",
+invGuide3Text: "Höhere Ergebnisse können Überzeugung oder Illusion widerspiegeln. Das Modell unterscheidet nicht.",
+
+invGuideNote: "Diese Simulation ist konzeptionell. Marktverhalten kann abweichen. Emotionale Sicherheit ist nicht berücksichtigt.",
+
       footerCol1Title: "Davlad Bank",
       footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
       footerCol2Title: "Navigation",
@@ -1467,6 +1610,20 @@ body.light .inv-calc-field select{
       invRiskTextLow: "Консервативна позиція з мінімальним рівнем невизначеності.",
       invRiskTextMid: "Збалансована позиція з контрольованою волатильністю.",
       invRiskTextHigh: "Підвищений ризик із варіативним результатом залежно від ринку.",
+
+      invGuideKicker: "Пояснення",
+invGuideTitle: "Як читати цю симуляцію",
+
+invGuide1Title: "Сформуйте сценарій",
+invGuide1Text: "Налаштуйте капітал, горизонт і очікування ринку відповідно до вашого бачення, а не лише до реальності.",
+
+invGuide2Title: "Оцініть діапазон",
+invGuide2Text: "Діапазон показує, як невизначеність і волатильність впливають на результат.",
+
+invGuide3Title: "Інтерпретуйте обережно",
+invGuide3Text: "Вищий результат може бути як впевненістю, так і ілюзією часу входу.",
+
+invGuideNote: "Це концептуальна модель. Реальні ринки можуть поводитися інакше.",
 
       footerCol1Title: "Davlad Bank",
       footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
@@ -1582,6 +1739,22 @@ body.light .inv-calc-field select{
     safeSetText("invResultLabel", t.invResultLabel);
     safeSetText("invRangeLabel", t.invRangeLabel);
     safeSetText("invRiskLabel", t.invRiskLabel);
+
+    safeSetText("invInterpretLabel", t.invInterpretLabel);
+
+    safeSetText("invGuideKicker", t.invGuideKicker);
+safeSetText("invGuideTitle", t.invGuideTitle);
+
+safeSetText("invGuide1Title", t.invGuide1Title);
+safeSetText("invGuide1Text", t.invGuide1Text);
+
+safeSetText("invGuide2Title", t.invGuide2Title);
+safeSetText("invGuide2Text", t.invGuide2Text);
+
+safeSetText("invGuide3Title", t.invGuide3Title);
+safeSetText("invGuide3Text", t.invGuide3Text);
+
+safeSetText("invGuideNote", t.invGuideNote);
 
     const typeEl = document.getElementById("invType");
     if (typeEl) {

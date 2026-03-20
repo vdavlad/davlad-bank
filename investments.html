@@ -493,36 +493,255 @@
       background:rgba(0,0,0,.03);
     }
 
-    .feature-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:18px;
-      margin-bottom:24px;
-    }
+.investment-calculator-section{
+  margin:42px 0 34px;
+}
 
-    .feature-card{
-      border-radius:20px;
-      padding:22px;
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
+.inv-calc-wrap{
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--card-bg);
+  box-shadow:var(--shadow);
+  position:relative;
+  padding:26px 22px 24px;
+}
 
-    .feature-title{
-      margin:0 0 10px;
-      font-size:22px;
-      font-weight:800;
-      color:var(--text);
-    }
+.inv-calc-wrap::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.6;
+}
 
-    .feature-copy{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.75;
-    }
+.inv-calc-head{
+  max-width:760px;
+  margin-bottom:22px;
+}
+
+.inv-calc-box{
+  position:relative;
+}
+
+.inv-calc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.inv-calc-field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.inv-calc-field label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--accent);
+  font-weight:700;
+}
+
+.inv-calc-field input,
+.inv-calc-field select{
+  width:100%;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+  color:var(--text);
+  border-radius:12px;
+  padding:13px 14px;
+  font-size:14px;
+  outline:none;
+}
+
+body.light .inv-calc-field input,
+body.light .inv-calc-field select{
+  background:rgba(0,0,0,0.02);
+}
+
+.inv-calc-field input:focus,
+.inv-calc-field select:focus{
+  border-color:var(--border-accent);
+}
+
+.inv-calc-range-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding-top:2px;
+}
+
+.inv-range-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.inv-range-value{
+  font-size:13px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.inv-calc-field input[type="range"]{
+  padding:0;
+  height:auto;
+  border:none;
+  background:transparent;
+  accent-color:var(--accent);
+}
+
+.inv-calc-actions{
+  margin-bottom:18px;
+}
+
+.inv-calc-btn{
+  border:1px solid var(--border);
+  background:linear-gradient(135deg, rgba(198,168,91,0.18), rgba(198,168,91,0.08));
+  color:var(--text);
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:800;
+  transition:.18s ease;
+}
+
+.inv-calc-btn:hover{
+  transform:translateY(-1px);
+  border-color:var(--border-accent);
+}
+
+.inv-calc-results{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:14px;
+}
+
+.inv-calc-card{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  background:rgba(255,255,255,0.02);
+}
+
+.inv-result-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  margin-bottom:8px;
+  font-weight:700;
+}
+
+.inv-result-value{
+  font-size:26px;
+  line-height:1.15;
+  font-weight:800;
+  color:var(--text);
+}
+
+.inv-calc-meme{
+  font-size:13px;
+  line-height:1.7;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  font-style:italic;
+}
+
+.inv-risk-box{
+  margin-top:16px;
+  padding:16px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);
+}
+
+.inv-risk-header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  gap:10px;
+}
+
+.inv-risk-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.inv-risk-value{
+  font-size:13px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.inv-risk-bar{
+  width:100%;
+  height:6px;
+  border-radius:6px;
+  background:rgba(255,255,255,0.08);
+  overflow:hidden;
+  margin-bottom:10px;
+}
+
+.inv-risk-fill{
+  height:100%;
+  width:50%;
+  border-radius:6px;
+  transition:.3s ease;
+}
+
+.inv-risk-low{
+  background:#7ecb8a;
+}
+
+.inv-risk-mid{
+  background:#d8c28a;
+}
+
+.inv-risk-high{
+  background:#d97b7b;
+}
+
+.inv-risk-text{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  font-style:italic;
+}
+
+@media (max-width:950px){
+  .inv-calc-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .inv-calc-results{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:700px){
+  .inv-calc-grid{
+    grid-template-columns:1fr;
+  }
+
+  .inv-result-value{
+    font-size:23px;
+  }
+}
+   
 
     .footer-main{
       margin-top:24px;
@@ -798,28 +1017,44 @@
       </div>
     </div>
 
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3 class="feature-title" id="feature1Title">Structure</h3>
-        <p class="feature-copy" id="feature1Copy">
-          The investment line is intentionally limited to two clearly differentiated formats with distinct positioning.
-        </p>
-      </div>
+    <div class="calc-box">
 
-      <div class="feature-card">
-        <h3 class="feature-title" id="feature2Title">Clarity</h3>
-        <p class="feature-copy" id="feature2Copy">
-          One product emphasizes defined return logic, while the other reflects direct strategic participation.
-        </p>
-      </div>
+  <div class="calc-grid">
 
-      <div class="feature-card">
-        <h3 class="feature-title" id="feature3Title">Selectivity</h3>
-        <p class="feature-copy" id="feature3Copy">
-          The broader investment concept combines open product presentation with more selective access where appropriate.
-        </p>
-      </div>
-    </div>
+    <select id="invType">
+      <option value="bonds">Bonds</option>
+      <option value="direct">Direct Investment</option>
+    </select>
+
+    <input type="number" id="invAmount" placeholder="Capital (€)">
+
+    <input type="number" id="invMonths" placeholder="Months">
+
+    <select id="market">
+      <option value="def">Defensive</option>
+      <option value="bal">Balanced</option>
+      <option value="opt">Optimistic</option>
+    </select>
+
+    <select id="vol">
+      <option value="low">Low volatility</option>
+      <option value="mid">Medium volatility</option>
+      <option value="high">High volatility</option>
+    </select>
+
+    <input type="range" id="confidence" min="0" max="100">
+
+  </div>
+
+  <button onclick="calculateInvestment()">Simulate outcome</button>
+
+  <div class="calc-results">
+    <div id="invResult"></div>
+    <div id="invRange"></div>
+    <div id="invText"></div>
+  </div>
+
+</div>
 
     <div class="footer-main">
       <div class="footer-grid">
@@ -940,12 +1175,46 @@
         directNote: "Intended for investors interested in a more direct relationship to the bank’s internal capital narrative and future development profile.",
         directBtn: "View investment",
 
-        feature1Title: "Structure",
-        feature1Copy: "The investment line is intentionally limited to two clearly differentiated formats with distinct positioning.",
-        feature2Title: "Clarity",
-        feature2Copy: "One product emphasizes defined return logic, while the other reflects direct strategic participation.",
-        feature3Title: "Selectivity",
-        feature3Copy: "The broader investment concept combines open product presentation with more selective access where appropriate.",
+        invKicker: "Investment Simulation",
+invTitle: "Project structured outcomes",
+invText: "Simulate how capital, time, and perception of the market may influence future financial positioning.",
+
+invTypeLabel: "Investment type",
+invTypeBonds: "Bonds",
+invTypeDirect: "Direct Investment",
+
+invAmountLabel: "Allocated capital (€)",
+invMonthsLabel: "Time horizon (months)",
+
+invMarketLabel: "Market outlook",
+invMarketDef: "Defensive",
+invMarketBal: "Balanced",
+invMarketOpt: "Optimistic",
+
+invVolLabel: "Volatility tolerance",
+invVolLow: "Low",
+invVolMid: "Medium",
+invVolHigh: "High",
+
+invConfidenceLabel: "Confidence level",
+invConfidenceValue: "Confidence",
+
+invButton: "Simulate outcome",
+
+invResultLabel: "Projected outcome",
+invRangeLabel: "Expected range",
+
+invMemeBonds: "Stable expectations with limited emotional movement.",
+invMemeDirect: "Outcome influenced by timing, conviction, and selective luck.",
+
+invRiskLabel: "Risk profile",
+invRiskLow: "Low",
+invRiskMid: "Moderate",
+invRiskHigh: "Elevated",
+
+invRiskTextLow: "Conservative positioning with minimal exposure to uncertainty.",
+invRiskTextMid: "Balanced positioning with controlled volatility exposure.",
+invRiskTextHigh: "Elevated exposure with outcome variability driven by market interpretation."
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
@@ -1006,12 +1275,46 @@
         directNote: "Gedacht für Investorinnen und Investoren, die eine direktere Beziehung zur internen Kapitalerzählung und künftigen Entwicklung der Bank suchen.",
         directBtn: "Investment ansehen",
 
-        feature1Title: "Struktur",
-        feature1Copy: "Die Investmentlinie ist bewusst auf zwei klar differenzierte Formate mit unterschiedlicher Positionierung begrenzt.",
-        feature2Title: "Klarheit",
-        feature2Copy: "Ein Produkt betont definierte Ertragslogik, das andere spiegelt direkte strategische Beteiligung wider.",
-        feature3Title: "Selektivität",
-        feature3Copy: "Das Investmentkonzept verbindet offene Produktdarstellung mit selektiverem Zugang, wo passend.",
+        invKicker: "Investment-Simulation",
+invTitle: "Strukturierte Ergebnisse projizieren",
+invText: "Simulieren Sie, wie Kapital, Zeit und Marktwahrnehmung Ihre zukünftige finanzielle Position beeinflussen könnten.",
+
+invTypeLabel: "Anlagetyp",
+invTypeBonds: "Anleihen",
+invTypeDirect: "Direktinvestment",
+
+invAmountLabel: "Investiertes Kapital (€)",
+invMonthsLabel: "Zeithorizont (Monate)",
+
+invMarketLabel: "Markteinschätzung",
+invMarketDef: "Defensiv",
+invMarketBal: "Ausgewogen",
+invMarketOpt: "Optimistisch",
+
+invVolLabel: "Volatilitätstoleranz",
+invVolLow: "Niedrig",
+invVolMid: "Mittel",
+invVolHigh: "Hoch",
+
+invConfidenceLabel: "Vertrauensniveau",
+invConfidenceValue: "Vertrauen",
+
+invButton: "Ergebnis simulieren",
+
+invResultLabel: "Prognostiziertes Ergebnis",
+invRangeLabel: "Erwarteter Bereich",
+
+invMemeBonds: "Stabile Erwartungen mit begrenzter emotionaler Bewegung.",
+invMemeDirect: "Das Ergebnis hängt von Timing, Überzeugung und selektivem Glück ab.",
+
+invRiskLabel: "Risikoprofil",
+invRiskLow: "Niedrig",
+invRiskMid: "Moderat",
+invRiskHigh: "Erhöht",
+
+invRiskTextLow: "Konservative Positionierung mit minimaler Unsicherheits-Exposition.",
+invRiskTextMid: "Ausgewogene Positionierung mit kontrollierter Volatilität.",
+invRiskTextHigh: "Erhöhte Exposition mit ergebnisabhängiger Marktinterpretation."
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
@@ -1072,12 +1375,46 @@
         directNote: "Призначено для інвесторів, яких цікавить пряміший зв’язок із внутрішньою капітальною логікою та майбутнім розвитком банку.",
         directBtn: "Переглянути інвестицію",
 
-        feature1Title: "Структура",
-        feature1Copy: "Інвестиційна лінійка навмисно обмежена двома чітко відмінними форматами з різним позиціонуванням.",
-        feature2Title: "Прозорість",
-        feature2Copy: "Один продукт підкреслює визначену логіку доходу, інший відображає пряму стратегічну участь.",
-        feature3Title: "Вибірковість",
-        feature3Copy: "Ширша інвестиційна концепція поєднує відкриту презентацію продуктів із більш вибірковим доступом там, де це доречно.",
+        invKicker: "Симуляція інвестицій",
+invTitle: "Спрогнозуйте структурований результат",
+invText: "Змоделюйте, як капітал, час і ваше сприйняття ринку можуть вплинути на фінансовий результат.",
+
+invTypeLabel: "Тип інвестиції",
+invTypeBonds: "Облігації",
+invTypeDirect: "Прямі інвестиції",
+
+invAmountLabel: "Інвестований капітал (€)",
+invMonthsLabel: "Горизонт (місяці)",
+
+invMarketLabel: "Очікування ринку",
+invMarketDef: "Обережний",
+invMarketBal: "Збалансований",
+invMarketOpt: "Оптимістичний",
+
+invVolLabel: "Толерантність до волатильності",
+invVolLow: "Низька",
+invVolMid: "Середня",
+invVolHigh: "Висока",
+
+invConfidenceLabel: "Рівень впевненості",
+invConfidenceValue: "Впевненість",
+
+invButton: "Симулювати результат",
+
+invResultLabel: "Прогнозований результат",
+invRangeLabel: "Очікуваний діапазон",
+
+invMemeBonds: "Стабільні очікування з мінімальними емоційними коливаннями.",
+invMemeDirect: "Результат залежить від часу, переконання та вибіркової удачі.",
+
+invRiskLabel: "Ризиковий профіль",
+invRiskLow: "Низький",
+invRiskMid: "Помірний",
+invRiskHigh: "Підвищений",
+
+invRiskTextLow: "Консервативна позиція з мінімальним рівнем невизначеності.",
+invRiskTextMid: "Збалансована позиція з контрольованою волатильністю.",
+invRiskTextHigh: "Підвищений ризик із варіативним результатом залежно від ринку."
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
@@ -1142,12 +1479,44 @@
         directNote: "directNote",
         directBtn: "directBtn",
 
-        feature1Title: "feature1Title",
-        feature1Copy: "feature1Copy",
-        feature2Title: "feature2Title",
-        feature2Copy: "feature2Copy",
-        feature3Title: "feature3Title",
-        feature3Copy: "feature3Copy",
+        // INVESTMENT CALCULATOR
+document.getElementById("invKicker").textContent = t.invKicker;
+document.getElementById("invTitle").textContent = t.invTitle;
+document.getElementById("invText").textContent = t.invText;
+
+document.getElementById("invTypeLabel").textContent = t.invTypeLabel;
+document.getElementById("invTypeBonds").textContent = t.invTypeBonds;
+document.getElementById("invTypeDirect").textContent = t.invTypeDirect;
+
+document.getElementById("invAmountLabel").textContent = t.invAmountLabel;
+document.getElementById("invMonthsLabel").textContent = t.invMonthsLabel;
+
+document.getElementById("invMarketLabel").textContent = t.invMarketLabel;
+document.getElementById("invMarketDef").textContent = t.invMarketDef;
+document.getElementById("invMarketBal").textContent = t.invMarketBal;
+document.getElementById("invMarketOpt").textContent = t.invMarketOpt;
+
+document.getElementById("invVolLabel").textContent = t.invVolLabel;
+document.getElementById("invVolLow").textContent = t.invVolLow;
+document.getElementById("invVolMid").textContent = t.invVolMid;
+document.getElementById("invVolHigh").textContent = t.invVolHigh;
+
+document.getElementById("invConfidenceLabel").textContent = t.invConfidenceLabel;
+document.getElementById("invConfidenceValue").textContent = t.invConfidenceValue;
+
+document.getElementById("invButton").textContent = t.invButton;
+
+document.getElementById("invResultLabel").textContent = t.invResultLabel;
+document.getElementById("invRangeLabel").textContent = t.invRangeLabel;
+
+// meme text (dynamic later, но дефолт можно задать)
+document.getElementById("invMeme").textContent = t.invMemeBonds;
+
+// risk
+document.getElementById("invRiskLabel").textContent = t.invRiskLabel;
+document.getElementById("invRiskValue").textContent = t.invRiskMid;
+document.getElementById("invRiskText").textContent = t.invRiskTextMid;
+
 
         footerCol1Title: "footerCol1Title",
         footerCol1Text: "footerCol1Text",
@@ -1185,6 +1554,72 @@
     setLanguage(savedLanguage);
 
     loadFxRates();
+
+    function calculateInvestment(){
+
+  const type = document.getElementById("invType").value;
+  const amount = +document.getElementById("invAmount").value;
+  const months = +document.getElementById("invMonths").value;
+  const market = document.getElementById("market").value;
+  const vol = document.getElementById("vol").value;
+  const confidence = +document.getElementById("confidence").value;
+
+  let base = 0;
+
+  // Bonds
+  if(type === "bonds"){
+    if(market === "def") base = 0.02;
+    if(market === "bal") base = 0.03;
+    if(market === "opt") base = 0.04;
+  }
+
+  // Direct
+  if(type === "direct"){
+    if(market === "def") base = 0.05;
+    if(market === "bal") base = 0.08;
+    if(market === "opt") base = 0.12;
+  }
+
+  // confidence влияет
+  base += (confidence / 100) * 0.02;
+
+  const years = months / 12;
+
+  let result = amount * (1 + base * years);
+
+  // volatility
+  let spread = 0;
+
+  if(vol === "low") spread = 0.05;
+  if(vol === "mid") spread = 0.15;
+  if(vol === "high") spread = 0.3;
+
+  const min = result * (1 - spread);
+  const max = result * (1 + spread);
+
+  // текст
+  let text = "";
+
+  if(type === "bonds"){
+    text = "Stable expectations with limited emotional movement.";
+  } else {
+    text = "Outcome influenced by timing, conviction, and selective luck.";
+  }
+
+  document.getElementById("invResult").textContent =
+    "Projected: €" + Math.round(result);
+
+  document.getElementById("invRange").textContent =
+    "Range: €" + Math.round(min) + " — €" + Math.round(max);
+
+  document.getElementById("invText").textContent = text;
+}
+
+  const meme = type === "bonds"
+  ? t.invMemeBonds
+  : t.invMemeDirect;
+
+document.getElementById("invMeme").textContent = meme;
   </script>
 </body>
 </html>

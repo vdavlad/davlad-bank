@@ -423,14 +423,21 @@
   overflow:hidden;
 }
 
-/* BIG BACKGROUND TEXT */
-.banner-bg-text{
-  position:absolute;
-  top:42%;
-  left:52%;
-  transform:translate(-50%, -50%);
-  font-size:220px;
-}
+    .banner-bg-text{
+      position:absolute;
+      top:42%;
+      left:52%;
+      transform:translate(-50%, -50%);
+      font-size:210px;
+      font-weight:900;
+      letter-spacing:8px;
+      color:#ffffff;
+      opacity:0.08;
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
+      z-index:1;
+    }
 
 .banner-overlay > *:not(.banner-bg-text){
   position:relative;

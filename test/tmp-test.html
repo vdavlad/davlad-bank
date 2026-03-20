@@ -477,6 +477,15 @@
   width:250px;
 }
 
+.card-visual{
+  width:250px;
+  height:320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
 .bank-card{
   width:320px;
   height:200px;
@@ -484,6 +493,7 @@
   position:relative;
   overflow:hidden;
   transform-style:preserve-3d;
+  transform-origin:center center;
   transform:rotate(-90deg) scale(0.88);
   transition:
     transform .22s ease,
@@ -492,10 +502,10 @@
     opacity .22s ease;
   border:1px solid rgba(255,255,255,0.10);
   box-shadow:0 20px 60px rgba(0,0,0,0.55);
-  margin-bottom:8px;
+  margin-bottom:0;
 }
 
-/* ===== SURVIVAL ===== */
+/* SURVIVAL */
 .survival{
   background:
     radial-gradient(circle at 18% 16%, rgba(255,255,255,0.05), transparent 24%),
@@ -507,7 +517,7 @@
   filter:brightness(1.03);
 }
 
-/* ===== ILLUSION ===== */
+/* ILLUSION */
 .illusion{
   background:
     linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)),
@@ -548,7 +558,7 @@
   transform:translateX(20%) rotate(8deg);
 }
 
-/* ===== DELUSION ===== */
+/* DELUSION */
 .delusion{
   background:
     linear-gradient(135deg, #2a2a2a 0%, #686868 34%, #b89a4a 66%, #efd28a 100%);
@@ -565,7 +575,7 @@
   filter:brightness(1.04) saturate(1.04);
 }
 
-/* ===== CARD COMMON DETAILS ===== */
+/* common details */
 .card-brand-top{
   position:absolute;
   top:16px;
@@ -635,7 +645,7 @@
   left:16px;
 }
 
-/* ===== REALISTIC CHIP ===== */
+/* realistic chip */
 .card-chip{
   position:absolute;
   top:18px;
@@ -685,10 +695,9 @@
   box-shadow:inset 0 1px 1px rgba(255,255,255,0.18);
 }
 
-/* ===== LABELS ===== */
 .card-label{
   text-align:center;
-  margin-top:-2px;
+  margin-top:10px;
   font-size:15px;
   color:var(--text);
   font-weight:700;
@@ -724,6 +733,11 @@
 @media (max-width:700px){
   .card-item{
     width:100%;
+  }
+
+  .card-visual{
+    width:100%;
+    height:280px;
   }
 
   .bank-card{
@@ -1186,6 +1200,7 @@
         <div class="service-copy" id="service3Copy">Lending solutions tailored to financing needs, timing requirements, and repayment capacity.</div>
       </a>
     </div>
+
     <section class="cards-section">
 
   <div class="cards-intro">
@@ -1200,32 +1215,34 @@
 
     <!-- SURVIVAL -->
     <div class="card-item">
-      <div class="bank-card survival" id="cardSurvival">
+      <div class="card-visual">
+        <div class="bank-card survival" id="cardSurvival">
 
-        <div class="card-brand-top">Davlad Bank</div>
+          <div class="card-brand-top">Davlad Bank</div>
 
-        <div class="card-chip silver">
-          <span class="chip-line chip-line-v1"></span>
-          <span class="chip-line chip-line-v2"></span>
-          <span class="chip-line chip-line-v3"></span>
-          <span class="chip-line chip-line-h1"></span>
-          <span class="chip-line chip-line-h2"></span>
-          <span class="chip-line chip-line-h3"></span>
-          <span class="chip-core"></span>
+          <div class="card-chip silver">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
+
+          <div class="bank-card-logo">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#1F1F1F"/>
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                    fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="card-tier">SURVIVAL</div>
+          <div class="card-mc" aria-hidden="true"></div>
         </div>
-
-        <div class="bank-card-logo">
-          <svg viewBox="0 0 64 64" aria-hidden="true">
-            <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#1F1F1F"/>
-            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-                  fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <div class="card-tier">SURVIVAL</div>
-        <div class="card-mc" aria-hidden="true"></div>
       </div>
 
       <div class="card-label">Davlad Survival</div>
@@ -1234,33 +1251,35 @@
 
     <!-- ILLUSION -->
     <div class="card-item">
-      <div class="bank-card illusion" id="cardIllusion">
+      <div class="card-visual">
+        <div class="bank-card illusion" id="cardIllusion">
 
-        <div class="card-brand-top">Davlad Bank</div>
+          <div class="card-brand-top">Davlad Bank</div>
 
-        <div class="card-chip silver">
-          <span class="chip-line chip-line-v1"></span>
-          <span class="chip-line chip-line-v2"></span>
-          <span class="chip-line chip-line-v3"></span>
-          <span class="chip-line chip-line-h1"></span>
-          <span class="chip-line chip-line-h2"></span>
-          <span class="chip-line chip-line-h3"></span>
-          <span class="chip-core"></span>
+          <div class="card-chip silver">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
+
+          <div class="bank-card-logo">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="rgba(11,11,11,0.35)" stroke="rgba(255,255,255,0.20)"/>
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                    fill="none" stroke="rgba(242,242,242,0.92)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="rgba(184,154,74,0.90)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="rgba(184,154,74,0.90)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="card-tier">ILLUSION</div>
+          <div class="card-mc" aria-hidden="true"></div>
+          <div class="illusion-shine"></div>
         </div>
-
-        <div class="bank-card-logo">
-          <svg viewBox="0 0 64 64" aria-hidden="true">
-            <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="rgba(11,11,11,0.35)" stroke="rgba(255,255,255,0.20)"/>
-            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-                  fill="none" stroke="rgba(242,242,242,0.92)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="rgba(184,154,74,0.90)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="rgba(184,154,74,0.90)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <div class="card-tier">ILLUSION</div>
-        <div class="card-mc" aria-hidden="true"></div>
-        <div class="illusion-shine"></div>
       </div>
 
       <div class="card-label">Davlad Illusion</div>
@@ -1269,32 +1288,34 @@
 
     <!-- DELUSION -->
     <div class="card-item">
-      <div class="bank-card delusion" id="cardDelusion">
+      <div class="card-visual">
+        <div class="bank-card delusion" id="cardDelusion">
 
-        <div class="card-brand-top">Davlad Bank</div>
+          <div class="card-brand-top">Davlad Bank</div>
 
-        <div class="card-chip gold">
-          <span class="chip-line chip-line-v1"></span>
-          <span class="chip-line chip-line-v2"></span>
-          <span class="chip-line chip-line-v3"></span>
-          <span class="chip-line chip-line-h1"></span>
-          <span class="chip-line chip-line-h2"></span>
-          <span class="chip-line chip-line-h3"></span>
-          <span class="chip-core"></span>
+          <div class="card-chip gold">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
+
+          <div class="bank-card-logo">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#2A2A2A"/>
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                    fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="card-tier">DELUSION</div>
+          <div class="card-mc" aria-hidden="true"></div>
         </div>
-
-        <div class="bank-card-logo">
-          <svg viewBox="0 0 64 64" aria-hidden="true">
-            <rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#0B0B0B" stroke="#2A2A2A"/>
-            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-                  fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="16" y1="25.5" x2="41" y2="25.5" stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="38.5" x2="41" y2="38.5" stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <div class="card-tier">DELUSION</div>
-        <div class="card-mc" aria-hidden="true"></div>
       </div>
 
       <div class="card-label">Davlad Delusion</div>

@@ -345,7 +345,26 @@
     radial-gradient(1.2px 1.2px at 92% 15%, rgba(255,255,255,0.62), transparent);
   animation: starTwinkleC 7.4s ease-in-out infinite;
   opacity:0.6;
-}  
+}
+
+ .stars-pulse{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+
+  background:
+    radial-gradient(2.8px 2.8px at 22% 14%, rgba(255,255,255,0.95), transparent),
+    radial-gradient(3px 3px at 58% 11%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2.6px 2.6px at 81% 18%, rgba(255,255,255,0.92), transparent);
+
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%);
+
+  filter: blur(0.15px) brightness(1.2);
+  animation: starPulse 8s ease-in-out infinite;
+  opacity:0.18;
+}
 
  .full-banner .stars-layer{
   position:absolute;
@@ -374,7 +393,22 @@
   0%{ opacity:0.25; }
   50%{ opacity:0.65; }
   100%{ opacity:0.35; }
-}   
+}
+
+@keyframes starPulse{
+  0%   { opacity:0.08; }
+  8%   { opacity:0.08; }
+  14%  { opacity:0.75; }
+  20%  { opacity:0.15; }
+
+  42%  { opacity:0.12; }
+  50%  { opacity:0.65; }
+  56%  { opacity:0.14; }
+
+  78%  { opacity:0.10; }
+  86%  { opacity:0.82; }
+  100% { opacity:0.12; }
+}
 
 .banner-overlay{
   position:relative;
@@ -1395,6 +1429,7 @@
   <div class="stars stars-a"></div>
 <div class="stars stars-b"></div>
 <div class="stars stars-c"></div>
+  <div class="stars stars-pulse"></div>
   <div class="banner-overlay">
     <div class="banner-bg-text" id="bannerBgText">ORIGIN</div>
 

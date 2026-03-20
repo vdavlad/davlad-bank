@@ -1706,6 +1706,18 @@ body.light .image-banner-text{
   .image-banner-text{
     font-size:20px;
   }
+
+  .promo-micro{
+  margin-top:14px;
+  font-size:12px;
+  color:var(--accent);
+  font-style:italic;
+  letter-spacing:.2px;
+  opacity:.9;
+  position:relative;
+  z-index:2;
+  }
+  
 }    
   </style>
 </head>
@@ -1979,55 +1991,80 @@ body.light .image-banner-text{
 
 </section>
 
-    <div class="promo-wrap">
-      <div class="promo-header">
-        <div class="section-kicker" id="promoKicker">Featured</div>
-        <h2 class="section-title" id="promoHeading">Promoted opportunities</h2>
+<div class="promo-wrap">
+  <div class="promo-header">
+    <div class="section-kicker" id="promoKicker">Featured</div>
+    <h2 class="section-title" id="promoHeading">Promoted opportunities</h2>
+  </div>
+
+  <div class="promo-stage">
+
+    <div class="promo-slide active promo-mars">
+      <div class="promo-content">
+        <h3 id="promo1Title">Mars Relocation Initiative</h3>
+        <p id="promo1Text">
+          Secure your position in the next phase of human expansion.
+          Full prepayment through Davlad Bank unlocks 50% preferential pricing and priority departure consideration.
+        </p>
+        <div class="promo-micro" id="promo1Micro">Timeline subject to planetary readiness.</div>
       </div>
+      <div class="promo-price" id="promo1Price">
+        €999k
+        <small id="promo1PriceLabel">50% off with full prepayment</small>
+      </div>
+    </div>
 
-<div class="promo-stage">
-  <div class="promo-slide active promo-mars">
-    <div class="promo-content">
-      <h3 id="promo1Title">Mars Expansion Program</h3>
-      <p id="promo1Text">Private access to off-planet liquidity opportunities.</p>
+    <div class="promo-slide promo-liquidity">
+      <div class="promo-content">
+        <h3 id="promo2Title">Mammoth Restoration Program</h3>
+        <p id="promo2Text">
+          Support the structured return of extinct scale.
+          Recurring contributions help restore biological presence, ecological symbolism, and selective prehistoric optimism.
+        </p>
+        <div class="promo-micro" id="promo2Micro">Ecological outcome: interpretative.</div>
+      </div>
+      <div class="promo-price" id="promo2Price">
+        from €19
+        <small id="promo2PriceLabel">monthly contribution</small>
+      </div>
     </div>
-    <div class="promo-price" id="promo1Price">
-      €999k
-      <small id="promo1PriceLabel">starting point</small>
+
+    <div class="promo-slide promo-lifestyle">
+      <div class="promo-content">
+        <h3 id="promo3Title">Titanic Deep Experience</h3>
+        <p id="promo3Text">
+          Explore historical depth through an immersive underwater journey to the Titanic.
+          Built for clients who value proximity, atmosphere, and narrative over insurance coverage.
+        </p>
+        <div class="promo-micro" id="promo3Micro">Insurance not included. Confidence required.</div>
+      </div>
+      <div class="promo-price" id="promo3Price">
+        €12k
+        <small id="promo3PriceLabel">descent only</small>
+      </div>
     </div>
+
+    <div class="promo-slide promo-optimism">
+      <div class="promo-content">
+        <h3 id="promo4Title">This Could Be Your Advertisement</h3>
+        <p id="promo4Text">
+          This placement is available for future partners seeking visibility inside a structured financial ecosystem with questionable institutional depth and excellent design discipline.
+        </p>
+        <div class="promo-micro" id="promo4Micro">Presence is negotiable.</div>
+      </div>
+      <div class="promo-price" id="promo4Price">
+        inquire
+        <small id="promo4PriceLabel">premium placement</small>
+      </div>
+    </div>
+
   </div>
 
-  <div class="promo-slide promo-liquidity">
-    <div class="promo-content">
-      <h3 id="promo2Title">Emergency Liquidity Facility</h3>
-      <p id="promo2Text">When timing matters more than planning.</p>
-    </div>
-    <div class="promo-price" id="promo2Price">
-      €25k
-      <small id="promo2PriceLabel">subject to timing</small>
-    </div>
-  </div>
-
-  <div class="promo-slide promo-lifestyle">
-    <div class="promo-content">
-      <h3 id="promo3Title">Lifestyle Financing</h3>
-      <p id="promo3Text">Because some decisions should not wait.</p>
-    </div>
-    <div class="promo-price" id="promo3Price">
-      €12k
-      <small id="promo3PriceLabel">illustrative example</small>
-    </div>
-  </div>
-
-  <div class="promo-slide promo-optimism">
-    <div class="promo-content">
-      <h3 id="promo4Title">Strategic Optimism Fund</h3>
-      <p id="promo4Text">For long-term belief in uncertain outcomes.</p>
-    </div>
-    <div class="promo-price" id="promo4Price">
-      €1m
-      <small id="promo4PriceLabel">vision required</small>
-    </div>
+  <div class="promo-dots">
+    <span class="promo-dot active"></span>
+    <span class="promo-dot"></span>
+    <span class="promo-dot"></span>
+    <span class="promo-dot"></span>
   </div>
 </div>
 
@@ -2261,16 +2298,32 @@ cardDelusionText: "Confidence beyond measurable limits. An elevated tier for int
 
 cardsFootnote: "System progression is interpretative.",
 
-        promoKicker: "Featured",
-        promoHeading: "Promoted opportunities",
-        promo1Title: "Mars Expansion Program",
-        promo1Text: "Private access to off-planet liquidity opportunities.",
-        promo2Title: "Emergency Liquidity Facility",
-        promo2Text: "When timing matters more than planning.",
-        promo3Title: "Lifestyle Financing",
-        promo3Text: "Because some decisions should not wait.",
-        promo4Title: "Strategic Optimism Fund",
-        promo4Text: "For long-term belief in uncertain outcomes.",
+promoKicker: "Featured",
+promoHeading: "Promoted opportunities",
+
+promo1Title: "Mars Relocation Initiative",
+promo1Text: "Secure your position in the next phase of human expansion. Full prepayment through Davlad Bank unlocks 50% preferential pricing and priority departure consideration.",
+promo1Micro: "Timeline subject to planetary readiness.",
+promo1Price: "€999k",
+promo1PriceLabel: "50% off with full prepayment",
+
+promo2Title: "Mammoth Restoration Program",
+promo2Text: "Support the structured return of extinct scale. Recurring contributions help restore biological presence, ecological symbolism, and selective prehistoric optimism.",
+promo2Micro: "Ecological outcome: interpretative.",
+promo2Price: "from €19",
+promo2PriceLabel: "monthly contribution",
+
+promo3Title: "Titanic Deep Experience",
+promo3Text: "Explore historical depth through an immersive underwater journey to the Titanic. Built for clients who value proximity, atmosphere, and narrative over insurance coverage.",
+promo3Micro: "Insurance not included. Confidence required.",
+promo3Price: "€12k",
+promo3PriceLabel: "descent only",
+
+promo4Title: "This Could Be Your Advertisement",
+promo4Text: "This placement is available for future partners seeking visibility inside a structured financial ecosystem with questionable institutional depth and excellent design discipline.",
+promo4Micro: "Presence is negotiable.",
+promo4Price: "inquire",
+promo4PriceLabel: "premium placement",
 
  newsKicker: "System Updates",
 newsHeading: "Recent developments inside Davlad Bank",
@@ -2292,14 +2345,6 @@ news3Micro: "Approval mood: conditionally tolerant",
 
         bannerBgText: "ORIGIN",
 
-promo1Price: "€999k",
-promo1PriceLabel: "starting point",
-promo2Price: "€25k",
-promo2PriceLabel: "subject to timing",
-promo3Price: "€12k",
-promo3PriceLabel: "illustrative example",
-promo4Price: "€1m",
-promo4PriceLabel: "vision required",
 
 news1Meta: "Product Update",
 news2Meta: "Investment Update",
@@ -2374,27 +2419,32 @@ cardDelusionText: "Selbstvertrauen jenseits messbarer Grenzen. Eine gehobene Stu
 
 cardsFootnote: "Der Systemfortschritt ist interpretativ.",
 
-        promoKicker: "Im Fokus",
-        promoHeading: "Ausgewählte Möglichkeiten",
-        promo1Title: "Mars Expansion Program",
-        promo1Text: "Privater Zugang zu außerplanetaren Liquiditätschancen.",
-        promo2Title: "Emergency Liquidity Facility",
-        promo2Text: "Wenn Timing wichtiger ist als Planung.",
-        promo3Title: "Lifestyle Financing",
-        promo3Text: "Weil manche Entscheidungen nicht warten sollten.",
-        promo4Title: "Strategic Optimism Fund",
-        promo4Text: "Für langfristigen Glauben an unsichere Ergebnisse.",
+promoKicker: "Im Fokus",
+promoHeading: "Ausgewählte Möglichkeiten",
 
-        bannerBgText: "ORIGIN",
-
+promo1Title: "Mars Relocation Initiative",
+promo1Text: "Sichern Sie sich Ihre Position in der nächsten Phase der menschlichen Expansion. Eine vollständige Vorauszahlung über die Davlad Bank ermöglicht 50 % Vorzugspreis und priorisierte Abflug-Berücksichtigung.",
+promo1Micro: "Zeitplan abhängig von planetarer Einsatzbereitschaft.",
 promo1Price: "999 Tsd. €",
-promo1PriceLabel: "ab diesem Niveau",
-promo2Price: "25 Tsd. €",
-promo2PriceLabel: "abhängig vom Timing",
+promo1PriceLabel: "50 % Rabatt bei voller Vorauszahlung",
+
+promo2Title: "Mammoth Restoration Program",
+promo2Text: "Unterstützen Sie die strukturierte Rückkehr ausgestorbener Größe. Wiederkehrende Beiträge fördern biologische Präsenz, ökologische Symbolik und selektiven prähistorischen Optimismus.",
+promo2Micro: "Ökologisches Ergebnis: interpretativ.",
+promo2Price: "ab 19 €",
+promo2PriceLabel: "monatlicher Beitrag",
+
+promo3Title: "Titanic Deep Experience",
+promo3Text: "Erleben Sie historische Tiefe auf einer immersiven Unterwasserreise zur Titanic. Entwickelt für Kundinnen und Kunden, die Nähe, Atmosphäre und Narrativ höher gewichten als Versicherungsschutz.",
+promo3Micro: "Versicherung nicht enthalten. Selbstvertrauen erforderlich.",
 promo3Price: "12 Tsd. €",
-promo3PriceLabel: "illustratives Beispiel",
-promo4Price: "1 Mio. €",
-promo4PriceLabel: "Vision erforderlich",
+promo3PriceLabel: "nur Abstieg",
+
+promo4Title: "Hier könnte Ihre Werbung stehen",
+promo4Text: "Dieser Platz ist für zukünftige Partner verfügbar, die Sichtbarkeit in einem strukturierten Finanzökosystem mit fragwürdiger institutioneller Tiefe und ausgezeichneter Designdisziplin suchen.",
+promo4Micro: "Präsenz ist verhandelbar.",
+promo4Price: "auf Anfrage",
+promo4PriceLabel: "Premium-Platzierung",
 
 fraudKicker: "Sicherheitshinweis",
 fraudHeading: "Woran man erkennt, dass eine Bank nicht echt ist",
@@ -2409,7 +2459,7 @@ fraudMicro1: "Das könnte bekannt wirken.",
 fraudMicro2: "Klassifikation: subjektiv.",
 fraudMicro3: "Verifizierung optional.",        
 
- newsKicker: "System-Updates",
+newsKicker: "System-Updates",
 newsHeading: "Aktuelle Entwicklungen innerhalb der Davlad Bank",
 
 news1Meta: "ZUGANGS-UPDATE",
@@ -2491,28 +2541,33 @@ cardDelusionText: "Впевненість за межами вимірювани
 
 cardsFootnote: "Прогрес системи має інтерпретативний характер.",
 
-        promoKicker: "Featured",
-        promoHeading: "Рекомендовані можливості",
-        promo1Title: "Mars Expansion Program",
-        promo1Text: "Приватний доступ до міжпланетних можливостей ліквідності.",
-        promo2Title: "Emergency Liquidity Facility",
-        promo2Text: "Коли час важливіший за планування.",
-        promo3Title: "Lifestyle Financing",
-        promo3Text: "Тому що деякі рішення не повинні чекати.",
-        promo4Title: "Strategic Optimism Fund",
-        promo4Text: "Для довгострокової віри в невизначені результати.",
+promoKicker: "Рекомендоване",
+promoHeading: "Просунуті можливості",
 
-        bannerBgText: "ORIGIN",
-
+promo1Title: "Mars Relocation Initiative",
+promo1Text: "Забезпечте собі місце в наступній фазі людської експансії. Повна передоплата через Davlad Bank відкриває 50% пільгової ціни та пріоритетний розгляд на виліт.",
+promo1Micro: "Таймлайн залежить від готовності планети.",
 promo1Price: "€999 тис.",
-promo1PriceLabel: "стартовий рівень",
-promo2Price: "€25 тис.",
-promo2PriceLabel: "залежить від часу",
-promo3Price: "€12 тис.",
-promo3PriceLabel: "умовний приклад",
-promo4Price: "€1 млн",
-promo4PriceLabel: "потрібне бачення",
+promo1PriceLabel: "50% знижки при повній передоплаті",
 
+promo2Title: "Mammoth Restoration Program",
+promo2Text: "Підтримайте структуроване повернення вимерлого масштабу. Регулярні внески допомагають відновити біологічну присутність, екологічний символізм і вибірковий доісторичний оптимізм.",
+promo2Micro: "Екологічний результат: інтерпретативний.",
+promo2Price: "від €19",
+promo2PriceLabel: "щомісячний внесок",
+
+promo3Title: "Titanic Deep Experience",
+promo3Text: "Дослідіть історичну глибину через імерсивну підводну подорож до Титаніка. Створено для клієнтів, які цінують близькість, атмосферу та наратив більше, ніж страхове покриття.",
+promo3Micro: "Страхування не включено. Впевненість обов’язкова.",
+promo3Price: "€12 тис.",
+promo3PriceLabel: "лише занурення",
+
+promo4Title: "Тут могла б бути ваша реклама",
+promo4Text: "Це місце доступне для майбутніх партнерів, які шукають видимість у структурованій фінансовій екосистемі з сумнівною інституційною глибиною та відмінною дизайнерською дисципліною.",
+promo4Micro: "Присутність обговорюється.",
+promo4Price: "за запитом",
+promo4PriceLabel: "преміальне розміщення",
+        
 fraudKicker: "Попередження безпеки",
 fraudHeading: "Як розпізнати, що банк не є справжнім",
 fraud1Title: "Нереалістичні обіцянки",
@@ -2632,6 +2687,11 @@ document.getElementById("promo3Price").childNodes[0].nodeValue = t.promo3Price;
 document.getElementById("promo3PriceLabel").textContent = t.promo3PriceLabel;
 document.getElementById("promo4Price").childNodes[0].nodeValue = t.promo4Price;
 document.getElementById("promo4PriceLabel").textContent = t.promo4PriceLabel;
+
+      document.getElementById("promo1Micro").textContent = t.promo1Micro;
+document.getElementById("promo2Micro").textContent = t.promo2Micro;
+document.getElementById("promo3Micro").textContent = t.promo3Micro;
+document.getElementById("promo4Micro").textContent = t.promo4Micro;
 
       document.getElementById("newsKicker").textContent = t.newsKicker;
       document.getElementById("newsHeading").textContent = t.newsHeading;

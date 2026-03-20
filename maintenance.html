@@ -1567,6 +1567,39 @@ body.light .news-chip{
     min-height:auto;
   }
 }
+
+.fraud-micro{
+  margin-top:12px;
+  font-size:12px;
+  color:var(--accent);
+  font-style:italic;
+  opacity:.8;
+  letter-spacing:.2px;
+}
+
+.fraud-card{
+  position:relative;
+  overflow:hidden;
+  transition:.2s ease;
+}
+
+.fraud-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(198,168,91,0.25);
+}
+
+.fraud-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.04), transparent);
+  opacity:0;
+  transition:.3s ease;
+}
+
+.fraud-card:hover::after{
+  opacity:1;
+}   
     
 }
   </style>
@@ -1941,29 +1974,45 @@ body.light .news-chip{
   </div>
 </div>
 
-    <div class="fraud-wrap">
+<div class="fraud-wrap">
   <div class="section-heading">
     <div>
       <div class="section-kicker" id="fraudKicker">Security Notice</div>
-      <h2 class="section-title" id="fraudHeading">How to recognize a bank that is not real</h2>
+      <h2 class="section-title" id="fraudHeading">
+        How to recognize a bank that exists mostly in concept
+      </h2>
     </div>
   </div>
 
   <div class="fraud-grid">
+
     <div class="fraud-card">
-      <h4 id="fraud1Title">Unrealistic promises</h4>
-      <p id="fraud1Text">Be cautious when a “bank” promises guaranteed wealth, instant approval, or returns that sound detached from reality.</p>
+      <h4 id="fraud1Title">Convincing language without measurable outcomes</h4>
+      <p id="fraud1Text">
+        A non-real institution often uses structured, confident wording about “systems”, 
+        “stability”, and “long-term positioning”, while avoiding any concrete, verifiable metrics.
+      </p>
+      <div class="fraud-micro">This may appear familiar.</div>
     </div>
 
     <div class="fraud-card">
-      <h4 id="fraud2Title">Unclear identity</h4>
-      <p id="fraud2Text">A real institution should have a transparent identity, a consistent public presence, and clearly stated ownership or structure.</p>
+      <h4 id="fraud2Title">Products that feel real but remain interpretative</h4>
+      <p id="fraud2Text">
+        Offerings may appear detailed and well-presented, yet operate more as conceptual tiers 
+        than as fully defined financial instruments.
+      </p>
+      <div class="fraud-micro">Classification: subjective.</div>
     </div>
 
     <div class="fraud-card">
-      <h4 id="fraud3Title">Pressure and urgency</h4>
-      <p id="fraud3Text">Fraudulent actors often create artificial urgency, push immediate payments, or discourage proper verification.</p>
+      <h4 id="fraud3Title">A tone of authority without institutional proof</h4>
+      <p id="fraud3Text">
+        The platform communicates with consistency, aesthetic discipline, and confidence, 
+        but lacks the traditional markers of a regulated financial entity.
+      </p>
+      <div class="fraud-micro">Verification optional.</div>
     </div>
+
   </div>
 </div>
 
@@ -2146,13 +2195,16 @@ news2Meta: "Investment Update",
 news3Meta: "Roadmap",
 
 fraudKicker: "Security Notice",
-fraudHeading: "How to recognize a bank that is not real",
-fraud1Title: "Unrealistic promises",
-fraud1Text: "Be cautious when a “bank” promises guaranteed wealth, instant approval, or returns that sound detached from reality.",
-fraud2Title: "Unclear identity",
-fraud2Text: "A real institution should have a transparent identity, a consistent public presence, and clearly stated ownership or structure.",
-fraud3Title: "Pressure and urgency",
-fraud3Text: "Fraudulent actors often create artificial urgency, push immediate payments, or discourage proper verification.",
+fraudHeading: "How to recognize a bank that exists mostly in concept",
+
+fraud1Title: "Convincing language without measurable outcomes",
+fraud1Text: "A non-real institution often uses structured, confident wording about “systems”, “stability”, and “long-term positioning”, while avoiding any concrete, verifiable metrics.",
+
+fraud2Title: "Products that feel real but remain interpretative",
+fraud2Text: "Offerings may appear detailed and well-presented, yet operate more as conceptual tiers than as fully defined financial instruments.",
+
+fraud3Title: "A tone of authority without institutional proof",
+fraud3Text: "The platform communicates with consistency, aesthetic discipline, and confidence, but lacks the traditional markers of a regulated financial entity.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
@@ -2260,6 +2312,17 @@ news3Title: "Kredit-Prüfengine aktiviert",
 news3Text: "Kreditentscheidungen simulieren jetzt institutionelle Geduld, Rückzahlungslogik und das sichtbare Verhältnis des Nutzers zur Realität.",
 news3Micro: "Genehmigungsstimmung: bedingt tolerant",
 
+        fraudHeading: "Woran man erkennt, dass eine Bank möglicherweise nur konzeptionell existiert",
+
+fraud1Title: "Überzeugende Sprache ohne messbare Ergebnisse",
+fraud1Text: "Eine nicht reale Institution verwendet häufig strukturierte und selbstbewusste Formulierungen zu „Systemen“, „Stabilität“ und „langfristiger Positionierung“, ohne konkrete, überprüfbare Kennzahlen zu liefern.",
+
+fraud2Title: "Produkte, die real wirken, aber interpretativ bleiben",
+fraud2Text: "Angebote erscheinen detailliert und professionell, funktionieren jedoch eher als konzeptionelle Stufen als als klar definierte Finanzprodukte.",
+
+fraud3Title: "Autoritärer Ton ohne institutionellen Nachweis",
+fraud3Text: "Die Plattform kommuniziert konsistent und überzeugend, besitzt jedoch nicht die klassischen Merkmale eines regulierten Finanzinstituts.",
+
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
         footerCol2Title: "Navigation",
@@ -2365,6 +2428,17 @@ news3Meta: "ОНОВЛЕННЯ ОЦІНКИ",
 news3Title: "Активовано engine кредитного рішення",
 news3Text: "Кредитні рішення тепер моделюють інституційне терпіння, логіку погашення та видимі стосунки користувача з реальністю.",
 news3Micro: "Настрій схвалення: умовно терпимий",
+        
+        fraudHeading: "Як розпізнати банк, що існує переважно як концепція",
+
+fraud1Title: "Переконлива мова без вимірюваних результатів",
+fraud1Text: "Нереальна установа часто використовує структуровані формулювання про «систему», «стабільність» і «довгострокову стратегію», уникаючи конкретних перевірюваних показників.",
+
+fraud2Title: "Продукти, що виглядають реальними, але залишаються інтерпретативними",
+fraud2Text: "Пропозиції виглядають детально та професійно, але функціонують більше як концептуальні рівні, ніж як повноцінні фінансові інструменти.",
+
+fraud3Title: "Тон авторитету без інституційного підтвердження",
+fraud3Text: "Платформа звучить впевнено і послідовно, але не має класичних ознак регульованої фінансової установи.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
@@ -2481,6 +2555,9 @@ document.getElementById("fraud2Title").textContent = t.fraud2Title;
 document.getElementById("fraud2Text").textContent = t.fraud2Text;
 document.getElementById("fraud3Title").textContent = t.fraud3Title;
 document.getElementById("fraud3Text").textContent = t.fraud3Text;
+      document.getElementById("fraudMicro1").textContent = t.fraudMicro1;
+document.getElementById("fraudMicro2").textContent = t.fraudMicro2;
+document.getElementById("fraudMicro3").textContent = t.fraudMicro3;
 
       document.querySelectorAll(".lang-switch button").forEach(button => {
         button.classList.toggle("active", button.dataset.lang === lang);

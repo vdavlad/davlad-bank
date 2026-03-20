@@ -1017,77 +1017,99 @@ body.light .inv-calc-field select{
       </div>
     </div>
 
-    <section class="investment-calculator-section">
+<section class="investment-calculator-section">
   <div class="inv-calc-wrap">
+
     <div class="inv-calc-head">
       <div class="section-kicker" id="invKicker">Investment Simulation</div>
       <h2 class="section-title" id="invTitle">Project structured outcomes</h2>
-      <p class="section-copy" id="invText">Simulate how capital, time, and perception of the market may influence future financial positioning.</p>
+      <p class="section-copy" id="invText">
+        Simulate how capital, time, and perception of the market may influence future financial positioning.
+      </p>
     </div>
 
     <div class="inv-calc-box">
+
       <div class="inv-calc-grid">
+
         <div class="inv-calc-field">
-          <label id="invTypeLabel" for="invType">Investment type</label>
-          <select id="invType">
+          <label for="invType" id="invTypeLabel">Investment type</label>
+          <select id="invType" onchange="calculateInvestment()">
             <option id="invTypeBonds" value="bonds">Bonds</option>
             <option id="invTypeDirect" value="direct">Direct Investment</option>
           </select>
         </div>
 
         <div class="inv-calc-field">
-          <label id="invAmountLabel" for="invAmount">Allocated capital (€)</label>
-          <input type="number" id="invAmount" placeholder="10000">
+          <label for="invAmount" id="invAmountLabel">Allocated capital (€)</label>
+          <input type="number" id="invAmount" value="10000" min="100" step="100" oninput="calculateInvestment()">
         </div>
 
         <div class="inv-calc-field">
-          <label id="invMonthsLabel" for="invMonths">Time horizon (months)</label>
-          <input type="number" id="invMonths" placeholder="12">
+          <label for="invMonths" id="invMonthsLabel">Time horizon (months)</label>
+          <input type="number" id="invMonths" value="12" min="1" max="120" oninput="calculateInvestment()">
         </div>
 
         <div class="inv-calc-field">
-          <label id="invMarketLabel" for="market">Market outlook</label>
-          <select id="market">
+          <label for="market" id="invMarketLabel">Market outlook</label>
+          <select id="market" onchange="calculateInvestment()">
             <option id="invMarketDef" value="def">Defensive</option>
-            <option id="invMarketBal" value="bal">Balanced</option>
+            <option id="invMarketBal" value="bal" selected>Balanced</option>
             <option id="invMarketOpt" value="opt">Optimistic</option>
           </select>
         </div>
 
         <div class="inv-calc-field">
-          <label id="invVolLabel" for="vol">Volatility tolerance</label>
-          <select id="vol">
+          <label for="vol" id="invVolLabel">Volatility tolerance</label>
+          <select id="vol" onchange="calculateInvestment()">
             <option id="invVolLow" value="low">Low</option>
-            <option id="invVolMid" value="mid">Medium</option>
+            <option id="invVolMid" value="mid" selected>Medium</option>
             <option id="invVolHigh" value="high">High</option>
           </select>
         </div>
 
         <div class="inv-calc-field">
-          <label id="invConfidenceLabel" for="confidence">Confidence level</label>
-          <input type="range" id="confidence" min="0" max="100" value="50">
-          <div id="invConfidenceValue">Confidence</div>
+          <label for="confidence" id="invConfidenceLabel">Confidence level</label>
+
+          <div class="inv-calc-range-wrap">
+            <div class="inv-range-top">
+              <span id="invConfidenceValue">Confidence</span>
+              <span class="inv-range-value" id="confidenceOutput">50%</span>
+            </div>
+
+            <input
+              type="range"
+              id="confidence"
+              min="0"
+              max="100"
+              value="50"
+              oninput="document.getElementById('confidenceOutput').textContent = this.value + '%'; calculateInvestment();"
+            >
+          </div>
         </div>
+
       </div>
 
       <div class="inv-calc-actions">
-        <button class="inv-calc-btn" id="invButton" onclick="calculateInvestment()">Simulate outcome</button>
+        <button class="inv-calc-btn" id="invButton" onclick="calculateInvestment()">
+          Simulate outcome
+        </button>
       </div>
 
       <div class="inv-calc-results">
         <div class="inv-calc-card">
           <div class="inv-result-label" id="invResultLabel">Projected outcome</div>
-          <div class="inv-result-value" id="invResult">€0</div>
+          <div class="inv-result-value" id="invResult">€10,400</div>
         </div>
 
         <div class="inv-calc-card">
           <div class="inv-result-label" id="invRangeLabel">Expected range</div>
-          <div class="inv-result-value" id="invRange">€0 — €0</div>
+          <div class="inv-result-value" id="invRange">€8,840 — €11,960</div>
         </div>
 
         <div class="inv-calc-card">
           <div class="inv-result-label">Interpretation</div>
-          <div class="inv-result-value" id="invText">—</div>
+          <div class="inv-result-value" id="invMeme">Stable expectations with limited emotional movement.</div>
         </div>
       </div>
 
@@ -1096,10 +1118,20 @@ body.light .inv-calc-field select{
           <div class="inv-risk-label" id="invRiskLabel">Risk profile</div>
           <div class="inv-risk-value" id="invRiskValue">Moderate</div>
         </div>
-        <div class="inv-risk-text" id="invRiskText">Balanced positioning with controlled volatility exposure.</div>
+
+        <div class="inv-risk-bar">
+          <div class="inv-risk-fill inv-risk-mid" id="invRiskFill" style="width:56%;"></div>
+        </div>
+
+        <div class="inv-risk-text" id="invRiskText">
+          Balanced positioning with controlled volatility exposure.
+        </div>
       </div>
 
-      <div class="inv-calc-meme" id="invMeme">Stable expectations with limited emotional movement.</div>
+      <div class="inv-calc-meme" id="invCalcFootnote">
+        All simulations are illustrative. Market interpretation remains partially emotional.
+      </div>
+
     </div>
   </div>
 </section>
@@ -1136,541 +1168,524 @@ body.light .inv-calc-field select{
       Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
     </div>
   </div>
-
   <script>
-    const btn = document.getElementById("themeToggle");
-
-    function applyTheme(theme){
-      document.body.classList.toggle("light", theme === "light");
-      btn.textContent = theme === "light" ? "☀️" : "🌙";
-    }
-
-    applyTheme(localStorage.getItem("theme") || "dark");
-
-    btn.addEventListener("click", () => {
-      const next = document.body.classList.contains("light") ? "dark" : "light";
-      localStorage.setItem("theme", next);
-      applyTheme(next);
-    });
-
-    async function loadFxRates() {
-      try {
-        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
-        const data = await res.json();
-
-        if (!data || !data.rates) throw new Error("No rates returned");
-
-        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
-        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
-        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
-
-        document.getElementById("top-date").textContent =
-          `Official ECB reference rate • ${data.date}`;
-      } catch (error) {
-        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
-      }
-    }
-
-    const translations = {
-      en: {
-        brandSub: "Private Banking",
-        navHome: "Home",
-        navDeposits: "Deposits",
-        navInvestments: "Investments",
-        navLoans: "Loans",
-        navAbout: "About",
-        navContact: "Contact",
-
-        investmentsBgText: "GROWTH",
-        investmentsKicker: "INVESTMENT STRUCTURE",
-        investmentsTitle: "Investments",
-        investmentsSubtitle: "Structured opportunities for long-term capital development.",
-
-        stat1Label: "Products",
-        stat1Value: "2",
-        stat2Label: "Structure",
-        stat2Value: "Bonds / Direct",
-        stat3Label: "Access",
-        stat3Value: "Open / Selective",
-
-        bondsTitle: "Davlad Bonds",
-        bondsCopy: "A fixed-income style investment format designed for structured capital placement, defined maturity horizons, and a more predictable return profile.",
-        bondsTagValue: "Fixed Income",
-        bondsTagLabel: "Structured return logic",
-        bondsDetail1Label: "Indicative Return",
-        bondsDetail1Value: "6–9%",
-        bondsDetail2Label: "Term",
-        bondsDetail2Value: "6–24 months",
-        bondsDetail3Label: "Risk Profile",
-        bondsDetail3Value: "Moderate",
-        bondsDetail4Label: "Positioning",
-        bondsDetail4Value: "Structured allocation",
-        bondsNote: "Designed for investors seeking a more defined horizon, clearer return expectations, and a product structure resembling fixed-income instruments.",
-        bondsBtn: "View investment",
-
-        directTitle: "Direct Investment",
-        directCopy: "A more selective investment format intended to provide direct exposure to Davlad Bank’s capital structure and long-term strategic development.",
-        directTagValue: "Selective Access",
-        directTagLabel: "Participation-based",
-        directDetail1Label: "Return Logic",
-        directDetail1Value: "Variable",
-        directDetail2Label: "Term",
-        directDetail2Value: "Flexible",
-        directDetail3Label: "Access",
-        directDetail3Value: "Selected investors",
-        directDetail4Label: "Positioning",
-        directDetail4Value: "Strategic participation",
-        directNote: "Intended for investors interested in a more direct relationship to the bank’s internal capital narrative and future development profile.",
-        directBtn: "View investment",
-
-        invKicker: "Investment Simulation",
-invTitle: "Project structured outcomes",
-invText: "Simulate how capital, time, and perception of the market may influence future financial positioning.",
-
-invTypeLabel: "Investment type",
-invTypeBonds: "Bonds",
-invTypeDirect: "Direct Investment",
-
-invAmountLabel: "Allocated capital (€)",
-invMonthsLabel: "Time horizon (months)",
-
-invMarketLabel: "Market outlook",
-invMarketDef: "Defensive",
-invMarketBal: "Balanced",
-invMarketOpt: "Optimistic",
-
-invVolLabel: "Volatility tolerance",
-invVolLow: "Low",
-invVolMid: "Medium",
-invVolHigh: "High",
-
-invConfidenceLabel: "Confidence level",
-invConfidenceValue: "Confidence",
-
-invButton: "Simulate outcome",
-
-invResultLabel: "Projected outcome",
-invRangeLabel: "Expected range",
-
-invMemeBonds: "Stable expectations with limited emotional movement.",
-invMemeDirect: "Outcome influenced by timing, conviction, and selective luck.",
-
-invRiskLabel: "Risk profile",
-invRiskLow: "Low",
-invRiskMid: "Moderate",
-invRiskHigh: "Elevated",
-
-invRiskTextLow: "Conservative positioning with minimal exposure to uncertainty.",
-invRiskTextMid: "Balanced positioning with controlled volatility exposure.",
-invRiskTextHigh: "Elevated exposure with outcome variability driven by market interpretation."
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
-        footerCol2Title: "Navigation",
-        footerCol3Title: "Company",
-        footerText: "Davlad Bank © 2026 · Investment Products",
-        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
-      },
-
-      de: {
-        brandSub: "Private Banking",
-        navHome: "Start",
-        navDeposits: "Einlagen",
-        navInvestments: "Investments",
-        navLoans: "Kredite",
-        navAbout: "Über uns",
-        navContact: "Kontakt",
-
-        investmentsBgText: "GROWTH",
-        investmentsKicker: "INVESTMENTSTRUKTUR",
-        investmentsTitle: "Investments",
-        investmentsSubtitle: "Strukturierte Möglichkeiten für langfristige Kapitalentwicklung.",
-
-        stat1Label: "Produkte",
-        stat1Value: "2",
-        stat2Label: "Struktur",
-        stat2Value: "Bonds / Direkt",
-        stat3Label: "Zugang",
-        stat3Value: "Offen / Selektiv",
-
-        bondsTitle: "Davlad Bonds",
-        bondsCopy: "Ein Fixed-Income-ähnliches Investmentformat für strukturierte Kapitalplatzierung, definierte Laufzeiten und ein planbareres Renditeprofil.",
-        bondsTagValue: "Fixed Income",
-        bondsTagLabel: "Strukturierte Ertragslogik",
-        bondsDetail1Label: "Indikative Rendite",
-        bondsDetail1Value: "6–9%",
-        bondsDetail2Label: "Laufzeit",
-        bondsDetail2Value: "6–24 Monate",
-        bondsDetail3Label: "Risikoprofil",
-        bondsDetail3Value: "Moderat",
-        bondsDetail4Label: "Positionierung",
-        bondsDetail4Value: "Strukturierte Allokation",
-        bondsNote: "Gedacht für Anlegerinnen und Anleger, die einen klareren Horizont, besser planbare Renditeerwartungen und eine fixed-income-nahe Produktstruktur suchen.",
-        bondsBtn: "Investment ansehen",
-
-        directTitle: "Direktinvestment",
-        directCopy: "Ein selektiveres Investmentformat für direktere Exponierung gegenüber der Kapitalstruktur der Davlad Bank und ihrer langfristigen strategischen Entwicklung.",
-        directTagValue: "Selektiver Zugang",
-        directTagLabel: "Beteiligungsbasiert",
-        directDetail1Label: "Renditelogik",
-        directDetail1Value: "Variabel",
-        directDetail2Label: "Laufzeit",
-        directDetail2Value: "Flexibel",
-        directDetail3Label: "Zugang",
-        directDetail3Value: "Ausgewählte Investoren",
-        directDetail4Label: "Positionierung",
-        directDetail4Value: "Strategische Beteiligung",
-        directNote: "Gedacht für Investorinnen und Investoren, die eine direktere Beziehung zur internen Kapitalerzählung und künftigen Entwicklung der Bank suchen.",
-        directBtn: "Investment ansehen",
-
-        invKicker: "Investment-Simulation",
-invTitle: "Strukturierte Ergebnisse projizieren",
-invText: "Simulieren Sie, wie Kapital, Zeit und Marktwahrnehmung Ihre zukünftige finanzielle Position beeinflussen könnten.",
-
-invTypeLabel: "Anlagetyp",
-invTypeBonds: "Anleihen",
-invTypeDirect: "Direktinvestment",
-
-invAmountLabel: "Investiertes Kapital (€)",
-invMonthsLabel: "Zeithorizont (Monate)",
-
-invMarketLabel: "Markteinschätzung",
-invMarketDef: "Defensiv",
-invMarketBal: "Ausgewogen",
-invMarketOpt: "Optimistisch",
-
-invVolLabel: "Volatilitätstoleranz",
-invVolLow: "Niedrig",
-invVolMid: "Mittel",
-invVolHigh: "Hoch",
-
-invConfidenceLabel: "Vertrauensniveau",
-invConfidenceValue: "Vertrauen",
-
-invButton: "Ergebnis simulieren",
-
-invResultLabel: "Prognostiziertes Ergebnis",
-invRangeLabel: "Erwarteter Bereich",
-
-invMemeBonds: "Stabile Erwartungen mit begrenzter emotionaler Bewegung.",
-invMemeDirect: "Das Ergebnis hängt von Timing, Überzeugung und selektivem Glück ab.",
-
-invRiskLabel: "Risikoprofil",
-invRiskLow: "Niedrig",
-invRiskMid: "Moderat",
-invRiskHigh: "Erhöht",
-
-invRiskTextLow: "Konservative Positionierung mit minimaler Unsicherheits-Exposition.",
-invRiskTextMid: "Ausgewogene Positionierung mit kontrollierter Volatilität.",
-invRiskTextHigh: "Erhöhte Exposition mit ergebnisabhängiger Marktinterpretation.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
-        footerCol2Title: "Navigation",
-        footerCol3Title: "Unternehmen",
-        footerText: "Davlad Bank © 2026 · Investmentprodukte",
-        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
-      },
-
-      ua: {
-        brandSub: "Private Banking",
-        navHome: "Головна",
-        navDeposits: "Депозити",
-        navInvestments: "Інвестиції",
-        navLoans: "Кредити",
-        navAbout: "Про банк",
-        navContact: "Контакт",
-
-        investmentsBgText: "GROWTH",
-        investmentsKicker: "ІНВЕСТИЦІЙНА СТРУКТУРA",
-        investmentsTitle: "Інвестиції",
-        investmentsSubtitle: "Структуровані можливості для довгострокового зростання капіталу.",
-        
-        stat1Label: "Продукти",
-        stat1Value: "2",
-        stat2Label: "Структура",
-        stat2Value: "Bonds / Direct",
-        stat3Label: "Доступ",
-        stat3Value: "Відкритий / Вибірковий",
-
-        bondsTitle: "Davlad Bonds",
-        bondsCopy: "Інвестиційний формат у стилі fixed income для структурованого розміщення капіталу, визначених строків і більш передбачуваного профілю дохідності.",
-        bondsTagValue: "Fixed Income",
-        bondsTagLabel: "Структурована логіка доходу",
-        bondsDetail1Label: "Орієнтовна дохідність",
-        bondsDetail1Value: "6–9%",
-        bondsDetail2Label: "Термін",
-        bondsDetail2Value: "6–24 місяці",
-        bondsDetail3Label: "Ризиковий профіль",
-        bondsDetail3Value: "Помірний",
-        bondsDetail4Label: "Позиціонування",
-        bondsDetail4Value: "Структурована алокація",
-        bondsNote: "Підходить для інвесторів, які шукають більш визначений горизонт, зрозуміліші очікування дохідності та структуру, схожу на fixed-income інструменти.",
-        bondsBtn: "Переглянути інвестицію",
-
-        directTitle: "Прямі інвестиції",
-        directCopy: "Більш вибірковий формат інвестування для прямішого доступу до капітальної структури Davlad Bank та її довгострокового стратегічного розвитку.",
-        directTagValue: "Вибірковий доступ",
-        directTagLabel: "Формат участі",
-        directDetail1Label: "Логіка дохідності",
-        directDetail1Value: "Змінна",
-        directDetail2Label: "Термін",
-        directDetail2Value: "Гнучкий",
-        directDetail3Label: "Доступ",
-        directDetail3Value: "Відібрані інвестори",
-        directDetail4Label: "Позиціонування",
-        directDetail4Value: "Стратегічна участь",
-        directNote: "Призначено для інвесторів, яких цікавить пряміший зв’язок із внутрішньою капітальною логікою та майбутнім розвитком банку.",
-        directBtn: "Переглянути інвестицію",
-
-        invKicker: "Симуляція інвестицій",
-invTitle: "Спрогнозуйте структурований результат",
-invText: "Змоделюйте, як капітал, час і ваше сприйняття ринку можуть вплинути на фінансовий результат.",
-
-invTypeLabel: "Тип інвестиції",
-invTypeBonds: "Облігації",
-invTypeDirect: "Прямі інвестиції",
-
-invAmountLabel: "Інвестований капітал (€)",
-invMonthsLabel: "Горизонт (місяці)",
-
-invMarketLabel: "Очікування ринку",
-invMarketDef: "Обережний",
-invMarketBal: "Збалансований",
-invMarketOpt: "Оптимістичний",
-
-invVolLabel: "Толерантність до волатильності",
-invVolLow: "Низька",
-invVolMid: "Середня",
-invVolHigh: "Висока",
-
-invConfidenceLabel: "Рівень впевненості",
-invConfidenceValue: "Впевненість",
-
-invButton: "Симулювати результат",
-
-invResultLabel: "Прогнозований результат",
-invRangeLabel: "Очікуваний діапазон",
-
-invMemeBonds: "Стабільні очікування з мінімальними емоційними коливаннями.",
-invMemeDirect: "Результат залежить від часу, переконання та вибіркової удачі.",
-
-invRiskLabel: "Ризиковий профіль",
-invRiskLow: "Низький",
-invRiskMid: "Помірний",
-invRiskHigh: "Підвищений",
-
-invRiskTextLow: "Консервативна позиція з мінімальним рівнем невизначеності.",
-invRiskTextMid: "Збалансована позиція з контрольованою волатильністю.",
-invRiskTextHigh: "Підвищений ризик із варіативним результатом залежно від ринку.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
-        footerCol2Title: "Навігація",
-        footerCol3Title: "Компанія",
-        footerText: "Davlad Bank © 2026 · Інвестиційні продукти",
-        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
-      }
-    };
-
-function setLanguage(lang) {
-  const t = translations[lang];
-
-  const map = {
-    brandSub: "brandSub",
-    navHome: "navHome",
-    navDeposits: "navDeposits",
-    navInvestments: "navInvestments",
-    navLoans: "navLoans",
-    navAbout: "navAbout",
-    navContact: "navContact",
-
-    investmentsBgText: "investmentsBgText",
-    investmentsKicker: "investmentsKicker",
-    investmentsTitle: "investmentsTitle",
-    investmentsSubtitle: "investmentsSubtitle",
-
-    stat1Label: "stat1Label",
-    stat1Value: "stat1Value",
-    stat2Label: "stat2Label",
-    stat2Value: "stat2Value",
-    stat3Label: "stat3Label",
-    stat3Value: "stat3Value",
-
-    bondsTitle: "bondsTitle",
-    bondsCopy: "bondsCopy",
-    bondsTagValue: "bondsTagValue",
-    bondsTagLabel: "bondsTagLabel",
-    bondsDetail1Label: "bondsDetail1Label",
-    bondsDetail1Value: "bondsDetail1Value",
-    bondsDetail2Label: "bondsDetail2Label",
-    bondsDetail2Value: "bondsDetail2Value",
-    bondsDetail3Label: "bondsDetail3Label",
-    bondsDetail3Value: "bondsDetail3Value",
-    bondsDetail4Label: "bondsDetail4Label",
-    bondsDetail4Value: "bondsDetail4Value",
-    bondsNote: "bondsNote",
-    bondsBtn: "bondsBtn",
-
-    directTitle: "directTitle",
-    directCopy: "directCopy",
-    directTagValue: "directTagValue",
-    directTagLabel: "directTagLabel",
-    directDetail1Label: "directDetail1Label",
-    directDetail1Value: "directDetail1Value",
-    directDetail2Label: "directDetail2Label",
-    directDetail2Value: "directDetail2Value",
-    directDetail3Label: "directDetail3Label",
-    directDetail3Value: "directDetail3Value",
-    directDetail4Label: "directDetail4Label",
-    directDetail4Value: "directDetail4Value",
-    directNote: "directNote",
-    directBtn: "directBtn",
-
-    footerCol1Title: "footerCol1Title",
-    footerCol1Text: "footerCol1Text",
-    footerCol2Title: "footerCol2Title",
-    footerCol3Title: "footerCol3Title",
-    footerText: "footerText",
-    legalText: "legalText"
-  };
-
-  Object.keys(map).forEach(key => {
-    const el = document.getElementById(map[key]);
-    if (el && t[key] !== undefined) el.textContent = t[key];
+  const btn = document.getElementById("themeToggle");
+
+  function applyTheme(theme){
+    document.body.classList.toggle("light", theme === "light");
+    btn.textContent = theme === "light" ? "☀️" : "🌙";
+  }
+
+  applyTheme(localStorage.getItem("theme") || "dark");
+
+  btn.addEventListener("click", () => {
+    const next = document.body.classList.contains("light") ? "dark" : "light";
+    localStorage.setItem("theme", next);
+    applyTheme(next);
   });
 
-  // footer nav
-  document.getElementById("footerDeposits").textContent = t.navDeposits;
-  document.getElementById("footerInvestments").textContent = t.navInvestments;
-  document.getElementById("footerLoans").textContent = t.navLoans;
-  document.getElementById("footerAbout").textContent = t.navAbout;
-  document.getElementById("footerContact").textContent = t.navContact;
+  async function loadFxRates() {
+    try {
+      const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+      const data = await res.json();
 
-  // investment calculator — only if elements exist
-  const safeSet = (id, value) => {
+      if (!data || !data.rates) throw new Error("No rates returned");
+
+      document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+      document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+      document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
+
+      document.getElementById("top-date").textContent =
+        `Official ECB reference rate • ${data.date}`;
+    } catch (error) {
+      document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+    }
+  }
+
+  const translations = {
+    en: {
+      brandSub: "Private Banking",
+      navHome: "Home",
+      navDeposits: "Deposits",
+      navInvestments: "Investments",
+      navLoans: "Loans",
+      navAbout: "About",
+      navContact: "Contact",
+
+      investmentsBgText: "GROWTH",
+      investmentsKicker: "INVESTMENT STRUCTURE",
+      investmentsTitle: "Investments",
+      investmentsSubtitle: "Structured opportunities for long-term capital development.",
+
+      stat1Label: "Products",
+      stat1Value: "2",
+      stat2Label: "Structure",
+      stat2Value: "Bonds / Direct",
+      stat3Label: "Access",
+      stat3Value: "Open / Selective",
+
+      bondsTitle: "Davlad Bonds",
+      bondsCopy: "A fixed-income style investment format designed for structured capital placement, defined maturity horizons, and a more predictable return profile.",
+      bondsTagValue: "Fixed Income",
+      bondsTagLabel: "Structured return logic",
+      bondsDetail1Label: "Indicative Return",
+      bondsDetail1Value: "6–9%",
+      bondsDetail2Label: "Term",
+      bondsDetail2Value: "6–24 months",
+      bondsDetail3Label: "Risk Profile",
+      bondsDetail3Value: "Moderate",
+      bondsDetail4Label: "Positioning",
+      bondsDetail4Value: "Structured allocation",
+      bondsNote: "Designed for investors seeking a more defined horizon, clearer return expectations, and a product structure resembling fixed-income instruments.",
+      bondsBtn: "View investment",
+
+      directTitle: "Direct Investment",
+      directCopy: "A more selective investment format intended to provide direct exposure to Davlad Bank’s capital structure and long-term strategic development.",
+      directTagValue: "Selective Access",
+      directTagLabel: "Participation-based",
+      directDetail1Label: "Return Logic",
+      directDetail1Value: "Variable",
+      directDetail2Label: "Term",
+      directDetail2Value: "Flexible",
+      directDetail3Label: "Access",
+      directDetail3Value: "Selected investors",
+      directDetail4Label: "Positioning",
+      directDetail4Value: "Strategic participation",
+      directNote: "Intended for investors interested in a more direct relationship to the bank’s internal capital narrative and future development profile.",
+      directBtn: "View investment",
+
+      invKicker: "Investment Simulation",
+      invTitle: "Project structured outcomes",
+      invText: "Simulate how capital, time, and perception of the market may influence future financial positioning.",
+      invTypeLabel: "Investment type",
+      invTypeBonds: "Bonds",
+      invTypeDirect: "Direct Investment",
+      invAmountLabel: "Allocated capital (€)",
+      invMonthsLabel: "Time horizon (months)",
+      invMarketLabel: "Market outlook",
+      invMarketDef: "Defensive",
+      invMarketBal: "Balanced",
+      invMarketOpt: "Optimistic",
+      invVolLabel: "Volatility tolerance",
+      invVolLow: "Low",
+      invVolMid: "Medium",
+      invVolHigh: "High",
+      invConfidenceLabel: "Confidence level",
+      invConfidenceValue: "Confidence",
+      invButton: "Simulate outcome",
+      invResultLabel: "Projected outcome",
+      invRangeLabel: "Expected range",
+      invMemeBonds: "Stable expectations with limited emotional movement.",
+      invMemeDirect: "Outcome influenced by timing, conviction, and selective luck.",
+      invRiskLabel: "Risk profile",
+      invRiskLow: "Low",
+      invRiskMid: "Moderate",
+      invRiskHigh: "Elevated",
+      invRiskTextLow: "Conservative positioning with minimal exposure to uncertainty.",
+      invRiskTextMid: "Balanced positioning with controlled volatility exposure.",
+      invRiskTextHigh: "Elevated exposure with outcome variability driven by market interpretation.",
+
+      footerCol1Title: "Davlad Bank",
+      footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+      footerCol2Title: "Navigation",
+      footerCol3Title: "Company",
+      footerText: "Davlad Bank © 2026 · Investment Products",
+      legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+    },
+
+    de: {
+      brandSub: "Private Banking",
+      navHome: "Start",
+      navDeposits: "Einlagen",
+      navInvestments: "Investments",
+      navLoans: "Kredite",
+      navAbout: "Über uns",
+      navContact: "Kontakt",
+
+      investmentsBgText: "GROWTH",
+      investmentsKicker: "INVESTMENTSTRUKTUR",
+      investmentsTitle: "Investments",
+      investmentsSubtitle: "Strukturierte Möglichkeiten für langfristige Kapitalentwicklung.",
+
+      stat1Label: "Produkte",
+      stat1Value: "2",
+      stat2Label: "Struktur",
+      stat2Value: "Bonds / Direkt",
+      stat3Label: "Zugang",
+      stat3Value: "Offen / Selektiv",
+
+      bondsTitle: "Davlad Bonds",
+      bondsCopy: "Ein Fixed-Income-ähnliches Investmentformat für strukturierte Kapitalplatzierung, definierte Laufzeiten und ein planbareres Renditeprofil.",
+      bondsTagValue: "Fixed Income",
+      bondsTagLabel: "Strukturierte Ertragslogik",
+      bondsDetail1Label: "Indikative Rendite",
+      bondsDetail1Value: "6–9%",
+      bondsDetail2Label: "Laufzeit",
+      bondsDetail2Value: "6–24 Monate",
+      bondsDetail3Label: "Risikoprofil",
+      bondsDetail3Value: "Moderat",
+      bondsDetail4Label: "Positionierung",
+      bondsDetail4Value: "Strukturierte Allokation",
+      bondsNote: "Gedacht für Anlegerinnen und Anleger, die einen klareren Horizont, besser planbare Renditeerwartungen und eine fixed-income-nahe Produktstruktur suchen.",
+      bondsBtn: "Investment ansehen",
+
+      directTitle: "Direktinvestment",
+      directCopy: "Ein selektiveres Investmentformat für direktere Exponierung gegenüber der Kapitalstruktur der Davlad Bank und ihrer langfristigen strategischen Entwicklung.",
+      directTagValue: "Selektiver Zugang",
+      directTagLabel: "Beteiligungsbasiert",
+      directDetail1Label: "Renditelogik",
+      directDetail1Value: "Variabel",
+      directDetail2Label: "Laufzeit",
+      directDetail2Value: "Flexibel",
+      directDetail3Label: "Zugang",
+      directDetail3Value: "Ausgewählte Investoren",
+      directDetail4Label: "Positionierung",
+      directDetail4Value: "Strategische Beteiligung",
+      directNote: "Gedacht für Investorinnen und Investoren, die eine direktere Beziehung zur internen Kapitalerzählung und künftigen Entwicklung der Bank suchen.",
+      directBtn: "Investment ansehen",
+
+      invKicker: "Investment-Simulation",
+      invTitle: "Strukturierte Ergebnisse projizieren",
+      invText: "Simulieren Sie, wie Kapital, Zeit und Marktwahrnehmung Ihre zukünftige finanzielle Position beeinflussen könnten.",
+      invTypeLabel: "Anlagetyp",
+      invTypeBonds: "Anleihen",
+      invTypeDirect: "Direktinvestment",
+      invAmountLabel: "Investiertes Kapital (€)",
+      invMonthsLabel: "Zeithorizont (Monate)",
+      invMarketLabel: "Markteinschätzung",
+      invMarketDef: "Defensiv",
+      invMarketBal: "Ausgewogen",
+      invMarketOpt: "Optimistisch",
+      invVolLabel: "Volatilitätstoleranz",
+      invVolLow: "Niedrig",
+      invVolMid: "Mittel",
+      invVolHigh: "Hoch",
+      invConfidenceLabel: "Vertrauensniveau",
+      invConfidenceValue: "Vertrauen",
+      invButton: "Ergebnis simulieren",
+      invResultLabel: "Prognostiziertes Ergebnis",
+      invRangeLabel: "Erwarteter Bereich",
+      invMemeBonds: "Stabile Erwartungen mit begrenzter emotionaler Bewegung.",
+      invMemeDirect: "Das Ergebnis hängt von Timing, Überzeugung und selektivem Glück ab.",
+      invRiskLabel: "Risikoprofil",
+      invRiskLow: "Niedrig",
+      invRiskMid: "Moderat",
+      invRiskHigh: "Erhöht",
+      invRiskTextLow: "Konservative Positionierung mit minimaler Unsicherheits-Exposition.",
+      invRiskTextMid: "Ausgewogene Positionierung mit kontrollierter Volatilität.",
+      invRiskTextHigh: "Erhöhte Exposition mit ergebnisabhängiger Marktinterpretation.",
+
+      footerCol1Title: "Davlad Bank",
+      footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+      footerCol2Title: "Navigation",
+      footerCol3Title: "Unternehmen",
+      footerText: "Davlad Bank © 2026 · Investmentprodukte",
+      legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+    },
+
+    ua: {
+      brandSub: "Private Banking",
+      navHome: "Головна",
+      navDeposits: "Депозити",
+      navInvestments: "Інвестиції",
+      navLoans: "Кредити",
+      navAbout: "Про банк",
+      navContact: "Контакт",
+
+      investmentsBgText: "GROWTH",
+      investmentsKicker: "ІНВЕСТИЦІЙНА СТРУКТУРА",
+      investmentsTitle: "Інвестиції",
+      investmentsSubtitle: "Структуровані можливості для довгострокового зростання капіталу.",
+
+      stat1Label: "Продукти",
+      stat1Value: "2",
+      stat2Label: "Структура",
+      stat2Value: "Bonds / Direct",
+      stat3Label: "Доступ",
+      stat3Value: "Відкритий / Вибірковий",
+
+      bondsTitle: "Davlad Bonds",
+      bondsCopy: "Інвестиційний формат у стилі fixed income для структурованого розміщення капіталу, визначених строків і більш передбачуваного профілю дохідності.",
+      bondsTagValue: "Fixed Income",
+      bondsTagLabel: "Структурована логіка доходу",
+      bondsDetail1Label: "Орієнтовна дохідність",
+      bondsDetail1Value: "6–9%",
+      bondsDetail2Label: "Термін",
+      bondsDetail2Value: "6–24 місяці",
+      bondsDetail3Label: "Ризиковий профіль",
+      bondsDetail3Value: "Помірний",
+      bondsDetail4Label: "Позиціонування",
+      bondsDetail4Value: "Структурована алокація",
+      bondsNote: "Підходить для інвесторів, які шукають більш визначений горизонт, зрозуміліші очікування дохідності та структуру, схожу на fixed-income інструменти.",
+      bondsBtn: "Переглянути інвестицію",
+
+      directTitle: "Прямі інвестиції",
+      directCopy: "Більш вибірковий формат інвестування для прямішого доступу до капітальної структури Davlad Bank та її довгострокового стратегічного розвитку.",
+      directTagValue: "Вибірковий доступ",
+      directTagLabel: "Формат участі",
+      directDetail1Label: "Логіка дохідності",
+      directDetail1Value: "Змінна",
+      directDetail2Label: "Термін",
+      directDetail2Value: "Гнучкий",
+      directDetail3Label: "Доступ",
+      directDetail3Value: "Відібрані інвестори",
+      directDetail4Label: "Позиціонування",
+      directDetail4Value: "Стратегічна участь",
+      directNote: "Призначено для інвесторів, яких цікавить пряміший зв’язок із внутрішньою капітальною логікою та майбутнім розвитком банку.",
+      directBtn: "Переглянути інвестицію",
+
+      invKicker: "Симуляція інвестицій",
+      invTitle: "Спрогнозуйте структурований результат",
+      invText: "Змоделюйте, як капітал, час і ваше сприйняття ринку можуть вплинути на фінансовий результат.",
+      invTypeLabel: "Тип інвестиції",
+      invTypeBonds: "Облігації",
+      invTypeDirect: "Прямі інвестиції",
+      invAmountLabel: "Інвестований капітал (€)",
+      invMonthsLabel: "Горизонт (місяці)",
+      invMarketLabel: "Очікування ринку",
+      invMarketDef: "Обережний",
+      invMarketBal: "Збалансований",
+      invMarketOpt: "Оптимістичний",
+      invVolLabel: "Толерантність до волатильності",
+      invVolLow: "Низька",
+      invVolMid: "Середня",
+      invVolHigh: "Висока",
+      invConfidenceLabel: "Рівень впевненості",
+      invConfidenceValue: "Впевненість",
+      invButton: "Симулювати результат",
+      invResultLabel: "Прогнозований результат",
+      invRangeLabel: "Очікуваний діапазон",
+      invMemeBonds: "Стабільні очікування з мінімальними емоційними коливаннями.",
+      invMemeDirect: "Результат залежить від часу, переконання та вибіркової удачі.",
+      invRiskLabel: "Ризиковий профіль",
+      invRiskLow: "Низький",
+      invRiskMid: "Помірний",
+      invRiskHigh: "Підвищений",
+      invRiskTextLow: "Консервативна позиція з мінімальним рівнем невизначеності.",
+      invRiskTextMid: "Збалансована позиція з контрольованою волатильністю.",
+      invRiskTextHigh: "Підвищений ризик із варіативним результатом залежно від ринку.",
+
+      footerCol1Title: "Davlad Bank",
+      footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+      footerCol2Title: "Навігація",
+      footerCol3Title: "Компанія",
+      footerText: "Davlad Bank © 2026 · Інвестиційні продукти",
+      legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+    }
+  };
+
+  function safeSetText(id, value) {
     const el = document.getElementById(id);
     if (el && value !== undefined) el.textContent = value;
-  };
+  }
 
-  safeSet("invKicker", t.invKicker);
-  safeSet("invTitle", t.invTitle);
-  safeSet("invText", t.invText);
+  function setLanguage(lang) {
+    const t = translations[lang];
 
-  safeSet("invTypeLabel", t.invTypeLabel);
-  safeSet("invTypeBonds", t.invTypeBonds);
-  safeSet("invTypeDirect", t.invTypeDirect);
+    const map = {
+      brandSub: "brandSub",
+      navHome: "navHome",
+      navDeposits: "navDeposits",
+      navInvestments: "navInvestments",
+      navLoans: "navLoans",
+      navAbout: "navAbout",
+      navContact: "navContact",
 
-  safeSet("invAmountLabel", t.invAmountLabel);
-  safeSet("invMonthsLabel", t.invMonthsLabel);
+      investmentsBgText: "investmentsBgText",
+      investmentsKicker: "investmentsKicker",
+      investmentsTitle: "investmentsTitle",
+      investmentsSubtitle: "investmentsSubtitle",
 
-  safeSet("invMarketLabel", t.invMarketLabel);
-  safeSet("invMarketDef", t.invMarketDef);
-  safeSet("invMarketBal", t.invMarketBal);
-  safeSet("invMarketOpt", t.invMarketOpt);
+      stat1Label: "stat1Label",
+      stat1Value: "stat1Value",
+      stat2Label: "stat2Label",
+      stat2Value: "stat2Value",
+      stat3Label: "stat3Label",
+      stat3Value: "stat3Value",
 
-  safeSet("invVolLabel", t.invVolLabel);
-  safeSet("invVolLow", t.invVolLow);
-  safeSet("invVolMid", t.invVolMid);
-  safeSet("invVolHigh", t.invVolHigh);
+      bondsTitle: "bondsTitle",
+      bondsCopy: "bondsCopy",
+      bondsTagValue: "bondsTagValue",
+      bondsTagLabel: "bondsTagLabel",
+      bondsDetail1Label: "bondsDetail1Label",
+      bondsDetail1Value: "bondsDetail1Value",
+      bondsDetail2Label: "bondsDetail2Label",
+      bondsDetail2Value: "bondsDetail2Value",
+      bondsDetail3Label: "bondsDetail3Label",
+      bondsDetail3Value: "bondsDetail3Value",
+      bondsDetail4Label: "bondsDetail4Label",
+      bondsDetail4Value: "bondsDetail4Value",
+      bondsNote: "bondsNote",
+      bondsBtn: "bondsBtn",
 
-  safeSet("invConfidenceLabel", t.invConfidenceLabel);
-  safeSet("invConfidenceValue", t.invConfidenceValue);
+      directTitle: "directTitle",
+      directCopy: "directCopy",
+      directTagValue: "directTagValue",
+      directTagLabel: "directTagLabel",
+      directDetail1Label: "directDetail1Label",
+      directDetail1Value: "directDetail1Value",
+      directDetail2Label: "directDetail2Label",
+      directDetail2Value: "directDetail2Value",
+      directDetail3Label: "directDetail3Label",
+      directDetail3Value: "directDetail3Value",
+      directDetail4Label: "directDetail4Label",
+      directDetail4Value: "directDetail4Value",
+      directNote: "directNote",
+      directBtn: "directBtn",
 
-  safeSet("invButton", t.invButton);
-  safeSet("invResultLabel", t.invResultLabel);
-  safeSet("invRangeLabel", t.invRangeLabel);
-  safeSet("invRiskLabel", t.invRiskLabel);
+      footerCol1Title: "footerCol1Title",
+      footerCol1Text: "footerCol1Text",
+      footerCol2Title: "footerCol2Title",
+      footerCol3Title: "footerCol3Title",
+      footerText: "footerText",
+      legalText: "legalText"
+    };
 
-  document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
-
-  document.querySelectorAll(".lang-switch button").forEach(button => {
-    button.classList.toggle("active", button.dataset.lang === lang);
-  });
-
-  localStorage.setItem("siteLanguage", lang);
-};
-
-
-      Object.keys(map).forEach(key => {
-        const el = document.getElementById(map[key]);
-        if (el && t[key] !== undefined) el.textContent = t[key];
-      });
-
-      document.getElementById("footerDeposits").textContent = t.navDeposits;
-      document.getElementById("footerInvestments").textContent = t.navInvestments;
-      document.getElementById("footerLoans").textContent = t.navLoans;
-      document.getElementById("footerAbout").textContent = t.navAbout;
-      document.getElementById("footerContact").textContent = t.navContact;
-
-      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
-
-      document.querySelectorAll(".lang-switch button").forEach(button => {
-        button.classList.toggle("active", button.dataset.lang === lang);
-      });
-
-      localStorage.setItem("siteLanguage", lang);
-    }
-
-    document.querySelectorAll(".lang-switch button").forEach(button => {
-      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    Object.keys(map).forEach(key => {
+      safeSetText(map[key], t[key]);
     });
 
-    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
-    setLanguage(savedLanguage);
+    safeSetText("footerDeposits", t.navDeposits);
+    safeSetText("footerInvestments", t.navInvestments);
+    safeSetText("footerLoans", t.navLoans);
+    safeSetText("footerAbout", t.navAbout);
+    safeSetText("footerContact", t.navContact);
 
-    loadFxRates();
+    safeSetText("invKicker", t.invKicker);
+    safeSetText("invTitle", t.invTitle);
+    safeSetText("invText", t.invText);
 
-function calculateInvestment(){
-  const type = document.getElementById("invType").value;
-  const amount = +document.getElementById("invAmount").value || 0;
-  const months = +document.getElementById("invMonths").value || 0;
-  const market = document.getElementById("market").value;
-  const vol = document.getElementById("vol").value;
-  const confidence = +document.getElementById("confidence").value || 0;
+    safeSetText("invTypeLabel", t.invTypeLabel);
+    safeSetText("invTypeBonds", t.invTypeBonds);
+    safeSetText("invTypeDirect", t.invTypeDirect);
 
-  let base = 0;
+    safeSetText("invAmountLabel", t.invAmountLabel);
+    safeSetText("invMonthsLabel", t.invMonthsLabel);
 
-  if(type === "bonds"){
-    if(market === "def") base = 0.02;
-    if(market === "bal") base = 0.03;
-    if(market === "opt") base = 0.04;
+    safeSetText("invMarketLabel", t.invMarketLabel);
+    safeSetText("invMarketDef", t.invMarketDef);
+    safeSetText("invMarketBal", t.invMarketBal);
+    safeSetText("invMarketOpt", t.invMarketOpt);
+
+    safeSetText("invVolLabel", t.invVolLabel);
+    safeSetText("invVolLow", t.invVolLow);
+    safeSetText("invVolMid", t.invVolMid);
+    safeSetText("invVolHigh", t.invVolHigh);
+
+    safeSetText("invConfidenceLabel", t.invConfidenceLabel);
+    safeSetText("invConfidenceValue", t.invConfidenceValue);
+
+    safeSetText("invButton", t.invButton);
+    safeSetText("invResultLabel", t.invResultLabel);
+    safeSetText("invRangeLabel", t.invRangeLabel);
+    safeSetText("invRiskLabel", t.invRiskLabel);
+
+    const typeEl = document.getElementById("invType");
+    if (typeEl) {
+      const type = typeEl.value;
+      safeSetText("invMeme", type === "bonds" ? t.invMemeBonds : t.invMemeDirect);
+    }
+
+    document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.classList.toggle("active", button.dataset.lang === lang);
+    });
+
+    localStorage.setItem("siteLanguage", lang);
   }
 
-  if(type === "direct"){
-    if(market === "def") base = 0.05;
-    if(market === "bal") base = 0.08;
-    if(market === "opt") base = 0.12;
-  }
+  document.querySelectorAll(".lang-switch button").forEach(button => {
+    button.addEventListener("click", () => {
+      setLanguage(button.dataset.lang);
+      calculateInvestment();
+    });
+  });
 
-  base += (confidence / 100) * 0.02;
+  function calculateInvestment(){
+    const typeEl = document.getElementById("invType");
+    const amountEl = document.getElementById("invAmount");
+    const monthsEl = document.getElementById("invMonths");
+    const marketEl = document.getElementById("market");
+    const volEl = document.getElementById("vol");
+    const confidenceEl = document.getElementById("confidence");
 
-  const years = months / 12;
-  const result = amount * (1 + base * years);
+    if (!typeEl || !amountEl || !monthsEl || !marketEl || !volEl || !confidenceEl) return;
 
-  let spread = 0;
-  if(vol === "low") spread = 0.05;
-  if(vol === "mid") spread = 0.15;
-  if(vol === "high") spread = 0.30;
+    const type = typeEl.value;
+    const amount = +amountEl.value || 0;
+    const months = +monthsEl.value || 0;
+    const market = marketEl.value;
+    const vol = volEl.value;
+    const confidence = +confidenceEl.value || 0;
 
-  const min = result * (1 - spread);
-  const max = result * (1 + spread);
+    let base = 0;
 
-  const currentLang = localStorage.getItem("siteLanguage") || "en";
-  const t = translations[currentLang];
+    if (type === "bonds") {
+      if (market === "def") base = 0.02;
+      if (market === "bal") base = 0.03;
+      if (market === "opt") base = 0.04;
+    }
 
-  let meme = type === "bonds" ? t.invMemeBonds : t.invMemeDirect;
+    if (type === "direct") {
+      if (market === "def") base = 0.05;
+      if (market === "bal") base = 0.08;
+      if (market === "opt") base = 0.12;
+    }
 
-  const resultEl = document.getElementById("invResult");
-  const rangeEl = document.getElementById("invRange");
-  const textEl = document.getElementById("invText");
-  const memeEl = document.getElementById("invMeme");
+    base += (confidence / 100) * 0.02;
 
-  if (resultEl) resultEl.textContent = "€" + Math.round(result);
-  if (rangeEl) rangeEl.textContent = "€" + Math.round(min) + " — €" + Math.round(max);
-  if (textEl) textEl.textContent = meme;
-  if (memeEl) memeEl.textContent = meme;
+    const years = months / 12;
+    const result = amount * (1 + base * years);
+
+    let spread = 0;
+    if (vol === "low") spread = 0.05;
+    if (vol === "mid") spread = 0.15;
+    if (vol === "high") spread = 0.30;
+
+    const min = result * (1 - spread);
+    const max = result * (1 + spread);
+
+    const currentLang = localStorage.getItem("siteLanguage") || "en";
+    const t = translations[currentLang];
+
+    const meme = type === "bonds" ? t.invMemeBonds : t.invMemeDirect;
+
+    safeSetText("invResult", "€" + Math.round(result));
+    safeSetText("invRange", "€" + Math.round(min) + " — €" + Math.round(max));
+    safeSetText("invMeme", meme);
+
+let riskLabel = t.invRiskMid;
+let riskText = t.invRiskTextMid;
+let riskClass = "inv-risk-mid";
+let riskWidth = "56%";
+
+if (type === "bonds" && vol === "low") {
+  riskLabel = t.invRiskLow;
+  riskText = t.invRiskTextLow;
+  riskClass = "inv-risk-low";
+  riskWidth = "30%";
+} else if (type === "direct" || vol === "high" || confidence > 75) {
+  riskLabel = t.invRiskHigh;
+  riskText = t.invRiskTextHigh;
+  riskClass = "inv-risk-high";
+  riskWidth = "84%";
 }
-  </script>
+
+safeSetText("invRiskValue", riskLabel);
+safeSetText("invRiskText", riskText);
+
+const riskFill = document.getElementById("invRiskFill");
+if (riskFill) {
+  riskFill.className = "inv-risk-fill " + riskClass;
+  riskFill.style.width = riskWidth;
+}
+  }
+
+  const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+  setLanguage(savedLanguage);
+  loadFxRates();
+  calculateInvestment();
+</script>
 </body>
 </html>

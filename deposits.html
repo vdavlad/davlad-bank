@@ -493,36 +493,223 @@
       background:rgba(0,0,0,.03);
     }
 
-    .feature-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:18px;
-      margin-bottom:24px;
-    }
+    .deposit-calculator-section{
+  margin:42px 0 34px;
+}
 
-    .feature-card{
-      border-radius:20px;
-      padding:22px;
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
+.calc-wrap{
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--card-bg);
+  box-shadow:var(--shadow);
+  position:relative;
+  padding:26px 22px 24px;
+}
 
-    .feature-title{
-      margin:0 0 10px;
-      font-size:22px;
-      font-weight:800;
-      color:var(--text);
-    }
+.calc-wrap::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.6;
+}
 
-    .feature-copy{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.75;
-    }
+.calc-head{
+  max-width:760px;
+  margin-bottom:22px;
+}
+
+.calc-box{
+  position:relative;
+}
+
+.calc-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.calc-field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.calc-field label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--accent);
+  font-weight:700;
+}
+
+.calc-field input,
+.calc-field select{
+  width:100%;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+  color:var(--text);
+  border-radius:12px;
+  padding:13px 14px;
+  font-size:14px;
+  outline:none;
+}
+
+body.light .calc-field input,
+body.light .calc-field select{
+  background:rgba(0,0,0,0.02);
+}
+
+.calc-field input:focus,
+.calc-field select:focus{
+  border-color:var(--border-accent);
+}
+
+.calc-actions{
+  margin-bottom:18px;
+}
+
+.calc-btn{
+  border:1px solid var(--border);
+  background:linear-gradient(135deg, rgba(198,168,91,0.18), rgba(198,168,91,0.08));
+  color:var(--text);
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:800;
+  transition:.18s ease;
+}
+
+.calc-btn:hover{
+  transform:translateY(-1px);
+  border-color:var(--border-accent);
+}
+
+.calc-results{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-bottom:14px;
+}
+
+.calc-card{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  background:rgba(255,255,255,0.02);
+}
+
+.calc-result-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  margin-bottom:8px;
+  font-weight:700;
+}
+
+.calc-result-value{
+  font-size:28px;
+  line-height:1.1;
+  font-weight:800;
+  color:var(--text);
+}
+
+.calc-meme{
+  font-size:13px;
+  line-height:1.7;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  font-style:italic;
+}
+
+@media (max-width:950px){
+  .calc-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width:700px){
+  .calc-grid,
+  .calc-results{
+    grid-template-columns:1fr;
+  }
+
+  .calc-result-value{
+    font-size:24px;
+  }
+}
+
+    .risk-box{
+  margin-top:16px;
+  padding:16px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);
+}
+
+.risk-header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.risk-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.risk-value{
+  font-size:13px;
+  font-weight:800;
+}
+
+.risk-bar{
+  width:100%;
+  height:6px;
+  border-radius:6px;
+  background:rgba(255,255,255,0.08);
+  overflow:hidden;
+  margin-bottom:10px;
+}
+
+.risk-fill{
+  height:100%;
+  width:50%;
+  border-radius:6px;
+  transition:0.3s ease;
+}
+
+/* уровни */
+.risk-low{
+  background:#7ecb8a;
+}
+
+.risk-mid{
+  background:#d8c28a;
+}
+
+.risk-high{
+  background:#d97b7b;
+}
+
+.risk-text{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  font-style:italic;
+}
+
 
     .footer-main{
       margin-top:24px;
@@ -798,28 +985,86 @@
       </div>
     </div>
 
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3 class="feature-title" id="feature1Title">Stability</h3>
-        <p class="feature-copy" id="feature1Copy">
-          Deposit products are positioned around predictable return logic and structured capital placement.
-        </p>
+  <section class="deposit-calculator-section">
+  <div class="calc-wrap">
+
+    <div class="calc-head">
+      <div class="section-kicker" id="calcKicker">Deposit Calculator</div>
+      <h2 class="section-title" id="calcTitle">Estimate your future stability</h2>
+      <p class="section-copy" id="calcText">
+        A simplified tool for projecting deposit outcomes across shorter and longer horizons.
+      </p>
+    </div>
+
+    <div class="calc-box">
+      <div class="calc-grid">
+
+        <div class="calc-field">
+          <label for="depositType" id="calcTypeLabel">Deposit type</label>
+          <select id="depositType">
+            <option value="short">Short Deposit</option>
+            <option value="long">Long Deposit</option>
+          </select>
+        </div>
+
+        <div class="calc-field">
+          <label for="depositAmount" id="calcAmountLabel">Amount (€)</label>
+          <input type="number" id="depositAmount" value="10000" min="100" step="100">
+        </div>
+
+        <div class="calc-field">
+          <label for="depositMonths" id="calcMonthsLabel">Duration (months)</label>
+          <input type="number" id="depositMonths" value="12" min="1" max="120">
+        </div>
+
+        <div class="calc-field">
+          <label for="depositRate" id="calcRateLabel">Interest rate (%)</label>
+          <input type="number" id="depositRate" value="3.5" min="0" max="25" step="0.1">
+        </div>
+
       </div>
 
-      <div class="feature-card">
-        <h3 class="feature-title" id="feature2Title">Clarity</h3>
-        <p class="feature-copy" id="feature2Copy">
-          The current structure is intentionally limited to two clearly differentiated deposit horizons.
-        </p>
+      <div class="calc-actions">
+        <button id="calcButton" class="calc-btn">Calculate stability</button>
       </div>
 
-      <div class="feature-card">
-        <h3 class="feature-title" id="feature3Title">Flexibility</h3>
-        <p class="feature-copy" id="feature3Copy">
-          Clients may choose between shorter access timing and longer-term return orientation.
-        </p>
+      <div class="calc-results">
+        <div class="calc-card">
+          <div class="calc-result-label" id="resultFinalLabel">Final amount</div>
+          <div class="calc-result-value" id="resultFinal">€10,350.00</div>
+        </div>
+
+        <div class="risk-box">
+
+  <div class="risk-header">
+    <div class="risk-label" id="riskLabel">Risk profile</div>
+    <div class="risk-value" id="riskValue">Moderate</div>
+  </div>
+
+  <div class="risk-bar">
+    <div class="risk-fill" id="riskFill"></div>
+  </div>
+
+  <div class="risk-text" id="riskText">
+    Balanced expectations with controlled optimism.
+  </div>
+
+</div>
+
+        <div class="calc-card">
+          <div class="calc-result-label" id="resultProfitLabel">Interest earned</div>
+          <div class="calc-result-value" id="resultProfit">€350.00</div>
+        </div>
+      </div>
+
+      <div class="calc-meme" id="calcMemeText">
+        Result interpretation: calm optimism with moderate liquidity discipline.
       </div>
     </div>
+
+  </div>
+</section>
+    
 
     <div class="footer-main">
       <div class="footer-grid">
@@ -936,12 +1181,30 @@
         longNote: "Intended for clients prioritizing a longer planning horizon, structured savings discipline, and stronger return potential.",
         longBtn: "View deposit",
 
-        feature1Title: "Stability",
-        feature1Copy: "Deposit products are positioned around predictable return logic and structured capital placement.",
-        feature2Title: "Clarity",
-        feature2Copy: "The current structure is intentionally limited to two clearly differentiated deposit horizons.",
-        feature3Title: "Flexibility",
-        feature3Copy: "Clients may choose between shorter access timing and longer-term return orientation.",
+        depositHeroKicker: "CAPITAL PRESERVATION",
+        
+
+calcKicker: "Stability Engine",
+calcTitle: "Project your future liquidity",
+calcText: "A simplified instrument for estimating how discipline, time, and moderate optimism may interact.",
+
+calcTypeLabel: "Deposit configuration",
+calcAmountLabel: "Committed capital (€)",
+calcMonthsLabel: "Patience horizon (months)",
+calcRateLabel: "Optimism rate (%)",
+
+calcButton: "Project survival",
+
+resultFinalLabel: "Projected outcome",
+resultProfitLabel: "Reward for patience",
+
+calcMemeDefault: "Result interpretation: stable intentions with uncertain emotional outcomes.",
+
+depositShortTitle: "Short Deposit",
+depositShortText: "Designed for shorter horizons where liquidity remains relevant and patience is limited but present.",
+
+depositLongTitle: "Long Deposit",
+depositLongText: "Structured for extended commitment, where time becomes the primary driver of perceived financial progress.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
@@ -998,12 +1261,28 @@
         longNote: "Gedacht für Kundinnen und Kunden mit längerem Planungshorizont, strukturierter Sparlogik und stärkerem Renditefokus.",
         longBtn: "Einlage ansehen",
 
-        feature1Title: "Stabilität",
-        feature1Copy: "Die Einlagenprodukte sind auf planbare Ertragslogik und strukturierte Kapitalplatzierung ausgerichtet.",
-        feature2Title: "Klarheit",
-        feature2Copy: "Die aktuelle Struktur ist bewusst auf zwei klar differenzierte Einlagenhorizonte begrenzt.",
-        feature3Title: "Flexibilität",
-        feature3Copy: "Kundinnen und Kunden können zwischen kürzerer Verfügbarkeit und langfristigerer Renditeorientierung wählen.",
+calcKicker: "Stabilitäts-Engine",
+calcTitle: "Prognose Ihrer zukünftigen Liquidität",
+calcText: "Ein vereinfachtes Instrument zur Einschätzung, wie Disziplin, Zeit und moderater Optimismus zusammenwirken könnten.",
+
+calcTypeLabel: "Einlagenstruktur",
+calcAmountLabel: "Gebundenes Kapital (€)",
+calcMonthsLabel: "Geduldshorizont (Monate)",
+calcRateLabel: "Optimismuszins (%)",
+
+calcButton: "Stabilität berechnen",
+
+resultFinalLabel: "Prognostiziertes Ergebnis",
+resultProfitLabel: "Ertrag der Geduld",
+
+calcMemeDefault: "Ergebnisinterpretation: stabile Absichten bei variabler emotionaler Rendite.",
+
+depositShortTitle: "Kurzfristige Einlage",
+depositShortText: "Für kürzere Zeiträume konzipiert, in denen Liquidität relevant bleibt und Geduld begrenzt, aber vorhanden ist.",
+
+depositLongTitle: "Langfristige Einlage",
+depositLongText: "Für längere Bindung ausgelegt, bei der Zeit zum Hauptfaktor wahrgenommener finanzieller Entwicklung wird.",
+        
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
@@ -1059,13 +1338,30 @@
         longPositioning: "Довгий горизонт заощаджень",
         longNote: "Призначений для клієнтів, які орієнтуються на довший горизонт, дисципліновані заощадження та вищий дохідний потенціал.",
         longBtn: "Переглянути депозит",
+        
 
-        feature1Title: "Стабільність",
-        feature1Copy: "Депозитні продукти побудовані навколо передбачуваної логіки дохідності та структурованого розміщення капіталу.",
-        feature2Title: "Прозорість",
-        feature2Copy: "Поточна структура навмисно обмежена двома чітко відокремленими депозитними горизонтами.",
-        feature3Title: "Гнучкість",
-        feature3Copy: "Клієнти можуть обирати між коротшим доступом до коштів і довгостроковішою орієнтацією на дохідність.",
+calcKicker: "Система стабільності",
+calcTitle: "Спрогнозуйте свою майбутню ліквідність",
+calcText: "Спрощений інструмент для оцінки того, як дисципліна, час і помірний оптимізм можуть взаємодіяти.",
+
+calcTypeLabel: "Тип депозиту",
+calcAmountLabel: "Інвестований капітал (€)",
+calcMonthsLabel: "Горизонт терпіння (місяці)",
+calcRateLabel: "Рівень оптимізму (%)",
+
+calcButton: "Розрахувати стабільність",
+
+resultFinalLabel: "Прогнозований результат",
+resultProfitLabel: "Винагорода за терпіння",
+
+calcMemeDefault: "Інтерпретація результату: стабільні наміри з невизначеним емоційним ефектом.",
+
+depositShortTitle: "Короткий депозит",
+depositShortText: "Підходить для коротших періодів, де ліквідність ще має значення, а терпіння обмежене, але присутнє.",
+
+depositLongTitle: "Довгий депозит",
+depositLongText: "Розрахований на довгострокове зобов’язання, де час стає основним фактором фінансового результату.",
+
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
@@ -1125,13 +1421,27 @@
         longPositioning: "longPositioning",
         longNote: "longNote",
         longBtn: "longBtn",
+        calcKicker: "calcKicker",
+calcTitle: "alcTitle",
+calcText: "calcText",
 
-        feature1Title: "feature1Title",
-        feature1Copy: "feature1Copy",
-        feature2Title: "feature2Title",
-        feature2Copy: "feature2Copy",
-        feature3Title: "feature3Title",
-        feature3Copy: "feature3Copy",
+calcTypeLabel: "calcTypeLabel",
+calcAmountLabel: "calcAmountLabel",
+calcMonthsLabel: "calcMonthsLabel",
+calcRateLabel: "calcRateLabel",
+
+calcButton: "calcButton",
+
+resultFinalLabel: "resultFinalLabel",
+resultProfitLabel: "resultProfitLabel",
+
+calcMemeDefault: "calcMemeDefault",
+
+depositShortTitle: "depositShortTitle",
+depositShortText: "depositShortText",
+
+depositLongTitle: "depositLongTitle",
+depositLongText: "depositLongText",
 
         footerCol1Title: "footerCol1Title",
         footerCol1Text: "footerCol1Text",
@@ -1169,6 +1479,120 @@
     setLanguage(savedLanguage);
 
     loadFxRates();
+
+    
+function formatEUR(value){
+  return new Intl.NumberFormat("en-DE", {
+    style: "currency",
+    currency: "EUR"
+  }).format(value);
+}
+
+function getMemeText(type, amount, months, rate, profit){
+  if (type === "short") {
+    if (profit < 200) {
+      return "Result interpretation: liquidity preserved, ambition temporarily postponed.";
+    }
+    if (profit < 1000) {
+      return "Result interpretation: short-term discipline with modest financial self-respect.";
+    }
+    return "Result interpretation: short-term clarity with unexpectedly respectable optimism.";
+  }
+
+  if (months >= 36 && rate >= 4) {
+    return "Result interpretation: long-term patience approaching ceremonial wealth behavior.";
+  }
+  if (profit < 1000) {
+    return "Result interpretation: commitment detected, extravagance still under control.";
+  }
+  return "Result interpretation: sustained stability with visible signs of interpretative prosperity.";
+}
+
+function calculateDeposit(){
+  const type = document.getElementById("depositType").value;
+  const amount = parseFloat(document.getElementById("depositAmount").value) || 0;
+  const months = parseFloat(document.getElementById("depositMonths").value) || 0;
+  const rate = parseFloat(document.getElementById("depositRate").value) || 0;
+
+  const yearlyRate = rate / 100;
+  const finalAmount = amount * (1 + yearlyRate * (months / 12));
+  const profit = finalAmount - amount;
+
+  document.getElementById("resultFinal").textContent = formatEUR(finalAmount);
+  document.getElementById("resultProfit").textContent = formatEUR(profit);
+  document.getElementById("calcMemeText").textContent = getMemeText(type, amount, months, rate, profit);
+}
+
+document.getElementById("calcButton").addEventListener("click", calculateDeposit);
+
+document.getElementById("depositType").addEventListener("change", () => {
+  const type = document.getElementById("depositType").value;
+
+  if (type === "short") {
+    document.getElementById("depositMonths").value = 6;
+    document.getElementById("depositRate").value = 2.8;
+  } else {
+    document.getElementById("depositMonths").value = 24;
+    document.getElementById("depositRate").value = 4.2;
+  }
+const riskScore = calculateRisk(amount, months, rate);
+const risk = getRiskProfile(riskScore);
+
+const fill = document.getElementById("riskFill");
+
+fill.className = "risk-fill " + risk.class;
+fill.style.width = risk.width;
+
+document.getElementById("riskValue").textContent = risk.label;
+document.getElementById("riskText").textContent = risk.text;
+  calculateDeposit();
+});
+
+calculateDeposit();
+
+    function calculateRisk(amount, months, rate){
+  let score = 0;
+
+  // срок
+  if(months < 6) score += 2;
+  else if(months < 24) score += 1;
+
+  // ставка
+  if(rate > 6) score += 2;
+  else if(rate > 3.5) score += 1;
+
+  // сумма
+  if(amount > 50000) score += 1;
+
+  return score;
+}
+
+function getRiskProfile(score){
+  if(score <= 1){
+    return {
+      label: "Low",
+      class: "risk-low",
+      width: "30%",
+      text: "Conservative positioning with minimal emotional exposure."
+    };
+  }
+
+  if(score <= 3){
+    return {
+      label: "Moderate",
+      class: "risk-mid",
+      width: "55%",
+      text: "Balanced expectations with controlled optimism."
+    };
+  }
+
+  return {
+    label: "Elevated",
+    class: "risk-high",
+    width: "85%",
+    text: "Aggressive optimism with interpretative stability."
+  };
+}
   </script>
 </body>
 </html>

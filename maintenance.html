@@ -456,100 +456,61 @@
   margin:70px 0 46px;
 }
 
-/* FULL WIDTH */
-.survival-full{
+/* HERO BLOCK */
+.card-hero-block{
   position:relative;
-  width:100%;
-  min-height:420px;
   overflow:hidden;
-  margin:60px 0;
-}
-
-.survival-bg{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.2)),
-    url("images/survival.jpg") center/cover;
-}
-
-.survival-inner{
-  position:relative;
-  z-index:2;
-  max-width:1280px;
-  margin:auto;
-  padding:60px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:40px;
-}
-
-.survival-title{
-  font-size:44px;
-  margin:0 0 10px;
-}
-
-.survival-text{
-  color:#ddd;
-  max-width:480px;
-}
-
-/* LOWER BLOCK */
-.cards-lower{
-  margin:60px 0;
-}
-
-.cards-lower-grid{
+  border-radius:24px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  padding:38px 34px;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
+  grid-template-columns:1.1fr .9fr;
+  gap:28px;
+  align-items:center;
+  margin-bottom:34px;
+  background:var(--card-bg);
 }
 
-/* ВАЖНО — ФОН */
-.card-bg{
+.card-hero-block::before,
+.card-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.65;
+  z-index:2;
+}
+
+.card-hero-bg,
+.card-box-bg{
   position:absolute;
   inset:0;
   background-size:cover;
   background-position:center;
-  opacity:0.55; /* 👈 СИЛЬНЕЕ */
+  opacity:.42;
+  filter:brightness(.8) contrast(1.05);
 }
 
-/* УМНЫЙ OVERLAY */
-.card-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,0.65),
-    rgba(0,0,0,0.2) 40%,
-    transparent
-  );
+.survival-bg{
+  opacity:.45;
+  filter:brightness(.75) contrast(1.1);
+  background-image:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55)), url("images/survival.jpg");
 }
 
-/* КОНТЕНТ */
-.card-content{
-  position:relative;
-  z-index:2;
-  padding:30px;
-  text-align:center;
-}
-
-/* BOX */
-.card-box{
-  position:relative;
-  border-radius:20px;
-  overflow:hidden;
-  min-height:340px;
-}
-
-/* ФОНЫ */
 .illusion-bg{
-  background-image:url("images/illusion.jpg");
+  opacity:.35;
+  filter:brightness(.9);
+  background-image:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.16)), url("images/illusion.jpg");
 }
 
 .delusion-bg{
-  background-image:url("images/delusion.jpg");
+  opacity:.35;
+  filter:brightness(.9);
+  background-image:linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.45)), url("images/delusion.jpg");
 }
 
 .card-hero-content,
@@ -1407,136 +1368,152 @@
       </a>
     </div>
 
-<section class="survival-full">
+<section class="cards-section">
 
-  <div class="survival-bg"></div>
+  <!-- SURVIVAL HERO -->
+  <div class="card-hero-block">
+    <div class="card-hero-bg survival-bg"></div>
 
-  <div class="survival-inner">
-
-    <div class="survival-left">
-      <div class="card-badge">FREE ENTRY</div>
-
-      <h2 class="survival-title">Davlad Survival</h2>
-
-      <div class="survival-sub">
-        The rational starting point
-      </div>
-
-      <p class="survival-text">
+    <div class="card-hero-content">
+      <div class="card-badge" id="cardsBadge">FREE ENTRY</div>
+      <h2 class="card-hero-title" id="cardsHeroTitle">Davlad Survival</h2>
+      <div class="card-hero-subtitle" id="cardsHeroSubtitle">The rational starting point</div>
+      <p class="card-hero-text" id="cardsHeroText">
         Free access to the Davlad system for everyday financial endurance.
         Built for essentials, not illusions.
       </p>
-
-      <button class="survival-btn">Get Survival</button>
-
-      <div class="survival-micro">No annual fee · Minimal illusions</div>
+      <button class="card-hero-btn" id="cardsHeroButton">Get Survival</button>
+      <div class="card-hero-micro" id="cardsHeroMicro">No annual fee</div>
     </div>
 
-    <div class="survival-right">
-      <div class="bank-card survival-card">
-
+    <div class="card-hero-visual">
+      <div class="bank-card survival-card" id="cardSurvival">
         <div class="card-surface"></div>
 
-        <div class="card-chip chip-silver"></div>
+        <div class="card-chip chip-silver">
+          <span class="chip-line chip-line-v1"></span>
+          <span class="chip-line chip-line-v2"></span>
+          <span class="chip-line chip-line-v3"></span>
+          <span class="chip-line chip-line-h1"></span>
+          <span class="chip-line chip-line-h2"></span>
+          <span class="chip-line chip-line-h3"></span>
+          <span class="chip-core"></span>
+        </div>
 
         <div class="card-brand-top">Davlad Bank</div>
 
         <div class="card-logo">
-          <svg viewBox="0 0 64 64">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
             <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
-              fill="none" stroke="#F2F2F2" stroke-width="3"/>
+              fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             <line x1="16" y1="25.5" x2="41" y2="25.5"
-              stroke="#B89A4A" stroke-width="2"/>
+              stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
             <line x1="16" y1="38.5" x2="41" y2="38.5"
-              stroke="#B89A4A" stroke-width="2"/>
+              stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
 
-        <div class="card-name">SURVIVAL</div>
-        <div class="card-tier">ENTRY TIER</div>
-        <div class="card-mc"></div>
-
+        <div class="card-name" id="cardSurvivalName">SURVIVAL</div>
+        <div class="card-tier" id="cardSurvivalTier">ENTRY TIER</div>
+        <div class="card-mc" aria-hidden="true"></div>
       </div>
     </div>
-
   </div>
 
-</section>
-
-    <section class="cards-lower">
-
+  <!-- LOWER CARDS -->
   <div class="cards-lower-grid">
 
     <!-- ILLUSION -->
     <div class="card-box">
+      <div class="card-box-bg illusion-bg"></div>
 
-      <div class="card-bg illusion-bg"></div>
-
-      <div class="card-overlay"></div>
-
-      <div class="card-content">
-
-        <div class="bank-card illusion-card">
+      <div class="card-box-inner">
+        <div class="bank-card illusion-card" id="cardIllusion">
           <div class="card-surface"></div>
+          <div class="illusion-shine"></div>
 
-          <div class="card-chip chip-silver"></div>
+          <div class="card-chip chip-silver">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
 
           <div class="card-brand-top card-brand-dark">Davlad Bank</div>
 
           <div class="card-logo card-logo-dark">
-            <!-- SVG -->
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                fill="none" stroke="#303030" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5"
+                stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5"
+                stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+            </svg>
           </div>
 
-          <div class="card-name card-name-dark">ILLUSION</div>
-          <div class="card-tier card-tier-dark">PERCEPTION</div>
-
-          <div class="card-mc"></div>
+          <div class="card-name card-name-dark" id="cardIllusionName">ILLUSION</div>
+          <div class="card-tier card-tier-dark" id="cardIllusionTier">PERCEPTION TIER</div>
+          <div class="card-mc" aria-hidden="true"></div>
         </div>
 
-        <h3>Illusion</h3>
-        <p>
-          A more elevated interpretation of financial stability. 
-          Progress, at least visually.
+        <h3 class="card-box-title" id="cardIllusionTitle">Illusion</h3>
+        <p class="card-box-text" id="cardIllusionText">
+          Structured perception of financial stability. Designed to feel like progress.
         </p>
-
       </div>
     </div>
 
     <!-- DELUSION -->
     <div class="card-box">
+      <div class="card-box-bg delusion-bg"></div>
 
-      <div class="card-bg delusion-bg"></div>
-
-      <div class="card-overlay"></div>
-
-      <div class="card-content">
-
-        <div class="bank-card delusion-card">
+      <div class="card-box-inner">
+        <div class="bank-card delusion-card" id="cardDelusion">
           <div class="card-surface"></div>
 
-          <div class="card-chip chip-gold"></div>
+          <div class="card-chip chip-gold">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
 
           <div class="card-brand-top">Davlad Bank</div>
 
           <div class="card-logo">
-            <!-- SVG -->
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5"
+                stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5"
+                stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
+            </svg>
           </div>
 
-          <div class="card-name">DELUSION</div>
-          <div class="card-tier">PRESTIGE</div>
-
-          <div class="card-mc"></div>
+          <div class="card-name" id="cardDelusionName">DELUSION</div>
+          <div class="card-tier" id="cardDelusionTier">PRESTIGE TIER</div>
+          <div class="card-mc" aria-hidden="true"></div>
         </div>
 
-        <h3>Delusion</h3>
-        <p>
-          Confidence beyond measurable limits. 
-          A premium tier for interpretative wealth.
+        <h3 class="card-box-title" id="cardDelusionTitle">Delusion</h3>
+        <p class="card-box-text" id="cardDelusionText">
+          Confidence beyond measurable limits. An elevated tier for interpretative wealth.
         </p>
-
       </div>
     </div>
 
+  </div>
+
+  <div class="cards-footnote" id="cardsFootnote">
+    System progression is interpretative.
   </div>
 
 </section>

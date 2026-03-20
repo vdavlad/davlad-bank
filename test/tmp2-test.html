@@ -1362,22 +1362,22 @@
       </a>
     </div>
 
-    <section class="cards-section">
+<section class="cards-section">
 
   <!-- SURVIVAL HERO -->
   <div class="card-hero-block">
     <div class="card-hero-bg survival-bg"></div>
 
     <div class="card-hero-content">
-      <div class="card-badge">FREE ENTRY</div>
-      <h2 class="card-hero-title">Davlad Survival</h2>
-      <div class="card-hero-subtitle">The rational starting point</div>
-      <p class="card-hero-text">
+      <div class="card-badge" id="cardsBadge">FREE ENTRY</div>
+      <h2 class="card-hero-title" id="cardsHeroTitle">Davlad Survival</h2>
+      <div class="card-hero-subtitle" id="cardsHeroSubtitle">The rational starting point</div>
+      <p class="card-hero-text" id="cardsHeroText">
         Free access to the Davlad system for everyday financial endurance.
         Built for essentials, not illusions.
       </p>
-      <button class="card-hero-btn">Get Survival</button>
-      <div class="card-hero-micro">No annual fee</div>
+      <button class="card-hero-btn" id="cardsHeroButton">Get Survival</button>
+      <div class="card-hero-micro" id="cardsHeroMicro">No annual fee</div>
     </div>
 
     <div class="card-hero-visual">
@@ -1407,8 +1407,8 @@
           </svg>
         </div>
 
-        <div class="card-name">SURVIVAL</div>
-        <div class="card-tier">ENTRY TIER</div>
+        <div class="card-name" id="cardSurvivalName">SURVIVAL</div>
+        <div class="card-tier" id="cardSurvivalTier">ENTRY TIER</div>
         <div class="card-mc" aria-hidden="true"></div>
       </div>
     </div>
@@ -1449,13 +1449,13 @@
             </svg>
           </div>
 
-          <div class="card-name card-name-dark">ILLUSION</div>
-          <div class="card-tier card-tier-dark">PERCEPTION TIER</div>
+          <div class="card-name card-name-dark" id="cardIllusionName">ILLUSION</div>
+          <div class="card-tier card-tier-dark" id="cardIllusionTier">PERCEPTION TIER</div>
           <div class="card-mc" aria-hidden="true"></div>
         </div>
 
-        <h3 class="card-box-title">Illusion</h3>
-        <p class="card-box-text">
+        <h3 class="card-box-title" id="cardIllusionTitle">Illusion</h3>
+        <p class="card-box-text" id="cardIllusionText">
           Structured perception of financial stability. Designed to feel like progress.
         </p>
       </div>
@@ -1492,13 +1492,13 @@
             </svg>
           </div>
 
-          <div class="card-name">DELUSION</div>
-          <div class="card-tier">PRESTIGE TIER</div>
+          <div class="card-name" id="cardDelusionName">DELUSION</div>
+          <div class="card-tier" id="cardDelusionTier">PRESTIGE TIER</div>
           <div class="card-mc" aria-hidden="true"></div>
         </div>
 
-        <h3 class="card-box-title">Delusion</h3>
-        <p class="card-box-text">
+        <h3 class="card-box-title" id="cardDelusionTitle">Delusion</h3>
+        <p class="card-box-text" id="cardDelusionText">
           Confidence beyond measurable limits. An elevated tier for interpretative wealth.
         </p>
       </div>
@@ -1506,7 +1506,7 @@
 
   </div>
 
-  <div class="cards-footnote">
+  <div class="cards-footnote" id="cardsFootnote">
     System progression is interpretative.
   </div>
 
@@ -1739,6 +1739,27 @@ loadFxRates();
         service2Copy: "Structured investment products focused on long-term positioning and measured portfolio growth.",
         service3Title: "Loans",
         service3Copy: "Lending solutions tailored to financing needs, timing requirements, and repayment capacity.",
+        cardsBadge: "FREE ENTRY",
+cardsHeroTitle: "Davlad Survival",
+cardsHeroSubtitle: "The rational starting point",
+cardsHeroText: "Free access to the Davlad system for everyday financial endurance. Built for essentials, not illusions.",
+cardsHeroButton: "Get Survival",
+cardsHeroMicro: "No annual fee",
+
+cardSurvivalName: "SURVIVAL",
+cardSurvivalTier: "ENTRY TIER",
+
+cardIllusionName: "ILLUSION",
+cardIllusionTier: "PERCEPTION TIER",
+cardIllusionTitle: "Illusion",
+cardIllusionText: "Structured perception of financial stability. Designed to feel like progress.",
+
+cardDelusionName: "DELUSION",
+cardDelusionTier: "PRESTIGE TIER",
+cardDelusionTitle: "Delusion",
+cardDelusionText: "Confidence beyond measurable limits. An elevated tier for interpretative wealth.",
+
+cardsFootnote: "System progression is interpretative.",
 
         promoKicker: "Featured",
         promoHeading: "Promoted opportunities",
@@ -1815,6 +1836,28 @@ fraud3Text: "Fraudulent actors often create artificial urgency, push immediate p
         service3Title: "Kredite",
         service3Copy: "Kreditlösungen abgestimmt auf Finanzierungsbedarf, Timing und Rückzahlungsfähigkeit.",
 
+        cardsBadge: "KOSTENLOSER EINSTIEG",
+cardsHeroTitle: "Davlad Survival",
+cardsHeroSubtitle: "Der rationale Einstiegspunkt",
+cardsHeroText: "Kostenloser Zugang zum Davlad-System für alltägliche finanzielle Belastbarkeit. Für das Wesentliche gebaut, nicht für Illusionen.",
+cardsHeroButton: "Survival wählen",
+cardsHeroMicro: "Keine Jahresgebühr",
+
+cardSurvivalName: "SURVIVAL",
+cardSurvivalTier: "EINSTIEGSSTUFE",
+
+cardIllusionName: "ILLUSION",
+cardIllusionTier: "WAHRNEHMUNGSSTUFE",
+cardIllusionTitle: "Illusion",
+cardIllusionText: "Strukturierte Wahrnehmung finanzieller Stabilität. Entwickelt, um sich wie Fortschritt anzufühlen.",
+
+cardDelusionName: "DELUSION",
+cardDelusionTier: "PRESTIGE-STUFE",
+cardDelusionTitle: "Delusion",
+cardDelusionText: "Selbstvertrauen jenseits messbarer Grenzen. Eine gehobene Stufe für interpretativen Wohlstand.",
+
+cardsFootnote: "Der Systemfortschritt ist interpretativ.",
+
         promoKicker: "Im Fokus",
         promoHeading: "Ausgewählte Möglichkeiten",
         promo1Title: "Mars Expansion Program",
@@ -1889,6 +1932,28 @@ fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf
         service2Copy: "Структуровані інвестиційні продукти з фокусом на довгострокове позиціонування та помірне зростання.",
         service3Title: "Кредити",
         service3Copy: "Кредитні рішення, адаптовані до потреб фінансування, часу та платоспроможності.",
+
+        cardsBadge: "БЕЗКОШТОВНИЙ ВХІД",
+cardsHeroTitle: "Davlad Survival",
+cardsHeroSubtitle: "Раціональна точка входу",
+cardsHeroText: "Безкоштовний доступ до системи Davlad для щоденної фінансової витривалості. Створено для необхідного, а не для ілюзій.",
+cardsHeroButton: "Обрати Survival",
+cardsHeroMicro: "Без річної комісії",
+
+cardSurvivalName: "SURVIVAL",
+cardSurvivalTier: "ПОЧАТКОВИЙ РІВЕНЬ",
+
+cardIllusionName: "ILLUSION",
+cardIllusionTier: "РІВЕНЬ СПРИЙНЯТТЯ",
+cardIllusionTitle: "Illusion",
+cardIllusionText: "Структуроване сприйняття фінансової стабільності. Створено, щоб відчувалося як прогрес.",
+
+cardDelusionName: "DELUSION",
+cardDelusionTier: "ПРЕСТИЖНИЙ РІВЕНЬ",
+cardDelusionTitle: "Delusion",
+cardDelusionText: "Впевненість за межами вимірюваних показників. Підвищений рівень для інтерпретованого добробуту.",
+
+cardsFootnote: "Прогрес системи має інтерпретативний характер.",
 
         promoKicker: "Featured",
         promoHeading: "Рекомендовані можливості",
@@ -1969,6 +2034,28 @@ fraud3Text: "Шахраї часто створюють штучну термі�
       document.getElementById("service2Copy").textContent = t.service2Copy;
       document.getElementById("service3Title").textContent = t.service3Title;
       document.getElementById("service3Copy").textContent = t.service3Copy;
+
+      document.getElementById("cardsBadge").textContent = t.cardsBadge;
+document.getElementById("cardsHeroTitle").textContent = t.cardsHeroTitle;
+document.getElementById("cardsHeroSubtitle").textContent = t.cardsHeroSubtitle;
+document.getElementById("cardsHeroText").textContent = t.cardsHeroText;
+document.getElementById("cardsHeroButton").textContent = t.cardsHeroButton;
+document.getElementById("cardsHeroMicro").textContent = t.cardsHeroMicro;
+
+document.getElementById("cardSurvivalName").textContent = t.cardSurvivalName;
+document.getElementById("cardSurvivalTier").textContent = t.cardSurvivalTier;
+
+document.getElementById("cardIllusionName").textContent = t.cardIllusionName;
+document.getElementById("cardIllusionTier").textContent = t.cardIllusionTier;
+document.getElementById("cardIllusionTitle").textContent = t.cardIllusionTitle;
+document.getElementById("cardIllusionText").textContent = t.cardIllusionText;
+
+document.getElementById("cardDelusionName").textContent = t.cardDelusionName;
+document.getElementById("cardDelusionTier").textContent = t.cardDelusionTier;
+document.getElementById("cardDelusionTitle").textContent = t.cardDelusionTitle;
+document.getElementById("cardDelusionText").textContent = t.cardDelusionText;
+
+document.getElementById("cardsFootnote").textContent = t.cardsFootnote;
 
       document.getElementById("promoKicker").textContent = t.promoKicker;
       document.getElementById("promoHeading").textContent = t.promoHeading;

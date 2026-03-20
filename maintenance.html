@@ -602,14 +602,17 @@
   z-index:2;
 }
 
-.card-hero-bg,
-.card-box-bg{
+.card-hero-bg::after,
+.card-box-bg::after{
+  content:"";
   position:absolute;
   inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:.42;
-  filter:brightness(.8) contrast(1.05);
+  background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.34));
+}
+
+body.light .card-hero-bg::after,
+body.light .card-box-bg::after{
+  background:linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.42));
 }
 
 .survival-bg{
@@ -953,6 +956,44 @@
 .card-tier-dark{
   color:rgba(40,40,40,0.62);
 }
+
+/* В dark theme прозрачная карта должна иметь более светлый текст */
+body:not(.light) .illusion-card .card-brand-dark{
+  color:rgba(255,255,255,0.92);
+  text-shadow:0 2px 10px rgba(0,0,0,0.35);
+}
+
+body:not(.light) .illusion-card .card-name-dark{
+  color:#d6b76a;
+  text-shadow:0 2px 10px rgba(0,0,0,0.28);
+} 
+
+body:not(.light) .illusion-card .card-tier-dark{
+  color:rgba(255,255,255,0.72);
+  text-shadow:0 2px 8px rgba(0,0,0,0.28);
+}
+
+body.light .card-hero-bg,
+body.light .card-box-bg{
+  opacity:.52;
+  filter:brightness(.62) contrast(1.08);
+}
+
+
+body.light .card-badge,
+body.light .card-hero-title,
+body.light .card-box-title{
+  color:#111111;
+}
+
+body.light .card-hero-subtitle{
+  color:#8f6d1f;
+}
+
+body.light .card-hero-text,
+body.light .card-box-text{
+  color:#4f4f4f;
+}    
 
 /* MASTERCARD */
 .card-mc{

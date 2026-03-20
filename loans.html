@@ -341,6 +341,304 @@
       font-size:15px;
     }
 
+    .loan-calculator-section{
+  margin:42px 0 34px;
+}
+
+.loan-calc-wrap{
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--card-bg);
+  box-shadow:var(--shadow);
+  position:relative;
+  padding:26px 22px 24px;
+}
+
+.loan-calc-wrap::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.6;
+}
+
+.loan-calc-head{
+  max-width:760px;
+  margin-bottom:22px;
+}
+
+.loan-calc-box{
+  position:relative;
+}
+
+.loan-calc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.loan-calc-field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.loan-calc-field label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--accent);
+  font-weight:700;
+}
+
+.loan-calc-field input,
+.loan-calc-field select{
+  width:100%;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+  color:var(--text);
+  border-radius:12px;
+  padding:13px 14px;
+  font-size:14px;
+  outline:none;
+}
+
+body.light .loan-calc-field input,
+body.light .loan-calc-field select{
+  background:rgba(0,0,0,0.02);
+}
+
+.loan-calc-field input:focus,
+.loan-calc-field select:focus{
+  border-color:var(--border-accent);
+}
+
+.loan-calc-range-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding-top:2px;
+}
+
+.loan-range-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.loan-range-value{
+  font-size:13px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.loan-calc-field input[type="range"]{
+  padding:0;
+  height:auto;
+  border:none;
+  background:transparent;
+  accent-color:var(--accent);
+}
+
+.loan-calc-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+
+.loan-calc-btn{
+  border:1px solid var(--border);
+  background:linear-gradient(135deg, rgba(198,168,91,0.18), rgba(198,168,91,0.08));
+  color:var(--text);
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:800;
+  transition:.18s ease;
+}
+
+.loan-calc-btn:hover{
+  transform:translateY(-1px);
+  border-color:var(--border-accent);
+}
+
+.loan-calc-btn-secondary{
+  background:transparent;
+}
+
+.loan-assessment-status{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:24px;
+  margin-bottom:16px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.loan-status-spinner{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,0.16);
+  border-top-color:var(--accent);
+  opacity:0;
+  pointer-events:none;
+}
+
+.loan-status-spinner.is-running{
+  opacity:1;
+  animation:loanSpin .7s linear infinite;
+}
+
+@keyframes loanSpin{
+  to{ transform:rotate(360deg); }
+}
+
+.loan-calc-results{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:14px;
+}
+
+.loan-calc-card{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  background:rgba(255,255,255,0.02);
+  transition:.2s ease;
+}
+
+.loan-result-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  margin-bottom:8px;
+  font-weight:700;
+}
+
+.loan-result-value{
+  font-size:24px;
+  line-height:1.2;
+  font-weight:800;
+  color:var(--text);
+}
+
+.loan-status-card.status-approved{
+  border-color:rgba(126,203,138,0.45);
+}
+
+.loan-status-card.status-conditional{
+  border-color:rgba(216,194,138,0.45);
+}
+
+.loan-status-card.status-denied{
+  border-color:rgba(217,123,123,0.45);
+}
+
+.loan-risk-box{
+  margin-top:16px;
+  padding:16px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);
+}
+
+.loan-risk-header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  gap:10px;
+}
+
+.loan-risk-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.loan-risk-value{
+  font-size:13px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.loan-risk-bar{
+  width:100%;
+  height:6px;
+  border-radius:6px;
+  background:rgba(255,255,255,0.08);
+  overflow:hidden;
+  margin-bottom:10px;
+}
+
+.loan-risk-fill{
+  height:100%;
+  width:50%;
+  border-radius:6px;
+  transition:.3s ease;
+}
+
+.loan-risk-low{
+  background:#7ecb8a;
+}
+
+.loan-risk-mid{
+  background:#d8c28a;
+}
+
+.loan-risk-high{
+  background:#d97b7b;
+}
+
+.loan-risk-text{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  font-style:italic;
+}
+
+.loan-calc-meme{
+  font-size:13px;
+  line-height:1.7;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  font-style:italic;
+}
+
+@media (max-width:950px){
+  .loan-calc-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .loan-calc-results{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:700px){
+  .loan-calc-grid{
+    grid-template-columns:1fr;
+  }
+
+  .loan-result-value{
+    font-size:22px;
+  }
+}
+
     .status-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -673,468 +971,558 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="status-grid">
-      <div class="status-card">
-        <div class="status-label" id="status1Label">Available from</div>
-        <div class="status-value accent" id="status1Value">1 June 2026</div>
-      </div>
+<section class="loan-calculator-section">
+  <div class="loan-calc-wrap">
 
-      <div class="status-card">
-        <div class="status-label" id="status2Label">Division status</div>
-        <div class="status-value" id="status2Value">Pre-launch</div>
-      </div>
-
-      <div class="status-card">
-        <div class="status-label" id="status3Label">Current issuance</div>
-        <div class="status-value" id="status3Value">Inactive</div>
-      </div>
-    </div>
-
-    <div class="countdown-card">
-      <div class="section-kicker" id="countKicker">Launch Countdown</div>
-      <h2 class="section-title" id="countTitle">Time remaining until lending goes live</h2>
-      <p class="section-copy" id="countCopy">
-        The lending division remains in controlled preparation. The following countdown reflects the planned public activation date.
+    <div class="loan-calc-head">
+      <div class="section-kicker" id="loanCalcKicker">Debt Reality Check</div>
+      <h2 class="section-title" id="loanCalcTitle">Simulate your approval profile</h2>
+      <p class="section-copy" id="loanCalcText">
+        A structured assessment of requested capital, repayment logic, and institutional patience.
       </p>
+    </div>
 
-      <div class="countdown-grid">
-        <div class="count-box">
-          <div class="count-value" id="daysValue">—</div>
-          <div class="count-label" id="daysLabel">Days</div>
+    <div class="loan-calc-box">
+
+      <div class="loan-calc-grid">
+        <div class="loan-calc-field">
+          <label for="loanAmount" id="loanAmountLabel">Requested capital (€)</label>
+          <input type="number" id="loanAmount" value="12000" min="500" step="100" oninput="calculateLoan()">
         </div>
-        <div class="count-box">
-          <div class="count-value" id="hoursValue">—</div>
-          <div class="count-label" id="hoursLabel">Hours</div>
+
+        <div class="loan-calc-field">
+          <label for="loanIncome" id="loanIncomeLabel">Declared monthly income (€)</label>
+          <input type="number" id="loanIncome" value="2600" min="0" step="50" oninput="calculateLoan()">
         </div>
-        <div class="count-box">
-          <div class="count-value" id="minutesValue">—</div>
-          <div class="count-label" id="minutesLabel">Minutes</div>
+
+        <div class="loan-calc-field">
+          <label for="loanMonths" id="loanMonthsLabel">Repayment horizon (months)</label>
+          <input type="number" id="loanMonths" value="24" min="3" max="120" step="1" oninput="calculateLoan()">
         </div>
-        <div class="count-box">
-          <div class="count-value" id="secondsValue">—</div>
-          <div class="count-label" id="secondsLabel">Seconds</div>
+
+        <div class="loan-calc-field">
+          <label for="loanStability" id="loanStabilityLabel">Employment stability</label>
+          <select id="loanStability" onchange="calculateLoan()">
+            <option id="loanStabilityFragile" value="fragile">Fragile</option>
+            <option id="loanStabilityAcceptable" value="acceptable" selected>Acceptable</option>
+            <option id="loanStabilityStable" value="stable">Questionably stable</option>
+            <option id="loanStabilityControl" value="control">Illusion of control</option>
+          </select>
+        </div>
+
+        <div class="loan-calc-field">
+          <label for="loanPurpose" id="loanPurposeLabel">Purpose profile</label>
+          <select id="loanPurpose" onchange="calculateLoan()">
+            <option id="loanPurposeEssential" value="essential" selected>Essential</option>
+            <option id="loanPurposePlanned" value="planned">Planned expansion</option>
+            <option id="loanPurposeLifestyle" value="lifestyle">Lifestyle acceleration</option>
+            <option id="loanPurposeAmbiguous" value="ambiguous">Interpretative necessity</option>
+          </select>
+        </div>
+
+        <div class="loan-calc-field">
+          <label for="loanConfidence" id="loanConfidenceLabel">Confidence level</label>
+          <div class="loan-calc-range-wrap">
+            <div class="loan-range-top">
+              <span id="loanConfidenceValue">Confidence</span>
+              <span class="loan-range-value" id="loanConfidenceOutput">50%</span>
+            </div>
+            <input
+              type="range"
+              id="loanConfidence"
+              min="0"
+              max="100"
+              value="50"
+              oninput="document.getElementById('loanConfidenceOutput').textContent = this.value + '%'; calculateLoan();"
+            >
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="timeline-card">
-      <div class="section-kicker" id="timelineKicker">Readiness Timeline</div>
-      <h2 class="section-title" id="timelineTitle">Lending activation roadmap</h2>
-      <p class="section-copy" id="timelineCopy">
-        The lending line is being developed in stages, with product framework and launch sequencing aligned to internal capital priorities.
-      </p>
+      <div class="loan-calc-actions">
+        <button class="loan-calc-btn" id="loanCalcButton" onclick="runLoanAssessment()">
+          Run assessment
+        </button>
+        <button class="loan-calc-btn loan-calc-btn-secondary" id="loanCalcReset" onclick="resetLoanCalculator()">
+          Reset
+        </button>
+      </div>
 
-      <div class="timeline">
-        <div class="timeline-step">
-          <div class="timeline-index">01</div>
-          <h3 class="timeline-title" id="step1Title">Concept</h3>
-          <p class="timeline-copy" id="step1Copy">Core lending direction and product positioning defined.</p>
+      <div class="loan-assessment-status" id="loanAssessmentStatus">
+        <div class="loan-status-spinner" id="loanStatusSpinner"></div>
+        <div class="loan-status-text" id="loanStatusText">Awaiting institutional judgment...</div>
+      </div>
+
+      <div class="loan-calc-results">
+        <div class="loan-calc-card loan-status-card" id="loanStatusCard">
+          <div class="loan-result-label" id="loanResultStatusLabel">Approval status</div>
+          <div class="loan-result-value" id="loanResultStatus">Conditionally tolerated</div>
         </div>
 
-        <div class="timeline-step active">
-          <div class="timeline-index">02</div>
-          <h3 class="timeline-title" id="step2Title">Capital Alignment</h3>
-          <p class="timeline-copy" id="step2Copy">Liquidity and balance-sheet priorities are currently being aligned.</p>
+        <div class="loan-calc-card">
+          <div class="loan-result-label" id="loanResultRateLabel">Indicative rate</div>
+          <div class="loan-result-value" id="loanResultRate">8.4%</div>
         </div>
 
-        <div class="timeline-step">
-          <div class="timeline-index">03</div>
-          <h3 class="timeline-title" id="step3Title">Activation</h3>
-          <p class="timeline-copy" id="step3Copy">Operational readiness and issuance framework to be finalized.</p>
-        </div>
-
-        <div class="timeline-step">
-          <div class="timeline-index">04</div>
-          <h3 class="timeline-title" id="step4Title">Lending Live</h3>
-          <p class="timeline-copy" id="step4Copy">Planned public availability of lending products from June 2026.</p>
+        <div class="loan-calc-card">
+          <div class="loan-result-label" id="loanResultMonthlyLabel">Estimated monthly payment</div>
+          <div class="loan-result-value" id="loanResultMonthly">€544</div>
         </div>
       </div>
-    </div>
 
-    <div class="info-card">
-      <div class="section-kicker" id="infoKicker">Planned Lending Formats</div>
-      <h2 class="section-title" id="infoTitle">What the lending division may include</h2>
-      <p class="section-copy" id="infoCopy">
-        Once activated, the lending division is expected to present a compact set of financing formats rather than a broad product catalogue.
-      </p>
-
-      <div class="info-grid">
-        <div class="info-item">
-          <h3 id="info1Title">Short-Term Credit</h3>
-          <p id="info1Copy">A compact format for shorter-duration financing needs and temporary liquidity support.</p>
+      <div class="loan-risk-box">
+        <div class="loan-risk-header">
+          <div class="loan-risk-label" id="loanRiskLabel">Approval risk</div>
+          <div class="loan-risk-value" id="loanRiskValue">Moderate</div>
         </div>
 
-        <div class="info-item">
-          <h3 id="info2Title">Consumer Loan</h3>
-          <p id="info2Copy">A more standard financing structure for personal use cases and planned repayment.</p>
+        <div class="loan-risk-bar">
+          <div class="loan-risk-fill loan-risk-mid" id="loanRiskFill" style="width:56%;"></div>
         </div>
 
-        <div class="info-item">
-          <h3 id="info3Title">Structured Lending</h3>
-          <p id="info3Copy">A more tailored lending category depending on purpose, duration, and repayment logic.</p>
+        <div class="loan-risk-text" id="loanRiskText">
+          The institution acknowledges your intentions. Cautiously.
         </div>
       </div>
-    </div>
 
-    <div class="footer-main">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4 id="footerCol1Title">Davlad Bank</h4>
-          <p id="footerCol1Text">
-            Independent financial platform focused on deposits, investments, and structured lending.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4 id="footerCol2Title">Navigation</h4>
-          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
-          <a href="investments.html" id="footerInvestments">Investments</a><br>
-          <a href="loans.html" id="footerLoans">Loans</a>
-        </div>
-
-        <div class="footer-col">
-          <h4 id="footerCol3Title">Company</h4>
-          <a href="about.html" id="footerAbout">About</a><br>
-          <a href="contact.html" id="footerContact">Contact</a>
-        </div>
+      <div class="loan-calc-meme" id="loanCalcFootnote">
+        All outcomes are illustrative. Institutional trust remains dynamic.
       </div>
-    </div>
 
-    <div class="footer" id="footerText">
-      Davlad Bank © 2026 · Lending Division Pre-Launch Notice
-    </div>
-
-    <div class="legal-strip" id="legalText">
-      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
     </div>
   </div>
+</section>
+<script>
+  const btn = document.getElementById("themeToggle");
 
-  <script>
-    const btn = document.getElementById("themeToggle");
+  function safeSetText(id, value) {
+    const el = document.getElementById(id);
+    if (el && value !== undefined) el.textContent = value;
+  }
 
-    function applyTheme(theme){
-      document.body.classList.toggle("light", theme === "light");
-      btn.textContent = theme === "light" ? "☀️" : "🌙";
-    }
+  function applyTheme(theme){
+    document.body.classList.toggle("light", theme === "light");
+    if (btn) btn.textContent = theme === "light" ? "☀️" : "🌙";
+  }
 
-    applyTheme(localStorage.getItem("theme") || "dark");
+  applyTheme(localStorage.getItem("theme") || "dark");
 
+  if (btn) {
     btn.addEventListener("click", () => {
       const next = document.body.classList.contains("light") ? "dark" : "light";
       localStorage.setItem("theme", next);
       applyTheme(next);
     });
+  }
 
-    async function loadFxRates() {
-      try {
-        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
-        const data = await res.json();
+  async function loadFxRates() {
+    try {
+      const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+      const data = await res.json();
 
-        if (!data || !data.rates) throw new Error("No rates returned");
+      if (!data || !data.rates) throw new Error("No rates returned");
 
-        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
-        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
-        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
-
-        document.getElementById("top-date").textContent =
-          `Official ECB reference rate • ${data.date}`;
-      } catch (error) {
-        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
-      }
+      safeSetText("top-usd", Number(data.rates.USD).toFixed(4));
+      safeSetText("top-gbp", Number(data.rates.GBP).toFixed(4));
+      safeSetText("top-chf", Number(data.rates.CHF).toFixed(4));
+      safeSetText("top-date", `Official ECB reference rate • ${data.date}`);
+    } catch (error) {
+      safeSetText("top-date", "Rates temporarily unavailable");
     }
+  }
 
-    function getLaunchDate() {
-      return new Date("2026-06-01T00:00:00");
+  const translations = {
+    en: {
+      brandSub: "Private Banking",
+      navHome: "Home",
+      navDeposits: "Deposits",
+      navInvestments: "Investments",
+      navLoans: "Loans",
+      navAbout: "About",
+      navContact: "Contact",
+
+      loanCalcKicker: "Debt Reality Check",
+      loanCalcTitle: "Simulate your approval profile",
+      loanCalcText: "A structured assessment of requested capital, repayment logic, and institutional patience.",
+
+      loanAmountLabel: "Requested capital (€)",
+      loanIncomeLabel: "Declared monthly income (€)",
+      loanMonthsLabel: "Repayment horizon (months)",
+      loanStabilityLabel: "Employment stability",
+      loanPurposeLabel: "Purpose profile",
+      loanConfidenceLabel: "Confidence level",
+      loanConfidenceValue: "Confidence",
+
+      loanStabilityFragile: "Fragile",
+      loanStabilityAcceptable: "Acceptable",
+      loanStabilityStable: "Questionably stable",
+      loanStabilityControl: "Illusion of control",
+
+      loanPurposeEssential: "Essential",
+      loanPurposePlanned: "Planned expansion",
+      loanPurposeLifestyle: "Lifestyle acceleration",
+      loanPurposeAmbiguous: "Interpretative necessity",
+
+      loanCalcButton: "Run assessment",
+      loanCalcReset: "Reset",
+
+      loanStatusWaiting: "Awaiting institutional judgment...",
+      loanStatusAnalyzing: "Analyzing behavioral consistency...",
+      loanStatusApproved: "Approved",
+      loanStatusConditional: "Conditionally tolerated",
+      loanStatusDenied: "Denied with dignity",
+
+      loanResultStatusLabel: "Approval status",
+      loanResultRateLabel: "Indicative rate",
+      loanResultMonthlyLabel: "Estimated monthly payment",
+
+      loanRiskLabel: "Approval risk",
+      loanRiskLow: "Low",
+      loanRiskMid: "Moderate",
+      loanRiskHigh: "Elevated",
+
+      loanRiskTextLow: "Your financial profile suggests a rare alignment between ambition and reality.",
+      loanRiskTextMid: "The institution acknowledges your intentions. Cautiously.",
+      loanRiskTextHigh: "Confidence exceeds structural justification.",
+
+      loanCalcFootnote: "All outcomes are illustrative. Institutional trust remains dynamic."
+    },
+
+    de: {
+      brandSub: "Private Banking",
+      navHome: "Start",
+      navDeposits: "Einlagen",
+      navInvestments: "Investments",
+      navLoans: "Kredite",
+      navAbout: "Über uns",
+      navContact: "Kontakt",
+
+      loanCalcKicker: "Debt Reality Check",
+      loanCalcTitle: "Simulieren Sie Ihr Genehmigungsprofil",
+      loanCalcText: "Eine strukturierte Bewertung von gewünschtem Kapital, Rückzahlungslogik und institutioneller Geduld.",
+
+      loanAmountLabel: "Gewünschtes Kapital (€)",
+      loanIncomeLabel: "Angegebenes Monatseinkommen (€)",
+      loanMonthsLabel: "Rückzahlungshorizont (Monate)",
+      loanStabilityLabel: "Beschäftigungsstabilität",
+      loanPurposeLabel: "Zweckprofil",
+      loanConfidenceLabel: "Vertrauensniveau",
+      loanConfidenceValue: "Vertrauen",
+
+      loanStabilityFragile: "Fragil",
+      loanStabilityAcceptable: "Akzeptabel",
+      loanStabilityStable: "Fragwürdig stabil",
+      loanStabilityControl: "Illusion von Kontrolle",
+
+      loanPurposeEssential: "Essenziell",
+      loanPurposePlanned: "Geplante Erweiterung",
+      loanPurposeLifestyle: "Lifestyle-Beschleunigung",
+      loanPurposeAmbiguous: "Interpretative Notwendigkeit",
+
+      loanCalcButton: "Bewertung starten",
+      loanCalcReset: "Zurücksetzen",
+
+      loanStatusWaiting: "Institutionelles Urteil ausstehend...",
+      loanStatusAnalyzing: "Verhaltenskonsistenz wird analysiert...",
+      loanStatusApproved: "Genehmigt",
+      loanStatusConditional: "Bedingt toleriert",
+      loanStatusDenied: "Mit Würde abgelehnt",
+
+      loanResultStatusLabel: "Genehmigungsstatus",
+      loanResultRateLabel: "Indikativer Zinssatz",
+      loanResultMonthlyLabel: "Geschätzte Monatsrate",
+
+      loanRiskLabel: "Genehmigungsrisiko",
+      loanRiskLow: "Niedrig",
+      loanRiskMid: "Moderat",
+      loanRiskHigh: "Erhöht",
+
+      loanRiskTextLow: "Ihr Finanzprofil zeigt eine seltene Übereinstimmung zwischen Ambition und Realität.",
+      loanRiskTextMid: "Die Institution erkennt Ihre Absichten an. Vorsichtig.",
+      loanRiskTextHigh: "Das Selbstvertrauen übersteigt die strukturelle Rechtfertigung.",
+
+      loanCalcFootnote: "Alle Ergebnisse sind illustrativ. Institutionelles Vertrauen bleibt dynamisch."
+    },
+
+    ua: {
+      brandSub: "Private Banking",
+      navHome: "Головна",
+      navDeposits: "Депозити",
+      navInvestments: "Інвестиції",
+      navLoans: "Кредити",
+      navAbout: "Про банк",
+      navContact: "Контакт",
+
+      loanCalcKicker: "Debt Reality Check",
+      loanCalcTitle: "Змоделюйте свій профіль схвалення",
+      loanCalcText: "Структурована оцінка запитуваного капіталу, логіки погашення та інституційного терпіння.",
+
+      loanAmountLabel: "Запитуваний капітал (€)",
+      loanIncomeLabel: "Заявлений місячний дохід (€)",
+      loanMonthsLabel: "Горизонт погашення (місяці)",
+      loanStabilityLabel: "Стабільність зайнятості",
+      loanPurposeLabel: "Профіль цілі",
+      loanConfidenceLabel: "Рівень впевненості",
+      loanConfidenceValue: "Впевненість",
+
+      loanStabilityFragile: "Крихка",
+      loanStabilityAcceptable: "Прийнятна",
+      loanStabilityStable: "Сумнівно стабільна",
+      loanStabilityControl: "Ілюзія контролю",
+
+      loanPurposeEssential: "Необхідність",
+      loanPurposePlanned: "Заплановане розширення",
+      loanPurposeLifestyle: "Прискорення стилю життя",
+      loanPurposeAmbiguous: "Інтерпретована необхідність",
+
+      loanCalcButton: "Запустити оцінку",
+      loanCalcReset: "Скинути",
+
+      loanStatusWaiting: "Очікується інституційне рішення...",
+      loanStatusAnalyzing: "Аналізується поведінкова послідовність...",
+      loanStatusApproved: "Схвалено",
+      loanStatusConditional: "Умовно терпимо",
+      loanStatusDenied: "Відхилено з гідністю",
+
+      loanResultStatusLabel: "Статус схвалення",
+      loanResultRateLabel: "Орієнтовна ставка",
+      loanResultMonthlyLabel: "Оцінений щомісячний платіж",
+
+      loanRiskLabel: "Ризик схвалення",
+      loanRiskLow: "Низький",
+      loanRiskMid: "Помірний",
+      loanRiskHigh: "Підвищений",
+
+      loanRiskTextLow: "Ваш фінансовий профіль демонструє рідкісне узгодження між амбіцією та реальністю.",
+      loanRiskTextMid: "Інституція визнає ваші наміри. Обережно.",
+      loanRiskTextHigh: "Рівень впевненості перевищує структурне обґрунтування.",
+
+      loanCalcFootnote: "Усі результати мають ілюстративний характер. Інституційна довіра залишається динамічною."
     }
+  };
 
-    const countdownLabels = {
-      en: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
-      de: { days: "Tage", hours: "Std.", minutes: "Min.", seconds: "Sek." },
-      ua: { days: "Дні", hours: "Год.", minutes: "Хв.", seconds: "Сек." }
+  function setLanguage(lang) {
+    const t = translations[lang];
+
+    const map = {
+      brandSub: "brandSub",
+      navHome: "navHome",
+      navDeposits: "navDeposits",
+      navInvestments: "navInvestments",
+      navLoans: "navLoans",
+      navAbout: "navAbout",
+      navContact: "navContact",
+
+      loanCalcKicker: "loanCalcKicker",
+      loanCalcTitle: "loanCalcTitle",
+      loanCalcText: "loanCalcText",
+
+      loanAmountLabel: "loanAmountLabel",
+      loanIncomeLabel: "loanIncomeLabel",
+      loanMonthsLabel: "loanMonthsLabel",
+      loanStabilityLabel: "loanStabilityLabel",
+      loanPurposeLabel: "loanPurposeLabel",
+      loanConfidenceLabel: "loanConfidenceLabel",
+      loanConfidenceValue: "loanConfidenceValue",
+
+      loanStabilityFragile: "loanStabilityFragile",
+      loanStabilityAcceptable: "loanStabilityAcceptable",
+      loanStabilityStable: "loanStabilityStable",
+      loanStabilityControl: "loanStabilityControl",
+
+      loanPurposeEssential: "loanPurposeEssential",
+      loanPurposePlanned: "loanPurposePlanned",
+      loanPurposeLifestyle: "loanPurposeLifestyle",
+      loanPurposeAmbiguous: "loanPurposeAmbiguous",
+
+      loanCalcButton: "loanCalcButton",
+      loanCalcReset: "loanCalcReset",
+
+      loanResultStatusLabel: "loanResultStatusLabel",
+      loanResultRateLabel: "loanResultRateLabel",
+      loanResultMonthlyLabel: "loanResultMonthlyLabel",
+      loanRiskLabel: "loanRiskLabel",
+      loanCalcFootnote: "loanCalcFootnote"
     };
 
-    function updateCountdown(currentLang = "en") {
-      const now = new Date();
-      const target = getLaunchDate();
-      let diff = target - now;
+    Object.keys(map).forEach(key => safeSetText(map[key], t[key]));
 
-      if (diff < 0) diff = 0;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      document.getElementById("daysValue").textContent = days;
-      document.getElementById("hoursValue").textContent = hours;
-      document.getElementById("minutesValue").textContent = minutes;
-      document.getElementById("secondsValue").textContent = seconds;
-
-      const labels = countdownLabels[currentLang] || countdownLabels.en;
-      document.getElementById("daysLabel").textContent = labels.days;
-      document.getElementById("hoursLabel").textContent = labels.hours;
-      document.getElementById("minutesLabel").textContent = labels.minutes;
-      document.getElementById("secondsLabel").textContent = labels.seconds;
-    }
-
-    const translations = {
-      en: {
-        brandSub: "Private Banking",
-        navHome: "Home",
-        navDeposits: "Deposits",
-        navInvestments: "Investments",
-        navLoans: "Loans",
-        navAbout: "About",
-        navContact: "Contact",
-
-        loansBgText: "LIQUIDITY",
-        loansKicker: "LENDING STRUCTURE",
-        loansTitle: "Loans",
-        loansSubtitle: "Flexible capital solutions designed around timing, access, and repayment capacity.",
-
-        status1Label: "Available from",
-        status1Value: "1 June 2026",
-        status2Label: "Division status",
-        status2Value: "Pre-launch",
-        status3Label: "Current issuance",
-        status3Value: "Inactive",
-
-        countKicker: "Launch Countdown",
-        countTitle: "Time remaining until lending goes live",
-        countCopy: "The lending division remains in controlled preparation. The following countdown reflects the planned public activation date.",
-
-        timelineKicker: "Readiness Timeline",
-        timelineTitle: "Lending activation roadmap",
-        timelineCopy: "The lending line is being developed in stages, with product framework and launch sequencing aligned to internal capital priorities.",
-        step1Title: "Concept",
-        step1Copy: "Core lending direction and product positioning defined.",
-        step2Title: "Capital Alignment",
-        step2Copy: "Liquidity and balance-sheet priorities are currently being aligned.",
-        step3Title: "Activation",
-        step3Copy: "Operational readiness and issuance framework to be finalized.",
-        step4Title: "Lending Live",
-        step4Copy: "Planned public availability of lending products from June 2026.",
-
-        infoKicker: "Planned Lending Formats",
-        infoTitle: "What the lending division may include",
-        infoCopy: "Once activated, the lending division is expected to present a compact set of financing formats rather than a broad product catalogue.",
-        info1Title: "Short-Term Credit",
-        info1Copy: "A compact format for shorter-duration financing needs and temporary liquidity support.",
-        info2Title: "Consumer Loan",
-        info2Copy: "A more standard financing structure for personal use cases and planned repayment.",
-        info3Title: "Structured Lending",
-        info3Copy: "A more tailored lending category depending on purpose, duration, and repayment logic.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
-        footerCol2Title: "Navigation",
-        footerCol3Title: "Company",
-        footerText: "Davlad Bank © 2026 · Lending Division Pre-Launch Notice",
-        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
-      },
-
-      de: {
-        brandSub: "Private Banking",
-        navHome: "Start",
-        navDeposits: "Einlagen",
-        navInvestments: "Investments",
-        navLoans: "Kredite",
-        navAbout: "Über uns",
-        navContact: "Kontakt",
-
-        loansBgText: "LIQUIDITY",
-        loansKicker: "KREDITSTRUKTUR",
-        loansTitle: "Kredite",
-        loansSubtitle: "Flexible Finanzierungslösungen, abgestimmt auf Timing, Zugang und Rückzahlungsfähigkeit.",
-
-        status1Label: "Verfügbar ab",
-        status1Value: "1. Juni 2026",
-        status2Label: "Divisionsstatus",
-        status2Value: "Pre-launch",
-        status3Label: "Aktuelle Vergabe",
-        status3Value: "Inaktiv",
-
-        countKicker: "Launch-Countdown",
-        countTitle: "Verbleibende Zeit bis zur Aktivierung der Kreditprodukte",
-        countCopy: "Die Kreditdivision befindet sich weiterhin in kontrollierter Vorbereitung. Der folgende Countdown zeigt das geplante öffentliche Aktivierungsdatum.",
-        
-        timelineKicker: "Readiness Timeline",
-        timelineTitle: "Roadmap zur Aktivierung der Kreditdivision",
-        timelineCopy: "Die Kreditlinie wird stufenweise aufgebaut, wobei Produktstruktur und Launch-Sequenz an interne Kapitalprioritäten angepasst werden.",
-        step1Title: "Konzept",
-        step1Copy: "Grundrichtung und Produktpositionierung der Kreditlinie definiert.",
-        step2Title: "Kapitalabstimmung",
-        step2Copy: "Liquidität und Bilanzprioritäten werden derzeit abgestimmt.",
-        step3Title: "Aktivierung",
-        step3Copy: "Operative Bereitschaft und Vergaberahmen werden finalisiert.",
-        step4Title: "Kredite live",
-        step4Copy: "Geplante öffentliche Verfügbarkeit der Kreditprodukte ab Juni 2026.",
-
-        infoKicker: "Geplante Kreditformate",
-        infoTitle: "Was die Kreditdivision umfassen könnte",
-        infoCopy: "Nach Aktivierung soll die Kreditdivision eher ein kompaktes Set an Finanzierungsformaten zeigen als einen breiten Produktkatalog.",
-        info1Title: "Kurzfristiger Kredit",
-        info1Copy: "Ein kompaktes Format für kurzfristige Finanzierungsbedarfe und temporäre Liquiditätsunterstützung.",
-        info2Title: "Verbraucherkredit",
-        info2Copy: "Eine standardisiertere Finanzierungsstruktur für private Anwendungsfälle und geplante Rückzahlung.",
-        info3Title: "Strukturierte Finanzierung",
-        info3Copy: "Eine individuellere Kreditkategorie abhängig von Zweck, Laufzeit und Rückzahlungslogik.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
-        footerCol2Title: "Navigation",
-        footerCol3Title: "Unternehmen",
-        footerText: "Davlad Bank © 2026 · Hinweis zur Vorbereitungsphase der Kreditdivision",
-        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
-      },
-
-      ua: {
-        brandSub: "Private Banking",
-        navHome: "Головна",
-        navDeposits: "Депозити",
-        navInvestments: "Інвестиції",
-        navLoans: "Кредити",
-        navAbout: "Про банк",
-        navContact: "Контакт",
-
-        loansBgText: "LIQUIDITY",
-        loansKicker: "КРЕДИТНА СТРУКТУРA",
-        loansTitle: "Кредити",
-        loansSubtitle: "Гнучкі фінансові рішення з урахуванням часу, доступу та можливості погашення.",
-
-        status1Label: "Доступно з",
-        status1Value: "1 червня 2026",
-        status2Label: "Статус напряму",
-        status2Value: "Pre-launch",
-        status3Label: "Поточна видача",
-        status3Value: "Неактивна",
-
-        countKicker: "Зворотний відлік до запуску",
-        countTitle: "Час, що залишився до запуску кредитування",
-        countCopy: "Кредитний напрямок залишається на етапі контрольованої підготовки. Нижче наведено зворотний відлік до запланованої публічної дати активації.",
-
-        timelineKicker: "Readiness Timeline",
-        timelineTitle: "Дорожня карта запуску кредитного напряму",
-        timelineCopy: "Кредитна лінійка розробляється поетапно, а структура продуктів і порядок запуску узгоджуються з внутрішніми капітальними пріоритетами.",
-        step1Title: "Концепція",
-        step1Copy: "Основний напрямок кредитування та позиціонування продуктів визначені.",
-        step2Title: "Узгодження капіталу",
-        step2Copy: "Ліквідність і балансові пріоритети зараз узгоджуються.",
-        step3Title: "Активація",
-        step3Copy: "Операційна готовність і рамка видачі мають бути фіналізовані.",
-        step4Title: "Кредити онлайн",
-        step4Copy: "Запланована публічна доступність кредитних продуктів з червня 2026 року.",
-
-        infoKicker: "Заплановані кредитні формати",
-        infoTitle: "Що може включати кредитний напрям",
-        infoCopy: "Після активації кредитний напрямок, ймовірно, презентуватиме компактний набір форматів фінансування, а не широкий продуктовий каталог.",
-        info1Title: "Короткостроковий кредит",
-        info1Copy: "Компактний формат для коротших фінансових потреб і тимчасової підтримки ліквідності.",
-        info2Title: "Споживчий кредит",
-        info2Copy: "Більш стандартна структура фінансування для особистих потреб і планового погашення.",
-        info3Title: "Структуроване фінансування",
-        info3Copy: "Більш індивідуальна кредитна категорія залежно від цілі, строку та логіки погашення.",
-
-        footerCol1Title: "Davlad Bank",
-        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
-        footerCol2Title: "Навігація",
-        footerCol3Title: "Компанія",
-        footerText: "Davlad Bank © 2026 · Повідомлення про підготовчий етап кредитного напряму",
-        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
-      }
-    };
-
-    let currentLanguage = localStorage.getItem("siteLanguage") || "en";
-
-    function setLanguage(lang) {
-      currentLanguage = lang;
-      const t = translations[lang];
-
-      const map = {
-        brandSub: "brandSub",
-        navHome: "navHome",
-        navDeposits: "navDeposits",
-        navInvestments: "navInvestments",
-        navLoans: "navLoans",
-        navAbout: "navAbout",
-        navContact: "navContact",
-
-        loansBgText: "loansBgText",
-        loansKicker: "loansKicker",
-        loansTitle: "loansTitle",
-        loansSubtitle: "loansSubtitle",
-
-        status1Label: "status1Label",
-        status1Value: "status1Value",
-        status2Label: "status2Label",
-        status2Value: "status2Value",
-        status3Label: "status3Label",
-        status3Value: "status3Value",
-
-        countKicker: "countKicker",
-        countTitle: "countTitle",
-        countCopy: "countCopy",
-
-        timelineKicker: "timelineKicker",
-        timelineTitle: "timelineTitle",
-        timelineCopy: "timelineCopy",
-        step1Title: "step1Title",
-        step1Copy: "step1Copy",
-        step2Title: "step2Title",
-        step2Copy: "step2Copy",
-        step3Title: "step3Title",
-        step3Copy: "step3Copy",
-        step4Title: "step4Title",
-        step4Copy: "step4Copy",
-
-        infoKicker: "infoKicker",
-        infoTitle: "infoTitle",
-        infoCopy: "infoCopy",
-        info1Title: "info1Title",
-        info1Copy: "info1Copy",
-        info2Title: "info2Title",
-        info2Copy: "info2Copy",
-        info3Title: "info3Title",
-        info3Copy: "info3Copy",
-
-        footerCol1Title: "footerCol1Title",
-        footerCol1Text: "footerCol1Text",
-        footerCol2Title: "footerCol2Title",
-        footerCol3Title: "footerCol3Title",
-        footerText: "footerText",
-        legalText: "legalText"
-      };
-
-      Object.keys(map).forEach(key => {
-        const el = document.getElementById(map[key]);
-        if (el && t[key] !== undefined) el.textContent = t[key];
-      });
-
-      document.getElementById("footerDeposits").textContent = t.navDeposits;
-      document.getElementById("footerInvestments").textContent = t.navInvestments;
-      document.getElementById("footerLoans").textContent = t.navLoans;
-      document.getElementById("footerAbout").textContent = t.navAbout;
-      document.getElementById("footerContact").textContent = t.navContact;
-
-      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
-
-      document.querySelectorAll(".lang-switch button").forEach(button => {
-        button.classList.toggle("active", button.dataset.lang === lang);
-      });
-
-      localStorage.setItem("siteLanguage", lang);
-      updateCountdown(lang);
-    }
+    document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
 
     document.querySelectorAll(".lang-switch button").forEach(button => {
-      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+      button.classList.toggle("active", button.dataset.lang === lang);
     });
 
-    setLanguage(currentLanguage);
-    loadFxRates();
-    updateCountdown(currentLanguage);
-    setInterval(() => updateCountdown(currentLanguage), 1000);
-  </script>
+    localStorage.setItem("siteLanguage", lang);
+
+    calculateLoan(false);
+  }
+
+  document.querySelectorAll(".lang-switch button").forEach(button => {
+    button.addEventListener("click", () => setLanguage(button.dataset.lang));
+  });
+
+  function formatLoanEUR(value){
+    return new Intl.NumberFormat("en-DE", {
+      style: "currency",
+      currency: "EUR",
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function resetLoanCalculator(){
+    document.getElementById("loanAmount").value = 12000;
+    document.getElementById("loanIncome").value = 2600;
+    document.getElementById("loanMonths").value = 24;
+    document.getElementById("loanStability").value = "acceptable";
+    document.getElementById("loanPurpose").value = "essential";
+    document.getElementById("loanConfidence").value = 50;
+    document.getElementById("loanConfidenceOutput").textContent = "50%";
+    calculateLoan(false);
+    const currentLang = localStorage.getItem("siteLanguage") || "en";
+    safeSetText("loanStatusText", translations[currentLang].loanStatusWaiting);
+  }
+
+  function calculateLoan(updateStatusText = true){
+    const currentLang = localStorage.getItem("siteLanguage") || "en";
+    const t = translations[currentLang];
+
+    const loanAmount = parseFloat(document.getElementById("loanAmount").value) || 0;
+    const loanIncome = parseFloat(document.getElementById("loanIncome").value) || 0;
+    const loanMonths = parseFloat(document.getElementById("loanMonths").value) || 0;
+    const stability = document.getElementById("loanStability").value;
+    const purpose = document.getElementById("loanPurpose").value;
+    const confidence = parseFloat(document.getElementById("loanConfidence").value) || 0;
+
+    let score = 0;
+
+    const incomeRatio = loanIncome > 0 ? loanAmount / loanIncome : 999;
+
+    if (incomeRatio <= 4) score += 3;
+    else if (incomeRatio <= 8) score += 2;
+    else if (incomeRatio <= 14) score += 1;
+    else score -= 2;
+
+    if (loanMonths >= 36) score += 2;
+    else if (loanMonths >= 18) score += 1;
+    else if (loanMonths <= 6) score -= 1;
+
+    if (stability === "fragile") score -= 2;
+    if (stability === "acceptable") score += 0;
+    if (stability === "stable") score += 1;
+    if (stability === "control") score += 2;
+
+    if (purpose === "essential") score += 2;
+    if (purpose === "planned") score += 1;
+    if (purpose === "lifestyle") score -= 1;
+    if (purpose === "ambiguous") score -= 2;
+
+    if (confidence > 85) score -= 1;
+    else if (confidence >= 55) score += 1;
+
+    let status = "conditional";
+    let rate = 8.4;
+    let riskLabel = t.loanRiskMid;
+    let riskText = t.loanRiskTextMid;
+    let riskClass = "loan-risk-mid";
+    let riskWidth = "56%";
+    let statusText = t.loanStatusConditional;
+    let statusClass = "status-conditional";
+
+    if (score >= 6) {
+      status = "approved";
+      rate = 4.2 + (incomeRatio * 0.18);
+      riskLabel = t.loanRiskLow;
+      riskText = t.loanRiskTextLow;
+      riskClass = "loan-risk-low";
+      riskWidth = "28%";
+      statusText = t.loanStatusApproved;
+      statusClass = "status-approved";
+    } else if (score >= 2) {
+      status = "conditional";
+      rate = 7.2 + (incomeRatio * 0.22);
+      riskLabel = t.loanRiskMid;
+      riskText = t.loanRiskTextMid;
+      riskClass = "loan-risk-mid";
+      riskWidth = "56%";
+      statusText = t.loanStatusConditional;
+      statusClass = "status-conditional";
+    } else {
+      status = "denied";
+      rate = 14.5 + (incomeRatio * 0.2);
+      riskLabel = t.loanRiskHigh;
+      riskText = t.loanRiskTextHigh;
+      riskClass = "loan-risk-high";
+      riskWidth = "86%";
+      statusText = t.loanStatusDenied;
+      statusClass = "status-denied";
+    }
+
+    if (rate < 3.6) rate = 3.6;
+    if (rate > 24) rate = 24;
+
+    const monthlyRate = rate / 100 / 12;
+    let monthlyPayment = 0;
+
+    if (loanMonths > 0) {
+      if (monthlyRate > 0) {
+        monthlyPayment = loanAmount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -loanMonths));
+      } else {
+        monthlyPayment = loanAmount / loanMonths;
+      }
+    }
+
+    safeSetText("loanResultStatus", statusText);
+    safeSetText("loanResultRate", rate.toFixed(1) + "%");
+    safeSetText("loanResultMonthly", formatLoanEUR(monthlyPayment));
+    safeSetText("loanRiskValue", riskLabel);
+    safeSetText("loanRiskText", riskText);
+
+    const riskFill = document.getElementById("loanRiskFill");
+    if (riskFill) {
+      riskFill.className = "loan-risk-fill " + riskClass;
+      riskFill.style.width = riskWidth;
+    }
+
+    const statusCard = document.getElementById("loanStatusCard");
+    if (statusCard) {
+      statusCard.className = "loan-calc-card loan-status-card " + statusClass;
+    }
+
+    if (updateStatusText) {
+      safeSetText("loanStatusText", status === "approved" ? t.loanRiskTextLow : status === "conditional" ? t.loanRiskTextMid : t.loanRiskTextHigh);
+    }
+
+    return status;
+  }
+
+  function runLoanAssessment(){
+    const currentLang = localStorage.getItem("siteLanguage") || "en";
+    const t = translations[currentLang];
+
+    const spinner = document.getElementById("loanStatusSpinner");
+    const text = document.getElementById("loanStatusText");
+
+    if (spinner) spinner.classList.add("is-running");
+    if (text) text.textContent = t.loanStatusAnalyzing;
+
+    setTimeout(() => {
+      const status = calculateLoan(false);
+
+      if (spinner) spinner.classList.remove("is-running");
+
+      if (text) {
+        if (status === "approved") text.textContent = t.loanRiskTextLow;
+        else if (status === "conditional") text.textContent = t.loanRiskTextMid;
+        else text.textContent = t.loanRiskTextHigh;
+      }
+    }, 550);
+  }
+
+  const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+  setLanguage(savedLanguage);
+  loadFxRates();
+  calculateLoan(false);
+</script>
 </body>
 </html>

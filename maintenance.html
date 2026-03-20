@@ -452,6 +452,464 @@
       margin:0 auto;
     }
 
+    .cards-section{
+  margin:70px 0 46px;
+}
+
+/* HERO BLOCK */
+.card-hero-block{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  padding:38px 34px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:28px;
+  align-items:center;
+  margin-bottom:34px;
+  background:var(--card-bg);
+}
+
+.card-hero-block::before,
+.card-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.65;
+  z-index:2;
+}
+
+.card-hero-bg,
+.card-box-bg{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:.18;
+  filter:brightness(.55);
+}
+
+.survival-bg{
+  background-image:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55)), url("images/survival.jpg");
+}
+
+.illusion-bg{
+  background-image:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.16)), url("images/illusion.jpg");
+}
+
+.delusion-bg{
+  background-image:linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.45)), url("images/delusion.jpg");
+}
+
+.card-hero-content,
+.card-hero-visual,
+.card-box-inner{
+  position:relative;
+  z-index:3;
+}
+
+.card-badge{
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.card-hero-title{
+  margin:0 0 10px;
+  font-size:38px;
+  line-height:1.05;
+}
+
+.card-hero-subtitle{
+  margin-bottom:10px;
+  color:#d8c28a;
+  font-size:16px;
+}
+
+.card-hero-text{
+  color:var(--muted);
+  line-height:1.8;
+  max-width:46ch;
+  margin:0 0 18px;
+}
+
+.card-hero-btn{
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(135deg, var(--accent), #d7bc77);
+  color:#121212;
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:800;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+}
+
+.card-hero-micro{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.card-hero-visual{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* LOWER GRID */
+.cards-lower-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+}
+
+.card-box{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  background:var(--card-bg);
+  padding:28px 24px 24px;
+}
+
+.card-box-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.card-box-title{
+  margin:12px 0 8px;
+  font-size:24px;
+}
+
+.card-box-text{
+  margin:0;
+  color:var(--muted);
+  line-height:1.75;
+  max-width:36ch;
+}
+
+/* CARD BASE */
+.bank-card{
+  width:320px;
+  height:200px;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease,
+    opacity .22s ease;
+  transform-style:preserve-3d;
+}
+
+.survival-card{
+  width:360px;
+  height:220px;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255,255,255,0.05), transparent 24%),
+    linear-gradient(145deg,#0a0a0a,#050505 62%, #111111);
+}
+
+.illusion-card{
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
+    radial-gradient(circle at 72% 28%, rgba(255,255,255,0.10), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+  border:1px solid rgba(255,255,255,0.24);
+  box-shadow:
+    0 18px 52px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(255,255,255,0.05);
+  backdrop-filter:blur(14px) saturate(1.08);
+  -webkit-backdrop-filter:blur(14px) saturate(1.08);
+}
+
+.delusion-card{
+  background:
+    linear-gradient(135deg, #2a2a2a 0%, #686868 34%, #b89a4a 66%, #efd28a 100%);
+  border:1px solid rgba(255,255,255,0.18);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,0.58),
+    0 0 30px rgba(198,168,91,0.14);
+}
+
+.survival-card:hover,
+.illusion-card:hover,
+.delusion-card:hover{
+  transform:translateY(-6px) scale(1.02);
+}
+
+.delusion-card:hover{
+  box-shadow:
+    0 30px 82px rgba(0,0,0,0.68),
+    0 0 42px rgba(198,168,91,0.24);
+}
+
+.illusion-card:hover{
+  opacity:.88;
+  filter:brightness(1.08);
+}
+
+/* SURFACE */
+.card-surface{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.00) 28%),
+    linear-gradient(120deg, transparent 0 38%, rgba(255,255,255,0.05) 48%, transparent 58%);
+  pointer-events:none;
+}
+
+.bank-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.03) 0.6px, transparent 0.6px);
+  background-size:6px 6px;
+  opacity:.16;
+  pointer-events:none;
+}
+
+.illusion-shine{
+  position:absolute;
+  inset:-30%;
+  background:linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255,255,255,0.00) 42%,
+    rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0.00) 58%,
+    transparent 66%
+  );
+  transform:translateX(-120%) rotate(8deg);
+  pointer-events:none;
+  transition:transform .8s ease;
+}
+
+.illusion-card:hover .illusion-shine{
+  transform:translateX(20%) rotate(8deg);
+}
+
+/* CHIP */
+.card-chip{
+  position:absolute;
+  top:18px;
+  left:18px;
+  width:58px;
+  height:42px;
+  border-radius:8px;
+  overflow:hidden;
+  z-index:2;
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.30),
+    inset 0 -1px 2px rgba(0,0,0,0.22),
+    0 1px 4px rgba(0,0,0,0.22);
+}
+
+.chip-silver{
+  background:linear-gradient(145deg,#d2d2d2 0%, #a9a9a9 24%, #7a7a7a 60%, #c8c8c8 100%);
+}
+
+.chip-gold{
+  background:linear-gradient(145deg,#f0d48a 0%, #d2b15a 26%, #8d6a26 62%, #e6c77a 100%);
+}
+
+.chip-line{
+  position:absolute;
+  background:rgba(55,55,55,0.40);
+  border-radius:2px;
+}
+
+.chip-line-v1{ top:0; bottom:0; left:11px; width:2px; }
+.chip-line-v2{ top:0; bottom:0; left:27px; width:2px; }
+.chip-line-v3{ top:0; bottom:0; left:43px; width:2px; }
+
+.chip-line-h1{ left:0; right:0; top:10px; height:2px; }
+.chip-line-h2{ left:0; right:0; top:20px; height:2px; }
+.chip-line-h3{ left:0; right:0; top:30px; height:2px; }
+
+.chip-core{
+  position:absolute;
+  top:7px;
+  left:19px;
+  width:20px;
+  height:28px;
+  border-radius:4px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.14), rgba(0,0,0,0.06));
+  border:1px solid rgba(60,60,60,0.20);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.18);
+}
+
+/* TEXT + LOGO ON CARD */
+.card-brand-top{
+  position:absolute;
+  top:16px;
+  right:20px;
+  font-size:14px;
+  color:#ffffff;
+  z-index:2;
+  text-shadow:0 2px 8px rgba(0,0,0,0.35);
+}
+
+.card-brand-dark{
+  color:#2f2f2f;
+  text-shadow:none;
+}
+
+.card-logo{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:86px;
+  height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+}
+
+.card-logo svg{
+  width:100%;
+  height:100%;
+  display:block;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+}
+
+.card-logo-dark svg{
+  opacity:.88;
+}
+
+.card-name{
+  position:absolute;
+  bottom:44px;
+  left:20px;
+  font-size:14px;
+  letter-spacing:2px;
+  font-weight:700;
+  color:#C6A85B;
+  z-index:2;
+}
+
+.card-tier{
+  position:absolute;
+  bottom:24px;
+  left:20px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  color:rgba(255,255,255,0.65);
+  z-index:2;
+  text-transform:uppercase;
+}
+
+.card-name-dark{
+  color:#9b7a2f;
+}
+
+.card-tier-dark{
+  color:rgba(40,40,40,0.62);
+}
+
+/* MASTERCARD */
+.card-mc{
+  position:absolute;
+  bottom:16px;
+  right:16px;
+  width:42px;
+  height:26px;
+  z-index:2;
+}
+
+.card-mc::before,
+.card-mc::after{
+  content:"";
+  position:absolute;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+}
+
+.card-mc::before{
+  background:#EB001B;
+  left:0;
+}
+
+.card-mc::after{
+  background:#F79E1B;
+  left:16px;
+}
+
+.cards-footnote{
+  margin-top:22px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  font-style:italic;
+}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  .card-hero-block{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .card-hero-content{
+    max-width:none;
+  }
+
+  .card-hero-text{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .cards-lower-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:700px){
+  .card-hero-block{
+    padding:26px 20px;
+  }
+
+  .card-box{
+    padding:24px 18px 20px;
+  }
+
+  .survival-card{
+    width:320px;
+    height:198px;
+  }
+
+  .illusion-card,
+  .delusion-card{
+    width:300px;
+    height:188px;
+  }
+
+  .card-hero-title{
+    font-size:30px;
+  }
+}
+
     .promo-wrap{
       margin-bottom:34px;
       border-radius:22px;
@@ -904,6 +1362,156 @@
       </a>
     </div>
 
+<section class="cards-section">
+
+  <!-- SURVIVAL HERO -->
+  <div class="card-hero-block">
+    <div class="card-hero-bg survival-bg"></div>
+
+    <div class="card-hero-content">
+      <div class="card-badge" id="cardsBadge">FREE ENTRY</div>
+      <h2 class="card-hero-title" id="cardsHeroTitle">Davlad Survival</h2>
+      <div class="card-hero-subtitle" id="cardsHeroSubtitle">The rational starting point</div>
+      <p class="card-hero-text" id="cardsHeroText">
+        Free access to the Davlad system for everyday financial endurance.
+        Built for essentials, not illusions.
+      </p>
+      <button class="card-hero-btn" id="cardsHeroButton">Get Survival</button>
+      <div class="card-hero-micro" id="cardsHeroMicro">No annual fee</div>
+    </div>
+
+    <div class="card-hero-visual">
+      <div class="bank-card survival-card" id="cardSurvival">
+        <div class="card-surface"></div>
+
+        <div class="card-chip chip-silver">
+          <span class="chip-line chip-line-v1"></span>
+          <span class="chip-line chip-line-v2"></span>
+          <span class="chip-line chip-line-v3"></span>
+          <span class="chip-line chip-line-h1"></span>
+          <span class="chip-line chip-line-h2"></span>
+          <span class="chip-line chip-line-h3"></span>
+          <span class="chip-core"></span>
+        </div>
+
+        <div class="card-brand-top">Davlad Bank</div>
+
+        <div class="card-logo">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+              fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5"
+              stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5"
+              stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="card-name" id="cardSurvivalName">SURVIVAL</div>
+        <div class="card-tier" id="cardSurvivalTier">ENTRY TIER</div>
+        <div class="card-mc" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOWER CARDS -->
+  <div class="cards-lower-grid">
+
+    <!-- ILLUSION -->
+    <div class="card-box">
+      <div class="card-box-bg illusion-bg"></div>
+
+      <div class="card-box-inner">
+        <div class="bank-card illusion-card" id="cardIllusion">
+          <div class="card-surface"></div>
+          <div class="illusion-shine"></div>
+
+          <div class="card-chip chip-silver">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
+
+          <div class="card-brand-top card-brand-dark">Davlad Bank</div>
+
+          <div class="card-logo card-logo-dark">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                fill="none" stroke="#303030" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5"
+                stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5"
+                stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="card-name card-name-dark" id="cardIllusionName">ILLUSION</div>
+          <div class="card-tier card-tier-dark" id="cardIllusionTier">PERCEPTION TIER</div>
+          <div class="card-mc" aria-hidden="true"></div>
+        </div>
+
+        <h3 class="card-box-title" id="cardIllusionTitle">Illusion</h3>
+        <p class="card-box-text" id="cardIllusionText">
+          Structured perception of financial stability. Designed to feel like progress.
+        </p>
+      </div>
+    </div>
+
+    <!-- DELUSION -->
+    <div class="card-box">
+      <div class="card-box-bg delusion-bg"></div>
+
+      <div class="card-box-inner">
+        <div class="bank-card delusion-card" id="cardDelusion">
+          <div class="card-surface"></div>
+
+          <div class="card-chip chip-gold">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
+
+          <div class="card-brand-top">Davlad Bank</div>
+
+          <div class="card-logo">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5"
+                stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5"
+                stroke="#D4B161" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="card-name" id="cardDelusionName">DELUSION</div>
+          <div class="card-tier" id="cardDelusionTier">PRESTIGE TIER</div>
+          <div class="card-mc" aria-hidden="true"></div>
+        </div>
+
+        <h3 class="card-box-title" id="cardDelusionTitle">Delusion</h3>
+        <p class="card-box-text" id="cardDelusionText">
+          Confidence beyond measurable limits. An elevated tier for interpretative wealth.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cards-footnote" id="cardsFootnote">
+    System progression is interpretative.
+  </div>
+
+</section>
+
     <div class="promo-wrap">
       <div class="promo-header">
         <div class="section-kicker" id="promoKicker">Featured</div>
@@ -1131,6 +1739,27 @@ loadFxRates();
         service2Copy: "Structured investment products focused on long-term positioning and measured portfolio growth.",
         service3Title: "Loans",
         service3Copy: "Lending solutions tailored to financing needs, timing requirements, and repayment capacity.",
+        cardsBadge: "FREE ENTRY",
+cardsHeroTitle: "Davlad Survival",
+cardsHeroSubtitle: "The rational starting point",
+cardsHeroText: "Free access to the Davlad system for everyday financial endurance. Built for essentials, not illusions.",
+cardsHeroButton: "Get Survival",
+cardsHeroMicro: "No annual fee",
+
+cardSurvivalName: "SURVIVAL",
+cardSurvivalTier: "ENTRY TIER",
+
+cardIllusionName: "ILLUSION",
+cardIllusionTier: "PERCEPTION TIER",
+cardIllusionTitle: "Illusion",
+cardIllusionText: "Structured perception of financial stability. Designed to feel like progress.",
+
+cardDelusionName: "DELUSION",
+cardDelusionTier: "PRESTIGE TIER",
+cardDelusionTitle: "Delusion",
+cardDelusionText: "Confidence beyond measurable limits. An elevated tier for interpretative wealth.",
+
+cardsFootnote: "System progression is interpretative.",
 
         promoKicker: "Featured",
         promoHeading: "Promoted opportunities",
@@ -1207,6 +1836,28 @@ fraud3Text: "Fraudulent actors often create artificial urgency, push immediate p
         service3Title: "Kredite",
         service3Copy: "Kreditlösungen abgestimmt auf Finanzierungsbedarf, Timing und Rückzahlungsfähigkeit.",
 
+        cardsBadge: "KOSTENLOSER EINSTIEG",
+cardsHeroTitle: "Davlad Survival",
+cardsHeroSubtitle: "Der rationale Einstiegspunkt",
+cardsHeroText: "Kostenloser Zugang zum Davlad-System für alltägliche finanzielle Belastbarkeit. Für das Wesentliche gebaut, nicht für Illusionen.",
+cardsHeroButton: "Survival wählen",
+cardsHeroMicro: "Keine Jahresgebühr",
+
+cardSurvivalName: "SURVIVAL",
+cardSurvivalTier: "EINSTIEGSSTUFE",
+
+cardIllusionName: "ILLUSION",
+cardIllusionTier: "WAHRNEHMUNGSSTUFE",
+cardIllusionTitle: "Illusion",
+cardIllusionText: "Strukturierte Wahrnehmung finanzieller Stabilität. Entwickelt, um sich wie Fortschritt anzufühlen.",
+
+cardDelusionName: "DELUSION",
+cardDelusionTier: "PRESTIGE-STUFE",
+cardDelusionTitle: "Delusion",
+cardDelusionText: "Selbstvertrauen jenseits messbarer Grenzen. Eine gehobene Stufe für interpretativen Wohlstand.",
+
+cardsFootnote: "Der Systemfortschritt ist interpretativ.",
+
         promoKicker: "Im Fokus",
         promoHeading: "Ausgewählte Möglichkeiten",
         promo1Title: "Mars Expansion Program",
@@ -1281,6 +1932,28 @@ fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf
         service2Copy: "Структуровані інвестиційні продукти з фокусом на довгострокове позиціонування та помірне зростання.",
         service3Title: "Кредити",
         service3Copy: "Кредитні рішення, адаптовані до потреб фінансування, часу та платоспроможності.",
+
+        cardsBadge: "БЕЗКОШТОВНИЙ ВХІД",
+cardsHeroTitle: "Davlad Survival",
+cardsHeroSubtitle: "Раціональна точка входу",
+cardsHeroText: "Безкоштовний доступ до системи Davlad для щоденної фінансової витривалості. Створено для необхідного, а не для ілюзій.",
+cardsHeroButton: "Обрати Survival",
+cardsHeroMicro: "Без річної комісії",
+
+cardSurvivalName: "SURVIVAL",
+cardSurvivalTier: "ПОЧАТКОВИЙ РІВЕНЬ",
+
+cardIllusionName: "ILLUSION",
+cardIllusionTier: "РІВЕНЬ СПРИЙНЯТТЯ",
+cardIllusionTitle: "Illusion",
+cardIllusionText: "Структуроване сприйняття фінансової стабільності. Створено, щоб відчувалося як прогрес.",
+
+cardDelusionName: "DELUSION",
+cardDelusionTier: "ПРЕСТИЖНИЙ РІВЕНЬ",
+cardDelusionTitle: "Delusion",
+cardDelusionText: "Впевненість за межами вимірюваних показників. Підвищений рівень для інтерпретованого добробуту.",
+
+cardsFootnote: "Прогрес системи має інтерпретативний характер.",
 
         promoKicker: "Featured",
         promoHeading: "Рекомендовані можливості",
@@ -1362,6 +2035,28 @@ fraud3Text: "Шахраї часто створюють штучну термі�
       document.getElementById("service3Title").textContent = t.service3Title;
       document.getElementById("service3Copy").textContent = t.service3Copy;
 
+      document.getElementById("cardsBadge").textContent = t.cardsBadge;
+document.getElementById("cardsHeroTitle").textContent = t.cardsHeroTitle;
+document.getElementById("cardsHeroSubtitle").textContent = t.cardsHeroSubtitle;
+document.getElementById("cardsHeroText").textContent = t.cardsHeroText;
+document.getElementById("cardsHeroButton").textContent = t.cardsHeroButton;
+document.getElementById("cardsHeroMicro").textContent = t.cardsHeroMicro;
+
+document.getElementById("cardSurvivalName").textContent = t.cardSurvivalName;
+document.getElementById("cardSurvivalTier").textContent = t.cardSurvivalTier;
+
+document.getElementById("cardIllusionName").textContent = t.cardIllusionName;
+document.getElementById("cardIllusionTier").textContent = t.cardIllusionTier;
+document.getElementById("cardIllusionTitle").textContent = t.cardIllusionTitle;
+document.getElementById("cardIllusionText").textContent = t.cardIllusionText;
+
+document.getElementById("cardDelusionName").textContent = t.cardDelusionName;
+document.getElementById("cardDelusionTier").textContent = t.cardDelusionTier;
+document.getElementById("cardDelusionTitle").textContent = t.cardDelusionTitle;
+document.getElementById("cardDelusionText").textContent = t.cardDelusionText;
+
+document.getElementById("cardsFootnote").textContent = t.cardsFootnote;
+
       document.getElementById("promoKicker").textContent = t.promoKicker;
       document.getElementById("promoHeading").textContent = t.promoHeading;
       document.getElementById("promo1Title").textContent = t.promo1Title;
@@ -1432,6 +2127,29 @@ document.getElementById("fraud3Text").textContent = t.fraud3Text;
 
     loadFxRates();
     
-  </script>
+ 
+function applySoftCardLift(card){
+  if (!card) return;
+
+  card.addEventListener("mousemove", (e) => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+
+    const rx = -(y - r.height / 2) / 40;
+    const ry = (x - r.width / 2) / 40;
+
+    card.style.transform = `translateY(-6px) scale(1.02) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+  });
+}
+
+applySoftCardLift(document.getElementById("cardSurvival"));
+applySoftCardLift(document.getElementById("cardIllusion"));
+applySoftCardLift(document.getElementById("cardDelusion"));
+</script>
 </body>
 </html>

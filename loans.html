@@ -638,6 +638,79 @@ body.light .loan-calc-field select{
     font-size:22px;
   }
 }
+    .loan-guide{
+  margin:24px 0 10px;
+  padding:22px;
+  border-radius:20px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.loan-guide::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.6;
+}
+
+.loan-guide-head{
+  margin-bottom:16px;
+}
+
+.loan-guide-title{
+  margin:4px 0 0;
+  font-size:22px;
+  font-weight:800;
+}
+
+.loan-guide-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.loan-guide-item{
+  background:var(--card-2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+
+.loan-guide-item strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:6px;
+  color:var(--text);
+}
+
+.loan-guide-item p{
+  font-size:13px;
+  line-height:1.6;
+  color:var(--muted);
+  margin:0;
+}
+
+.loan-guide-note{
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  font-style:italic;
+}
+
+@media (max-width:900px){
+  .loan-guide-grid{
+    grid-template-columns:1fr;
+  }
+}
 
     .status-grid{
       display:grid;
@@ -1092,6 +1165,75 @@ body.light .loan-calc-field select{
     </div>
   </div>
 </section>
+  <div class="loan-guide">
+
+  <div class="loan-guide-head">
+    <div class="section-kicker" id="loanGuideKicker">Interpretation Guide</div>
+    <h3 class="loan-guide-title" id="loanGuideTitle">How to use this assessment</h3>
+  </div>
+
+  <div class="loan-guide-grid">
+
+    <div class="loan-guide-item">
+      <strong id="loanGuide1Title">Define your request</strong>
+      <p id="loanGuide1Text">
+        Adjust capital, income, repayment horizon, and employment stability to reflect your current financial reality — or your preferred version of it.
+      </p>
+    </div>
+
+    <div class="loan-guide-item">
+      <strong id="loanGuide2Title">Review the verdict</strong>
+      <p id="loanGuide2Text">
+        The result combines affordability, structural stability, and declared confidence into a simplified institutional response.
+      </p>
+    </div>
+
+    <div class="loan-guide-item">
+      <strong id="loanGuide3Title">Interpret carefully</strong>
+      <p id="loanGuide3Text">
+        Approval does not imply wisdom, and rejection does not eliminate ambition. The system remains politely judgmental.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="loan-guide-note" id="loanGuideNote">
+    This assessment is conceptual. Real lending decisions may differ. Emotional overconfidence is only partially modeled.
+  </div>
+
+</div>
+
+  <div class="footer-main">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4 id="footerCol1Title">Davlad Bank</h4>
+      <p id="footerCol1Text">
+        Independent financial platform focused on deposits, investments, and structured lending.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4 id="footerCol2Title">Navigation</h4>
+      <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+      <a href="investments.html" id="footerInvestments">Investments</a><br>
+      <a href="loans.html" id="footerLoans">Loans</a>
+    </div>
+
+    <div class="footer-col">
+      <h4 id="footerCol3Title">Company</h4>
+      <a href="about.html" id="footerAbout">About</a><br>
+      <a href="contact.html" id="footerContact">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer" id="footerText">
+  Davlad Bank © 2026 · Lending Products
+</div>
+
+<div class="legal-strip" id="legalText">
+  Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
+</div>
 <script>
   const btn = document.getElementById("themeToggle");
 
@@ -1190,7 +1332,30 @@ body.light .loan-calc-field select{
       loanRiskTextMid: "The institution acknowledges your intentions. Cautiously.",
       loanRiskTextHigh: "Confidence exceeds structural justification.",
 
-      loanCalcFootnote: "All outcomes are illustrative. Institutional trust remains dynamic."
+      loanCalcFootnote: "All outcomes are illustrative. Institutional trust remains dynamic.",
+
+      loanGuideKicker: "Interpretation Guide",
+loanGuideTitle: "How to use this assessment",
+
+loanGuide1Title: "Define your request",
+loanGuide1Text: "Adjust capital, income, repayment horizon, and employment stability to reflect your current financial reality — or your preferred version of it.",
+
+loanGuide2Title: "Review the verdict",
+loanGuide2Text: "The result combines affordability, structural stability, and declared confidence into a simplified institutional response.",
+
+loanGuide3Title: "Interpret carefully",
+loanGuide3Text: "Approval does not imply wisdom, and rejection does not eliminate ambition. The system remains politely judgmental.",
+
+loanGuideNote: "This assessment is conceptual. Real lending decisions may differ. Emotional overconfidence is only partially modeled.",
+
+            footerCol1Title: "Davlad Bank",
+      footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+      footerCol2Title: "Navigation",
+      footerCol3Title: "Company",
+      footerText: "Davlad Bank © 2026 · Deposit Products",
+      legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+
+      
     },
 
     de: {
@@ -1251,7 +1416,28 @@ body.light .loan-calc-field select{
       loanRiskTextMid: "Die Institution erkennt Ihre Absichten an. Vorsichtig.",
       loanRiskTextHigh: "Das Selbstvertrauen übersteigt die strukturelle Rechtfertigung.",
 
-      loanCalcFootnote: "Alle Ergebnisse sind illustrativ. Institutionelles Vertrauen bleibt dynamisch."
+      loanCalcFootnote: "Alle Ergebnisse sind illustrativ. Institutionelles Vertrauen bleibt dynamisch.",
+
+      loanGuideKicker: "Hinweis",
+loanGuideTitle: "Wie man diese Bewertung nutzt",
+
+loanGuide1Title: "Anfrage definieren",
+loanGuide1Text: "Passen Sie Kapital, Einkommen, Rückzahlungsdauer und Beschäftigungsstabilität an Ihre finanzielle Realität an – oder an Ihre bevorzugte Version davon.",
+
+loanGuide2Title: "Urteil prüfen",
+loanGuide2Text: "Das Ergebnis verbindet Tragfähigkeit, strukturelle Stabilität und erklärtes Selbstvertrauen zu einer vereinfachten institutionellen Reaktion.",
+
+loanGuide3Title: "Mit Vorsicht interpretieren",
+loanGuide3Text: "Eine Genehmigung bedeutet nicht automatisch Weisheit, und eine Ablehnung beseitigt keine Ambition. Das System bleibt höflich wertend.",
+
+loanGuideNote: "Diese Bewertung ist konzeptionell. Reale Kreditentscheidungen können abweichen. Emotionale Selbstüberschätzung wird nur teilweise berücksichtigt.",
+
+            footerCol1Title: "Davlad Bank",
+      footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+      footerCol2Title: "Navigation",
+      footerCol3Title: "Unternehmen",
+      footerText: "Davlad Bank © 2026 · Einlagenprodukte",
+      legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
     },
 
     ua: {
@@ -1307,7 +1493,32 @@ body.light .loan-calc-field select{
       loanRiskTextMid: "Інституція визнає ваші наміри. Обережно.",
       loanRiskTextHigh: "Рівень впевненості перевищує структурне обґрунтування.",
 
-      loanCalcFootnote: "Усі результати мають ілюстративний характер. Інституційна довіра залишається динамічною."
+      loanCalcFootnote: "Усі результати мають ілюстративний характер. Інституційна довіра залишається динамічною.",
+
+      loansBgText: "LIQUIDITY",
+loansKicker: "КРЕДИТНА СТРУКТУРА",
+loansTitle: "Кредити",
+loansSubtitle: "Структуроване кредитування в межах інституційного терпіння.",
+
+loanGuideKicker: "Пояснення",
+loanGuideTitle: "Як користуватись цією оцінкою",
+
+loanGuide1Title: "Сформуйте запит",
+loanGuide1Text: "Налаштуйте суму, дохід, строк погашення та стабільність зайнятості відповідно до вашої фінансової реальності — або її бажаної версії.",
+
+loanGuide2Title: "Оцініть вердикт",
+loanGuide2Text: "Результат поєднує доступність, структурну стабільність і заявлену впевненість у спрощену інституційну відповідь.",
+
+loanGuide3Title: "Інтерпретуйте обережно",
+loanGuide3Text: "Схвалення не гарантує мудрості, а відмова не прибирає амбіцій. Система залишається ввічливо критичною.",
+
+loanGuideNote: "Ця оцінка є концептуальною. Реальні кредитні рішення можуть відрізнятися. Емоційна самовпевненість враховується лише частково.",
+            footerCol1Title: "Davlad Bank",
+      footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+      footerCol2Title: "Навігація",
+      footerCol3Title: "Компанія",
+      footerText: "Davlad Bank © 2026 · Депозитні продукти",
+      legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
     }
   };
 
@@ -1357,7 +1568,27 @@ body.light .loan-calc-field select{
       loanResultRateLabel: "loanResultRateLabel",
       loanResultMonthlyLabel: "loanResultMonthlyLabel",
       loanRiskLabel: "loanRiskLabel",
-      loanCalcFootnote: "loanCalcFootnote"
+      loanCalcFootnote: "loanCalcFootnote",
+
+      loanGuideKicker: "loanGuideKicker",
+loanGuideTitle: "loanGuideTitle",
+
+loanGuide1Title: "loanGuide1Title",
+loanGuide1Text: "loanGuide1Text",
+
+loanGuide2Title: "loanGuide2Title",
+loanGuide2Text: "loanGuide2Text",
+
+loanGuide3Title: "loanGuide3Title",
+loanGuide3Text: "loanGuide3Text",
+
+loanGuideNote: "loanGuideNote",
+            footerCol1Title: "footerCol1Title",
+      footerCol1Text: "footerCol1Text",
+      footerCol2Title: "footerCol2Title",
+      footerCol3Title: "footerCol3Title",
+      footerText: "footerText",
+      legalText: "legalText"
     };
 
     Object.keys(map).forEach(key => safeSetText(map[key], t[key]));

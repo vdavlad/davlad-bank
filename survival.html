@@ -364,6 +364,8 @@
   align-items:center;
 }
 
+
+
 .survival-copy-card,
 .survival-card-panel,
 .survival-meme-box,
@@ -433,6 +435,27 @@
   text-align:center;
 }
 
+/* CARD BASE */
+.bank-card{
+  width:320px;
+  height:200px;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.10);
+  box-shadow:0 20px 60px rgba(0,0,0,0.55);
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease,
+    opacity .22s ease;
+  transform-style:preserve-3d;
+}
+
+.bank-card:hover{
+  transform:translateY(-6px) scale(1.02);
+}
+
 .survival-page-card{
   width:360px;
   height:220px;
@@ -441,6 +464,171 @@
     linear-gradient(145deg,#0a0a0a,#050505 62%, #111111);
 }
 
+/* SURFACE */
+.card-surface{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.00) 28%),
+    linear-gradient(120deg, transparent 0 38%, rgba(255,255,255,0.05) 48%, transparent 58%);
+  pointer-events:none;
+}
+
+.bank-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.03) 0.6px, transparent 0.6px);
+  background-size:6px 6px;
+  opacity:.16;
+  pointer-events:none;
+}
+
+/* CHIP */
+.card-chip{
+  position:absolute;
+  top:18px;
+  left:18px;
+  width:58px;
+  height:42px;
+  border-radius:8px;
+  overflow:hidden;
+  z-index:2;
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.30),
+    inset 0 -1px 2px rgba(0,0,0,0.22),
+    0 1px 4px rgba(0,0,0,0.22);
+}
+
+.chip-silver{
+  background:linear-gradient(145deg,#d2d2d2 0%, #a9a9a9 24%, #7a7a7a 60%, #c8c8c8 100%);
+}
+
+.chip-line{
+  position:absolute;
+  background:rgba(55,55,55,0.40);
+  border-radius:2px;
+}
+
+.chip-line-v1{ top:0; bottom:0; left:11px; width:2px; }
+.chip-line-v2{ top:0; bottom:0; left:27px; width:2px; }
+.chip-line-v3{ top:0; bottom:0; left:43px; width:2px; }
+
+.chip-line-h1{ left:0; right:0; top:10px; height:2px; }
+.chip-line-h2{ left:0; right:0; top:20px; height:2px; }
+.chip-line-h3{ left:0; right:0; top:30px; height:2px; }
+
+.chip-core{
+  position:absolute;
+  top:7px;
+  left:19px;
+  width:20px;
+  height:28px;
+  border-radius:4px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.14), rgba(0,0,0,0.06));
+  border:1px solid rgba(60,60,60,0.20);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.18);
+}
+
+/* TEXT + LOGO */
+.card-brand-top{
+  position:absolute;
+  top:16px;
+  right:20px;
+  font-size:14px;
+  color:#ffffff;
+  z-index:2;
+  text-shadow:0 2px 8px rgba(0,0,0,0.35);
+}
+
+.card-logo{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:86px;
+  height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+}
+
+.card-logo svg{
+  width:100%;
+  height:100%;
+  display:block;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+}
+
+.card-name{
+  position:absolute;
+  bottom:44px;
+  left:20px;
+  font-size:14px;
+  letter-spacing:2px;
+  font-weight:700;
+  color:#C6A85B;
+  z-index:2;
+}
+
+.card-tier{
+  position:absolute;
+  bottom:24px;
+  left:20px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  color:rgba(255,255,255,0.65);
+  z-index:2;
+  text-transform:uppercase;
+}
+
+/* MASTERCARD */
+.card-mc{
+  position:absolute;
+  bottom:16px;
+  right:16px;
+  width:42px;
+  height:26px;
+  z-index:2;
+}
+
+.card-mc::before,
+.card-mc::after{
+  content:"";
+  position:absolute;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+}
+
+.card-mc::before{
+  background:#EB001B;
+  left:0;
+}
+
+.card-mc::after{
+  background:#F79E1B;
+  left:16px;
+}
+
+    
+.survival-page-card{
+  box-shadow:
+    0 26px 80px rgba(0,0,0,0.62),
+    0 0 24px rgba(198,168,91,0.08);
+}
+
+ .survival-page-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(198,168,91,0.08), transparent 24%);
+  pointer-events:none;
+  z-index:1;
+}
+    
 .survival-card-note{
   margin-top:18px;
   color:var(--muted);
@@ -1156,6 +1344,27 @@ survivalCtaMicro: "survivalCtaMicro",
     const savedLanguage = localStorage.getItem("siteLanguage") || "en";
     setLanguage(savedLanguage);
     loadFxRates();
+
+    function applySoftCardLift(card){
+  if (!card) return;
+
+  card.addEventListener("mousemove", (e) => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+
+    const rx = -(y - r.height / 2) / 40;
+    const ry = (x - r.width / 2) / 40;
+
+    card.style.transform = `translateY(-6px) scale(1.02) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+  });
+}
+
+applySoftCardLift(document.querySelector(".survival-page-card"));
   </script>
 </body>
 </html>

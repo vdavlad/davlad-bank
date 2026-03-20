@@ -1,1 +1,1161 @@
-nnn
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Davlad Bank — Survival</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+
+  <style>
+    :root{
+      --bg:#070707;
+      --card:#121212;
+      --card-2:#181818;
+      --text:#EAEAEA;
+      --muted:#8A8A8A;
+      --accent:#C6A85B;
+      --border:rgba(255,255,255,0.08);
+      --border-accent:rgba(198,168,91,0.25);
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --nav-bg:rgba(255,255,255,0.02);
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --hero-bg:
+        radial-gradient(circle at top right, rgba(198,168,91,0.06), transparent 24%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.03), transparent 22%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      --topbar-bg:rgba(0,0,0,0.55);
+    }
+
+    body.light{
+      --bg:#FAFAFA;
+      --card:#FFFFFF;
+      --card-2:#F4F4F4;
+      --text:#111111;
+      --muted:#6A6A6A;
+      --accent:#C2A24A;
+      --border:rgba(0,0,0,0.08);
+      --border-accent:rgba(194,162,74,0.22);
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+      --nav-bg:rgba(255,255,255,0.75);
+      --card-bg:linear-gradient(180deg, #FFFFFF, #FCFCFC);
+      --hero-bg:linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+      --topbar-bg:rgba(255,255,255,0.85);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--hero-bg);
+      color:var(--text);
+      min-height:100vh;
+      transition:background .3s ease,color .3s ease;
+    }
+
+    .fx-topbar{
+      width:100%;
+      font-size:12px;
+      letter-spacing:.15px;
+      border-bottom:1px solid var(--border);
+      background:var(--topbar-bg);
+      backdrop-filter:blur(8px);
+    }
+
+    .fx-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:5px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .fx-left{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .fx-item{
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .fx-item span{
+      color:var(--text);
+      font-weight:600;
+      margin-left:4px;
+    }
+
+    .fx-date{
+      color:var(--muted);
+      font-size:11px;
+      opacity:.9;
+    }
+
+    .container{
+      max-width:1280px;
+      margin:0 auto;
+      padding:20px 20px 70px;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      background:var(--nav-bg);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+      backdrop-filter:blur(10px);
+      position:relative;
+      overflow:hidden;
+      flex-wrap:wrap;
+    }
+
+    .nav::before,
+    .story-card::before,
+    .timeline-card::before,
+    .status-card::before,
+    .footer-main::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:.6;
+    }
+
+    .brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0B0B0B;
+      border:1px solid var(--border);
+      color:#F2F2F2;
+      flex-shrink:0;
+    }
+
+    body.light .logo{
+      background:#FFFFFF;
+      color:#111111;
+    }
+
+    .brand{
+      font-size:22px;
+      font-weight:800;
+      color:var(--text);
+      letter-spacing:.3px;
+    }
+
+    .brand-sub{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:2px;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      padding:9px 12px;
+      border-radius:10px;
+      transition:.18s ease;
+    }
+
+    .nav-links a:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    body.light .nav-links a:hover{
+      background:rgba(0,0,0,.04);
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:4px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    .lang-switch button{
+      border:0;
+      background:transparent;
+      padding:6px 9px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      cursor:pointer;
+      transition:.18s ease;
+    }
+
+    .lang-switch button:hover{
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    body.light .lang-switch button:hover{
+      background:rgba(0,0,0,.04);
+    }
+
+    .lang-switch .active{
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+    }
+
+    .theme-btn{
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:700;
+      transition:.18s ease;
+    }
+
+    .theme-btn:hover{
+      background:rgba(255,255,255,.04);
+    }
+
+    .full-banner{
+      width:100%;
+      min-height:460px;
+      border-bottom:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+      position:relative;
+      overflow:hidden;
+      background:var(--card-bg);
+    }
+
+    .about-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.7)),
+        linear-gradient(120deg, rgba(120,80,180,0.25), transparent 60%),
+        url("images/banner_about.jpg") center 58%/cover no-repeat;
+      filter: saturate(85%) brightness(0.9 ) contrast(1.05);
+    }
+
+    .banner-overlay{
+      position:relative;
+      z-index:2;
+      min-height:460px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:42px 20px;
+      max-width:1280px;
+      margin:0 auto;
+      overflow:hidden;
+    }
+
+    .banner-bg-text{
+      position:absolute;
+      top:42%;
+      left:52%;
+      transform:translate(-50%, -50%);
+      font-size:210px;
+      font-weight:900;
+      letter-spacing:8px;
+      color:#ffffff;
+      opacity:0.08;
+      white-space:nowrap;
+      pointer-events:none;
+      user-select:none;
+      z-index:1;
+    }
+
+    .banner-overlay > *:not(.banner-bg-text){
+      position:relative;
+      z-index:2;
+    }
+
+    .banner-kicker{
+      font-size:13px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#e8dcc0;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .banner-title{
+      font-size:62px;
+      line-height:1;
+      margin:0 0 8px;
+      color:#fffaf0;
+      max-width:760px;
+      font-weight:800;
+    }
+
+    .banner-subtitle{
+      font-size:18px;
+      color:#d8c28a;
+      margin:0 0 14px;
+      font-style:italic;
+    }
+
+    .banner-text{
+      color:rgba(255,255,255,0.86);
+      line-height:1.75;
+      max-width:700px;
+      font-size:15px;
+    }
+
+    .survival-page-banner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.24), rgba(0,0,0,0.68)),
+    linear-gradient(120deg, rgba(110,90,170,0.10), transparent 62%),
+    url("images/survival.jpg") center 44%/cover no-repeat;
+  filter:saturate(88%) brightness(0.9) contrast(1.04);
+  transform:scale(1.01);
+}
+
+.survival-hero-section{
+  margin:10px 0 34px;
+}
+
+.survival-hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:24px;
+  align-items:center;
+}
+
+.survival-copy-card,
+.survival-card-panel,
+.survival-meme-box,
+.survival-cta-box,
+.survival-compare-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.survival-copy-card,
+.survival-card-panel,
+.survival-meme-box,
+.survival-cta-box{
+  border-radius:22px;
+  padding:24px;
+}
+
+.survival-copy-card::before,
+.survival-card-panel::before,
+.survival-meme-box::before,
+.survival-cta-box::before,
+.survival-compare-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.6;
+}
+
+.survival-points{
+  display:grid;
+  gap:14px;
+  margin-top:18px;
+}
+
+.survival-point{
+  background:var(--card-2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+
+.survival-point strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.survival-point p{
+  margin:0;
+  font-size:14px;
+  line-height:1.65;
+  color:var(--muted);
+}
+
+.survival-card-panel{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.survival-page-card{
+  width:360px;
+  height:220px;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255,255,255,0.05), transparent 24%),
+    linear-gradient(145deg,#0a0a0a,#050505 62%, #111111);
+}
+
+.survival-card-note{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  max-width:34ch;
+}
+
+.survival-compare-section{
+  margin:0 0 34px;
+}
+
+.survival-compare-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:16px;
+}
+
+.survival-compare-card{
+  border-radius:18px;
+  padding:22px;
+}
+
+.survival-compare-card h3{
+  margin:0 0 8px;
+  font-size:22px;
+}
+
+.survival-compare-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+}
+
+.survival-meme-section{
+  margin:0 0 34px;
+}
+
+.survival-meme-strip{
+  margin-top:18px;
+  border-top:1px solid var(--border);
+  padding-top:14px;
+  color:var(--accent);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+
+.survival-cta-section{
+  margin:0 0 10px;
+}
+
+.survival-cta-actions{
+  margin-top:18px;
+}
+
+.survival-main-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(135deg, var(--accent), #d7bc77);
+  color:#121212;
+  padding:13px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:800;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+}
+
+.survival-cta-micro{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+@media (max-width:980px){
+  .survival-hero-grid,
+  .survival-compare-grid{
+    grid-template-columns:1fr;
+  }
+
+  .survival-copy-card,
+  .survival-card-panel{
+    text-align:left;
+  }
+
+  .survival-card-panel{
+    align-items:center;
+    text-align:center;
+  }
+}
+
+@media (max-width:700px){
+  .survival-page-card{
+    width:320px;
+    height:198px;
+  }
+}
+
+    .footer-main{
+      margin-top:24px;
+      padding:26px 22px;
+      border-radius:22px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .footer-col h4{
+      margin:0 0 12px;
+      font-size:18px;
+    }
+
+    .footer-col p,
+    .footer-col a{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      text-decoration:none;
+    }
+
+    .footer-col a:hover{
+      color:var(--text);
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:24px;
+      color:#8e8e8e;
+      font-size:14px;
+    }
+
+    .legal-strip{
+      margin-top:18px;
+      padding:12px 20px;
+      text-align:center;
+      font-size:11px;
+      color:#7d7d7d;
+      border-top:1px solid var(--border);
+    }
+
+    @media (max-width:950px){
+      .timeline-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .banner-bg-text{
+        font-size:120px;
+      }
+
+      .banner-title{
+        font-size:40px;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width:700px){
+      .banner-bg-text{
+        font-size:78px;
+        letter-spacing:4px;
+      }
+
+      .banner-title{
+        font-size:32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fx-topbar">
+    <div class="fx-inner">
+      <div class="fx-left">
+        <div class="fx-item">EUR/USD <span id="top-usd">—</span></div>
+        <div class="fx-item">EUR/GBP <span id="top-gbp">—</span></div>
+        <div class="fx-item">EUR/CHF <span id="top-chf">—</span></div>
+      </div>
+      <div class="fx-date" id="top-date">Loading…</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="nav">
+      <div class="brand-wrap">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <line x1="16" y1="25.5" x2="41" y2="25.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="38.5" x2="41" y2="38.5"
+                  stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Davlad Bank</div>
+          <div class="brand-sub" id="brandSub">Private Banking</div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="index.html" id="navHome">Home</a>
+          <a href="deposits.html" id="navDeposits">Deposits</a>
+          <a href="investments.html" id="navInvestments">Investments</a>
+          <a href="loans.html" id="navLoans">Loans</a>
+          <a href="about.html" id="navAbout">About</a>
+          <a href="contact.html" id="navContact">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="ua">UA</button>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+      </div>
+    </div>
+  </div>
+
+<div class="full-banner survival-page-banner">
+  <div class="banner-overlay">
+    <div class="banner-bg-text" id="survivalBgText">SURVIVE</div>
+
+    <div class="banner-kicker" id="survivalKicker">ESSENTIAL ACCESS</div>
+    <h1 class="banner-title" id="survivalTitle">Davlad Survival</h1>
+    <div class="banner-subtitle" id="survivalSubtitle">Free. Functional. Emotionally necessary.</div>
+
+    <p class="banner-text" id="survivalBannerText">
+      The Davlad Survival Card is designed for the financially conscious, the strategically cautious,
+      and everyone who understands that annual fees are a deeply suspicious concept.
+    </p>
+  </div>
+</div>
+
+<div class="container">
+
+  <section class="survival-hero-section">
+    <div class="survival-hero-grid">
+
+      <div class="survival-copy-card">
+        <div class="section-kicker" id="survivalIntroKicker">Why this matters</div>
+        <h2 class="section-title" id="survivalIntroTitle">Because basic survival should not require prestige</h2>
+        <p class="section-copy" id="survivalIntroText">
+          Survival is the entry point into the Davlad ecosystem. No annual fee, no ceremonial exclusivity,
+          no performative luxury. Just a usable card for everyday financial endurance.
+        </p>
+
+        <div class="survival-points">
+          <div class="survival-point">
+            <strong id="survivalPoint1Title">€0 annual fee</strong>
+            <p id="survivalPoint1Text">The strongest possible argument in an unstable world.</p>
+          </div>
+
+          <div class="survival-point">
+            <strong id="survivalPoint2Title">Immediate practicality</strong>
+            <p id="survivalPoint2Text">Made for payments, timing, and maintaining your last visible form of control.</p>
+          </div>
+
+          <div class="survival-point">
+            <strong id="survivalPoint3Title">Psychological relief</strong>
+            <p id="survivalPoint3Text">Not technically guaranteed, but strongly implied by the absence of fees.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="survival-card-panel">
+        <div class="bank-card survival-page-card">
+          <div class="card-surface"></div>
+
+          <div class="card-chip chip-silver">
+            <span class="chip-line chip-line-v1"></span>
+            <span class="chip-line chip-line-v2"></span>
+            <span class="chip-line chip-line-v3"></span>
+            <span class="chip-line chip-line-h1"></span>
+            <span class="chip-line chip-line-h2"></span>
+            <span class="chip-line chip-line-h3"></span>
+            <span class="chip-core"></span>
+          </div>
+
+          <div class="card-brand-top">Davlad Bank</div>
+
+          <div class="card-logo">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M22 14H34.5C44.8 14 51 21.1 51 32C51 42.9 44.8 50 34.5 50H22V14Z"
+                fill="none" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="16" y1="25.5" x2="41" y2="25.5"
+                stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="38.5" x2="41" y2="38.5"
+                stroke="#B89A4A" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="card-name" id="survivalCardName">SURVIVAL</div>
+          <div class="card-tier" id="survivalCardTier">ENTRY TIER</div>
+          <div class="card-mc" aria-hidden="true"></div>
+        </div>
+
+        <div class="survival-card-note" id="survivalCardNote">
+          No annual fee. No prestige surcharge. No symbolic suffering.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="survival-compare-section">
+    <div class="section-kicker" id="survivalCompareKicker">Comparison</div>
+    <h2 class="section-title" id="survivalCompareTitle">What Survival does better than expensive nonsense</h2>
+
+    <div class="survival-compare-grid">
+      <div class="survival-compare-card">
+        <h3 id="survivalCompare1Title">Free</h3>
+        <p id="survivalCompare1Text">
+          You keep your money instead of donating it to the abstract concept of “card prestige”.
+        </p>
+      </div>
+
+      <div class="survival-compare-card">
+        <h3 id="survivalCompare2Title">Simple</h3>
+        <p id="survivalCompare2Text">
+          No philosophical positioning. No metallic identity crisis. Just functional access.
+        </p>
+      </div>
+
+      <div class="survival-compare-card">
+        <h3 id="survivalCompare3Title">Necessary</h3>
+        <p id="survivalCompare3Text">
+          In uncertain times, a free card is not an optional lifestyle enhancement. It is infrastructure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="survival-meme-section">
+    <div class="survival-meme-box">
+      <div class="section-kicker" id="survivalMemeKicker">Institutional Opinion</div>
+      <h2 class="section-title" id="survivalMemeTitle">You do not need prestige. You need survival.</h2>
+      <p class="section-copy" id="survivalMemeText">
+        Some people choose luxury. Some choose symbolism. The wise choose a free card and preserve optionality.
+      </p>
+
+      <div class="survival-meme-strip" id="survivalMemeStrip">
+        Annual fee avoided. Stability preserved. Dignity partially restored.
+      </div>
+    </div>
+  </section>
+
+  <section class="survival-cta-section">
+    <div class="survival-cta-box">
+      <div class="section-kicker" id="survivalCtaKicker">Final decision</div>
+      <h2 class="section-title" id="survivalCtaTitle">Apply for Survival</h2>
+      <p class="section-copy" id="survivalCtaText">
+        Enter the Davlad ecosystem at the only morally defensible price point: free.
+      </p>
+
+      <div class="survival-cta-actions">
+        <a href="contact.html" class="survival-main-btn" id="survivalApplyBtn">Get Survival now</a>
+        <div class="survival-cta-micro" id="survivalCtaMicro">No annual fee · No prestige tax · No emotional surcharge</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+  
+
+
+
+    <div class="footer-main">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 id="footerCol1Title">Davlad Bank</h4>
+          <p id="footerCol1Text">
+            Independent financial platform focused on deposits, investments, and structured lending.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol2Title">Navigation</h4>
+          <a href="deposits.html" id="footerDeposits">Deposits</a><br>
+          <a href="investments.html" id="footerInvestments">Investments</a><br>
+          <a href="loans.html" id="footerLoans">Loans</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="footerCol3Title">Company</h4>
+          <a href="about.html" id="footerAbout">About</a><br>
+          <a href="contact.html" id="footerContact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footerText">
+      Davlad Bank © 2026 · Founding Story
+    </div>
+
+    <div class="legal-strip" id="legalText">
+      Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only.
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+
+    function applyTheme(theme){
+      document.body.classList.toggle("light", theme === "light");
+      btn.textContent = theme === "light" ? "☀️" : "🌙";
+    }
+
+    applyTheme(localStorage.getItem("theme") || "dark");
+
+    btn.addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    });
+
+    async function loadFxRates() {
+      try {
+        const res = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=USD,GBP,CHF");
+        const data = await res.json();
+
+        if (!data || !data.rates) throw new Error("No rates returned");
+
+        document.getElementById("top-usd").textContent = Number(data.rates.USD).toFixed(4);
+        document.getElementById("top-gbp").textContent = Number(data.rates.GBP).toFixed(4);
+        document.getElementById("top-chf").textContent = Number(data.rates.CHF).toFixed(4);
+
+        document.getElementById("top-date").textContent =
+          `Official ECB reference rate • ${data.date}`;
+      } catch (error) {
+        document.getElementById("top-date").textContent = "Rates temporarily unavailable";
+      }
+    }
+
+    const translations = {
+      en: {
+survivalBgText: "SURVIVE",
+survivalKicker: "ESSENTIAL ACCESS",
+survivalTitle: "Davlad Survival",
+survivalSubtitle: "Free. Functional. Emotionally necessary.",
+survivalBannerText: "The Davlad Survival Card is designed for the financially conscious, the strategically cautious, and everyone who understands that annual fees are a deeply suspicious concept.",
+
+survivalIntroKicker: "Why this matters",
+survivalIntroTitle: "Because basic survival should not require prestige",
+survivalIntroText: "Survival is the entry point into the Davlad ecosystem. No annual fee, no ceremonial exclusivity, no performative luxury. Just a usable card for everyday financial endurance.",
+
+survivalPoint1Title: "€0 annual fee",
+survivalPoint1Text: "The strongest possible argument in an unstable world.",
+survivalPoint2Title: "Immediate practicality",
+survivalPoint2Text: "Made for payments, timing, and maintaining your last visible form of control.",
+survivalPoint3Title: "Psychological relief",
+survivalPoint3Text: "Not technically guaranteed, but strongly implied by the absence of fees.",
+
+survivalCardName: "SURVIVAL",
+survivalCardTier: "ENTRY TIER",
+survivalCardNote: "No annual fee. No prestige surcharge. No symbolic suffering.",
+
+survivalCompareKicker: "Comparison",
+survivalCompareTitle: "What Survival does better than expensive nonsense",
+survivalCompare1Title: "Free",
+survivalCompare1Text: "You keep your money instead of donating it to the abstract concept of “card prestige”.",
+survivalCompare2Title: "Simple",
+survivalCompare2Text: "No philosophical positioning. No metallic identity crisis. Just functional access.",
+survivalCompare3Title: "Necessary",
+survivalCompare3Text: "In uncertain times, a free card is not an optional lifestyle enhancement. It is infrastructure.",
+
+survivalMemeKicker: "Institutional Opinion",
+survivalMemeTitle: "You do not need prestige. You need survival.",
+survivalMemeText: "Some people choose luxury. Some choose symbolism. The wise choose a free card and preserve optionality.",
+survivalMemeStrip: "Annual fee avoided. Stability preserved. Dignity partially restored.",
+
+survivalCtaKicker: "Final decision",
+survivalCtaTitle: "Apply for Survival",
+survivalCtaText: "Enter the Davlad ecosystem at the only morally defensible price point: free.",
+survivalApplyBtn: "Get Survival now",
+survivalCtaMicro: "No annual fee · No prestige tax · No emotional surcharge",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Company",
+        footerText: "Davlad Bank © 2026 · Founding Story",
+        legalText: "Davlad Bank is a conceptual project and does not represent a licensed financial institution. All content is provided for illustrative purposes only."
+      },
+
+      de: {
+        brandSub: "Private Banking",
+        navHome: "Start",
+        navDeposits: "Einlagen",
+        navInvestments: "Investments",
+        navLoans: "Kredite",
+        navAbout: "Über uns",
+        navContact: "Kontakt",
+
+survivalBgText: "SURVIVE",
+survivalKicker: "ESSENZIELLER ZUGANG",
+survivalTitle: "Davlad Survival",
+survivalSubtitle: "Kostenlos. Funktional. Emotional notwendig.",
+survivalBannerText: "Die Davlad Survival Card ist für finanziell bewusste, strategisch vorsichtige Menschen gedacht – und für alle, die verstehen, dass Jahresgebühren ein zutiefst verdächtiges Konzept sind.",
+
+survivalIntroKicker: "Warum das wichtig ist",
+survivalIntroTitle: "Weil grundlegendes Überleben kein Prestige erfordern sollte",
+survivalIntroText: "Survival ist der Einstieg in das Davlad-Ökosystem. Keine Jahresgebühr, keine zeremonielle Exklusivität, kein performativer Luxus. Nur eine nutzbare Karte für alltägliche finanzielle Belastbarkeit.",
+
+survivalPoint1Title: "0 € Jahresgebühr",
+survivalPoint1Text: "Das stärkste denkbare Argument in einer instabilen Welt.",
+survivalPoint2Title: "Sofort praktisch",
+survivalPoint2Text: "Gemacht für Zahlungen, Timing und den Erhalt Ihrer letzten sichtbaren Form von Kontrolle.",
+survivalPoint3Title: "Psychologische Entlastung",
+survivalPoint3Text: "Nicht technisch garantiert, aber stark durch die Gebührenfreiheit nahegelegt.",
+
+survivalCardName: "SURVIVAL",
+survivalCardTier: "EINSTIEGSSTUFE",
+survivalCardNote: "Keine Jahresgebühr. Kein Prestigeaufschlag. Kein symbolisches Leiden.",
+
+survivalCompareKicker: "Vergleich",
+survivalCompareTitle: "Was Survival besser macht als teurer Unsinn",
+survivalCompare1Title: "Kostenlos",
+survivalCompare1Text: "Sie behalten Ihr Geld, statt es dem abstrakten Konzept von „Kartenprestige“ zu opfern.",
+survivalCompare2Title: "Einfach",
+survivalCompare2Text: "Keine philosophische Positionierung. Keine metallische Identitätskrise. Nur funktionaler Zugang.",
+survivalCompare3Title: "Notwendig",
+survivalCompare3Text: "In unsicheren Zeiten ist eine kostenlose Karte kein optionales Lifestyle-Upgrade. Sie ist Infrastruktur.",
+
+survivalMemeKicker: "Institutionelle Meinung",
+survivalMemeTitle: "Sie brauchen kein Prestige. Sie brauchen Survival.",
+survivalMemeText: "Manche wählen Luxus. Manche wählen Symbolik. Die Klugen wählen eine kostenlose Karte und bewahren Optionalität.",
+survivalMemeStrip: "Jahresgebühr vermieden. Stabilität erhalten. Würde teilweise wiederhergestellt.",
+
+survivalCtaKicker: "Letzte Entscheidung",
+survivalCtaTitle: "Survival beantragen",
+survivalCtaText: "Betreten Sie das Davlad-Ökosystem zum einzig moralisch vertretbaren Preis: kostenlos.",
+survivalApplyBtn: "Survival jetzt sichern",
+survivalCtaMicro: "Keine Jahresgebühr · Keine Prestigesteuer · Kein emotionaler Aufschlag",
+
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
+        footerCol2Title: "Navigation",
+        footerCol3Title: "Unternehmen",
+        footerText: "Davlad Bank © 2026 · Gründungsgeschichte",
+        legalText: "Davlad Bank ist ein konzeptionelles Projekt und stellt kein lizenziertes Finanzinstitut dar. Alle Inhalte dienen ausschließlich illustrativen Zwecken."
+      },
+
+      ua: {
+        brandSub: "Private Banking",
+        navHome: "Головна",
+        navDeposits: "Депозити",
+        navInvestments: "Інвестиції",
+        navLoans: "Кредити",
+        navAbout: "Про банк",
+        navContact: "Контакт",
+
+survivalBgText: "SURVIVE",
+survivalKicker: "БАЗОВИЙ ДОСТУП",
+survivalTitle: "Davlad Survival",
+survivalSubtitle: "Безкоштовно. Функціонально. Емоційно необхідно.",
+survivalBannerText: "Davlad Survival створена для фінансово свідомих, стратегічно обережних і для всіх, хто розуміє, що річна комісія — це глибоко підозріле явище.",
+
+survivalIntroKicker: "Чому це важливо",
+survivalIntroTitle: "Тому що базове виживання не повинно вимагати престижу",
+survivalIntroText: "Survival — це вхід до екосистеми Davlad. Без річної комісії, без церемоніальної ексклюзивності, без демонстративної розкоші. Просто придатна карта для щоденної фінансової витривалості.",
+
+survivalPoint1Title: "€0 річної комісії",
+survivalPoint1Text: "Найсильніший можливий аргумент у нестабільному світі.",
+survivalPoint2Title: "Негайна практичність",
+survivalPoint2Text: "Створено для оплат, таймінгу та збереження останньої видимої форми контролю.",
+survivalPoint3Title: "Психологічне полегшення",
+survivalPoint3Text: "Технічно не гарантовано, але сильно випливає з відсутності комісії.",
+
+survivalCardName: "SURVIVAL",
+survivalCardTier: "ПОЧАТКОВИЙ РІВЕНЬ",
+survivalCardNote: "Без річної комісії. Без націнки за престиж. Без символічного страждання.",
+
+survivalCompareKicker: "Порівняння",
+survivalCompareTitle: "У чому Survival краща за дорогий абсурд",
+survivalCompare1Title: "Безкоштовно",
+survivalCompare1Text: "Ви зберігаєте свої гроші, а не жертвуєте їх абстрактному поняттю «престиж картки».",
+survivalCompare2Title: "Просто",
+survivalCompare2Text: "Без філософського позиціонування. Без металевої кризи ідентичності. Лише функціональний доступ.",
+survivalCompare3Title: "Необхідно",
+survivalCompare3Text: "У нестабільні часи безкоштовна картка — це не опціональне lifestyle-покращення. Це інфраструктура.",
+
+survivalMemeKicker: "Інституційна думка",
+survivalMemeTitle: "Вам не потрібен престиж. Вам потрібне виживання.",
+survivalMemeText: "Дехто обирає розкіш. Дехто — символізм. Мудрі обирають безкоштовну картку та зберігають опціональність.",
+survivalMemeStrip: "Річну комісію уникнуто. Стабільність збережено. Гідність частково відновлено.",
+
+survivalCtaKicker: "Фінальне рішення",
+survivalCtaTitle: "Оформити Survival",
+survivalCtaText: "Увійдіть в екосистему Davlad за єдиною морально виправданою ціною: безкоштовно.",
+survivalApplyBtn: "Отримати Survival зараз",
+survivalCtaMicro: "Без річної комісії · Без податку на престиж · Без емоційної надбавки",
+        
+        footerCol1Title: "Davlad Bank",
+        footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
+        footerCol2Title: "Навігація",
+        footerCol3Title: "Компанія",
+        footerText: "Davlad Bank © 2026 · Історія створення",
+        legalText: "Davlad Bank є концептуальним проєктом і не є ліцензованою фінансовою установою. Усі матеріали наведені виключно для ілюстративних цілей."
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+
+      const map = {
+        brandSub: "brandSub",
+        navHome: "navHome",
+        navDeposits: "navDeposits",
+        navInvestments: "navInvestments",
+        navLoans: "navLoans",
+        navAbout: "navAbout",
+        navContact: "navContact",
+
+survivalBgText: "survivalBgText",
+survivalKicker: "survivalKicker",
+survivalTitle: "survivalTitle",
+survivalSubtitle: "БsurvivalSubtitle",
+survivalBannerText: "survivalBannerText",
+
+survivalIntroKicker: "survivalIntroKicker",
+survivalIntroTitle: "survivalIntroTitle",
+survivalIntroText: "survivalIntroText",
+
+survivalPoint1Title: "survivalPoint1Title",
+survivalPoint1Text: "survivalPoint1Text",
+survivalPoint2Title: "survivalPoint2Title",
+survivalPoint2Text: "survivalPoint2Text",
+survivalPoint3Title: "survivalPoint3Title",
+survivalPoint3Text: "survivalPoint3Text",
+
+survivalCardName: "survivalCardName",
+survivalCardTier: "survivalCardTier",
+survivalCardNote: "survivalCardNote",
+
+survivalCompareKicker: "survivalCompareKicker",
+survivalCompareTitle: "survivalCompareTitle",
+survivalCompare1Title: "survivalCompare1Title",
+survivalCompare1Text: "survivalCompare1Text",
+survivalCompare2Title: "survivalCompare2Title",
+survivalCompare2Text: "survivalCompare2Text",
+survivalCompare3Title: "survivalCompare3Title",
+survivalCompare3Text: "survivalCompare3Text",
+
+survivalMemeKicker: "survivalMemeKicker",
+survivalMemeTitle: "survivalMemeTitle",
+survivalMemeText: "survivalMemeText",
+survivalMemeStrip: "survivalMemeStrip",
+
+survivalCtaKicker: "survivalCtaKicker",
+survivalCtaTitle: "survivalCtaTitle",
+survivalCtaText: "survivalCtaText",
+survivalApplyBtn: "survivalApplyBtn",
+survivalCtaMicro: "survivalCtaMicro",
+
+        footerCol1Title: "footerCol1Title",
+        footerCol1Text: "footerCol1Text",
+        footerCol2Title: "footerCol2Title",
+        footerCol3Title: "footerCol3Title",
+        footerText: "footerText",
+        legalText: "legalText"
+      };
+
+      Object.keys(map).forEach(key => {
+        const el = document.getElementById(map[key]);
+        if (el && t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.getElementById("footerDeposits").textContent = t.navDeposits;
+      document.getElementById("footerInvestments").textContent = t.navInvestments;
+      document.getElementById("footerLoans").textContent = t.navLoans;
+      document.getElementById("footerAbout").textContent = t.navAbout;
+      document.getElementById("footerContact").textContent = t.navContact;
+
+      document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+      document.querySelectorAll(".lang-switch button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
+    loadFxRates();
+  </script>
+</body>
+</html>

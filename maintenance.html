@@ -1693,6 +1693,17 @@ body.light .image-banner-text{
   text-shadow:0 4px 16px rgba(0,0,0,0.28);
 }
 
+  .promo-micro{
+  margin-top:14px;
+  font-size:12px;
+  color:var(--accent);
+  font-style:italic;
+  letter-spacing:.2px;
+  opacity:.9;
+  position:relative;
+  z-index:2;
+  }  
+
 @media (max-width:700px){
   .image-banner{
     min-height:140px;
@@ -1705,17 +1716,6 @@ body.light .image-banner-text{
 
   .image-banner-text{
     font-size:20px;
-  }
-
-  .promo-micro{
-  margin-top:14px;
-  font-size:12px;
-  color:var(--accent);
-  font-style:italic;
-  letter-spacing:.2px;
-  opacity:.9;
-  position:relative;
-  z-index:2;
   }
   
 }    
@@ -2068,13 +2068,6 @@ body.light .image-banner-text{
   </div>
 </div>
 
-      <div class="promo-dots">
-        <span class="promo-dot active"></span>
-        <span class="promo-dot"></span>
-        <span class="promo-dot"></span>
-        <span class="promo-dot"></span>
-      </div>
-    </div>
 
 <div class="news-section news-upgraded">
   <div class="section-heading">
@@ -2346,10 +2339,6 @@ news3Micro: "Approval mood: conditionally tolerant",
         bannerBgText: "ORIGIN",
 
 
-news1Meta: "Product Update",
-news2Meta: "Investment Update",
-news3Meta: "Roadmap",
-
 fraudKicker: "Security Notice",
 fraudHeading: "How to recognize a bank that exists mostly in concept",
 
@@ -2445,20 +2434,7 @@ promo4Text: "Dieser Platz ist für zukünftige Partner verfügbar, die Sichtbark
 promo4Micro: "Präsenz ist verhandelbar.",
 promo4Price: "auf Anfrage",
 promo4PriceLabel: "Premium-Platzierung",
-
-fraudKicker: "Sicherheitshinweis",
-fraudHeading: "Woran man erkennt, dass eine Bank nicht echt ist",
-fraud1Title: "Unrealistische Versprechen",
-fraud1Text: "Vorsicht, wenn eine „Bank“ garantierten Reichtum, Sofortzusagen oder Renditen verspricht, die von jeder Realität abgekoppelt wirken.",
-fraud2Title: "Unklare Identität",
-fraud2Text: "Ein echtes Institut sollte eine transparente Identität, eine konsistente öffentliche Präsenz und klar erkennbare Eigentums- oder Strukturangaben haben.",
-fraud3Title: "Druck und künstliche Eile",
-fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf sofortige Zahlungen und entmutigen sorgfältige Verifizierung.",
-
-fraudMicro1: "Das könnte bekannt wirken.",
-fraudMicro2: "Klassifikation: subjektiv.",
-fraudMicro3: "Verifizierung optional.",        
-
+        
 newsKicker: "System-Updates",
 newsHeading: "Aktuelle Entwicklungen innerhalb der Davlad Bank",
 
@@ -2487,7 +2463,10 @@ fraud2Text: "Angebote erscheinen detailliert und professionell, funktionieren je
 
 fraud3Title: "Autoritärer Ton ohne institutionellen Nachweis",
 fraud3Text: "Die Plattform kommuniziert konsistent und überzeugend, besitzt jedoch nicht die klassischen Merkmale eines regulierten Finanzinstituts.",
-
+fraudMicro1: "Das könnte bekannt wirken.",
+fraudMicro2: "Klassifikation: subjektiv.",
+fraudMicro3: "Verifizierung optional.",
+        
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
         footerCol2Title: "Navigation",
@@ -2566,20 +2545,7 @@ promo4Title: "Тут могла б бути ваша реклама",
 promo4Text: "Це місце доступне для майбутніх партнерів, які шукають видимість у структурованій фінансовій екосистемі з сумнівною інституційною глибиною та відмінною дизайнерською дисципліною.",
 promo4Micro: "Присутність обговорюється.",
 promo4Price: "за запитом",
-promo4PriceLabel: "преміальне розміщення",
-        
-fraudKicker: "Попередження безпеки",
-fraudHeading: "Як розпізнати, що банк не є справжнім",
-fraud1Title: "Нереалістичні обіцянки",
-fraud1Text: "Будьте обережні, якщо «банк» обіцяє гарантоване багатство, миттєве схвалення або прибутковість, відірвану від реальності.",
-fraud2Title: "Нечітка ідентичність",
-fraud2Text: "Справжня установа повинна мати прозору ідентичність, послідовну публічну присутність і чітко вказану структуру або власність.",
-fraud3Title: "Тиск і штучна терміновість",
-fraud3Text: "Шахраї часто створюють штучну терміновість, підштовхують до негайних платежів і відмовляють від нормальної перевірки.",
-
-fraudMicro1: "Це може здатися знайомим.",
-fraudMicro2: "Класифікація: суб’єктивна.",
-fraudMicro3: "Перевірка необов’язкова.",        
+promo4PriceLabel: "преміальне розміщення",       
 
 newsKicker: "Оновлення системи",
 newsHeading: "Останні зміни всередині Davlad Bank",
@@ -2609,6 +2575,10 @@ fraud2Text: "Пропозиції виглядають детально та п�
 
 fraud3Title: "Тон авторитету без інституційного підтвердження",
 fraud3Text: "Платформа звучить впевнено і послідовно, але не має класичних ознак регульованої фінансової установи.",
+
+fraudMicro1: "Це може здатися знайомим.",
+fraudMicro2: "Класифікація: суб’єктивна.",
+fraudMicro3: "Перевірка необов’язкова.", 
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",

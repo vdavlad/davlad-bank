@@ -264,16 +264,15 @@
       background:var(--card-bg);
     }
 
-.about-banner::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.75)),
-    linear-gradient(90deg, rgba(0,0,0,0.25), transparent 60%),
-    url("images/banner_story.jpg") center 58%/cover no-repeat;
-  filter: saturate(65%) brightness(0.8 sepia(10%);
-}
+    .about-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58)),
+        url("images/banner_about.jpg") center 58%/cover no-repeat;
+      transform:scale(1.01);
+    }
 
     .banner-overlay{
       position:relative;

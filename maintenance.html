@@ -1476,6 +1476,98 @@ body.light .card-box-text{
 body.light .card-badge{
   color:#b8963a;
 }
+
+.news-upgraded{
+  margin-bottom:34px;
+}
+
+.news-grid-upgraded{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.news-card-upgraded{
+  padding:24px 22px;
+  border-radius:22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  min-height:240px;
+}
+
+.news-card-upgraded::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.7;
+}
+
+.news-chip{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.04);
+  color:var(--accent);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.news-card-upgraded h4{
+  margin:0 0 10px;
+  font-size:22px;
+  line-height:1.25;
+}
+
+.news-card-upgraded p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+.news-micro{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+  font-size:12px;
+  color:var(--accent);
+  font-style:italic;
+  letter-spacing:.2px;
+}
+
+body.light .news-card-upgraded{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.88));
+}
+
+body.light .news-chip{
+  background:rgba(0,0,0,0.03);
+}
+
+@media (max-width:950px){
+  .news-grid-upgraded{
+    grid-template-columns:1fr;
+  }
+
+  .news-card-upgraded{
+    min-height:auto;
+  }
+}
+    
 }
   </style>
 </head>
@@ -1809,32 +1901,43 @@ body.light .card-badge{
       </div>
     </div>
 
-<div class="news-section">
+<div class="news-section news-upgraded">
   <div class="section-heading">
     <div>
-      <div class="section-kicker" id="newsKicker">What’s New</div>
-      <h2 class="section-title" id="newsHeading">Latest updates from the bank</h2>
+      <div class="section-kicker" id="newsKicker">System Updates</div>
+      <h2 class="section-title" id="newsHeading">Recent developments inside Davlad Bank</h2>
     </div>
   </div>
 
-  <div class="news-grid">
-    <div class="news-card">
-      <div class="news-meta" id="news1Meta">Product Update</div>
-      <h4 id="news1Title">New deposits</h4>
-      <p id="news1Text">Short-term and long-term deposit products are now available.</p>
+  <div class="news-grid news-grid-upgraded">
+
+    <div class="news-card news-card-upgraded">
+      <div class="news-chip" id="news1Meta">ACCESS UPDATE</div>
+      <h4 id="news1Title">Survival card deployed</h4>
+      <p id="news1Text">
+        The free entry-tier card is now part of the system. No annual fee, no symbolic suffering, no prestige tax.
+      </p>
+      <div class="news-micro" id="news1Micro">Stability impact: emotionally positive</div>
     </div>
 
-    <div class="news-card">
-      <div class="news-meta" id="news2Meta">Investment Update</div>
-      <h4 id="news2Title">Investment section expanded</h4>
-      <p id="news2Text">Davlad Bonds and Direct Investment are now part of the investment offering.</p>
+    <div class="news-card news-card-upgraded">
+      <div class="news-chip" id="news2Meta">SIMULATION UPDATE</div>
+      <h4 id="news2Title">Investment logic upgraded</h4>
+      <p id="news2Text">
+        Bonds and Direct Investment now include a structured calculator for outcome projection, volatility tolerance, and selective optimism.
+      </p>
+      <div class="news-micro" id="news2Micro">Model confidence: interpretative</div>
     </div>
 
-    <div class="news-card">
-      <div class="news-meta" id="news3Meta">Roadmap</div>
-      <h4 id="news3Title">Loans timeline</h4>
-      <p id="news3Text">Lending products are expected to become available from 1 June 2026.</p>
+    <div class="news-card news-card-upgraded">
+      <div class="news-chip" id="news3Meta">JUDGMENT UPDATE</div>
+      <h4 id="news3Title">Loan assessment engine activated</h4>
+      <p id="news3Text">
+        Credit decisions now simulate institutional patience, repayment logic, and the user’s visible relationship with reality.
+      </p>
+      <div class="news-micro" id="news3Micro">Approval mood: conditionally tolerant</div>
     </div>
+
   </div>
 </div>
 
@@ -2009,14 +2112,23 @@ cardsFootnote: "System progression is interpretative.",
         promo4Title: "Strategic Optimism Fund",
         promo4Text: "For long-term belief in uncertain outcomes.",
 
-        newsKicker: "What’s New",
-        newsHeading: "Latest updates from the bank",
-        news1Title: "New deposits",
-        news1Text: "Short-term and long-term deposit products are now available.",
-        news2Title: "Investment section expanded",
-        news2Text: "Davlad Bonds and Direct Investment are now part of the investment offering.",
-        news3Title: "Loans timeline",
-        news3Text: "Lending products are expected to become available from 1 June 2026.",
+ newsKicker: "System Updates",
+newsHeading: "Recent developments inside Davlad Bank",
+
+news1Meta: "ACCESS UPDATE",
+news1Title: "Survival card deployed",
+news1Text: "The free entry-tier card is now part of the system. No annual fee, no symbolic suffering, no prestige tax.",
+news1Micro: "Stability impact: emotionally positive",
+
+news2Meta: "SIMULATION UPDATE",
+news2Title: "Investment logic upgraded",
+news2Text: "Bonds and Direct Investment now include a structured calculator for outcome projection, volatility tolerance, and selective optimism.",
+news2Micro: "Model confidence: interpretative",
+
+news3Meta: "JUDGMENT UPDATE",
+news3Title: "Loan assessment engine activated",
+news3Text: "Credit decisions now simulate institutional patience, repayment logic, and the user’s visible relationship with reality.",
+news3Micro: "Approval mood: conditionally tolerant",
 
         bannerBgText: "ORIGIN",
 
@@ -2130,14 +2242,23 @@ fraud2Text: "Ein echtes Institut sollte eine transparente Identität, eine konsi
 fraud3Title: "Druck und künstliche Eile",
 fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf sofortige Zahlungen und entmutigen sorgfältige Verifizierung.",
 
-        newsKicker: "What’s New",
-        newsHeading: "Neuigkeiten der Bank",
-        news1Title: "Neue Einlagen",
-        news1Text: "Kurzfristige und langfristige Einlagenprodukte sind jetzt verfügbar.",
-        news2Title: "Investmentbereich erweitert",
-        news2Text: "Davlad Bonds und Direct Investment gehören jetzt zum Investmentangebot.",
-        news3Title: "Kredit-Zeitplan",
-        news3Text: "Kreditprodukte werden voraussichtlich ab dem 1. Juni 2026 verfügbar sein.",
+ newsKicker: "System-Updates",
+newsHeading: "Aktuelle Entwicklungen innerhalb der Davlad Bank",
+
+news1Meta: "ZUGANGS-UPDATE",
+news1Title: "Survival-Karte eingeführt",
+news1Text: "Die kostenlose Einstiegskarte ist jetzt Teil des Systems. Keine Jahresgebühr, kein symbolisches Leiden, keine Prestige-Steuer.",
+news1Micro: "Stabilitätseffekt: emotional positiv",
+
+news2Meta: "SIMULATIONS-UPDATE",
+news2Title: "Investment-Logik erweitert",
+news2Text: "Bonds und Direct Investment enthalten jetzt einen strukturierten Rechner für Ergebnisprojektion, Volatilitätstoleranz und selektiven Optimismus.",
+news2Micro: "Modellvertrauen: interpretativ",
+
+news3Meta: "BEURTEILUNGS-UPDATE",
+news3Title: "Kredit-Prüfengine aktiviert",
+news3Text: "Kreditentscheidungen simulieren jetzt institutionelle Geduld, Rückzahlungslogik und das sichtbare Verhältnis des Nutzers zur Realität.",
+news3Micro: "Genehmigungsstimmung: bedingt tolerant",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
@@ -2227,14 +2348,23 @@ fraud2Text: "Справжня установа повинна мати проз�
 fraud3Title: "Тиск і штучна терміновість",
 fraud3Text: "Шахраї часто створюють штучну терміновість, підштовхують до негайних платежів і відмовляють від нормальної перевірки.",
 
-        newsKicker: "What’s New",
-        newsHeading: "Останні новини банку",
-        news1Title: "Нові депозити",
-        news1Text: "Короткострокові та довгострокові депозитні продукти вже доступні.",
-        news2Title: "Інвестиційний розділ розширено",
-        news2Text: "Davlad Bonds та Direct Investment тепер входять до інвестиційної пропозиції.",
-        news3Title: "Кредитний таймлайн",
-        news3Text: "Кредитні продукти очікуються до запуску з 1 червня 2026 року.",
+newsKicker: "Оновлення системи",
+newsHeading: "Останні зміни всередині Davlad Bank",
+
+news1Meta: "ОНОВЛЕННЯ ДОСТУПУ",
+news1Title: "Картку Survival запущено",
+news1Text: "Безкоштовна картка початкового рівня тепер є частиною системи. Без річної комісії, без символічного страждання, без податку на престиж.",
+news1Micro: "Вплив на стабільність: емоційно позитивний",
+
+news2Meta: "ОНОВЛЕННЯ СИМУЛЯЦІЇ",
+news2Title: "Інвестиційну логіку розширено",
+news2Text: "Bonds і Direct Investment тепер мають структурований калькулятор для прогнозування результату, толерантності до волатильності та вибіркового оптимізму.",
+news2Micro: "Довіра до моделі: інтерпретативна",
+
+news3Meta: "ОНОВЛЕННЯ ОЦІНКИ",
+news3Title: "Активовано engine кредитного рішення",
+news3Text: "Кредитні рішення тепер моделюють інституційне терпіння, логіку погашення та видимі стосунки користувача з реальністю.",
+news3Micro: "Настрій схвалення: умовно терпимий",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
@@ -2326,6 +2456,10 @@ document.getElementById("promo4PriceLabel").textContent = t.promo4PriceLabel;
       document.getElementById("news1Meta").textContent = t.news1Meta;
 document.getElementById("news2Meta").textContent = t.news2Meta;
 document.getElementById("news3Meta").textContent = t.news3Meta;
+
+      document.getElementById("news1Micro").textContent = t.news1Micro;
+document.getElementById("news2Micro").textContent = t.news2Micro;
+document.getElementById("news3Micro").textContent = t.news3Micro;
 
       document.getElementById("footerCol1Title").textContent = t.footerCol1Title;
       document.getElementById("footerCol1Text").textContent = t.footerCol1Text;

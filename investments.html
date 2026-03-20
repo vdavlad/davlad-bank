@@ -1094,6 +1094,9 @@ body.light .inv-calc-field select{
         <button class="inv-calc-btn" id="invButton" onclick="calculateInvestment()">
           Simulate outcome
         </button>
+        <button class="inv-calc-btn" onclick="resetCalculator()" style="margin-left:10px;">
+  Reset
+</button>
       </div>
 
       <div class="inv-calc-results">
@@ -1601,6 +1604,19 @@ body.light .inv-calc-field select{
       calculateInvestment();
     });
   });
+
+    function resetCalculator(){
+  document.getElementById("invType").value = "bonds";
+  document.getElementById("invAmount").value = 10000;
+  document.getElementById("invMonths").value = 12;
+  document.getElementById("market").value = "bal";
+  document.getElementById("vol").value = "mid";
+  document.getElementById("confidence").value = 50;
+
+  document.getElementById("confidenceOutput").textContent = "50%";
+
+  calculateInvestment();
+}
 
   function calculateInvestment(){
     const typeEl = document.getElementById("invType");

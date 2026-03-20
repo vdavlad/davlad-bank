@@ -1599,7 +1599,109 @@ body.light .news-chip{
 
 .fraud-card:hover::after{
   opacity:1;
-}   
+}
+.image-banner{
+  margin:34px 0;
+  height:140px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.65)),
+    url("images/banner_mid.jpg") center/cover no-repeat;
+}
+
+.image-banner-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+.image-banner-text{
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:.4px;
+  color:#fff;
+  max-width:600px;
+  line-height:1.5;
+}
+
+/* hover эффект */
+.image-banner:hover{
+  transform:scale(1.01);
+  transition:.25s ease;
+}
+body.light .image-banner{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.65)),
+    url("images/banner_mid.jpg") center/cover no-repeat;
+}
+
+body.light .image-banner-text{
+  color:#111;
+}
+
+.floating-text{
+  display:inline-block;
+  animation: floatText 8s ease-in-out infinite;
+}
+
+/* основной "дрейф" */
+@keyframes floatText{
+  0%{
+    transform: translateX(0px) translateY(0px) scale(1);
+    filter: blur(0px);
+    opacity:0.95;
+  }
+
+  25%{
+    transform: translateX(2px) translateY(-1px) scale(1.01);
+    filter: blur(0.2px);
+    opacity:1;
+  }
+
+  50%{
+    transform: translateX(-2px) translateY(1px) scale(0.995);
+    filter: blur(0.15px);
+  }
+
+  75%{
+    transform: translateX(1px) translateY(0px) scale(1.005);
+    filter: blur(0.1px);
+  }
+
+  100%{
+    transform: translateX(0px) translateY(0px) scale(1);
+    filter: blur(0px);
+    opacity:0.95;
+  }
+}
+
+.floating-text::after{
+  content: attr(data-text);
+  position:absolute;
+  left:0;
+  top:0;
+  color:var(--accent);
+  opacity:0.08;
+  filter: blur(1px);
+  transform: translateX(1px);
+  pointer-events:none;
+}
+
+body.light .floating-text{
+  filter:none;
+}
+
+body.light .floating-text::after{
+  opacity:0.05;
+}    
     
 }
   </style>
@@ -1973,6 +2075,12 @@ body.light .news-chip{
 
   </div>
 </div>
+
+<div class="image-banner">
+  <div class="image-banner-overlay">
+    <div class="image-banner-text floating-text" data-text="Perception is the product · Everything else is optional">
+  </div>
+</div>   
 
 <div class="fraud-wrap">
   <div class="section-heading">

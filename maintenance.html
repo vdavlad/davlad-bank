@@ -1634,10 +1634,79 @@ body.light .news-chip{
 }
 
 .fraud-card:hover::after{
-  opacity:1;
-}   
-    
+  opacity:1;     
 }
+
+.image-banner{
+  position:relative;
+  min-height:180px;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  margin:0 0 34px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.56), rgba(0,0,0,0.22)),
+    url("images/banner_strip.jpg") center/cover no-repeat;
+}
+
+.image-banner::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.7;
+}
+
+.image-banner-overlay{
+  position:relative;
+  z-index:2;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  text-align:center;
+}
+
+.image-banner-text{
+  color:#fff;
+  font-size:28px;
+  line-height:1.35;
+  font-weight:800;
+  letter-spacing:.3px;
+  max-width:900px;
+  text-shadow:0 4px 18px rgba(0,0,0,0.35);
+}
+
+body.light .image-banner{
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08)),
+    url("images/banner_strip.jpg") center/cover no-repeat;
+}
+
+body.light .image-banner-text{
+  color:#ffffff;
+  text-shadow:0 4px 16px rgba(0,0,0,0.28);
+}
+
+@media (max-width:700px){
+  .image-banner{
+    min-height:140px;
+  }
+
+  .image-banner-overlay{
+    min-height:140px;
+    padding:18px;
+  }
+
+  .image-banner-text{
+    font-size:20px;
+  }
+}    
   </style>
 </head>
 <body>
@@ -2248,6 +2317,10 @@ fraud2Text: "Offerings may appear detailed and well-presented, yet operate more 
 fraud3Title: "A tone of authority without institutional proof",
 fraud3Text: "The platform communicates with consistency, aesthetic discipline, and confidence, but lacks the traditional markers of a regulated financial entity.",
 
+        fraudMicro1: "This may appear familiar.",
+fraudMicro2: "Classification: subjective.",
+fraudMicro3: "Verification optional.",
+
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
         footerCol2Title: "Navigation",
@@ -2323,10 +2396,6 @@ promo3PriceLabel: "illustratives Beispiel",
 promo4Price: "1 Mio. €",
 promo4PriceLabel: "Vision erforderlich",
 
-news1Meta: "Produktupdate",
-news2Meta: "Investment-Update",
-news3Meta: "Roadmap",
-
 fraudKicker: "Sicherheitshinweis",
 fraudHeading: "Woran man erkennt, dass eine Bank nicht echt ist",
 fraud1Title: "Unrealistische Versprechen",
@@ -2335,6 +2404,10 @@ fraud2Title: "Unklare Identität",
 fraud2Text: "Ein echtes Institut sollte eine transparente Identität, eine konsistente öffentliche Präsenz und klar erkennbare Eigentums- oder Strukturangaben haben.",
 fraud3Title: "Druck und künstliche Eile",
 fraud3Text: "Betrüger arbeiten oft mit künstlicher Dringlichkeit, drängen auf sofortige Zahlungen und entmutigen sorgfältige Verifizierung.",
+
+fraudMicro1: "Das könnte bekannt wirken.",
+fraudMicro2: "Klassifikation: subjektiv.",
+fraudMicro3: "Verifizierung optional.",        
 
  newsKicker: "System-Updates",
 newsHeading: "Aktuelle Entwicklungen innerhalb der Davlad Bank",
@@ -2440,10 +2513,6 @@ promo3PriceLabel: "умовний приклад",
 promo4Price: "€1 млн",
 promo4PriceLabel: "потрібне бачення",
 
-news1Meta: "Оновлення продукту",
-news2Meta: "Оновлення інвестицій",
-news3Meta: "Дорожня карта",
-
 fraudKicker: "Попередження безпеки",
 fraudHeading: "Як розпізнати, що банк не є справжнім",
 fraud1Title: "Нереалістичні обіцянки",
@@ -2452,6 +2521,10 @@ fraud2Title: "Нечітка ідентичність",
 fraud2Text: "Справжня установа повинна мати прозору ідентичність, послідовну публічну присутність і чітко вказану структуру або власність.",
 fraud3Title: "Тиск і штучна терміновість",
 fraud3Text: "Шахраї часто створюють штучну терміновість, підштовхують до негайних платежів і відмовляють від нормальної перевірки.",
+
+fraudMicro1: "Це може здатися знайомим.",
+fraudMicro2: "Класифікація: суб’єктивна.",
+fraudMicro3: "Перевірка необов’язкова.",        
 
 newsKicker: "Оновлення системи",
 newsHeading: "Останні зміни всередині Davlad Bank",

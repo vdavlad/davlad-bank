@@ -726,6 +726,80 @@ body.light .dep-calc-field select{
   }
 }
 
+    .dep-guide{
+  margin:24px 0 10px;
+  padding:22px;
+  border-radius:20px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.dep-guide::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:.6;
+}
+
+.dep-guide-head{
+  margin-bottom:16px;
+}
+
+.dep-guide-title{
+  margin:4px 0 0;
+  font-size:22px;
+  font-weight:800;
+}
+
+.dep-guide-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.dep-guide-item{
+  background:var(--card-2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+
+.dep-guide-item strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:6px;
+  color:var(--text);
+}
+
+.dep-guide-item p{
+  font-size:13px;
+  line-height:1.6;
+  color:var(--muted);
+  margin:0;
+}
+
+.dep-guide-note{
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  font-style:italic;
+}
+
+@media (max-width:900px){
+  .dep-guide-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 
     .footer-main{
       margin-top:24px;
@@ -1091,6 +1165,44 @@ body.light .dep-calc-field select{
     </div>
   </div>
 </section>
+
+    <div class="dep-guide">
+
+  <div class="dep-guide-head">
+    <div class="section-kicker" id="depGuideKicker">Interpretation Guide</div>
+    <h3 class="dep-guide-title" id="depGuideTitle">How to use this instrument</h3>
+  </div>
+
+  <div class="dep-guide-grid">
+
+    <div class="dep-guide-item">
+      <strong id="depGuide1Title">Adjust your assumptions</strong>
+      <p id="depGuide1Text">
+        Modify capital, time horizon, and optimism rate to reflect your current financial mood rather than objective reality.
+      </p>
+    </div>
+
+    <div class="dep-guide-item">
+      <strong id="depGuide2Title">Observe the outcome</strong>
+      <p id="depGuide2Text">
+        The projected result illustrates how discipline and patience may translate into modest financial evolution.
+      </p>
+    </div>
+
+    <div class="dep-guide-item">
+      <strong id="depGuide3Title">Interpret carefully</strong>
+      <p id="depGuide3Text">
+        Higher returns may indicate either strategic clarity or mild delusion. The model does not differentiate.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="dep-guide-note" id="depGuideNote">
+    This calculator is a conceptual tool. Financial outcomes may differ. Emotional outcomes are not modeled.
+  </div>
+
+</div>
     
 
     <div class="footer-main">
@@ -1258,6 +1370,21 @@ longBtn: "View deposit",
       depRiskTextLongMid: "Extended commitment with moderate optimism and reduced flexibility.",
       depRiskTextLongHigh: "Longer horizon with structured commitment and reduced liquidity.",
 
+      depGuideKicker: "Interpretation Guide",
+depGuideTitle: "How to use this instrument",
+
+depGuide1Title: "Adjust your assumptions",
+depGuide1Text: "Modify capital, time horizon, and optimism rate to reflect your current financial mood rather than objective reality.",
+
+depGuide2Title: "Observe the outcome",
+depGuide2Text: "The projected result illustrates how discipline and patience may translate into modest financial evolution.",
+
+depGuide3Title: "Interpret carefully",
+depGuide3Text: "Higher returns may indicate either strategic clarity or mild delusion. The model does not differentiate.",
+
+depGuideNote: "This calculator is a conceptual tool. Financial outcomes may differ. Emotional outcomes are not modeled.",
+
+
       footerCol1Title: "Davlad Bank",
       footerCol1Text: "Independent financial platform focused on deposits, investments, and structured lending.",
       footerCol2Title: "Navigation",
@@ -1356,6 +1483,20 @@ longBtn: "Einlage ansehen",
       depRiskTextLongLow: "Planbare Positionierung mit disziplinierter Kapitalzurückhaltung.",
       depRiskTextLongMid: "Längere Bindung mit moderatem Optimismus und reduzierter Flexibilität.",
       depRiskTextLongHigh: "Längerer Horizont mit strukturierter Bindung und geringerer Liquidität.",
+
+      depGuideKicker: "Hinweis",
+depGuideTitle: "Wie man dieses Tool verwendet",
+
+depGuide1Title: "Annahmen anpassen",
+depGuide1Text: "Passen Sie Kapital, Zeitraum und Optimismusrate an Ihre aktuelle finanzielle Stimmung an, nicht unbedingt an die Realität.",
+
+depGuide2Title: "Ergebnis beobachten",
+depGuide2Text: "Das Ergebnis zeigt, wie Disziplin und Geduld sich in eine moderate finanzielle Entwicklung übersetzen können.",
+
+depGuide3Title: "Mit Vorsicht interpretieren",
+depGuide3Text: "Höhere Erträge können sowohl strategische Klarheit als auch leichte Selbstüberschätzung bedeuten.",
+
+depGuideNote: "Dieser Rechner ist ein konzeptionelles Tool. Finanzielle Ergebnisse können abweichen. Emotionale Ergebnisse werden nicht berücksichtigt."
 
       footerCol1Title: "Davlad Bank",
       footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
@@ -1487,6 +1628,20 @@ longBtn: "Переглянути депозит",
       depRiskTextLongMid: "Довший горизонт із помірним оптимізмом та меншою гнучкістю.",
       depRiskTextLongHigh: "Довший горизонт зі структурованим зобов’язанням і нижчою ліквідністю.",
 
+        depGuideKicker: "Пояснення",
+depGuideTitle: "Як користуватись цим інструментом",
+
+depGuide1Title: "Налаштуйте припущення",
+depGuide1Text: "Змініть капітал, горизонт та рівень оптимізму відповідно до вашого фінансового настрою.",
+
+depGuide2Title: "Оцініть результат",
+depGuide2Text: "Результат показує, як дисципліна та терпіння можуть вплинути на фінансовий результат.",
+
+depGuide3Title: "Інтерпретуйте обережно",
+depGuide3Text: "Вищий дохід може означати як чітку стратегію, так і легку ілюзію.",
+
+depGuideNote: "Цей калькулятор є концептуальним. Реальні результати можуть відрізнятися. Емоції не враховуються."
+
       footerCol1Title: "Davlad Bank",
       footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
       footerCol2Title: "Навігація",
@@ -1564,6 +1719,20 @@ longBtn: "longBtn",
       depResultModeLabel: "depResultModeLabel",
       depRiskLabel: "depRiskLabel",
       depCalcFootnote: "depCalcFootnote",
+
+      depGuideKicker: "depGuideKicker",
+depGuideTitle: "depGuideTitle",
+
+depGuide1Title: "depGuide1Title",
+depGuide1Text: "depGuide1Text",
+
+depGuide2Title: "depGuide2Title",
+depGuide2Text: "depGuide2Text",
+
+depGuide3Title: "depGuide3Title",
+depGuide3Text: "depGuide3Text",
+
+depGuideNote: "depGuideNote",
 
       footerCol1Title: "footerCol1Title",
       footerCol1Text: "footerCol1Text",

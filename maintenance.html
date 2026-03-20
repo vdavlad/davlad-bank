@@ -1188,6 +1188,42 @@ body.light .card-box-text{
   font-weight:700;
 }
 
+.floating-text{
+  display:inline-block;
+  animation: floatText 8s ease-in-out infinite;
+}
+
+/* основной "дрейф" */
+@keyframes floatText{
+  0%{
+    transform: translateX(0px) translateY(0px) scale(1);
+    filter: blur(0px);
+    opacity:0.95;
+  }
+
+  25%{
+    transform: translateX(2px) translateY(-1px) scale(1.01);
+    filter: blur(0.2px);
+    opacity:1;
+  }
+
+  50%{
+    transform: translateX(-2px) translateY(1px) scale(0.995);
+    filter: blur(0.15px);
+  }
+
+  75%{
+    transform: translateX(1px) translateY(0px) scale(1.005);
+    filter: blur(0.1px);
+  }
+
+  100%{
+    transform: translateX(0px) translateY(0px) scale(1);
+    filter: blur(0px);
+    opacity:0.95;
+  }
+}    
+
 .fraud-wrap{
   margin-bottom:34px;
   border-radius:22px;
@@ -1973,7 +2009,13 @@ body.light .news-chip{
 
   </div>
 </div>
-
+<div class="image-banner">
+  <div class="image-banner-overlay">
+    <div class="image-banner-text floating-text">
+      Perception is the product · Everything else is optional
+    </div>
+  </div>
+</div>
 <div class="fraud-wrap">
   <div class="section-heading">
     <div>

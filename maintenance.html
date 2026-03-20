@@ -574,6 +574,18 @@
 }
 
 /* HERO BLOCK */
+.card-hero-bg,
+.card-box-bg{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:.42;
+  filter:brightness(.8) contrast(1.05);
+  z-index:1;
+}
+    
 .card-hero-block{
   position:relative;
   overflow:hidden;
@@ -608,6 +620,11 @@
   position:absolute;
   inset:0;
   background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.34));
+}
+
+body.light .card-hero-bg::after,
+body.light .card-box-bg::after{
+  background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.22));
 }
 
 body.light .card-hero-bg::after,

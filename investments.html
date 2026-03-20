@@ -1017,44 +1017,92 @@ body.light .inv-calc-field select{
       </div>
     </div>
 
-    <div class="calc-box">
+    <section class="investment-calculator-section">
+  <div class="inv-calc-wrap">
+    <div class="inv-calc-head">
+      <div class="section-kicker" id="invKicker">Investment Simulation</div>
+      <h2 class="section-title" id="invTitle">Project structured outcomes</h2>
+      <p class="section-copy" id="invText">Simulate how capital, time, and perception of the market may influence future financial positioning.</p>
+    </div>
 
-  <div class="calc-grid">
+    <div class="inv-calc-box">
+      <div class="inv-calc-grid">
+        <div class="inv-calc-field">
+          <label id="invTypeLabel" for="invType">Investment type</label>
+          <select id="invType">
+            <option id="invTypeBonds" value="bonds">Bonds</option>
+            <option id="invTypeDirect" value="direct">Direct Investment</option>
+          </select>
+        </div>
 
-    <select id="invType">
-      <option value="bonds">Bonds</option>
-      <option value="direct">Direct Investment</option>
-    </select>
+        <div class="inv-calc-field">
+          <label id="invAmountLabel" for="invAmount">Allocated capital (€)</label>
+          <input type="number" id="invAmount" placeholder="10000">
+        </div>
 
-    <input type="number" id="invAmount" placeholder="Capital (€)">
+        <div class="inv-calc-field">
+          <label id="invMonthsLabel" for="invMonths">Time horizon (months)</label>
+          <input type="number" id="invMonths" placeholder="12">
+        </div>
 
-    <input type="number" id="invMonths" placeholder="Months">
+        <div class="inv-calc-field">
+          <label id="invMarketLabel" for="market">Market outlook</label>
+          <select id="market">
+            <option id="invMarketDef" value="def">Defensive</option>
+            <option id="invMarketBal" value="bal">Balanced</option>
+            <option id="invMarketOpt" value="opt">Optimistic</option>
+          </select>
+        </div>
 
-    <select id="market">
-      <option value="def">Defensive</option>
-      <option value="bal">Balanced</option>
-      <option value="opt">Optimistic</option>
-    </select>
+        <div class="inv-calc-field">
+          <label id="invVolLabel" for="vol">Volatility tolerance</label>
+          <select id="vol">
+            <option id="invVolLow" value="low">Low</option>
+            <option id="invVolMid" value="mid">Medium</option>
+            <option id="invVolHigh" value="high">High</option>
+          </select>
+        </div>
 
-    <select id="vol">
-      <option value="low">Low volatility</option>
-      <option value="mid">Medium volatility</option>
-      <option value="high">High volatility</option>
-    </select>
+        <div class="inv-calc-field">
+          <label id="invConfidenceLabel" for="confidence">Confidence level</label>
+          <input type="range" id="confidence" min="0" max="100" value="50">
+          <div id="invConfidenceValue">Confidence</div>
+        </div>
+      </div>
 
-    <input type="range" id="confidence" min="0" max="100">
+      <div class="inv-calc-actions">
+        <button class="inv-calc-btn" id="invButton" onclick="calculateInvestment()">Simulate outcome</button>
+      </div>
 
+      <div class="inv-calc-results">
+        <div class="inv-calc-card">
+          <div class="inv-result-label" id="invResultLabel">Projected outcome</div>
+          <div class="inv-result-value" id="invResult">€0</div>
+        </div>
+
+        <div class="inv-calc-card">
+          <div class="inv-result-label" id="invRangeLabel">Expected range</div>
+          <div class="inv-result-value" id="invRange">€0 — €0</div>
+        </div>
+
+        <div class="inv-calc-card">
+          <div class="inv-result-label">Interpretation</div>
+          <div class="inv-result-value" id="invText">—</div>
+        </div>
+      </div>
+
+      <div class="inv-risk-box">
+        <div class="inv-risk-header">
+          <div class="inv-risk-label" id="invRiskLabel">Risk profile</div>
+          <div class="inv-risk-value" id="invRiskValue">Moderate</div>
+        </div>
+        <div class="inv-risk-text" id="invRiskText">Balanced positioning with controlled volatility exposure.</div>
+      </div>
+
+      <div class="inv-calc-meme" id="invMeme">Stable expectations with limited emotional movement.</div>
+    </div>
   </div>
-
-  <button onclick="calculateInvestment()">Simulate outcome</button>
-
-  <div class="calc-results">
-    <div id="invResult"></div>
-    <div id="invRange"></div>
-    <div id="invText"></div>
-  </div>
-
-</div>
+</section>
 
     <div class="footer-main">
       <div class="footer-grid">
@@ -1314,7 +1362,7 @@ invRiskHigh: "Erhöht",
 
 invRiskTextLow: "Konservative Positionierung mit minimaler Unsicherheits-Exposition.",
 invRiskTextMid: "Ausgewogene Positionierung mit kontrollierter Volatilität.",
-invRiskTextHigh: "Erhöhte Exposition mit ergebnisabhängiger Marktinterpretation."
+invRiskTextHigh: "Erhöhte Exposition mit ergebnisabhängiger Marktinterpretation.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Unabhängige Finanzplattform mit Fokus auf Einlagen, Investments und strukturierte Kreditlösungen.",
@@ -1414,7 +1462,7 @@ invRiskHigh: "Підвищений",
 
 invRiskTextLow: "Консервативна позиція з мінімальним рівнем невизначеності.",
 invRiskTextMid: "Збалансована позиція з контрольованою волатильністю.",
-invRiskTextHigh: "Підвищений ризик із варіативним результатом залежно від ринку."
+invRiskTextHigh: "Підвищений ризик із варіативним результатом залежно від ринку.",
 
         footerCol1Title: "Davlad Bank",
         footerCol1Text: "Незалежна фінансова платформа з фокусом на депозити, інвестиції та структуровані кредитні рішення.",
@@ -1425,106 +1473,124 @@ invRiskTextHigh: "Підвищений ризик із варіативним р
       }
     };
 
-    function setLanguage(lang) {
-      const t = translations[lang];
+function setLanguage(lang) {
+  const t = translations[lang];
 
-      const map = {
-        brandSub: "brandSub",
-        navHome: "navHome",
-        navDeposits: "navDeposits",
-        navInvestments: "navInvestments",
-        navLoans: "navLoans",
-        navAbout: "navAbout",
-        navContact: "navContact",
+  const map = {
+    brandSub: "brandSub",
+    navHome: "navHome",
+    navDeposits: "navDeposits",
+    navInvestments: "navInvestments",
+    navLoans: "navLoans",
+    navAbout: "navAbout",
+    navContact: "navContact",
 
-        investmentsBgText: "investmentsBgText",
-        investmentsKicker: "investmentsKicker",
-        investmentsTitle: "investmentsTitle",
-        investmentsSubtitle: "investmentsSubtitle",
+    investmentsBgText: "investmentsBgText",
+    investmentsKicker: "investmentsKicker",
+    investmentsTitle: "investmentsTitle",
+    investmentsSubtitle: "investmentsSubtitle",
 
-        stat1Label: "stat1Label",
-        stat1Value: "stat1Value",
-        stat2Label: "stat2Label",
-        stat2Value: "stat2Value",
-        stat3Label: "stat3Label",
-        stat3Value: "stat3Value",
+    stat1Label: "stat1Label",
+    stat1Value: "stat1Value",
+    stat2Label: "stat2Label",
+    stat2Value: "stat2Value",
+    stat3Label: "stat3Label",
+    stat3Value: "stat3Value",
 
-        bondsTitle: "bondsTitle",
-        bondsCopy: "bondsCopy",
-        bondsTagValue: "bondsTagValue",
-        bondsTagLabel: "bondsTagLabel",
-        bondsDetail1Label: "bondsDetail1Label",
-        bondsDetail1Value: "bondsDetail1Value",
-        bondsDetail2Label: "bondsDetail2Label",
-        bondsDetail2Value: "bondsDetail2Value",
-        bondsDetail3Label: "bondsDetail3Label",
-        bondsDetail3Value: "bondsDetail3Value",
-        bondsDetail4Label: "bondsDetail4Label",
-        bondsDetail4Value: "bondsDetail4Value",
-        bondsNote: "bondsNote",
-        bondsBtn: "bondsBtn",
+    bondsTitle: "bondsTitle",
+    bondsCopy: "bondsCopy",
+    bondsTagValue: "bondsTagValue",
+    bondsTagLabel: "bondsTagLabel",
+    bondsDetail1Label: "bondsDetail1Label",
+    bondsDetail1Value: "bondsDetail1Value",
+    bondsDetail2Label: "bondsDetail2Label",
+    bondsDetail2Value: "bondsDetail2Value",
+    bondsDetail3Label: "bondsDetail3Label",
+    bondsDetail3Value: "bondsDetail3Value",
+    bondsDetail4Label: "bondsDetail4Label",
+    bondsDetail4Value: "bondsDetail4Value",
+    bondsNote: "bondsNote",
+    bondsBtn: "bondsBtn",
 
-        directTitle: "directTitle",
-        directCopy: "directCopy",
-        directTagValue: "directTagValue",
-        directTagLabel: "directTagLabel",
-        directDetail1Label: "directDetail1Label",
-        directDetail1Value: "directDetail1Value",
-        directDetail2Label: "directDetail2Label",
-        directDetail2Value: "directDetail2Value",
-        directDetail3Label: "directDetail3Label",
-        directDetail3Value: "directDetail3Value",
-        directDetail4Label: "directDetail4Label",
-        directDetail4Value: "directDetail4Value",
-        directNote: "directNote",
-        directBtn: "directBtn",
+    directTitle: "directTitle",
+    directCopy: "directCopy",
+    directTagValue: "directTagValue",
+    directTagLabel: "directTagLabel",
+    directDetail1Label: "directDetail1Label",
+    directDetail1Value: "directDetail1Value",
+    directDetail2Label: "directDetail2Label",
+    directDetail2Value: "directDetail2Value",
+    directDetail3Label: "directDetail3Label",
+    directDetail3Value: "directDetail3Value",
+    directDetail4Label: "directDetail4Label",
+    directDetail4Value: "directDetail4Value",
+    directNote: "directNote",
+    directBtn: "directBtn",
 
-        // INVESTMENT CALCULATOR
-document.getElementById("invKicker").textContent = t.invKicker;
-document.getElementById("invTitle").textContent = t.invTitle;
-document.getElementById("invText").textContent = t.invText;
+    footerCol1Title: "footerCol1Title",
+    footerCol1Text: "footerCol1Text",
+    footerCol2Title: "footerCol2Title",
+    footerCol3Title: "footerCol3Title",
+    footerText: "footerText",
+    legalText: "legalText"
+  };
 
-document.getElementById("invTypeLabel").textContent = t.invTypeLabel;
-document.getElementById("invTypeBonds").textContent = t.invTypeBonds;
-document.getElementById("invTypeDirect").textContent = t.invTypeDirect;
+  Object.keys(map).forEach(key => {
+    const el = document.getElementById(map[key]);
+    if (el && t[key] !== undefined) el.textContent = t[key];
+  });
 
-document.getElementById("invAmountLabel").textContent = t.invAmountLabel;
-document.getElementById("invMonthsLabel").textContent = t.invMonthsLabel;
+  // footer nav
+  document.getElementById("footerDeposits").textContent = t.navDeposits;
+  document.getElementById("footerInvestments").textContent = t.navInvestments;
+  document.getElementById("footerLoans").textContent = t.navLoans;
+  document.getElementById("footerAbout").textContent = t.navAbout;
+  document.getElementById("footerContact").textContent = t.navContact;
 
-document.getElementById("invMarketLabel").textContent = t.invMarketLabel;
-document.getElementById("invMarketDef").textContent = t.invMarketDef;
-document.getElementById("invMarketBal").textContent = t.invMarketBal;
-document.getElementById("invMarketOpt").textContent = t.invMarketOpt;
+  // investment calculator — only if elements exist
+  const safeSet = (id, value) => {
+    const el = document.getElementById(id);
+    if (el && value !== undefined) el.textContent = value;
+  };
 
-document.getElementById("invVolLabel").textContent = t.invVolLabel;
-document.getElementById("invVolLow").textContent = t.invVolLow;
-document.getElementById("invVolMid").textContent = t.invVolMid;
-document.getElementById("invVolHigh").textContent = t.invVolHigh;
+  safeSet("invKicker", t.invKicker);
+  safeSet("invTitle", t.invTitle);
+  safeSet("invText", t.invText);
 
-document.getElementById("invConfidenceLabel").textContent = t.invConfidenceLabel;
-document.getElementById("invConfidenceValue").textContent = t.invConfidenceValue;
+  safeSet("invTypeLabel", t.invTypeLabel);
+  safeSet("invTypeBonds", t.invTypeBonds);
+  safeSet("invTypeDirect", t.invTypeDirect);
 
-document.getElementById("invButton").textContent = t.invButton;
+  safeSet("invAmountLabel", t.invAmountLabel);
+  safeSet("invMonthsLabel", t.invMonthsLabel);
 
-document.getElementById("invResultLabel").textContent = t.invResultLabel;
-document.getElementById("invRangeLabel").textContent = t.invRangeLabel;
+  safeSet("invMarketLabel", t.invMarketLabel);
+  safeSet("invMarketDef", t.invMarketDef);
+  safeSet("invMarketBal", t.invMarketBal);
+  safeSet("invMarketOpt", t.invMarketOpt);
 
-// meme text (dynamic later, но дефолт можно задать)
-document.getElementById("invMeme").textContent = t.invMemeBonds;
+  safeSet("invVolLabel", t.invVolLabel);
+  safeSet("invVolLow", t.invVolLow);
+  safeSet("invVolMid", t.invVolMid);
+  safeSet("invVolHigh", t.invVolHigh);
 
-// risk
-document.getElementById("invRiskLabel").textContent = t.invRiskLabel;
-document.getElementById("invRiskValue").textContent = t.invRiskMid;
-document.getElementById("invRiskText").textContent = t.invRiskTextMid;
+  safeSet("invConfidenceLabel", t.invConfidenceLabel);
+  safeSet("invConfidenceValue", t.invConfidenceValue);
 
+  safeSet("invButton", t.invButton);
+  safeSet("invResultLabel", t.invResultLabel);
+  safeSet("invRangeLabel", t.invRangeLabel);
+  safeSet("invRiskLabel", t.invRiskLabel);
 
-        footerCol1Title: "footerCol1Title",
-        footerCol1Text: "footerCol1Text",
-        footerCol2Title: "footerCol2Title",
-        footerCol3Title: "footerCol3Title",
-        footerText: "footerText",
-        legalText: "legalText"
-      };
+  document.documentElement.lang = lang === "de" ? "de" : (lang === "ua" ? "uk" : "en");
+
+  document.querySelectorAll(".lang-switch button").forEach(button => {
+    button.classList.toggle("active", button.dataset.lang === lang);
+  });
+
+  localStorage.setItem("siteLanguage", lang);
+};
+
 
       Object.keys(map).forEach(key => {
         const el = document.getElementById(map[key]);
@@ -1555,71 +1621,56 @@ document.getElementById("invRiskText").textContent = t.invRiskTextMid;
 
     loadFxRates();
 
-    function calculateInvestment(){
-
+function calculateInvestment(){
   const type = document.getElementById("invType").value;
-  const amount = +document.getElementById("invAmount").value;
-  const months = +document.getElementById("invMonths").value;
+  const amount = +document.getElementById("invAmount").value || 0;
+  const months = +document.getElementById("invMonths").value || 0;
   const market = document.getElementById("market").value;
   const vol = document.getElementById("vol").value;
-  const confidence = +document.getElementById("confidence").value;
+  const confidence = +document.getElementById("confidence").value || 0;
 
   let base = 0;
 
-  // Bonds
   if(type === "bonds"){
     if(market === "def") base = 0.02;
     if(market === "bal") base = 0.03;
     if(market === "opt") base = 0.04;
   }
 
-  // Direct
   if(type === "direct"){
     if(market === "def") base = 0.05;
     if(market === "bal") base = 0.08;
     if(market === "opt") base = 0.12;
   }
 
-  // confidence влияет
   base += (confidence / 100) * 0.02;
 
   const years = months / 12;
+  const result = amount * (1 + base * years);
 
-  let result = amount * (1 + base * years);
-
-  // volatility
   let spread = 0;
-
   if(vol === "low") spread = 0.05;
   if(vol === "mid") spread = 0.15;
-  if(vol === "high") spread = 0.3;
+  if(vol === "high") spread = 0.30;
 
   const min = result * (1 - spread);
   const max = result * (1 + spread);
 
-  // текст
-  let text = "";
+  const currentLang = localStorage.getItem("siteLanguage") || "en";
+  const t = translations[currentLang];
 
-  if(type === "bonds"){
-    text = "Stable expectations with limited emotional movement.";
-  } else {
-    text = "Outcome influenced by timing, conviction, and selective luck.";
-  }
+  let meme = type === "bonds" ? t.invMemeBonds : t.invMemeDirect;
 
-  document.getElementById("invResult").textContent =
-    "Projected: €" + Math.round(result);
+  const resultEl = document.getElementById("invResult");
+  const rangeEl = document.getElementById("invRange");
+  const textEl = document.getElementById("invText");
+  const memeEl = document.getElementById("invMeme");
 
-  document.getElementById("invRange").textContent =
-    "Range: €" + Math.round(min) + " — €" + Math.round(max);
-
-  document.getElementById("invText").textContent = text;
+  if (resultEl) resultEl.textContent = "€" + Math.round(result);
+  if (rangeEl) rangeEl.textContent = "€" + Math.round(min) + " — €" + Math.round(max);
+  if (textEl) textEl.textContent = meme;
+  if (memeEl) memeEl.textContent = meme;
 }
-
-  const meme = type === "bonds"
-  ? t.invMemeBonds
-  : t.invMemeDirect;
-
-document.getElementById("invMeme").textContent = meme;
   </script>
 </body>
 </html>
